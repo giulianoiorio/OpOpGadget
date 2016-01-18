@@ -233,7 +233,7 @@ class Analysis:
 
         return np.sum(ret_arr,axis=1)
 
-    def center(self,mq=98, single=True, type=None):
+    def center(self,mq=98, single=True, type=None,po=(0,0,0),vo=(0,0,0)):
         """
         Translate the system in the center of mass, Usually is the first thing to done after the call
         of the Class. The function has two modes, if single==False, the com and vcom will be calculated
@@ -244,13 +244,18 @@ class Analysis:
         :param mq: Mass fraction of particles used to calculate the com.
         :param single: If true enable the single method, see above.
         :param type:  IF single==False, use only this type of particle to calculate com.
+        :param po: Move the particle COM at position po
+        :param vo: Set the velocity of COM at vo
         """
+
+        po=np.array(po)
+        vo=np.array(vo)
 
         if single==False:
             com,vcom=self.com(mq=mq, type=type)
 
-            self.p.Pos=self.p.Pos - com
-            self.p.Vel=self.p.Vel - vcom
+            self.p.Pos=self.p.Pos - com + po
+            self.p.Vel=self.p.Vel - vcom + vo
             self.p.setrad()
             self.p.setvelt()
 
@@ -266,8 +271,8 @@ class Analysis:
                     com,vcom=self.com(mq=mq, type=[i])
                     idxmin=self.pindex[i][0]
                     idxmax=self.pindex[i][1]
-                    self.p.Pos[idxmin:idxmax]=self.p.Pos[idxmin:idxmax] - com
-                    self.p.Vel[idxmin:idxmax]=self.p.Vel[idxmin:idxmax] - vcom
+                    self.p.Pos[idxmin:idxmax]=self.p.Pos[idxmin:idxmax] - com + po
+                    self.p.Vel[idxmin:idxmax]=self.p.Vel[idxmin:idxmax] - vcom + vo
                     self.p.setrad()
                     self.p.setvelt()
 

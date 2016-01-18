@@ -86,7 +86,7 @@ class NbodyModel():
         self._set_particles()
         for c in self.components: self._set_grid(c)
 
-    def generate(self, use_c=True):
+    def generate(self, use_c=True, po=None,vo=None,mq=70):
         """
         Generate Position and velocities.
         The position are randomly picken from the cumulative mass distribution, while
@@ -107,6 +107,14 @@ class NbodyModel():
             self._set_vel(c,use_c=use_c)
             print('     Done',flush=True)
             print('     Done in %.3f'%(time.time()-t1),flush=True)
+
+        if (po is not None)    or (vo is not None):
+            if po is None: po=(0,0,0)
+            if vo is None: vo=(0,0,0)
+            print('     Calculate COM and move it to (%.1f,%.1f,%.1f) with V (%.1f,%.1f,%.1f):'%(po[0],po[1],po[2],vo[0],vo[1],vo[2]),end=' ',flush=True)
+            #Find the CM and set it at the position po with velocity vo
+            Analysis(self.p,safe=False, mq=mq, auto_centre=True,po=po,vo=vo)
+            print('     Done',flush=True)
 
         return self.p
 
