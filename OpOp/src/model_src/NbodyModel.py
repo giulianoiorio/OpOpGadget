@@ -2,6 +2,7 @@ from ..particle_src.particle import Header,Particles
 from ..model_src.Model import Model
 from ..grid_src.grid import grid
 from ..df_src.spherical import df_isotropic
+from ..analysis_src import analysis
 
 import numpy as np
 import ctypes as ct
@@ -113,7 +114,7 @@ class NbodyModel():
             if vo is None: vo=(0,0,0)
             print('     Calculate COM and move it to (%.1f,%.1f,%.1f) with V (%.1f,%.1f,%.1f):'%(po[0],po[1],po[2],vo[0],vo[1],vo[2]),end=' ',flush=True)
             #Find the CM and set it at the position po with velocity vo
-            Analysis(self.p,safe=False, mq=mq, auto_centre=True,po=po,vo=vo)
+            analysis.Analysis(self.p,safe=False, mq=mq, auto_centre=True,po=po,vo=vo)
             print('     Done',flush=True)
 
         return self.p
