@@ -31,11 +31,15 @@ class Analysis:
         else: single=True
 
         if auto_centre==True:
+            if 'po' in kwargs:po=kwargs['po']
+            else: po=(0,0,0)
+            if 'vo' in kwargs:vo=kwargs['vo']
+            else: vo=(0,0,0)
             if 'mq' in kwargs:
                 mq=kwargs['mq']
-                self.center(mq=mq,single=single)
+                self.center(mq=mq,single=single,po=po,vo=vo)
             else:
-                self.center(single=single)
+                self.center(single=single,po=po,vo=vo)
 
     def qmass(self,q,safe_mode=True,type=None):
         """

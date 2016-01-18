@@ -112,7 +112,7 @@ class NbodyModel():
         if (po is not None)    or (vo is not None):
             if po is None: po=(0,0,0)
             if vo is None: vo=(0,0,0)
-            print('     Calculate COM and move it to (%.1f,%.1f,%.1f) with V (%.1f,%.1f,%.1f):'%(po[0],po[1],po[2],vo[0],vo[1],vo[2]),end=' ',flush=True)
+            print('Calculate COM and move it to (%.1f,%.1f,%.1f) with V (%.1f,%.1f,%.1f):'%(po[0],po[1],po[2],vo[0],vo[1],vo[2]),end=' ',flush=True)
             #Find the CM and set it at the position po with velocity vo
             analysis.Analysis(self.p,safe=False, mq=mq, auto_centre=True,po=po,vo=vo)
             print('     Done',flush=True)
