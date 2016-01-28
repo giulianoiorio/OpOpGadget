@@ -13,7 +13,7 @@ from ..grid_src.grid import grid
 
 class Analysis:
 
-    def __init__(self, particles=None, safe=True, auto_centre=False ,**kwargs):
+    def __init__(self, particles=None, safe=True, auto_centre=False, iter=False, **kwargs):
 
         #Check input
         if 'filename' in kwargs: self.p=load_snap(kwargs['filename'])
@@ -37,9 +37,10 @@ class Analysis:
             else: vo=(0,0,0)
             if 'mq' in kwargs:
                 mq=kwargs['mq']
-                self.center(mq=mq,single=single,po=po,vo=vo)
+                self.center(mq=mq,single=single,iter=iter,po=po,vo=vo)
             else:
-                self.center(single=single,po=po,vo=vo)
+                if iter: self.center(mq=10,iter=True,single=single,po=po,vo=vo)
+                else: self.center(mq=70,single=single,iter=False,po=po,vo=vo)
 
     def qmass(self,q,safe_mode=True,type=None):
         """
@@ -102,6 +103,77 @@ class Analysis:
 
 
         return ret_com, ret_vom
+
+    def comit(self,fac=0.975,limit_mass=10,maxiter=500,type=None):
+        """
+        Calculate iteratively the COM following Power et al, 2003.
+        :param fac:  Each step the maximum radius will decrease of a factor equal to fac.
+        :param limit_mass: The iteration will stop when the mass encircled on the current maxradius is less than limit_mass*Mtot/100
+        :param maxiter: The iteration will stop when the number of steps is greater than maxiter.
+        :param type: use only this type of particle to calculate com.
+        :return: com, vcom
+        """
+
+        iterstep=0
+        pcom=(0,0,0)
+        vcom=(0,0,0)
+
+        limit_mass=limit_mass/100.
+
+        if type is None:
+            p=np.copy(self.p.Pos[:])
+            v=np.copy(self.p.Vel[:])
+            rad_array=np.copy(self.p.Radius[:])
+            mas_array=np.copy(self.p.Mass[:])
+            mass_t=np.sum(mas_array)
+        else:
+            type= nparray_check(type)
+            v=np.copy(self._make_array(self.p.Vel,type))
+            p=np.copy(self._make_array(self.p.Pos,type))
+            rad_array=np.copy(self._make_array(self.p.Radius,type))
+            mas_array=np.copy(self._make_array(self.p.Mass,type))
+            mass_t=np.sum(mas_array)
+
+
+        maxrad=np.max(rad_array)*fac
+        idx_bound=  (rad_array>=0) & (rad_array<=maxrad)
+        mass=np.sum(mas_array[idx_bound])
+        mbody=mass/mass_t
+
+        while (mbody>limit_mass) and (iterstep<=maxiter):
+
+
+
+            tpos= self.massw_mean(p[idx_bound], mas_array[idx_bound])
+            tvel= self.massw_mean(v[idx_bound], mas_array[idx_bound])
+
+            p=p - tpos
+            v=v - tvel
+            rad_array=np.sqrt(np.sum(p*p,axis=1))
+            pcom=np.array(tpos)+pcom
+            vcom=np.array(tvel)+vcom
+
+            maxrad=maxrad*fac
+            idx_bound=  (rad_array>=0) & (rad_array<=maxrad)
+            mass=np.sum(mas_array[idx_bound])
+            mbody=mass/mass_t
+
+            iterstep+=1
+
+
+
+
+        del p
+        del v
+        del mas_array
+        del rad_array
+
+
+        return pcom,vcom
+
+
+
+
 
     def tdyn(self,mq=100,type=None,G='(kpc3)/(M_sun s2)'):
         """
@@ -237,7 +309,7 @@ class Analysis:
 
         return np.sum(ret_arr,axis=1)
 
-    def center(self,mq=98, single=True, type=None,po=(0,0,0),vo=(0,0,0)):
+    def center(self,mq, iter=False, single=True, type=None,  fac=0.975, maxiter=500, po=(0,0,0),vo=(0,0,0), ):
         """
         Translate the system in the center of mass, Usually is the first thing to done after the call
         of the Class. The function has two modes, if single==False, the com and vcom will be calculated
@@ -245,9 +317,13 @@ class Analysis:
         If single==True, a separate com and vcom will be calculated for each particle type and only the
         related particle will be moved in such com and vcom.
         The second method seems to give better results.
-        :param mq: Mass fraction of particles used to calculate the com.
+        :param mq: if iter=False, Mass fraction of particles used to calculate the com.
+                if iter=True, limit_mass of the iteration (see comit)
+        :param iter: Calculate com iteratively?
         :param single: If true enable the single method, see above.
         :param type:  IF single==False, use only this type of particle to calculate com.
+        :param fac: if iter=True, Each step the maximum radius will decrease of a factor equal to fac.
+        :param maxiter: if iter=True, The iteration will stop when the number of steps is greater than maxiter.
         :param po: Move the particle COM at position po
         :param vo: Set the velocity of COM at vo
         """
@@ -256,7 +332,10 @@ class Analysis:
         vo=np.array(vo)
 
         if single==False:
-            com,vcom=self.com(mq=mq, type=type)
+
+            if iter: com,vcom=self.comit(fac=fac,limit_mass=mq,maxiter=maxiter,type=type)
+            else:    com,vcom=self.com(mq=mq, type=type)
+
 
             self.p.Pos=self.p.Pos - com + po
             self.p.Vel=self.p.Vel - vcom + vo
@@ -272,7 +351,10 @@ class Analysis:
 
                 if co!=0:
 
-                    com,vcom=self.com(mq=mq, type=[i])
+                    if iter: com,vcom=self.comit(fac=fac,limit_mass=mq,maxiter=maxiter,type=[i])
+                    else:    com,vcom=self.com(mq=mq, type=[i])
+
+
                     idxmin=self.pindex[i][0]
                     idxmax=self.pindex[i][1]
                     self.p.Pos[idxmin:idxmax]=self.p.Pos[idxmin:idxmax] - com + po
