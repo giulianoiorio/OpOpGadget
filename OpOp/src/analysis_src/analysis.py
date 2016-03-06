@@ -593,12 +593,15 @@ class Profile:
         self.masscum=None#self.massbin.cumsum()
         self.cdens=None#self.massbin/self.grid.g_vol
 
-        self.pax=None
+        self.paxdens=None
+        self.paxvdisp2d=None
+        self.paxvdisp3d=None
         self.massbinsup=None#np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.mass)[0]
         self.masscumsup=None#self.massbinsup.cumsum()
         self.csupdens=None#self.massbinsup/self.grid.g_sup
 
-        self.vdisp=None#np.zeros_like(self.dens)
+        self.cvdisp2d=None#np.zeros_like(self.dens)
+        self.cvdisp3d=None#np.zeros_like(self.dens)
 
 
         #for i in range(len(self.grid.gedge)-1):
@@ -640,7 +643,7 @@ class Profile:
         s: smoothing of the spline, see scipy Univariate spline
         """
 
-        if (self.csupdens is not None) and self.pax==pax:
+        if (self.csupdens is not None) and self.paxdens==pax:
 
             if ret==True:
                 retarray=np.zeros((len(self.csupdens),2))
@@ -672,7 +675,7 @@ class Profile:
             if (self.massbinsup is  None) or self.pax!=pax: self.massbinsup=np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.pmass)[0]
 
             self.csupdens=self.massbinsup/self.grid.g_sup
-            self.pax=pax
+            self.paxdens=pax
 
             if ret==True:
                 retarray=np.zeros((len(self.csupdens),2))
@@ -689,7 +692,7 @@ class Profile:
 
             #self.velpro=self.vel[:,ax3]
 
-    def mass(self,ret=True,func=True,s=0):
+    def mass(self,ret=True,func=True,s=None):
 
         if self.masscum is None:
             if self.massbin is None: self.massbin=np.histogram(self.rad,bins=self.grid.gedge,weights=self.pmass)[0]
@@ -705,8 +708,64 @@ class Profile:
             else:
                 return retarray
 
+    def vdisp2d(self,pax='z',ret=True,func=True,s=None):
+
+        if (self.cvdisp2d is None) or (self.paxvdisp2d!=pax):
+
+            if pax=='z':
+                ax1=0
+                ax2=1
+                ax3=2
+            elif pax=='y':
+                ax1=0
+                ax2=2
+                ax3=1
+            elif pax=='x':
+                ax1=1
+                ax2=2
+                ax3=0
+            self.paxvdisp2d=pax
+            self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2)
+            self.cvdisp2d=np.zeros(len(self.grid.gedge)-1)
+            for i in range(len(self.grid.gedge)-1):
+                cond=(self.radcyl>self.grid.gedge[i])&(self.radcyl<=self.grid.gedge[i+1])
+                self.cvdisp2d[i]=np.std(self.vel[cond,ax3])
+
+            if ret==True:
+                retarray=np.zeros((len(self.cvdisp2d),2))
+                retarray[:,0]=self.grid.gx
+                retarray[:,1]=self.cvdisp2d
+                if func==True:
+                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                    return retarray,rfunc
+                else:
+                    return retarray
+
+    def vdisp3d(self,ax='z',ret=True,func=True,s=None):
+
+        if (self.cvdisp3d) is None or (self.paxvdisp3d!=pax):
+
+            if ax=='z': ax3=2
+            elif ax=='y': ax3=1
+            elif ax=='x': ax3=0
+
+            self.paxvdisp3d=ax
 
 
+            self.cvdisp3d=np.zeros(len(self.grid.gedge)-1)
+            for i in range(len(self.grid.gedge)-1):
+                cond=(self.rad>self.grid.gedge[i])&(self.rad<=self.grid.gedge[i+1])
+                self.cvdisp3d[i]=np.std(self.vel[cond,ax3])
+
+        if ret==True:
+            retarray=np.zeros((len(self.cvdisp3d),2))
+            retarray[:,0]=self.grid.gx
+            retarray[:,1]=self.cvdisp3d
+            if func==True:
+                rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                return retarray,rfunc
+            else:
+                return retarray
 
 '''
 R,mass_t,dens_t,pot_t=np.loadtxt('stellarcomp.txt',unpack=True,comments='#')
