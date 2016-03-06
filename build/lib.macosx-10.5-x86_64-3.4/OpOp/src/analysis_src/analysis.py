@@ -535,7 +535,7 @@ class Analysis:
 
 class Profile:
 
-    def __init__(self,particles=None, type=None, center=False, mq=98,  Ngrid=512, xmin=None, xmax=None, kind='log',**kwargs):
+    def __init__(self,particles=None, type=None, center=False, mq=98,  Ngrid=512, xmin=None, xmax=None, iter=False, kind='log',**kwargs):
 
         #Check input
         if 'filename' in kwargs: p=load_snap(kwargs['filename'])
@@ -545,18 +545,21 @@ class Profile:
         #center
         if center==True:
             a=Analysis(p,safe=False)
-            a.center(mq=mq, single=True)
+            a.center(mq=mq, iter=iter,single=True)
         else:
             p.setrad()
             p.setvelt()
+
 
         #extract arrays
         if type is None:
             self.pos=p.Pos[:]
             self.vel=p.Vel[:]
             self.rad=p.Radius[:]
+            self.radcyl=None#np.sqrt(p.Pos[:,ax1]**2+p.Pos[:,ax2]**2)
+            self.velpro=None#p.Vel[:,ax3]
             self.vel_tot=p.Vel_tot[:]
-            self.mass=p.Mass[:]
+            self.pmass=p.Mass[:]
 
         elif isinstance(type,int):
             if p.header['Nall'][type]!=0: idx_type=p.Type==type
@@ -566,9 +569,13 @@ class Profile:
             self.vel=p.Vel[idx_type]
             self.rad=p.Radius[idx_type]
             self.vel_tot=p.Vel_tot[idx_type]
-            self.mass=p.Mass[idx_type]
+            self.pmass=p.Mass[idx_type]
+            self.radcyl=None#np.sqrt(p.Pos[idx_type,ax1]**2+p.Pos[idx_type,ax2]**2)
+            self.velpro=None#p.Vel[idx_type,ax3]
 
         else: raise ValueError('type need to be None or an integer')
+
+
 
         #define grid
         self.Ngrid=Ngrid
@@ -581,9 +588,124 @@ class Profile:
         self.grid.setvol()
         self.grid.setsup()
 
-        self.massbin=np.histogram(self.rad,bins=self.grid.gedge,weights=self.mass)[0]
-        self.masscum=self.massbin.cumsum()
-        self.dens=self.massbin/self.grid.g_vol
+
+        self.massbin=None#np.histogram(self.rad,bins=self.grid.gedge,weights=self.mass)[0]
+        self.masscum=None#self.massbin.cumsum()
+        self.cdens=None#self.massbin/self.grid.g_vol
+
+        self.pax=None
+        self.massbinsup=None#np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.mass)[0]
+        self.masscumsup=None#self.massbinsup.cumsum()
+        self.csupdens=None#self.massbinsup/self.grid.g_sup
+
+        self.vdisp=None#np.zeros_like(self.dens)
+
+
+        #for i in range(len(self.grid.gedge)-1):
+            #cond=(self.radcyl>self.grid.gedge[i])&(self.radcyl<=self.grid.gedge[i+1])
+            #print(self.grid.gedge[i],self.grid.gedge[i+1],np.max(self.radcyl[cond]))
+            #self.vdisp[i]=np.std(self.velpro[cond])
+
+    def dens(self,ret=True,func=True,s=None):
+        """
+        ret: If True return an array with rad e dens
+        func: if True and ret True return also a spline of the dens
+        s: smoothing of the spline, see scipy Univariate spline
+        """
+
+        if self.cdens is  None:
+
+            if self.massbin is  None:
+                self.massbin=np.histogram(self.rad,bins=self.grid.gedge,weights=self.pmass)[0]
+
+
+            self.cdens=self.massbin/self.grid.g_vol
+
+
+        if ret==True:
+            retarray=np.zeros((len(self.cdens),2))
+            retarray[:,0]=self.grid.gx
+            retarray[:,1]=self.cdens
+            if func==True:
+                rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                return retarray,rfunc
+            else:
+                return retarray
+
+    def supdens(self,pax='z',ret=True,func=True,s=None):
+        """
+        pax: Projection axis (x,y or z)
+        ret: If True return an array with rad e dens
+        func: if True and ret True return also a spline of the dens
+        s: smoothing of the spline, see scipy Univariate spline
+        """
+
+        if (self.csupdens is not None) and self.pax==pax:
+
+            if ret==True:
+                retarray=np.zeros((len(self.csupdens),2))
+                retarray[:,0]=self.grid.gx
+                retarray[:,1]=self.csupdens
+                if func==True:
+                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                    return retarray,rfunc
+                else:
+                    return retarray
+
+        else:
+            #self.pax=pax
+            if pax=='z':
+                ax1=0
+                ax2=1
+                ax3=2
+            elif pax=='y':
+                ax1=0
+                ax2=2
+                ax3=1
+            elif pax=='x':
+                ax1=1
+                ax2=2
+                ax3=0
+
+            self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2)
+
+            if (self.massbinsup is  None) or self.pax!=pax: self.massbinsup=np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.pmass)[0]
+
+            self.csupdens=self.massbinsup/self.grid.g_sup
+            self.pax=pax
+
+            if ret==True:
+                retarray=np.zeros((len(self.csupdens),2))
+                retarray[:,0]=self.grid.gx
+                retarray[:,1]=self.csupdens
+                if func==True:
+                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                    return retarray,rfunc
+                else:
+                    return retarray
+
+
+
+
+            #self.velpro=self.vel[:,ax3]
+
+    def mass(self,ret=True,func=True,s=0):
+
+        if self.masscum is None:
+            if self.massbin is None: self.massbin=np.histogram(self.rad,bins=self.grid.gedge,weights=self.pmass)[0]
+            self.masscum=self.massbin.cumsum()
+
+        if ret==True:
+            retarray=np.zeros((len(self.masscum),2))
+            retarray[:,0]=self.grid.gx
+            retarray[:,1]=self.masscum
+            if func==True:
+                rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                return retarray,rfunc
+            else:
+                return retarray
+
+
 
 
 '''
