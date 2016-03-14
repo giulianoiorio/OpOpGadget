@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.interpolate import UnivariateSpline
 from ..model_src import Model
+from ..densityprofile_src import Density
 from numpy.ctypeslib import ndpointer
 import ctypes as ct
 import os
@@ -30,7 +31,7 @@ class GeneralModel(Model.Model):
                     If string it must follow the rule of the unity of the module.astropy constants.
                     E.g. to have G in unit of kpc3/Msun s2, the input string is 'kpc3 / (M_sun s2)'
                     See http://astrofrog-debug.readthedocs.org/en/latest/constants/
-        :param denorm: If True, the output value of mass, dens and pot will be de normalized using Mmax and G.
+        :param denorm: If True, the output value of mass, dens and pot will be denormalized using Mmax and G.
         :param use_c: To calculate pot and mass with a C-cyle, WARNING it creates more noisy results
         """
 
@@ -43,8 +44,8 @@ class GeneralModel(Model.Model):
 
 
         if isinstance(dens,list) or isinstance(dens,tuple) or isinstance(dens,np.ndarray):  self.dens_arr=np.array(dens,dtype=float,order='C')
-        else:
-            self.dens_arr=dens(R)
+        elif isinstance(dens,Density.Density): self.dens_arr=dens.dens(R)
+        else: self.dens_arr=dens(R)
 
         self.R=np.array(R,dtype=float,order='C')*self.rc
         self.mass_arr=np.empty_like(self.dens_arr,dtype=float,order='C')

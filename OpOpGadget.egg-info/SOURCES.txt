@@ -1,5 +1,6 @@
 MANIFEST.in
 setup.py
+OpOp/Density.py
 OpOp/Model.py
 OpOp/__init__.py
 OpOp/analysis.py
@@ -9,6 +10,9 @@ OpOp/io.py
 OpOp/particle.py
 OpOp/src/analysis_src/__init__.py
 OpOp/src/analysis_src/analysis.py
+OpOp/src/densityprofile_src/Density.py
+OpOp/src/densityprofile_src/King.py
+OpOp/src/densityprofile_src/__init__.py
 OpOp/src/df_src/__init__.py
 OpOp/src/df_src/spherical.py
 OpOp/src/df_src/df_c_ext/spherical.c
@@ -18,6 +22,7 @@ OpOp/src/io_src/LoadSnap.py
 OpOp/src/io_src/WriteSnap.py
 OpOp/src/io_src/__init__.py
 OpOp/src/model_src/GeneralModel.py
+OpOp/src/model_src/King.py
 OpOp/src/model_src/Model.py
 OpOp/src/model_src/NbodyModel.py
 OpOp/src/model_src/Plummer.py
