@@ -14,7 +14,7 @@ from astropy.constants import G as conG
 class King(Model.Model):
 
 
-    def __self__(self,self,c=None,rt=None,rc=None,Mmax=1,G='kpc km2 / (M_sun s2)', denorm=True,**kwargs):
+    def __self__(self,c=None,rt=None,rc=None,Mmax=1,G='kpc km2 / (M_sun s2)', denorm=True,**kwargs):
 
 
         if c is not None: self.c=rt
