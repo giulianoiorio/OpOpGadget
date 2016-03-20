@@ -8,6 +8,9 @@ class Model:
     def dens(self,R):
         return self._evaluatedens(R)
 
+    def sdens(self,R):
+        return self._evaluatesdens(R)
+
     def mass(self,R):
         if self.use_c==True: mass=self._evaluatemassc
         elif self._use_nparray==True: mass=self._evaluatemass

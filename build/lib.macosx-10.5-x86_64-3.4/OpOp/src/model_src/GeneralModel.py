@@ -78,7 +78,7 @@ class GeneralModel(Model.Model):
 
 
         else:
-            self._dm2=UnivariateSpline(self.R,self.R*self.R*self.dens_arr, k=2, s=0,ext=1)
+            self._dm2=UnivariateSpline(self.R,self.R*self.R*self.dens_arr, k=1, s=0,ext=1)
             self._dm=UnivariateSpline(self.R,self.R*self.dens_arr, k=1, s=0,ext=1)
 
 
@@ -104,6 +104,9 @@ class GeneralModel(Model.Model):
 
     def _evaluatemass(self,R):
         return self.Mc*self._dm2.integral(0,R)
+
+    def _evaluatesdens(self,R):
+        return 0.*R/R
 
     def _evaluatemassc(self,R):
 
@@ -147,3 +150,4 @@ class GeneralModel(Model.Model):
         self.Mc=Mmax/self.mass_arr[-1]
         self.dc=self.Mc/(4*np.pi)
         self.pc=self.G*self.Mc
+

@@ -28,6 +28,7 @@ class Plummer(Model.Model):
         self._analytic_radius=True
         self.use_c=False
         self._densnorm=(3*Mtot)/(4*np.pi*rc*rc*rc)
+        self._sdensnorm=Mtot/(np.pi*rc*rc)
         self._potnorm=self.G*Mtot
 
     def _evaluatedens(self,R):
@@ -35,6 +36,12 @@ class Plummer(Model.Model):
         dd= (1 + ( (R*R) / (self.rc*self.rc) ) )
 
         return self._densnorm*(dd)**(-2.5)
+
+    def _evaluatesdens(self,R):
+
+        dd= (1 + ( (R*R) / (self.rc*self.rc) ) )
+
+        return self._sdensnorm*dd**-2
 
     def _evaluatemass(self,R):
 
