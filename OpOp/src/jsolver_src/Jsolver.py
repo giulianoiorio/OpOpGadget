@@ -2,7 +2,6 @@ from scipy.integrate import quad
 from math import sqrt
 from astropy.constants import G as conG
 import fermi.tsintegrator as ft
-from functools import  partial
 from scipy.interpolate import UnivariateSpline
 from .jsolver_c_ext import CJsolver
 import numpy as np
@@ -63,8 +62,7 @@ class Jsolver():
 
     def integrateT(self,R,Rcut,N=20):
         f=ft.Tsintegrator1D(N)
-        fint=partial(self.kernel,R=R)
-        a=f.integrate(fint,R,Rcut)
+        a=f.integrate(self._kerneliso,R,Rcut,extra_args=(R,))
 
         return sqrt((2*self.G)*(1/self.sprof(R))*a)
 
@@ -93,7 +91,7 @@ class Jsolver():
 
 
         else:
-            R=np.asarray(R)
+            R=np.array(R,dtype=np.float64)
             if Rcut is None: Rcut=R[-1]*5
 
             if mode=='N':

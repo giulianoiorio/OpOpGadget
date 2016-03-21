@@ -8,7 +8,7 @@ import time
 s=Sersic(0.71,0.581,5e7)
 r=np.linspace(0.01,2,20)
 rm=np.linspace(0.01,2,20)
-rstop=np.linspace(0.1,2,20)
+rstop=np.linspace(0.1,2,15)
 #rstop=np.array([0.1,1.2,1.3,2])
 #rstop=rm
 j=Jsolver(s.dens,s.sdens,s.mass)
@@ -17,26 +17,26 @@ j=Jsolver(s.dens,s.sdens,s.mass)
 
 t1=time.time()
 a=j.vdisp(rstop, use_c=True,mode='S')
-print(time.time()-t1)
+print('S',time.time()-t1)
 plt.scatter(rstop,a,label='S')
 
 
 t1=time.time()
 a=j.vdisp(rstop, use_c=True,mode='F')
-print(time.time()-t1)
+print('F',time.time()-t1)
 a=plt.scatter(rstop,a,label='F',c='red')
 
 
 t1=time.time()
 a=j.vdisp(rstop,n=512,kind='log',mode='N')
-print(time.time()-t1)
+print('N',time.time()-t1)
 plt.scatter(rstop,a,label='2',c='black')
 
 plt.xlim(0,2)
 plt.legend()
 plt.show()
 
-print(j.vdisp(1,mode='N'))
+print(j.vdisp([1,2],mode='F'))
 print(type(2))
 
 
