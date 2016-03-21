@@ -2,6 +2,49 @@ from OpOp.Model import Sersic,Plummer, GeneralModel
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma,gammaincc
+from OpOp.jsolver import Jsolver
+import time
+
+s=Sersic(0.71,0.581,5e7)
+r=np.linspace(0.01,2,20)
+rm=np.linspace(0.01,2,20)
+rstop=np.linspace(0.1,2,20)
+#rstop=np.array([0.1,1.2,1.3,2])
+#rstop=rm
+j=Jsolver(s.dens,s.sdens,s.mass)
+
+
+
+t1=time.time()
+a=j.vdisp(rstop, use_c=True,mode='S')
+print(time.time()-t1)
+plt.scatter(rstop,a,label='S')
+
+
+t1=time.time()
+a=j.vdisp(rstop, use_c=True,mode='F')
+print(time.time()-t1)
+a=plt.scatter(rstop,a,label='F',c='red')
+
+
+t1=time.time()
+a=j.vdisp(rstop,n=512,kind='log',mode='N')
+print(time.time()-t1)
+plt.scatter(rstop,a,label='2',c='black')
+
+plt.xlim(0,2)
+plt.legend()
+plt.show()
+
+print(j.vdisp(1,mode='N'))
+print(type(2))
+
+
+
+#t1=time.time()
+#j.vdisp(rstop, use_c=True,mode='F')
+#print(time.time()-t1)
+
 
 '''
 m=0.71
@@ -30,7 +73,7 @@ plt.yscale('log')
 plt.xscale('log')
 plt.show()
 '''
-
+'''
 a=Sersic(0.71,0.581,5e7)
 b=Plummer(0.581,5e7)
 r=np.linspace(0.0001,100,10000)
@@ -56,3 +99,4 @@ plt.ylim(100,1000)
 plt.xscale('log')
 plt.yscale('log')
 plt.show()
+'''

@@ -7,6 +7,7 @@ OpOp/analysis.py
 OpOp/df.py
 OpOp/grid.py
 OpOp/io.py
+OpOp/jsolver.py
 OpOp/particle.py
 OpOp/src/analysis_src/__init__.py
 OpOp/src/analysis_src/analysis.py
@@ -21,6 +22,10 @@ OpOp/src/grid_src/grid.py
 OpOp/src/io_src/LoadSnap.py
 OpOp/src/io_src/WriteSnap.py
 OpOp/src/io_src/__init__.py
+OpOp/src/jsolver_src/Jsolver.py
+OpOp/src/jsolver_src/__init__.py
+OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.c
+OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.pyx
 OpOp/src/model_src/GeneralModel.py
 OpOp/src/model_src/King.py
 OpOp/src/model_src/Model.py

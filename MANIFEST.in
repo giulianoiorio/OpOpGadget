@@ -1,1 +1,2 @@
 recursive-include OpOp/src/model_src/model_c_ext *.h
+recursive-include OpOp/src/jsolver_src/jsolver_c_ext  *.pyx

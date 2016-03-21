@@ -1,9 +1,8 @@
 from setuptools import setup
 from distutils.core import Extension
-import sys
-import os
-import argparse
-#import distutils
+from Cython.Build import cythonize
+
+
 
 # Parse options; current options
 # --no-openmp: compile without OpenMP support
@@ -100,17 +99,21 @@ genmod_c_ext=Extension('OpOp/src/model_src/model_c_ext/GenerateModel',
 				
 )
 
-ext_modules=[df_c_ext,model_c_ext,genmod_c_ext]
+jsolv_c_src=['OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.pyx']
+jsolv_c_ext=Extension('OpOp/src/jsolver_src/jsolver_c_ext/CJsolver',sources=jsolv_c_src, extra_compile_args=['-fopenmp',],extra_link_args=['-fopenmp',])
+
+
+ext_modules=[df_c_ext,model_c_ext,genmod_c_ext]+cythonize(jsolv_c_ext)
 
 setup(
 		name='OpOpGadget',
-		version='0.3.0',
+		version='0.5.0',
 		author='Giuliano Iorio',
 		author_email='giuliano.iorio@unibo.it',
 		url='http://github.com/iogiul/OpOp',
 		package_dir={'OpOp/src/': ''},
-		packages=['OpOp', 'OpOp/src/df_src','OpOp/src/grid_src','OpOp/src/model_src','OpOp/src/particle_src', 'OpOp/src/analysis_src' ,'OpOp/src/io_src','OpOp/src/utility_src','OpOp/src/densityprofile_src'],
-		install_requires=['numpy>=1.9','scipy>=0.16','matplotlib','astropy>=1'],
+		packages=['OpOp', 'OpOp/src/df_src','OpOp/src/grid_src','OpOp/src/model_src','OpOp/src/particle_src', 'OpOp/src/analysis_src' ,'OpOp/src/io_src','OpOp/src/utility_src','OpOp/src/jsolver_src','OpOp/src/densityprofile_src'],
+		install_requires=['numpy>=1.9','scipy>=0.16','matplotlib','astropy>=1','fermi'],
 		ext_modules=ext_modules
 
 
