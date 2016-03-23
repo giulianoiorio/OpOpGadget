@@ -7,17 +7,20 @@ import corner
 
 import random
 import time
+
+'''
 mtots=5e7
 s=Sersic(0.71,0.581,mtots)
 
-rc=10
-rt=20
-mtot=1e10
+rc=30
+rt=100
+rt2=120
+mtot=1e11
 gamma=1
 beta=3
 n=512
 
-r=np.linspace(0.1,40,100)
+r=np.linspace(0.001,10,50)
 
 t1=time.time()
 t=Tbetamodel(rc=rc,rt=rt,Mmax=mtot,gamma=gamma,beta=beta,n=n)
@@ -28,16 +31,17 @@ plt.plot(r,j.vdisp(r))
 print(time.time()-t1)
 
 t1=time.time()
-tc=Tbetamodel2(rc=rc,rt=rt,Mmax=mtot,gamma=gamma,beta=beta)
+tc=Tbetamodel(rc=rc,rt=rt2,Mmax=mtot,gamma=gamma,beta=beta,n=n,use_c=True)
 mc=Multimodel(tc,s)
 jc=Jsolver(s.dens,s.sdens,mc.mass)
 #plt.plot(r,tc.mass(r))
-plt.plot(r,jc.vdisp(r))
+plt.scatter(r,jc.vdisp(r))
 print(time.time()-t1)
 
 plt.show()
-
 '''
+
+
 def plot_data(data,samples,stellarmod,gamma=0,beta=3,n=512):
 
     rc=np.percentile(samples[:,0],[16,50,84])
@@ -91,7 +95,7 @@ np.savetxt('data.txt',out)
 def lnlike(theta,x,y,yerr,stellarmod):
 
     rc,rt,Mtot=theta
-    t=Tbetamodel(rc=rc,rt=rt,Mmax=Mtot,gamma=1.,beta=3,n=512)
+    t=Tbetamodel(rc=rc,rt=rt,Mmax=Mtot,gamma=0,beta=3,n=512,use_c=True)
     totmodel=Multimodel(stellarmod,t)
     j=Jsolver(stellarmod.dens,stellarmod.sdens,totmodel.mass)
     teodisp=j.vdisp(x,mode='F',use_c=False)
@@ -135,10 +139,10 @@ pos=np.vstack((posrc,posrt,posmtot)).T
 sampler=emcee.EnsembleSampler(nwalkers,ndim,lnprob,args=(out[:,0],out[:,1],out[:,2],s),threads=3)
 
 t1=time.time()
-sampler.run_mcmc(pos,600)
+sampler.run_mcmc(pos,100)
 print(time.time()-t1)
 
-samples=sampler.chain[:,150:,:].reshape((-1,ndim))
+samples=sampler.chain[:,20:,:].reshape((-1,ndim))
 samples[:,2]=np.log10(samples[:,2])
 
 np.savetxt('samples.txt',samples)
@@ -166,4 +170,3 @@ print('Rt',np.percentile(samples[:,1],[16,50,84]))
 print('Mtot',10**np.percentile(samples[:,2],[16,50,84]))
 
 plot_data(out,samples,s,1,3,512)
-'''

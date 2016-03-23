@@ -27,6 +27,7 @@ OpOp/src/jsolver_src/__init__.py
 OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.c
 OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.pyx
 OpOp/src/model_src/GeneralModel.py
+OpOp/src/model_src/Isothermal.py
 OpOp/src/model_src/King.py
 OpOp/src/model_src/Model.py
 OpOp/src/model_src/NbodyModel.py

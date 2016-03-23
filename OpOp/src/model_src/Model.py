@@ -5,12 +5,13 @@ class Model:
 
     def __init__(self):
         self.use_c=use_c
+        self._use_nparray=False
 
     def dens(self,R):
         return self._evaluatedens(R)
 
-    def sdens(self,R):
-        return self._evaluatesdens(R)
+    def sdens(self,R,*args):
+        return self._evaluatesdens(R,*args)
 
     def mass(self,R,*args):
         if self.use_c==True: mass=self._evaluatemassc
