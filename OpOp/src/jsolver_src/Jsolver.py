@@ -60,9 +60,10 @@ class Jsolver():
 
         return ret
 
-    def integrateT(self,R,Rcut,N=20):
-        f=ft.Tsintegrator1D(N)
+    def integrateT(self,R,Rcut,N=20,hstep=3.):
+        f=ft.Tsintegrator1D(N,hstep=hstep)
         a=f.integrate(self._kerneliso,R,Rcut,extra_args=(R,))
+
 
         return sqrt((2*self.G)*(1/self.sprof(R))*a)
 

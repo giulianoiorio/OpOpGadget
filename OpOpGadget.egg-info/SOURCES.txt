@@ -32,6 +32,7 @@ OpOp/src/model_src/Model.py
 OpOp/src/model_src/NbodyModel.py
 OpOp/src/model_src/Plummer.py
 OpOp/src/model_src/Sersic.py
+OpOp/src/model_src/Tbetamodel.py
 OpOp/src/model_src/__init__.py
 OpOp/src/model_src/model_c_ext/GeneralModel.c
 OpOp/src/model_src/model_c_ext/GenerateModel.c

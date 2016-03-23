@@ -3,7 +3,6 @@ from cython.parallel cimport prange
 from cython import boundscheck,wraparound,cdivision
 from math import sqrt
 
-#cython: nonecheck=True, boundscheck=False
 
 cdef extern from "math.h" nogil:
     double c_sqrt "sqrt" (double)

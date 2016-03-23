@@ -1,4 +1,4 @@
-from OpOp.Model import Sersic,Plummer, GeneralModel
+from OpOp.Model import Sersic,Plummer, GeneralModel, Tbetamodel
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.special import gamma,gammaincc
@@ -6,9 +6,10 @@ from OpOp.jsolver import Jsolver
 import time
 
 s=Sersic(0.71,0.581,5e7)
+s=Tbetamodel(rc=3.6,rt=6,Mmax=3.05e9,gamma=0,beta=3)
 r=np.linspace(0.01,2,20)
 rm=np.linspace(0.01,2,20)
-rstop=np.linspace(0.1,2,15)
+rstop=np.linspace(0.1,2,13)
 #rstop=np.array([0.1,1.2,1.3,2])
 #rstop=rm
 j=Jsolver(s.dens,s.sdens,s.mass)
@@ -24,8 +25,9 @@ plt.scatter(rstop,a,label='S')
 t1=time.time()
 a=j.vdisp(rstop, use_c=True,mode='F')
 print('F',time.time()-t1)
-a=plt.scatter(rstop,a,label='F',c='red')
-
+plt.scatter(rstop,a,label='F',c='red')
+print(rstop)
+print(a)
 
 t1=time.time()
 a=j.vdisp(rstop,n=512,kind='log',mode='N')
@@ -36,9 +38,8 @@ plt.xlim(0,2)
 plt.legend()
 plt.show()
 
-print(j.vdisp([1,2],mode='F'))
+print(j.vdisp(0.50714286,mode='F',use_c=True))
 print(type(2))
-
 
 
 #t1=time.time()

@@ -106,7 +106,7 @@ class GeneralModel(Model.Model):
         return self.Mc*self._dm2.integral(0,R)
 
     def _evaluatesdens(self,R):
-        return 0.*R/R
+        raise ValueError('Error Surface density not implemented yet for this model')
 
     def _evaluatemassc(self,R):
 
