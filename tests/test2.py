@@ -1,4 +1,4 @@
-from OpOp.Model import Sersic,Plummer, GeneralModel, Tbetamodel,Multimodel, Tbetamodel2
+from OpOp.Model import Sersic,Plummer, GeneralModel, Tbetamodel,Multimodel
 import numpy as np
 import matplotlib.pyplot as plt
 from OpOp.jsolver import Jsolver
@@ -94,16 +94,16 @@ np.savetxt('data.txt',out)
 
 def lnlike(theta,x,y,yerr,stellarmod):
 
-    rc,rt,Mtot=theta
-    t=Tbetamodel(rc=rc,rt=rt,Mmax=Mtot,gamma=0,beta=3,n=512,use_c=True)
+    rc,rt,Mtot,gamma,beta=theta
+    t=Tbetamodel(rc=rc,rt=rt,Mmax=Mtot,gamma=gamma,beta=beta,n=512,use_c=True)
     totmodel=Multimodel(stellarmod,t)
     j=Jsolver(stellarmod.dens,stellarmod.sdens,totmodel.mass)
     teodisp=j.vdisp(x,mode='F',use_c=False)
     return -np.sum( ((y-teodisp)/(yerr))**2)
 
 def lnprior(theta,x):
-    rc,rt,Mtot=theta
-    if (0.0001 < rc < rt) and (x[-1]< rt < 50) and ( mtots < Mtot < 1e3*mtots ):
+    rc,rt,Mtot,gamma,beta=theta
+    if (0.0001 < rc < rt) and (x[-1]< rt < 50) and ( mtots < Mtot < 1e3*mtots ) and (0<= gamma <=1 ) and (2<= beta <=4) and (beta>gamma):
         return 0.0
     else:
         return -np.inf
@@ -123,14 +123,16 @@ def lnprob(theta,x,y,yerr,stellarmod):
 
 
 
-ndim,nwalkers=3,100
+ndim,nwalkers=5,10
 
 
 mm=0.5*(r[-1]+r[1])
 posrc=np.random.uniform(mm,mm*5,nwalkers)
 posrt=np.random.uniform(posrc,2*posrc,nwalkers)
 posmtot=10**(np.random.uniform(np.log10(mtots),np.log10(mtots*1e3),nwalkers))
-pos=np.vstack((posrc,posrt,posmtot)).T
+posgamma=np.random.uniform(0,1,nwalkers)
+posbeta=np.random.uniform(2,4,nwalkers)
+pos=np.vstack((posrc,posrt,posmtot,posgamma,posbeta)).T
 
 
 
@@ -139,10 +141,10 @@ pos=np.vstack((posrc,posrt,posmtot)).T
 sampler=emcee.EnsembleSampler(nwalkers,ndim,lnprob,args=(out[:,0],out[:,1],out[:,2],s),threads=3)
 
 t1=time.time()
-sampler.run_mcmc(pos,100)
+sampler.run_mcmc(pos,1000)
 print(time.time()-t1)
 
-samples=sampler.chain[:,20:,:].reshape((-1,ndim))
+samples=sampler.chain[:,:,:].reshape((-1,ndim))
 samples[:,2]=np.log10(samples[:,2])
 
 np.savetxt('samples.txt',samples)
@@ -162,11 +164,13 @@ ax3.set_ylabel('Mtot')
 fig.savefig('chain.pdf')
 fig.clf()
 
-fig=corner.corner(samples,labels=["Rc","Rt","Mtot"])
+fig=corner.corner(samples,labels=["Rc","Rt","Mtot","gamma","beta"])
 fig.savefig('prova.pdf')
 
 print('Rc',np.percentile(samples[:,0],[16,50,84]))
 print('Rt',np.percentile(samples[:,1],[16,50,84]))
 print('Mtot',10**np.percentile(samples[:,2],[16,50,84]))
+print('gamma',np.percentile(samples[:,3],[16,50,84]))
+print('beta',np.percentile(samples[:,4],[16,50,84]))
 
 plot_data(out,samples,s,1,3,512)

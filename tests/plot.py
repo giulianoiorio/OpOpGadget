@@ -11,9 +11,9 @@ rc=np.percentile(samples[:,0],[16,50,84])
 rt=np.percentile(samples[:,1],[16,50,84])
 mtot=10**np.percentile(samples[:,2],[16,50,84])
 print(mtot)
-t1=Tbetamodel(rc=rc[0],rt=rt[0],Mmax=mtot[0],gamma=1,beta=3,n=512)
-t2=Tbetamodel(rc=rc[1],rt=rt[1],Mmax=mtot[1],gamma=1,beta=3,n=512)
-t3=Tbetamodel(rc=rc[2],rt=rt[2],Mmax=mtot[2],gamma=1,beta=3,n=512)
+t1=Tbetamodel(rc=rc[0],rt=rt[0],Mmax=mtot[0],gamma=1,beta=2,n=512)
+t2=Tbetamodel(rc=rc[1],rt=rt[1],Mmax=mtot[1],gamma=1,beta=2,n=512)
+t3=Tbetamodel(rc=rc[2],rt=rt[2],Mmax=mtot[2],gamma=1,beta=2,n=512)
 
 mtots=5e7
 s=Sersic(0.71,0.581,mtots)

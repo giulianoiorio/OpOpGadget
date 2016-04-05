@@ -9,7 +9,7 @@ class Isothermal(Model.Model):
         """
         PseudoIsothermal Model:
 
-        d=d0/(sqrt(1+r^2/rc^2))
+        d=d0/((1+r^2/rc^2)
 
         Given that the Mass diverge at infinty it is possibile to initialize the
         model in different ways:
@@ -111,7 +111,7 @@ class Isothermal(Model.Model):
         rc3=self.rc**3
         rc2=self.rc*self.rc
 
-        p1=(rc3*(a-np.arctan(x)))/r
+        p1=(rc3*(x-np.arctan(x)))/r
         p2=0.5*rc2 * (np.log(rc2+rcut*rcut) - np.log(rc2*r*r) )
 
         return self.pc*(p1+p2)
