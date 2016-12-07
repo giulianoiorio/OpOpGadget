@@ -10,7 +10,7 @@ from astropy.constants import G as conG
 
 class GeneralModel(Model.Model):
 
-    def __init__(self,R,dens,rc=1,Mmax=1, G='kpc km2 / (M_sun s2)', denorm=True, use_c=False):
+    def __init__(self,R,dens,q=1,rc=1,Mmax=1, G='kpc km2 / (M_sun s2)', denorm=True, use_c=False):
         """
         The purpose of the general model is to start from a density law R-dens to build a galaxy model.
         Attenzione per come è creato il modello assume sempre che
@@ -20,7 +20,9 @@ class GeneralModel(Model.Model):
         il suo valore max. Per modelli non troncati è meglio utilizzare modelli analitici se possibile.
         Anche nel calcolo del potenziale Rinf è settato uguale all ultimo punto di R, poichè cmq per R>Rmax
         dens=0 e l integrale int_Rmax^inf dens r dr=0 sempre.
-        :param R: list of radii, it needs to  be in the form  r/rc
+        :param R: list of radii or m if q!=1, it needs to  be in the form  r/rc
+        :parma q: list of flattening at radius R. It can be also a function that depends only on the variable
+                  r. #Da fixare THis should work only for the poisition not for the Potential
         :param dens: list of dens at radii R. It can be also a function or a lambda function that depends
                      only on the variable R=r/rc
         :param rc: Scale length of the model, the R in input will be multiplyed by rc before start all the calculation
@@ -47,11 +49,18 @@ class GeneralModel(Model.Model):
         elif isinstance(dens,Density.Density): self.dens_arr=dens.dens(R)
         else: self.dens_arr=dens(R)
 
+
+
         self.R=np.array(R,dtype=float,order='C')*self.rc
         self.mass_arr=np.empty_like(self.dens_arr,dtype=float,order='C')
         self.pot_arr=np.empty_like(self.dens_arr,dtype=float,order='C')
         self.use_c=use_c
         self._use_nparray=False
+
+
+        if isinstance(q,float) or isinstance(q,int): self.q_arr=np.array([q,]*len(R),dtype=float,order='C')
+        elif isinstance(q,list) or isinstance(q,tuple) or isinstance(q,np.ndarray):  self.q_arr=np.array(q,dtype=float,order='C')
+        else: self.q_arr=q(R)
 
         self._dens=UnivariateSpline(self.R,self.dens_arr, k=1, s=0, ext=1) #for R>rmax, dens=0
 
@@ -78,7 +87,7 @@ class GeneralModel(Model.Model):
 
 
         else:
-            self._dm2=UnivariateSpline(self.R,self.R*self.R*self.dens_arr, k=1, s=0,ext=1)
+            self._dm2=UnivariateSpline(self.R,self.q_arr*self.R*self.R*self.dens_arr, k=1, s=0,ext=1)
             self._dm=UnivariateSpline(self.R,self.R*self.dens_arr, k=1, s=0,ext=1)
 
 

@@ -103,7 +103,7 @@ def lnlike(theta,x,y,yerr,stellarmod):
 
 def lnprior(theta,x):
     rc,rt,Mtot,gamma,beta=theta
-    if (0.0001 < rc < rt) and (x[-1]< rt < 50) and ( mtots < Mtot < 1e3*mtots ) and (0<= gamma <=1 ) and (2<= beta <=4) and (beta>gamma):
+    if (0.0001 < rc < rt) and (x[-1]< rt < 50) and ( mtots < Mtot < 1e3*mtots ) and (0<= gamma <=1 ) and (2<= beta <=4):
         return 0.0
     else:
         return -np.inf

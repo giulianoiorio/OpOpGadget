@@ -1,7 +1,7 @@
 from setuptools import setup
 from distutils.core import Extension
 from Cython.Build import cythonize
-
+import shutil
 
 
 # Parse options; current options
@@ -107,7 +107,7 @@ ext_modules=[df_c_ext,model_c_ext,genmod_c_ext]+cythonize(jsolv_c_ext)
 
 setup(
 		name='OpOpGadget',
-		version='0.5.5',
+		version='0.6',
 		author='Giuliano Iorio',
 		author_email='giuliano.iorio@unibo.it',
 		url='http://github.com/iogiul/OpOp',
@@ -115,8 +115,8 @@ setup(
 		packages=['OpOp', 'OpOp/src/df_src','OpOp/src/grid_src','OpOp/src/model_src','OpOp/src/particle_src', 'OpOp/src/analysis_src' ,'OpOp/src/io_src','OpOp/src/utility_src','OpOp/src/jsolver_src','OpOp/src/densityprofile_src'],
 		install_requires=['numpy>=1.9','scipy>=0.16','matplotlib','astropy>=1','fermi'],
 		ext_modules=ext_modules
-
-
-		
 	)
 
+shutil.rmtree('build')
+shutil.rmtree('dist')
+shutil.rmtree('OpOpGadget.egg-info')

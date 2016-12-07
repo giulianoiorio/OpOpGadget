@@ -4,7 +4,7 @@ import numpy as np
 
 class Tbetamodel(GeneralModel.GeneralModel):
 
-    def __init__(self,rc,rt,Mmax,gamma=0,beta=3,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
+    def __init__(self,rc,rt,Mmax,gamma=1,beta=3,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
         """
         Truncated double power law model:
         dens=dens0 * (r/rc)^(-gamma) * (1+r/rc)^(- (beta-gamma)) * Exp[ -(r/rt)^2]
@@ -42,7 +42,7 @@ class Tbetamodel(GeneralModel.GeneralModel):
         self.rt=rt
         self.rc=rc
         self.gamma=gamma
-        self.beta=beta-gamma
+        self.beta=beta
         super(Tbetamodel,self).__init__(R,self._adens,self.rc,Mmax,G,use_c=use_c,denorm=denorm)
 
     def _adens(self,x):
