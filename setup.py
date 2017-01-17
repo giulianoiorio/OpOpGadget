@@ -7,7 +7,7 @@ import shutil
 # Parse options; current options
 # --no-openmp: compile without OpenMP support
 
-extra_compile_args=[]
+extra_compile_args=['-std=c99']
 
 option_list=['-CC','--O1','--O2','--O0','--no-openmp']
 command_list=['build','install','develop','registrate']
