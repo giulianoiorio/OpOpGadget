@@ -2,6 +2,21 @@ from ..model_src import GeneralModel
 import numpy as np
 
 
+class Plummer2D(GeneralModel.GeneralModel):
+
+    def __init__(self,self,rc,Mmax,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
+
+
+        #Select grid for 3D density
+        if R is None:
+            if kind=='log': R=np.logspace(np.log10(rini+0.01),np.log10(rfin+0.01),n)-0.01 #To avoid log(0)
+            elif kind=='lin': R=np.linspace(rini,rfin,n)
+        else:
+            R=np.asarray(R)
+
+
+
+'''
 class Tbetamodel(GeneralModel.GeneralModel):
 
     def __init__(self,rc,rt,Mmax,gamma=1,beta=3,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
@@ -12,7 +27,7 @@ class Tbetamodel(GeneralModel.GeneralModel):
         can be supplied by the user directly or can be generate with the keyword rini,rfin,kind,n.
 
         :param rc: Scale length
-        :param rt:  Truncation radius (in physical unit)
+        :param rt:  Truncation radius
         :param Mmax: Physical Value of the Mass at Rmax (the last point of the R grid). The physical unity of dens and pot and mass
                will depends on the unity of Mmax
         :param gamma: first power law exponent
@@ -52,3 +67,5 @@ class Tbetamodel(GeneralModel.GeneralModel):
         dens= ( x**self.gamma ) * (  (1+x)**self.beta   )
 
         return (1./dens)*np.exp(-x*x*y*y)
+'''
+
