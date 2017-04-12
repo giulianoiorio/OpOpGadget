@@ -55,7 +55,7 @@ class Jsolver():
             sprof = args[0].sdens
             mprof = args[0].mass
 
-        return cls(dprof=dprof,sprof=sprof,mprof=mprof,amodel=amodel,G=G), mmod
+        return cls(dprof=dprof,sprof=sprof,mprof=mprof,amodel=amodel,G=G)
 
     def _kproj_iso(self,r,R):
         """

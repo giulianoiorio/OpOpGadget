@@ -92,7 +92,14 @@ class Multimodel(Model):
 
         return ret
 
+    def __str__(self):
 
+        h=''
+        h+='\nModel:'
+        h+='\nuse_c set to %s'%str(self.use_c)
+        h+='\nuse_nparray set to %s' % str(self._use_nparray)
+
+        return h
 
 
 
