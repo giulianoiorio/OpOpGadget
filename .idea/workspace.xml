@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py" afterPath="$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Model.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Model.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
@@ -125,8 +123,8 @@
       <file leaf-file-name="Plummer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="79" column="34" lean-forward="false" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
+            <state relative-caret-position="295">
+              <caret line="81" column="10" lean-forward="false" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -1586,8 +1584,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="79" column="34" lean-forward="false" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
+        <state relative-caret-position="295">
+          <caret line="81" column="10" lean-forward="false" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
           <folding />
         </state>
       </provider>

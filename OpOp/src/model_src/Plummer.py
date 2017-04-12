@@ -75,7 +75,7 @@ class Plummer(Model.Model):
         h += '\n3D Plummer model:'
         h += '\nuse_c set to %s' % str(self.use_c)
         h += '\nuse_nparray set to %s' % str(self._use_nparray)
-        h += '\nG set to %s' % str(G)
+        h += '\nG set to %s' % str(self.G)
         h+='\nrc=%.4f'%self.rc
         h+='\nMmax=%.4f'%self.Mmax
 
