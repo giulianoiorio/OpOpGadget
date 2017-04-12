@@ -4,7 +4,7 @@ from ..model_src import Model
 
 class Plummer(Model.Model):
 
-    def __init__(self,rc,Mtot,G='kpc km2 / (M_sun s2)'):
+    def __init__(self,rc,Mmax,G='kpc km2 / (M_sun s2)'):
         """
         Analytic Plummer model
         :param rc: Plummer scale length
@@ -18,7 +18,7 @@ class Plummer(Model.Model):
         :return:
         """
         self.rc=rc
-        self.Mmax=Mtot
+        self.Mmax=Mmax
         if isinstance(G,float) or isinstance(G,int): self.G=G
         else:
             GG=conG.to(G)
@@ -27,9 +27,9 @@ class Plummer(Model.Model):
         self._use_nparray=True
         self._analytic_radius=True
         self.use_c=False
-        self._densnorm=(3*Mtot)/(4*np.pi*rc*rc*rc)
-        self._sdensnorm=Mtot/(np.pi*rc*rc)
-        self._potnorm=self.G*Mtot
+        self._densnorm=(3*Mmax)/(4*np.pi*rc*rc*rc)
+        self._sdensnorm=Mmax/(np.pi*rc*rc)
+        self._potnorm=self.G*Mmax
 
     def _evaluatedens(self,R):
 

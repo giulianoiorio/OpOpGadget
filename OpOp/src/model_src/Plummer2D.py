@@ -1,71 +1,106 @@
 from ..model_src import GeneralModel
+from ..model_src import Model
 import numpy as np
+from astropy.constants import G as conG
 
 
-class Plummer2D(GeneralModel.GeneralModel):
+class Plummer2D(Model.Model):
 
-    def __init__(self,self,rc,Mmax,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
+    def __init__(self,rc,Mmax,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True):
 
 
-        #Select grid for 3D density
-        if R is None:
-            if kind=='log': R=np.logspace(np.log10(rini+0.01),np.log10(rfin+0.01),n)-0.01 #To avoid log(0)
-            elif kind=='lin': R=np.linspace(rini,rfin,n)
+        self.rc=rc
+        self.Mmax=Mmax
+        self.use_c=False
+        self.use_nparray=True
+
+        if isinstance(G,float) or isinstance(G,int): self.G=G
         else:
-            R=np.asarray(R)
+            GG=conG.to(G)
+            self.G=GG.value
+
+
+        #Select grid for mass e pot inversion
+        if R is None:
+            if kind=='log': self.R=np.logspace(np.log10(rini+0.01),np.log10(rfin+0.01),n)-0.01 #To avoid log(0)
+            elif kind=='lin': self.R=np.linspace(rini,rfin,n)
+        else:
+            self.R=np.asarray(R)
+
+        #set denorm
+        if denorm==True: self._set_denorm(self.Mmax)
+        else:
+            self.Mc=1
+            self.sdc=1
+            self.dc=1
+            self.pc=1
+
+        # mass_arr e pot_arr per mass e pot inversion
+        #Nota che cosi mass_arr e pot_arr sono denormalizzati nel caso
+        self.mass_arr = self._evaluatemass(self.R*self.rc) #moltiplicato per rc, perchè vogliamo che evaluate radius isa funzione del raggio normalizzato
+        self.pot_arr = self._evaluatepot(self.R*self.rc)
 
 
 
-'''
-class Tbetamodel(GeneralModel.GeneralModel):
+    def _set_denorm(self,Mmax):
+        self.Mc=Mmax
+        self.sdc=3*self.Mc/(2*np.pi*self.rc*self.rc)
+        self.dc=4*self.Mc/(np.pi*np.pi*self.rc*self.rc*self.rc)
+        self.pc=4*self.G*self.Mc/(np.pi*self.rc)
 
-    def __init__(self,rc,rt,Mmax,gamma=1,beta=3,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
+    def _evaluatedens(self,R):
+
+        y=R/self.rc
+
+        dd= (1 + ( y*y ) )
+
+        return self.dc*(dd)**(-3)
+
+    def _evaluatesdens(self,R):
+
+        y = R / self.rc
+
+        dd = (1 + (y * y))
+
+        return self.sdc*dd**(-2.5)
+
+    def _evaluatemass(self,R):
+
+        y=R/self.rc
+        y2=y*y
+
+        cost=2/np.pi
+        a=( y*(y2-1) ) / ( (1+y2)*(1+y2) )
+        b=np.arctan(y)
+
+
+        return self.Mc*cost*(a+b)
+
+    def _evaluatepot(self,R):
+
+        y=R/self.rc
+        y2 = y * y
+        den= 1/ ( (1+y2)*(1+y2) )
+
+        a=( y*(y2-1) ) * den
+        b=np.arctan(y)
+        c=den
+
+        res=(1/(2*y))*(a+b)+den
+
+        return self.pc*res
+
+    def _evaluateradius(self,x,x_type='mass'):
         """
-        Truncated double power law model:
-        dens=dens0 * (r/rc)^(-gamma) * (1+r/rc)^(- (beta-gamma)) * Exp[ -(r/rt)^2]
-        It simpy call the class general model with the density law above evaluating it on a grid of radius normalized to rc. This grid
-        can be supplied by the user directly or can be generate with the keyword rini,rfin,kind,n.
 
-        :param rc: Scale length
-        :param rt:  Truncation radius
-        :param Mmax: Physical Value of the Mass at Rmax (the last point of the R grid). The physical unity of dens and pot and mass
-               will depends on the unity of Mmax
-        :param gamma: first power law exponent
-        :param beta: secondo powe law exponent
-        :param R: if not None, use this list of normalized radius on rc.
-        #Generate grid
-        :param rini:  First radius normalized on rc
-        :param rfin: Last normalized radius on rc
-        :param kind: use a lin or log grid
-        :param n: number of points to use to evaluate the density.
-        :param G: Value of the gravitational constant G, it can be a number of a string.
-                    If G=1, the physical value of the potential will be Phi/G.
-                    If string it must follow the rule of the unity of the module.astropy constants.
-                    E.g. to have G in unit of kpc3/Msun s2, the input string is 'kpc3 / (M_sun s2)'
-                    See http://astrofrog-debug.readthedocs.org/en/latest/constants/
-        :param denorm: If True, the output value of mass, dens and pot will be denormalized using Mmax and G.
-        :param use_c: To calculate pot and mass with a C-cyle, WARNING it creates more noisy results
+        :param x:  normalised radius
+        :param x_type:
         :return:
         """
+        if x_type=='mass': ret_func=interp1d(self.mass_arr,self.R, kind=linear)
+        if x_type=='pot': ret_func=interp1d(self.pot_arr,self.R, kind=linear) #we use this beacuse Univariate spline can have problem if some value on x are equals
 
-        if R is None:
-            if kind=='log': R=np.logspace(np.log10(rini+0.01),np.log10(rfin+0.01),n)-0.01 #To avoid log(0)
-            elif kind=='lin': R=np.linspace(rini,rfin,n)
-        else:
-            R=np.asarray(R)
+        return ret_func(x)
 
-        self.rt=rt
-        self.rc=rc
-        self.gamma=gamma
-        self.beta=beta
-        super(Tbetamodel,self).__init__(R,self._adens,self.rc,Mmax,G,use_c=use_c,denorm=denorm)
 
-    def _adens(self,x):
-
-        y=self.rc/self.rt
-
-        dens= ( x**self.gamma ) * (  (1+x)**self.beta   )
-
-        return (1./dens)*np.exp(-x*x*y*y)
-'''
 

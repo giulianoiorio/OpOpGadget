@@ -5,7 +5,7 @@ from scipy.special import gamma,gammaincc
 
 class Sersic(Model.Model):
 
-    def __init__(self,m,rc,Mtot,G='kpc km2 / (M_sun s2)'):
+    def __init__(self,m,rc,Mtot,G='kpc km2 / (M_sun s2)',denorm=True):
         """
         Analytic Sersic model:
 
@@ -21,7 +21,7 @@ class Sersic(Model.Model):
                     If string it must follow the rule of the unity of the module.astropy constants.
                     E.g. to have G in unit of kpc3/Msun s2, the input string is 'kpc3 / (M_sun s2)'
                     See http://astrofrog-debug.readthedocs.org/en/latest/constants/
-
+        :param denorm: If True, the output value of mass, dens and pot will be denormalized using Mmax and G.
         :return:
         """
 
@@ -39,11 +39,25 @@ class Sersic(Model.Model):
             GG=conG.to(G)
             self.G=GG.value
 
+        #set denorm
+        if denorm==True: self._set_denorm(self.Mmax)
+        else:
+            self.Mc=1
+            self.sdc=1
+            self.dc=1
+            self.pc=1
+
+
+    def _set_denorm(self,Mmax):
+        rc=self.rc
         dmgamma= self.m*gamma(self.m*(3-self.p)) #Mtot=4*pi*d0*rc^3 * m* *Gamma(m*(3-p))
-        self._densnorm=Mtot/(4*np.pi*rc*rc*rc*dmgamma)
+        self.dc=Mmax/(4*np.pi*rc*rc*rc*dmgamma)
         sdmgamma= self.m*gamma(2*self.m)  #Mtot=2*pi*S0*rc^2 * m * Gamma(2*m)
-        self._sdensnorm=Mtot/(2*np.pi*rc*rc*sdmgamma)
-        self._potnorm=(self.G*Mtot)
+        self.sdc=Mmax/(2*np.pi*rc*rc*sdmgamma)
+        self.pc=(self.G*Mmax)
+        self.Mc = Mmax
+
+
 
     def _evaluatedens(self,R):
         """
@@ -55,7 +69,7 @@ class Sersic(Model.Model):
         a=(R/self.rc)**(-self.p)
         b=np.exp( -(R/self.rc)**self.nu )
 
-        return self._densnorm*a*b
+        return self.dc*a*b
 
     def _evaluatesdens(self,R):
         """
@@ -66,7 +80,7 @@ class Sersic(Model.Model):
         R=np.asarray(R)
         b=np.exp( -(R/self.rc)**self.nu )
 
-        return self._sdensnorm*b
+        return self.sdc*b
 
     def _evaluatemass(self,R):
         """
@@ -78,7 +92,7 @@ class Sersic(Model.Model):
         num=gammaincc(self.m*(3-self.p),(R/self.rc)**self.nu) #Non mi serve dividere per Gamma(2m), perchè in scipy la gammaincc è gia normalizzta
                                           #su gamma
 
-        return self.Mmax*(1-num)
+        return self.Mc*(1-num)
 
         #return self.Mmax*(num/den)
 
@@ -109,5 +123,5 @@ class Sersic(Model.Model):
         b=(1/rc)*b1/b2
 
 
-        return self._potnorm*( a+b)
+        return self.pc*( a+b)
 

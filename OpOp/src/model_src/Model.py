@@ -3,9 +3,10 @@ import numpy as np
 
 class Model:
 
-    def __init__(self):
+    def __init__(self,use_c=False,use_nparray=False):
         self.use_c=use_c
-        self._use_nparray=False
+        self._use_nparray=use_nparray
+        self.name='Model'
 
     def dens(self,R):
         return self._evaluatedens(R)
@@ -37,6 +38,7 @@ class Multimodel(Model):
         self.mcomp=args
         self.use_c=False
         self._use_nparray=False
+        self.name = 'Multi Model'
 
     def _evaluatedens(self,R):
 

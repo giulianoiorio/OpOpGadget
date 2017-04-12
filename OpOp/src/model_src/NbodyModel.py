@@ -90,7 +90,7 @@ class NbodyModel():
     def generate(self, use_c=True, po=None,vo=None,mq=70,set_vel=True):
         """
         Generate Position and velocities.
-        The position are randomly picken from the cumulative mass distribution, while
+        The position are randomly pick from the cumulative mass distribution, while
         the velocity component are taken sampling the distribution function.
         The output system will be spherically symmetric and isotropic.
         :param use_c: If use_c use a fast implementation to generate velocity

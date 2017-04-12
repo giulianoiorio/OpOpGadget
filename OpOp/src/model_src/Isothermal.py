@@ -54,14 +54,19 @@ class Isothermal(Model.Model):
             self.Mc=Mmax/totmass
             self.dc=self.Mc/(4*np.pi)
             self.pc=self.G*self.Mc
+            self.Mmax=Mmax
         elif d0 is not None:
             self.dc=d0
             self.Mc=(4*np.pi)*self.dc
             self.pc=self.G*self.Mc
+            self.Mmax=self.mass(self.rmax)
         elif Vinf is not None:
             self.pc=(Vinf*Vinf)/(self.rc*self.rc)
             self.Mc=self.pc/self.G
             self.dc=self.Mc/(4*np.pi)
+            self.Mmax = self.mass(self.rmax)
+
+
 
     def _evaluatesdens(self,r,rcut=None):
         """

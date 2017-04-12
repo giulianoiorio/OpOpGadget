@@ -4,12 +4,15 @@ from astropy.constants import G as conG
 import fermi.tsintegrator as ft
 from scipy.interpolate import UnivariateSpline
 from .jsolver_c_ext import CJsolver
+from ..model_src.Model import Model, Multimodel
 import numpy as np
 
 class Jsolver():
 
     def __init__(self,dprof,sprof,mprof,amodel='isotropic',G='kpc km2 / (M_sun s2)'):
-
+        """
+        funnzioni , dprof, sprof, mprof
+        """
         self.amodel=amodel
 
 
@@ -25,9 +28,34 @@ class Jsolver():
 
         if amodel=='isotropic':
             self.kernel=self._kerneliso
+        else:
+            raise NotImplementedError('Amodel %s not implemented'%amodel)
 
 
         self.cost=sqrt(2.*self.G)
+
+    @classmethod
+    def model(cls,*args,tracer=0,amodel='isotropic',G='kpc km2 / (M_sun s2)'):
+
+
+
+        #Check
+        for mod in args:
+            if isinstance(mod,Model): pass
+            else: raise ValueError('Model is not an instance of Class Model')
+
+        #Define
+        if len(args)>1:
+            dprof = args[tracer].dens
+            sprof = args[tracer].sdens
+            mmod=Multimodel(*args)
+            mprof=mmod.mass
+        else:
+            dprof = args[0].dens
+            sprof = args[0].sdens
+            mprof = args[0].mass
+
+        return cls(dprof=dprof,sprof=sprof,mprof=mprof,amodel=amodel,G=G)
 
     def _kproj_iso(self,r,R):
         """

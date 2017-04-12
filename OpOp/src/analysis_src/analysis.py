@@ -593,6 +593,7 @@ class Profile:
         self.masscum=None#self.massbin.cumsum()
         self.cdens=None#self.massbin/self.grid.g_vol
 
+
         self.paxdens=None
         self.paxvdisp2d=None
         self.paxvdisp3d=None
@@ -672,7 +673,7 @@ class Profile:
 
             self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2)
 
-            if (self.massbinsup is  None) or self.pax!=pax: self.massbinsup=np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.pmass)[0]
+            if (self.massbinsup is  None) or (self.paxdens!=pax): self.massbinsup=np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.pmass)[0]
 
             self.csupdens=self.massbinsup/self.grid.g_sup
             self.paxdens=pax
@@ -743,7 +744,7 @@ class Profile:
 
     def vdisp3d(self,ax='z',ret=True,func=True,s=None):
 
-        if (self.cvdisp3d) is None or (self.paxvdisp3d!=pax):
+        if (self.cvdisp3d is None) or (self.paxvdisp3d!=ax):
 
             if ax=='z': ax3=2
             elif ax=='y': ax3=1

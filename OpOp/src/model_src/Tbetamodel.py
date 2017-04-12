@@ -43,12 +43,14 @@ class Tbetamodel(GeneralModel.GeneralModel):
         self.rc=rc
         self.gamma=gamma
         self.beta=beta
-        super(Tbetamodel,self).__init__(R,self._adens,self.rc,Mmax,G,use_c=use_c,denorm=denorm)
+        super(Tbetamodel,self).__init__(R=R,dens=self._adens,rc=self.rc,Mmax=Mmax,G=G,use_c=use_c,denorm=denorm)
 
     def _adens(self,x):
 
         y=self.rc/self.rt
+        alpha_inn=self.gamma
+        alpha_out=self.beta-self.gamma
 
-        dens= ( x**self.gamma ) * (  (1+x)**self.beta   )
+        dens= ( x**alpha_inn ) * (  (1+x)**alpha_out   )
 
         return (1./dens)*np.exp(-x*x*y*y)

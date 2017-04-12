@@ -105,6 +105,8 @@ jsolv_c_ext=Extension('OpOp/src/jsolver_src/jsolver_c_ext/CJsolver',sources=jsol
 
 ext_modules=[df_c_ext,model_c_ext,genmod_c_ext]+cythonize(jsolv_c_ext)
 
+
+
 setup(
 		name='OpOpGadget',
 		version='0.6',
