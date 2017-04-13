@@ -8,3 +8,4 @@ from .src.model_src.Plummer2D import Plummer2D
 from .src.model_src.Tbetamodel import Tbetamodel
 from .src.model_src.Model import Multimodel
 from .src.model_src.Isothermal import Isothermal
+from .src.model_src.Einasto import Einasto

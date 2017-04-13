@@ -77,6 +77,6 @@ class Plummer(Model.Model):
         h += '\nuse_nparray set to %s' % str(self._use_nparray)
         h += '\nG set to %s' % str(self.G)
         h+='\nrc=%.4f'%self.rc
-        h+='\nMmax=%.4f'%self.Mmax
+        h+='\nMmax=%.4e'%self.Mmax
 
         return h

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Einasto.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/Model.py" afterPath="$PROJECT_DIR$/OpOp/Model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,14 +41,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="Einasto.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Einasto.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="20" column="66" lean-forward="false" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#2060#2181#1" expanded="true" />
+                <element signature="e#2284#2345#1" expanded="true" />
+                <element signature="e#2697#3671#1" expanded="true" />
+                <element signature="e#4247#4365#1" expanded="true" />
+                <element signature="e#4485#4621#1" expanded="true" />
+                <element signature="e#4832#5023#1" expanded="true" />
+                <element signature="e#5708#5968#0" expanded="false" />
+                <element signature="e#5708#5769#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GeneralModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2680">
-              <caret line="157" column="31" lean-forward="false" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
+            <state relative-caret-position="560">
+              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="48" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#426#2626#1" expanded="true" />
                 <element signature="e#5994#6220#0" expanded="false" />
                 <element signature="e#6265#6844#0" expanded="false" />
               </folding>
@@ -51,15 +75,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Jsolver.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py">
+      <file leaf-file-name="Isothermal.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="57" column="73" lean-forward="false" selection-start-line="57" selection-start-column="73" selection-end-line="57" selection-end-column="73" />
+            <state relative-caret-position="240">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="102" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
-                <element signature="e#390#445#1" expanded="true" />
-                <element signature="e#2620#3316#1" expanded="true" />
+                <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#2806#5239#0" expanded="false" />
+                <element signature="e#2806#4328#1" expanded="true" />
+                <element signature="e#5291#5587#1" expanded="true" />
+                <element signature="e#6060#6103#0" expanded="false" />
+                <element signature="e#6145#6226#0" expanded="false" />
+                <element signature="e#6277#6513#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -68,9 +96,21 @@
       <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="101" selection-end-column="16" />
+            <state relative-caret-position="340">
+              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,8 +118,8 @@
       <file leaf-file-name="NbodyModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-780">
-              <caret line="238" column="0" lean-forward="true" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+            <state relative-caret-position="1040">
+              <caret line="238" column="0" lean-forward="false" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
                 <element signature="e#448#4343#1" expanded="true" />
@@ -90,41 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="particle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
-              <caret line="783" column="0" lean-forward="false" selection-start-line="783" selection-start-column="0" selection-end-line="786" selection-end-column="22" />
-              <folding>
-                <element signature="e#143#16876#0" expanded="false" />
-                <element signature="e#21803#22668#0" expanded="false" />
-                <element signature="e#22716#25057#0" expanded="false" />
-                <element signature="e#25095#25298#0" expanded="false" />
-                <element signature="e#25345#27245#0" expanded="false" />
-                <element signature="e#27344#27578#0" expanded="false" />
-                <element signature="e#27619#29087#0" expanded="false" />
-                <element signature="e#29580#32976#0" expanded="false" />
-                <element signature="e#33017#34314#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Plummer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Plummer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="81" column="10" lean-forward="false" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
+            <state relative-caret-position="439">
+              <caret line="79" column="23" lean-forward="false" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -145,25 +155,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
+      <file leaf-file-name="Sersic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="45" column="43" lean-forward="false" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
-              <folding>
-                <element signature="e#254#1981#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="-941">
+              <caret line="23" column="109" lean-forward="false" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WriteSnap.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
+      <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="77" />
+            <state relative-caret-position="360">
+              <caret line="18" column="102" lean-forward="false" selection-start-line="18" selection-start-column="102" selection-end-line="18" selection-end-column="102" />
               <folding>
-                <element signature="e#190#669#1" expanded="true" />
+                <element signature="e#0#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -182,6 +190,7 @@
     <findStrings>
       <find>analytic_radius</find>
       <find>dff</find>
+      <find>self.gamma</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -224,7 +233,6 @@
         <option value="$PROJECT_DIR$/tests/plot.py" />
         <option value="$PROJECT_DIR$/tests/dex.py" />
         <option value="$PROJECT_DIR$/tests/test2.py" />
-        <option value="$PROJECT_DIR$/OpOp/Model.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py" />
         <option value="$PROJECT_DIR$/tests/plummer2d/test.py" />
@@ -232,12 +240,14 @@
         <option value="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/tests/plummer2d/generate_model.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Model.py" />
+        <option value="$PROJECT_DIR$/OpOp/Model.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/Einasto.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
       </list>
     </option>
   </component>
@@ -248,8 +258,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-20" />
-    <option name="y" value="109" />
+    <option name="x" value="-57" />
+    <option name="y" value="54" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
@@ -268,6 +278,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -447,7 +458,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1074,30 +1084,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-20" y="109" width="1280" height="773" extended-state="0" />
+    <frame x="-57" y="54" width="1280" height="773" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3403909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3460912" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3824" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2630745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3824" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1182,13 +1192,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/model_c_ext/MT_random.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/out_gen.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1429,13 +1432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="23" column="109" lean-forward="false" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/plummer2d/generate_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -1443,29 +1439,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="66" column="44" lean-forward="false" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#272#1794#1" expanded="true" />
-            <element signature="e#2759#3055#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8360">
           <caret line="537" column="47" lean-forward="false" selection-start-line="537" selection-start-column="38" selection-end-line="537" selection-end-column="47" />
-          <folding>
-            <element signature="e#13701#14641#1" expanded="true" />
-            <element signature="e#15491#16432#1" expanded="true" />
-            <element signature="e#18940#19775#1" expanded="true" />
-            <element signature="e#23784#23984#1" expanded="true" />
-            <element signature="e#28945#29581#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1473,20 +1450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-780">
-          <caret line="238" column="0" lean-forward="true" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#448#4343#1" expanded="true" />
-            <element signature="e#5085#5469#1" expanded="true" />
-            <marker date="1491669878000" expanded="true" signature="342:23040" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1508,12 +1471,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
+    <entry file="file://$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="45" column="43" lean-forward="false" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+        <state relative-caret-position="960">
+          <caret line="57" column="73" lean-forward="false" selection-start-line="57" selection-start-column="73" selection-end-line="57" selection-end-column="73" />
           <folding>
-            <element signature="e#254#1981#1" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
+            <element signature="e#390#445#1" expanded="false" />
+            <element signature="e#2620#3316#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1525,47 +1490,6 @@
           <folding>
             <element signature="e#190#669#1" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2680">
-          <caret line="157" column="31" lean-forward="false" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#426#2626#1" expanded="true" />
-            <element signature="e#5994#6220#0" expanded="false" />
-            <element signature="e#6265#6844#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="57" column="73" lean-forward="false" selection-start-line="57" selection-start-column="73" selection-end-line="57" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-            <element signature="e#390#445#1" expanded="true" />
-            <element signature="e#2620#3316#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="101" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1582,11 +1506,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-941">
+          <caret line="23" column="109" lean-forward="false" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="238" column="0" lean-forward="false" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#448#4343#1" expanded="true" />
+            <element signature="e#5085#5469#1" expanded="true" />
+            <marker date="1491669878000" expanded="true" signature="342:23040" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Einasto.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="66" lean-forward="false" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#2060#2181#1" expanded="true" />
+            <element signature="e#2284#2345#1" expanded="true" />
+            <element signature="e#2697#3671#1" expanded="true" />
+            <element signature="e#4247#4365#1" expanded="true" />
+            <element signature="e#4485#4621#1" expanded="true" />
+            <element signature="e#4832#5023#1" expanded="true" />
+            <element signature="e#5708#5968#0" expanded="false" />
+            <element signature="e#5708#5769#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="81" column="10" lean-forward="false" selection-start-line="81" selection-start-column="10" selection-end-line="81" selection-end-column="10" />
+        <state relative-caret-position="439">
+          <caret line="79" column="23" lean-forward="false" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="29" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#5994#6220#0" expanded="false" />
+            <element signature="e#6265#6844#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="102" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#2806#5239#0" expanded="false" />
+            <element signature="e#2806#4328#1" expanded="true" />
+            <element signature="e#5291#5587#1" expanded="true" />
+            <element signature="e#6060#6103#0" expanded="false" />
+            <element signature="e#6145#6226#0" expanded="false" />
+            <element signature="e#6277#6513#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="102" lean-forward="false" selection-start-line="18" selection-start-column="102" selection-end-line="18" selection-end-column="102" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -4,7 +4,7 @@ import numpy as np
 
 class Tbetamodel(GeneralModel.GeneralModel):
 
-    def __init__(self,rc,rt,Mmax,gamma=1,beta=3,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
+    def __init__(self,rc,Mmax,gamma=1,beta=3,rt=None,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,use_c=False):
         """
         Truncated double power law model:
         dens=dens0 * (r/rc)^(-gamma) * (1+r/rc)^(- (beta-gamma)) * Exp[ -(r/rt)^2]
@@ -12,11 +12,11 @@ class Tbetamodel(GeneralModel.GeneralModel):
         can be supplied by the user directly or can be generate with the keyword rini,rfin,kind,n.
 
         :param rc: Scale length
-        :param rt:  Truncation radius (in physical unit)
         :param Mmax: Physical Value of the Mass at Rmax (the last point of the R grid). The physical unity of dens and pot and mass
                will depends on the unity of Mmax
         :param gamma: first power law exponent
         :param beta: secondo powe law exponent
+        :param rt:  Truncation radius (in physical unit), if None it is equal to 2*rmax(no truncation)
         :param R: if not None, use this list of normalized radius on rc.
         #Generate grid
         :param rini:  First radius normalized on rc
