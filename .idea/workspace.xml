@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Einasto.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/Model.py" afterPath="$PROJECT_DIR$/OpOp/Model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
-    </list>
+    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="" />
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -75,13 +68,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Isothermal.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Isothermal.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="102" />
+            <state relative-caret-position="100">
+              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="16" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#336#2062#1" expanded="true" />
                 <element signature="e#2806#5239#0" expanded="false" />
                 <element signature="e#2806#4328#1" expanded="true" />
                 <element signature="e#5291#5587#1" expanded="true" />
@@ -165,7 +159,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -1583,28 +1577,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="102" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#2806#5239#0" expanded="false" />
-            <element signature="e#2806#4328#1" expanded="true" />
-            <element signature="e#5291#5587#1" expanded="true" />
-            <element signature="e#6060#6103#0" expanded="false" />
-            <element signature="e#6145#6226#0" expanded="false" />
-            <element signature="e#6277#6513#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="18" column="102" lean-forward="false" selection-start-line="18" selection-start-column="102" selection-end-line="18" selection-end-column="102" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#336#2062#1" expanded="true" />
+            <element signature="e#2806#5239#0" expanded="false" />
+            <element signature="e#2806#4328#1" expanded="true" />
+            <element signature="e#5291#5587#1" expanded="true" />
+            <element signature="e#6060#6103#0" expanded="false" />
+            <element signature="e#6145#6226#0" expanded="false" />
+            <element signature="e#6277#6513#0" expanded="false" />
           </folding>
         </state>
       </provider>
