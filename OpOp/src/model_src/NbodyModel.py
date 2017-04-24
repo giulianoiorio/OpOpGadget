@@ -14,7 +14,7 @@ import  time
 
 class NbodyModel():
 
-    def __init__(self,components,dff=df_isotropic, Ngrid=512, xmin=2E-3, xmax=200, kind='log'):
+    def __init__(self,components,dff=df_isotropic, Ngrid=512, xmin=2E-3, xmax=200, kind='log', r_physic=False):
         """
         Class to Generate a Nbody models from dynamic models from the class Model.
         :param components: Array of the dynamic components, each element need to be an array with the following keys:
@@ -30,8 +30,9 @@ class NbodyModel():
         !Grid params
         These are the parameters to set the grids where evaluate dens, mass and tot pot for the components
         :param Ngrid: Number of sampling points, the standard is 512
-        :param xmin: Minimum value of the grid in unit of R/Rc.
-        :param xmax: Maximum value of the grid i unit of R/Rc.
+        :param xmin: Minimum value of the grid in unit of R/Rc if r_physic is False, otherwise is just in unit or R
+        :param xmax: Maximum value of the grid i unit of R/Rc  if r_physic is False, otherwise is just in unit or R
+        :param r_physic: If False xmin and xmax in input ar normalised on rc.
         :param kind: Kind of spaced sampling: linear or log.
         The Class produce a grid instance for every model in the component array from a minimum  equals to xmin*model.rc to a maximum equals to xmax*model.rc
 
@@ -66,6 +67,7 @@ class NbodyModel():
         self.xmin=xmin
         self.xmax=xmax
         self.kind=kind
+        self.r_physic=r_physic
 
         #Check components
         if isinstance(components,dict):
@@ -182,8 +184,11 @@ class NbodyModel():
 
         if len(ext_list)==0: ext_list=None
 
+        if self.r_physic:
+            c_grid=grid(N=self.Ngrid, galaxy_model=component['model'], ext_pot_model=ext_list, type=self.kind, min=self.xmin, max=self.xmax )
+        else:
+            c_grid=grid(N=self.Ngrid, galaxy_model=component['model'], ext_pot_model=ext_list, type=self.kind, min=rc*self.xmin, max=rc*self.xmax )
 
-        c_grid=grid(N=self.Ngrid, galaxy_model=component['model'], ext_pot_model=ext_list, type=self.kind, min=rc*self.xmin, max=rc*self.xmax )
         component['grid']=c_grid
 
     def _set_position(self,component):

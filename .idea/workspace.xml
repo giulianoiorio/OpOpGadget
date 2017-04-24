@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/Model.py" afterPath="$PROJECT_DIR$/OpOp/Model.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,36 +48,9 @@
       <file leaf-file-name="analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8360">
-              <caret line="537" column="47" lean-forward="false" selection-start-line="537" selection-start-column="38" selection-end-line="537" selection-end-column="47" />
-              <folding>
-                <element signature="e#6269#7451#1" expanded="true" />
-                <element signature="e#13701#14641#1" expanded="true" />
-                <element signature="e#15491#16432#1" expanded="true" />
-                <element signature="e#18940#19775#1" expanded="true" />
-                <element signature="e#23784#23984#1" expanded="true" />
-                <element signature="e#28945#29581#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Einasto.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Einasto.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#2060#2181#1" expanded="true" />
-                <element signature="e#2284#2345#1" expanded="true" />
-                <element signature="e#2697#3671#1" expanded="true" />
-                <element signature="e#4247#4365#1" expanded="true" />
-                <element signature="e#4485#4621#1" expanded="true" />
-                <element signature="e#4832#5023#1" expanded="true" />
-                <element signature="e#5708#5968#0" expanded="false" />
-                <element signature="e#5708#5769#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="-2600">
+              <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,11 +58,11 @@
       <file leaf-file-name="GeneralModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+            <state relative-caret-position="-2661">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#426#2626#1" expanded="true" />
+                <element signature="e#442#2835#1" expanded="true" />
+                <element signature="e#6072#6148#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -92,9 +71,11 @@
       <file leaf-file-name="grid.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/grid_src/grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="380">
               <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#340#884#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -102,8 +83,8 @@
       <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1060">
-              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="36" />
+            <state relative-caret-position="1880">
+              <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="101" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -112,33 +93,51 @@
       <file leaf-file-name="NbodyModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3120">
-              <caret line="238" column="0" lean-forward="false" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+            <state relative-caret-position="3320">
+              <caret line="187" column="130" lean-forward="false" selection-start-line="187" selection-start-column="130" selection-end-line="187" selection-end-column="130" />
               <folding>
-                <element signature="e#0#52#0" expanded="true" />
-                <element signature="e#448#4343#1" expanded="true" />
-                <element signature="e#5085#5469#1" expanded="true" />
-                <marker date="1491669878000" expanded="true" signature="342:23040" ph="..." />
+                <element signature="e#464#4542#1" expanded="true" />
+                <element signature="e#5315#5699#1" expanded="true" />
+                <marker date="1493046255000" expanded="true" signature="342:23456" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Plummer2D.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py">
+      <file leaf-file-name="NFWc.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="46" column="8" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="16" />
+            <state relative-caret-position="520">
+              <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#6050#6139#0" expanded="false" />
+                <element signature="e#6170#6254#0" expanded="false" />
+                <element signature="e#6336#6432#0" expanded="false" />
+                <element signature="e#6462#6933#0" expanded="false" />
+                <element signature="e#6462#6524#1" expanded="true" />
+                <element signature="e#6969#7236#0" expanded="false" />
+                <element signature="e#6969#7054#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sersic.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="23" column="109" lean-forward="false" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
+            <state relative-caret-position="279">
+              <caret line="111" column="20" lean-forward="false" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -147,19 +146,28 @@
       <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="220">
+              <caret line="113" column="43" lean-forward="false" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#331#2494#1" expanded="true" />
+                <element signature="e#4869#7028#1" expanded="true" />
+                <element signature="e#8848#8910#1" expanded="true" />
+                <element signature="e#9312#9397#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utility.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/utility.py">
+      <file leaf-file-name="TruncatedPlummer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="380">
+              <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+                <element signature="e#297#2173#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,6 +186,8 @@
       <find>analytic_radius</find>
       <find>dff</find>
       <find>self.gamma</find>
+      <find>Mmax</find>
+      <find>self.xmin</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -186,7 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/OpOp/src/snap_src/__init__.py" />
         <option value="$PROJECT_DIR$/OpOp/src/snap_src/WriteSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/snap_src/io/WriteSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/snap_src/LoadSnap.py" />
@@ -220,22 +229,24 @@
         <option value="$PROJECT_DIR$/tests/plot.py" />
         <option value="$PROJECT_DIR$/tests/dex.py" />
         <option value="$PROJECT_DIR$/tests/test2.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py" />
         <option value="$PROJECT_DIR$/tests/plummer2d/test.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Sersic.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/tests/plummer2d/generate_model.py" />
         <option value="$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Model.py" />
-        <option value="$PROJECT_DIR$/OpOp/Model.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Einasto.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/utility.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
+        <option value="$PROJECT_DIR$/OpOp/Model.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
@@ -246,8 +257,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-150" />
-    <option name="y" value="23" />
+    <option name="x" value="168" />
+    <option name="y" value="55" />
     <option name="width" value="1430" />
     <option name="height" value="773" />
   </component>
@@ -419,6 +430,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="grid_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="densityprofile_src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1072,7 +1105,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-150" y="23" width="1430" height="773" extended-state="0" />
+    <frame x="168" y="55" width="1430" height="773" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32365748" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1180,20 +1213,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/Density.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MANIFEST.in">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1368,13 +1387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="123" column="19" lean-forward="false" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda/envs/py34/lib/python3.4/copy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3840">
@@ -1424,13 +1436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="79" column="23" lean-forward="false" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -1448,16 +1453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1466,65 +1461,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3120">
-          <caret line="238" column="0" lean-forward="false" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#448#4343#1" expanded="true" />
-            <element signature="e#5085#5469#1" expanded="true" />
-            <marker date="1491669878000" expanded="true" signature="342:23040" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Einasto.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2060#2181#1" expanded="true" />
-            <element signature="e#2284#2345#1" expanded="true" />
-            <element signature="e#2697#3671#1" expanded="true" />
-            <element signature="e#4247#4365#1" expanded="true" />
-            <element signature="e#4485#4621#1" expanded="true" />
-            <element signature="e#4832#5023#1" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
+            <element signature="e#2060#2181#1" expanded="false" />
+            <element signature="e#2284#2345#1" expanded="false" />
+            <element signature="e#2697#3671#1" expanded="false" />
+            <element signature="e#4247#4365#1" expanded="false" />
+            <element signature="e#4485#4621#1" expanded="false" />
+            <element signature="e#4832#5023#1" expanded="false" />
             <element signature="e#5708#5968#0" expanded="false" />
-            <element signature="e#5708#5769#1" expanded="true" />
+            <element signature="e#5708#5769#1" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="23" column="109" lean-forward="false" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8360">
-          <caret line="537" column="47" lean-forward="false" selection-start-line="537" selection-start-column="38" selection-end-line="537" selection-end-column="47" />
-          <folding>
-            <element signature="e#6269#7451#1" expanded="true" />
-            <element signature="e#13701#14641#1" expanded="true" />
-            <element signature="e#15491#16432#1" expanded="true" />
-            <element signature="e#18940#19775#1" expanded="true" />
-            <element signature="e#23784#23984#1" expanded="true" />
-            <element signature="e#28945#29581#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/grid_src/grid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1536,37 +1487,140 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-361">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="37" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#1342#1421#0" expanded="false" />
+            <element signature="e#1463#1530#0" expanded="false" />
+            <element signature="e#1571#1639#0" expanded="false" />
+            <element signature="e#1691#2245#0" expanded="false" />
+            <element signature="e#2279#2562#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="109" lean-forward="false" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/grid_src/grid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#340#884#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2600">
+          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3320">
+          <caret line="187" column="130" lean-forward="false" selection-start-line="187" selection-start-column="130" selection-end-line="187" selection-end-column="130" />
+          <folding>
+            <element signature="e#464#4542#1" expanded="true" />
+            <element signature="e#5315#5699#1" expanded="true" />
+            <marker date="1493046255000" expanded="true" signature="342:23456" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#297#2173#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2661">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <element signature="e#442#2835#1" expanded="true" />
+            <element signature="e#6072#6148#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1060">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="36" />
+        <state relative-caret-position="1880">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="101" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+        <state relative-caret-position="220">
+          <caret line="113" column="43" lean-forward="false" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="55" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#426#2626#1" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#331#2494#1" expanded="true" />
+            <element signature="e#4869#7028#1" expanded="true" />
+            <element signature="e#8848#8910#1" expanded="true" />
+            <element signature="e#9312#9397#1" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py">
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="46" column="8" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="16" />
+        <state relative-caret-position="520">
+          <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#6050#6139#0" expanded="false" />
+            <element signature="e#6170#6254#0" expanded="false" />
+            <element signature="e#6336#6432#0" expanded="false" />
+            <element signature="e#6462#6933#0" expanded="false" />
+            <element signature="e#6462#6524#1" expanded="true" />
+            <element signature="e#6969#7236#0" expanded="false" />
+            <element signature="e#6969#7054#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="111" column="20" lean-forward="false" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
           <folding />
         </state>
       </provider>

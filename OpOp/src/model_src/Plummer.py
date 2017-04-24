@@ -80,3 +80,4 @@ class Plummer(Model.Model):
         h+='\nMmax=%.4e'%self.Mmax
 
         return h
+

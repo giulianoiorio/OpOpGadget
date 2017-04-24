@@ -10,7 +10,7 @@ from astropy.constants import G as conG
 
 class GeneralModel(Model.Model):
 
-    def __init__(self,R,dens,q=1,rc=1,Mmax=1, G='kpc km2 / (M_sun s2)', denorm=True, use_c=False):
+    def __init__(self,R,dens,q=1,rc=1,Ms=1, rs=None, G='kpc km2 / (M_sun s2)', denorm=True, use_c=False,**kwargs):
         """
         The purpose of the general model is to start from a density law R-dens to build a galaxy model.
         Attenzione per come è creato il modello assume sempre che
@@ -26,8 +26,11 @@ class GeneralModel(Model.Model):
         :param dens: list of dens at radii R. It can be also a function or a lambda function that depends
                      only on the variable R=r/rc
         :param rc: Scale length of the model, the R in input will be multiplyed by rc before start all the calculation
-        :param Mmax: Physical Value of the Mass at Rmax (the last point of the R grid). The physical unity of dens and pot and mass
+        :param Ms: Physical Value of the Mass at rs.  if rs is None Ms is the value Mmax at last radius R[-1].
+                Note: The physical unity of dens and pot and mass
                will depends on the unity of Mmax
+        :param rs: Radius at which the mass is equal to Ms in physical unit, if rs is none rs is equalt o the last radius
+                    of R.
         :param G: Value of the gravitational constant G, it can be a number of a string.
                     If G=1, the physical value of the potential will be Phi/G.
                     If string it must follow the rule of the unity of the module.astropy constants.
@@ -38,7 +41,20 @@ class GeneralModel(Model.Model):
         """
 
         self.rc=rc
-        self.Mmax=Mmax
+
+        if 'Mmax' in kwargs:
+            print('Warning keyword Mmax is deprecated for GeneralModel, use instead Ms',flush=True)
+            self.Ms=kwargs['Mmax']
+        else:
+            self.Ms=Ms
+
+
+        if rs is None:
+            self.rs=R[-1]*self.rc #phyiscal unit
+        else:
+            self.rs=rs
+
+
         if isinstance(G,float) or isinstance(G,int): self.G=G
         else:
             GG=conG.to(G)
@@ -51,7 +67,7 @@ class GeneralModel(Model.Model):
 
 
 
-        self.R=np.array(R,dtype=float,order='C')*self.rc
+        self.R=np.array(R,dtype=float,order='C')*self.rc #denorm
         self.mass_arr=np.empty_like(self.dens_arr,dtype=float,order='C')
         self.pot_arr=np.empty_like(self.dens_arr,dtype=float,order='C')
         self.use_c=use_c
@@ -102,12 +118,15 @@ class GeneralModel(Model.Model):
             b=func(self.R,self.R[-1])
             self.pot_arr=a+b
 
-        if denorm==True: self._set_denorm(self.Mmax)
+
+        if denorm==True: self._set_denorm(self.Ms,self.rs)
         else:
             self.Mc=1
             self.dc=1
             self.pc=1
             self.sdc=1
+
+        self.Mmax=self._evaluatemass(R[-1]) #yes
 
     def _evaluatedens(self,R):
         return self.dc*self._dens(R)
@@ -156,8 +175,8 @@ class GeneralModel(Model.Model):
 
         return ret_func(x)
 
-    def _set_denorm(self,Mmax):
-        self.Mc=Mmax/self.mass_arr[-1]
+    def _set_denorm(self,Ms,rs):
+        self.Mc=Ms/self._dm2.integral(0,rs)
         self.dc=self.Mc/(4*np.pi)
         self.pc=self.G*self.Mc
         self.sdc=self.Mc/(2*np.pi)
