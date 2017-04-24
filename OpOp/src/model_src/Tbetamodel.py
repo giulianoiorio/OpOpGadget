@@ -45,6 +45,13 @@ class Tbetamodel(GeneralModel.GeneralModel):
         self.beta=beta
         super(Tbetamodel,self).__init__(R=R,dens=self._adens,rc=self.rc,Mmax=Mmax,G=G,use_c=use_c,denorm=denorm)
 
+    @classmethod
+    def nfw(cls,c,M200):
+
+        gamma=1
+        beta=3
+
+
     def _adens(self,x):
 
         y=self.rc/self.rt

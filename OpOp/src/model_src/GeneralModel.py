@@ -107,6 +107,7 @@ class GeneralModel(Model.Model):
             self.Mc=1
             self.dc=1
             self.pc=1
+            self.sdc=1
 
     def _evaluatedens(self,R):
         return self.dc*self._dens(R)
@@ -159,4 +160,4 @@ class GeneralModel(Model.Model):
         self.Mc=Mmax/self.mass_arr[-1]
         self.dc=self.Mc/(4*np.pi)
         self.pc=self.G*self.Mc
-
+        self.sdc=self.Mc/(2*np.pi)
