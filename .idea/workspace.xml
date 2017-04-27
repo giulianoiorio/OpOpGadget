@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/OpOpGadget.iml" afterPath="$PROJECT_DIR$/.idea/OpOpGadget.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/Model.py" afterPath="$PROJECT_DIR$/OpOp/Model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
@@ -23,18 +19,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/OpOpGadget$io.coverage" NAME="io Coverage Results" MODIFIED="1448067038228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp" />
     <SUITE FILE_PATH="coverage/OpOpGadget$testS.coverage" NAME="testS Coverage Results" MODIFIED="1458556947869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/OpOpGadget$plot.coverage" NAME="plot Coverage Results" MODIFIED="1458773747708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$test.coverage" NAME="test Coverage Results" MODIFIED="1491653166111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/plummer2d" />
     <SUITE FILE_PATH="coverage/OpOpGadget$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1448067057195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/analysis_src" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$dex.coverage" NAME="dex Coverage Results" MODIFIED="1458775451347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$WriteSnap.coverage" NAME="WriteSnap Coverage Results" MODIFIED="1493281705953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/io_src" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$test.coverage" NAME="test Coverage Results" MODIFIED="1491653166111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/plummer2d" />
     <SUITE FILE_PATH="coverage/OpOpGadget$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1458773739685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/OpOpGadget$Plummer.coverage" NAME="Plummer Coverage Results" MODIFIED="1448641757982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/model_src" />
     <SUITE FILE_PATH="coverage/OpOpGadget$Model.coverage" NAME="Model Coverage Results" MODIFIED="1492036790917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/model_src" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$io.coverage" NAME="io Coverage Results" MODIFIED="1448067038228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp" />
     <SUITE FILE_PATH="coverage/OpOpGadget$Unittests_in_setup.coverage" NAME="Unittests in setup Coverage Results" MODIFIED="1491653104238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/OpOpGadget$snap.coverage" NAME="snap Coverage Results" MODIFIED="1448066982219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp" />
     <SUITE FILE_PATH="coverage/OpOpGadget$utility.coverage" NAME="utility Coverage Results" MODIFIED="1492273883778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/io_src" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$dex.coverage" NAME="dex Coverage Results" MODIFIED="1458775451347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -48,7 +45,7 @@
       <file leaf-file-name="analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2600">
+            <state relative-caret-position="1395">
               <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding />
             </state>
@@ -58,23 +55,10 @@
       <file leaf-file-name="GeneralModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2661">
+            <state relative-caret-position="120">
               <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
               <folding>
-                <element signature="e#442#2835#1" expanded="true" />
-                <element signature="e#6072#6148#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="grid.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/grid_src/grid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <element signature="e#340#884#1" expanded="true" />
+                <marker date="1493221403867" expanded="true" signature="317:358" ph="..." />
               </folding>
             </state>
           </provider>
@@ -83,9 +67,11 @@
       <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1880">
-              <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="101" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="1410">
+              <caret line="104" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+              <folding>
+                <marker date="1493221403867" expanded="true" signature="33:56" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,12 +79,39 @@
       <file leaf-file-name="NbodyModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3320">
-              <caret line="187" column="130" lean-forward="false" selection-start-line="187" selection-start-column="130" selection-end-line="187" selection-end-column="130" />
+            <state relative-caret-position="2640">
+              <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
               <folding>
-                <element signature="e#464#4542#1" expanded="true" />
-                <element signature="e#5315#5699#1" expanded="true" />
-                <marker date="1493046255000" expanded="true" signature="342:23456" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="342:23456" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="9049:9082" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="9049:13852" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="9049:23456" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="9122:10405" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="9131:9243" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493221403867" expanded="true" signature="10451:11297" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="10460:10604" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493221403867" expanded="true" signature="10915:11064" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="11336:12080" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="11345:11607" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493221403867" expanded="true" signature="11667:11938" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="11796:11938" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="12160:13852" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="12169:12431" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493221403867" expanded="true" signature="13882:23456" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="14348:15394" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="14424:14528" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="15025:15114" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="15444:15844" ph="..." />
+                <marker date="1493221403867" expanded="true" signature="15855:15975" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="15981:16389" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="16395:17492" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="17497:17781" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="17787:18367" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="18373:18499" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="18505:18918" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="18924:19357" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="19363:21682" ph="'''...'''" />
+                <marker date="1493221403867" expanded="true" signature="21687:23456" ph="'''...'''" />
               </folding>
             </state>
           </provider>
@@ -107,7 +120,7 @@
       <file leaf-file-name="NFWc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
+            <state relative-caret-position="360">
               <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
@@ -115,9 +128,7 @@
                 <element signature="e#6170#6254#0" expanded="false" />
                 <element signature="e#6336#6432#0" expanded="false" />
                 <element signature="e#6462#6933#0" expanded="false" />
-                <element signature="e#6462#6524#1" expanded="true" />
                 <element signature="e#6969#7236#0" expanded="false" />
-                <element signature="e#6969#7054#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,8 +137,8 @@
       <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+            <state relative-caret-position="165">
+              <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -136,9 +147,23 @@
       <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="111" column="20" lean-forward="false" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WriteSnap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-420">
+              <caret line="42" column="15" lean-forward="false" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+              <folding>
+                <element signature="e#203#682#1" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,14 +171,10 @@
       <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="113" column="43" lean-forward="false" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="55" />
+            <state relative-caret-position="795">
+              <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
-                <element signature="e#331#2494#1" expanded="true" />
-                <element signature="e#4869#7028#1" expanded="true" />
-                <element signature="e#8848#8910#1" expanded="true" />
-                <element signature="e#9312#9397#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,11 +183,10 @@
       <file leaf-file-name="TruncatedPlummer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
+            <state relative-caret-position="915">
               <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
-                <element signature="e#297#2173#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -196,7 +216,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/OpOp/src/snap_src/WriteSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/snap_src/io/WriteSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/snap_src/LoadSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/snap.py" />
@@ -246,6 +265,7 @@
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
         <option value="$PROJECT_DIR$/OpOp/Model.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
         <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
@@ -257,10 +277,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="168" />
-    <option name="y" value="55" />
-    <option name="width" value="1430" />
-    <option name="height" value="773" />
+    <option name="x" value="511" />
+    <option name="y" value="221" />
+    <option name="width" value="1393" />
+    <option name="height" value="792" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -277,8 +297,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -479,6 +497,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -511,25 +531,7 @@
       <recent name="$PROJECT_DIR$/OpOp/src/snap_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.utility">
-    <configuration default="false" name="dex" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="OpOpGadget" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/dex.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.WriteSnap">
     <configuration default="false" name="Unittests in setup" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -603,6 +605,24 @@
       <module name="OpOpGadget" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OpOp/src/io_src/utility.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="WriteSnap" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OpOp/src/io_src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="OpOpGadget" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -823,19 +843,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.dex" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
-      <item index="2" class="java.lang.String" itemvalue="Python.test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Model" />
-      <item index="4" class="java.lang.String" itemvalue="Python.utility" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
+      <item index="1" class="java.lang.String" itemvalue="Python.test" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Model" />
+      <item index="3" class="java.lang.String" itemvalue="Python.utility" />
+      <item index="4" class="java.lang.String" itemvalue="Python.WriteSnap" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.utility" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Model" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
-        <item index="4" class="java.lang.String" itemvalue="Python.dex" />
+        <item index="0" class="java.lang.String" itemvalue="Python.WriteSnap" />
+        <item index="1" class="java.lang.String" itemvalue="Python.utility" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Model" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
       </list>
     </recent_temporary>
   </component>
@@ -1105,30 +1125,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="168" y="55" width="1430" height="773" extended-state="0" />
+    <frame x="511" y="221" width="1393" height="792" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32365748" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3230438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38193345" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2630745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38193345" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1387,13 +1407,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/py34/lib/python3.4/copy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3840">
-          <caret line="249" column="34" lean-forward="false" selection-start-line="249" selection-start-column="34" selection-end-line="249" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/py34/lib/python3.4/copy.py" />
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/out_gen_1e6.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1443,21 +1457,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="77" />
-          <folding>
-            <element signature="e#190#669#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1465,17 +1468,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-            <element signature="e#2060#2181#1" expanded="false" />
-            <element signature="e#2284#2345#1" expanded="false" />
-            <element signature="e#2697#3671#1" expanded="false" />
-            <element signature="e#4247#4365#1" expanded="false" />
-            <element signature="e#4485#4621#1" expanded="false" />
-            <element signature="e#4832#5023#1" expanded="false" />
-            <element signature="e#5708#5968#0" expanded="false" />
-            <element signature="e#5708#5769#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1483,7 +1475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1491,7 +1482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-361">
           <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1499,14 +1489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="37" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#1342#1421#0" expanded="false" />
-            <element signature="e#1463#1530#0" expanded="false" />
-            <element signature="e#1571#1639#0" expanded="false" />
-            <element signature="e#1691#2245#0" expanded="false" />
-            <element signature="e#2279#2562#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1514,23 +1496,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="23" column="109" lean-forward="false" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/grid_src/grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
+        <state relative-caret-position="315">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#340#884#1" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2600">
+        <state relative-caret-position="1395">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding />
         </state>
@@ -1538,71 +1517,94 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3320">
-          <caret line="187" column="130" lean-forward="false" selection-start-line="187" selection-start-column="130" selection-end-line="187" selection-end-column="130" />
+        <state relative-caret-position="2640">
+          <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
           <folding>
-            <element signature="e#464#4542#1" expanded="true" />
-            <element signature="e#5315#5699#1" expanded="true" />
-            <marker date="1493046255000" expanded="true" signature="342:23456" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="342:23456" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="9049:9082" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="9049:13852" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="9049:23456" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="9122:10405" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="9131:9243" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493221403867" expanded="true" signature="10451:11297" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="10460:10604" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493221403867" expanded="true" signature="10915:11064" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="11336:12080" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="11345:11607" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493221403867" expanded="true" signature="11667:11938" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="11796:11938" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="12160:13852" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="12169:12431" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493221403867" expanded="true" signature="13882:23456" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="14348:15394" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="14424:14528" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="15025:15114" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="15444:15844" ph="..." />
+            <marker date="1493221403867" expanded="true" signature="15855:15975" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="15981:16389" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="16395:17492" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="17497:17781" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="17787:18367" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="18373:18499" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="18505:18918" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="18924:19357" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="19363:21682" ph="'''...'''" />
+            <marker date="1493221403867" expanded="true" signature="21687:23456" ph="'''...'''" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
+        <state relative-caret-position="915">
           <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
-            <element signature="e#297#2173#1" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2661">
+        <state relative-caret-position="120">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
           <folding>
-            <element signature="e#442#2835#1" expanded="true" />
-            <element signature="e#6072#6148#0" expanded="false" />
+            <marker date="1493221403867" expanded="true" signature="317:358" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1880">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="101" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="1410">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <marker date="1493221403867" expanded="true" signature="33:56" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+        <state relative-caret-position="165">
+          <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="113" column="43" lean-forward="false" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="55" />
+        <state relative-caret-position="795">
+          <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
-            <element signature="e#331#2494#1" expanded="true" />
-            <element signature="e#4869#7028#1" expanded="true" />
-            <element signature="e#8848#8910#1" expanded="true" />
-            <element signature="e#9312#9397#1" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
+        <state relative-caret-position="360">
           <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
@@ -1610,18 +1612,28 @@
             <element signature="e#6170#6254#0" expanded="false" />
             <element signature="e#6336#6432#0" expanded="false" />
             <element signature="e#6462#6933#0" expanded="false" />
-            <element signature="e#6462#6524#1" expanded="true" />
             <element signature="e#6969#7236#0" expanded="false" />
-            <element signature="e#6969#7054#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420">
+          <caret line="42" column="15" lean-forward="false" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+          <folding>
+            <element signature="e#203#682#1" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="111" column="20" lean-forward="false" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
