@@ -6,7 +6,7 @@ from ..particle_src.particle import Particles
 
 
 #ok funge
-def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True):
+def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verbose=True):
     """
     Write a Particles object in a file following the Gadget 1-type convention
     :param particles: Particles list object
