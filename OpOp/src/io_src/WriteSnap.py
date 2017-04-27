@@ -40,7 +40,7 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
     cbyte=0 #Initialize byte counter
 
     #header
-    print ("\nWriting header in file " + stream.name)
+    if verbose: print ("\nWriting header in file " + stream.name)
 
     block_check_start = struct.pack(end+"i", 256) #write the initial block check (C-type int)
     stream.write(block_check_start)
@@ -125,11 +125,11 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
     stream.write(block_check_end)
     cbyte+=4 #integer end block check
 
-    print ("header written in file %s." % (stream.name))
+    if verbose: print ("header written in file %s." % (stream.name))
 
     #Particles
 
-    print("\nWriting particle data in file " + stream.name)
+    if verbose: print("\nWriting particle data in file " + stream.name)
     N=particles.n
     l=len(str(N))
     prog_in=str(0).zfill(l)+"/"+str(N)     #show the progress in a correct format
@@ -137,7 +137,7 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
     block_byte=12*N #lenght of the Position and vel block: 3 float (12 by) per particle per total number of particles
 
     #Positions
-    print("Writing Position Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
+    if verbose: print("Writing Position Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
 
     block_check_start = struct.pack(end+"i",block_byte)
     stream.write(block_check_start)
@@ -151,9 +151,9 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
         #output check
         prog=str(i).zfill(l)
-        print(prog, end="\b"*l,flush=True)   #print progress
+        if verbose: print(prog, end="\b"*l,flush=True)   #print progress
 
-    print(str(N)+"/"+str(N),end="")        #print the completed progress
+    if verbose: print(str(N)+"/"+str(N),end="")        #print the completed progress
 
     cbyte+=block_byte #block bytes
 
@@ -178,8 +178,8 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
         #output check
         prog=str(i).zfill(l)
-        print(prog, end="\b"*l,flush=True)   #print progress
-    print(str(N)+"/"+str(N),end="")        #print the completed progress
+        if verbose: print(prog, end="\b"*l,flush=True)   #print progress
+    if verbose: print(str(N)+"/"+str(N),end="")        #print the completed progress
 
     cbyte+=block_byte #block bytes
 
@@ -204,8 +204,8 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
         #output check
         prog=str(i).zfill(l)
-        print(prog, end="\b"*l,flush=True)   #print progress
-    print(str(N)+"/"+str(N),end="")        #print the completed progress
+        if verbose: print(prog, end="\b"*l,flush=True)   #print progress
+    if verbose: print(str(N)+"/"+str(N),end="")        #print the completed progress
 
     cbyte+=block_byte #block bytes
 
@@ -232,8 +232,8 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
             #output check
             prog=str(i).zfill(l)
-            print(prog, end="\b"*l,flush=True)   #print progress
-        print(str(N)+"/"+str(N),end="")        #print the completed progress
+            if verbose: print(prog, end="\b"*l,flush=True)   #print progress
+        if verbose: print(str(N)+"/"+str(N),end="")        #print the completed progress
 
         cbyte+=block_byte #block bytes
 
@@ -246,7 +246,7 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
 
     else:
-        print("Mass block skipped")
+        if verbose: print("Mass block skipped")
 
     if particles.header['Nall'][0]>0:
         #U
@@ -255,7 +255,7 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
         l=len(str(Ngas))
         prog_in=str(0).zfill(l)+"/"+str(Ngas)     #show the progress in a correct format
 
-        print("Writing U Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
+        if verbose: print("Writing U Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
 
 
         block_byte=4*Ngas #lenght of the U block: 1 float (4 by) per particle per total number of gas particles
@@ -270,8 +270,8 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
             #output check
             prog=str(i).zfill(l)
-            print(prog, end="\b"*l,flush=True)   #print progress
-        print(str(Ngas)+"/"+str(Ngas),end="")        #print the completed progress
+            if verbose: print(prog, end="\b"*l,flush=True)   #print progress
+        if verbose: print(str(Ngas)+"/"+str(Ngas),end="")        #print the completed progress
 
         cbyte+=block_byte #block bytes
 
@@ -279,9 +279,13 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
         stream.write(block_check_end)
         cbyte+=4 #integer end block check
 
-        print(".....U Block Written","("+str(block_byte/1000),"KB)")
+        if verbose: print(".....U Block Written","("+str(block_byte/1000),"KB)")
 
-    else: print("No gas particles.... U block skipped")
+    elif verbose:
+        print("No gas particles.... U block skipped")
+
+    else:
+        pass
 
     stream.close()
 

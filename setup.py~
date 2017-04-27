@@ -1,30 +1,7 @@
 from setuptools import setup
 from distutils.core import Extension
 from Cython.Build import cythonize
-from Cython.Distutils import build_ext
 import shutil
-import os
-import sysconfig
-
-def get_ext_filename_without_platform_suffix(filename):
-    name, ext = os.path.splitext(filename)
-    ext_suffix = sysconfig.get_config_var('EXT_SUFFIX')
-
-    if ext_suffix == ext:
-        return filename
-
-    ext_suffix = ext_suffix.replace(ext, '')
-    idx = name.find(ext_suffix)
-
-    if idx == -1:
-        return filename
-    else:
-        return name[:idx] + ext
-
-class BuildExtWithoutPlatformSuffix(build_ext):
-	def get_ext_filename(self, ext_name):
-		filename = super().get_ext_filename(ext_name)
-		return get_ext_filename_without_platform_suffix(filename)
 
 
 # Parse options; current options
@@ -132,11 +109,10 @@ ext_modules=[df_c_ext,model_c_ext,genmod_c_ext]+cythonize(jsolv_c_ext)
 
 setup(
 		name='OpOpGadget',
-		version='0.8',
+		version='0.7',
 		author='Giuliano Iorio',
 		author_email='giuliano.iorio@unibo.it',
 		url='http://github.com/iogiul/OpOp',
-		cmdclass={'build_ext': BuildExtWithoutPlatformSuffix},
 		package_dir={'OpOp/src/': ''},
 		packages=['OpOp', 'OpOp/src/df_src','OpOp/src/grid_src','OpOp/src/model_src','OpOp/src/particle_src', 'OpOp/src/analysis_src' ,'OpOp/src/io_src','OpOp/src/utility_src','OpOp/src/jsolver_src','OpOp/src/densityprofile_src'],
 		install_requires=['numpy>=1.9','scipy>=0.16','matplotlib','astropy>=1','fermi'],
