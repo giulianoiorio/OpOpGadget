@@ -234,10 +234,20 @@ class Analysis:
         opt_dict={'Gadget':0.698352, 'spline':0.977693}
         rq=self.qmass(mq,type=type)
 
+        if mass is None:
+            if type is None:
+                mass=np.sum(self.p.Mass[:])
+            else:
+                type= nparray_check(type)
+                masarr=self._make_array(self.p.Mass,type)
+                mass=np.sum(masarr)
+
+
         if auto==True:
             prof=Profile(self.p,Ngrid=512,xmin=0.01*rq,xmax=10*rq,kind='lin',type=type)
-            r=prof.grid.gx
-            dens=prof.dens
+            arr=prof.dens()[0]
+            r=arr[:,0]
+            dens=arr[:,1]
 
 
 
@@ -535,18 +545,21 @@ class Analysis:
 
 class Profile:
 
-    def __init__(self,particles=None, type=None, center=False, mq=98,  Ngrid=512, xmin=None, xmax=None, iter=False, kind='log',**kwargs):
+    def __init__(self,particles=None, type=None, center=False, mq=98,  Ngrid=512, xmin=None, xmax=None, iter=False, safe=False, kind='log',**kwargs):
 
         #Check input
-        if 'filename' in kwargs: p=load_snap(kwargs['filename'])
-        elif isinstance(particles,Particles): p=particles
+        if 'filename' in kwargs: part=load_snap(kwargs['filename'])
+        elif isinstance(particles,Particles): part=particles
         else: raise IOError('Incorrect particles or filename')
 
         #center
         if center==True:
-            a=Analysis(p,safe=False)
+            a=Analysis(part,safe=safe)
             a.center(mq=mq, iter=iter,single=True)
+            p=a.p
         else:
+            if safe: p=copy.deepcopy(part)
+            else: p=part
             p.setrad()
             p.setvelt()
 
@@ -610,7 +623,7 @@ class Profile:
             #print(self.grid.gedge[i],self.grid.gedge[i+1],np.max(self.radcyl[cond]))
             #self.vdisp[i]=np.std(self.velpro[cond])
 
-    def dens(self,ret=True,func=True,s=None):
+    def dens(self,ret=True,func=True,s=0):
         """
         ret: If True return an array with rad e dens
         func: if True and ret True return also a spline of the dens
@@ -636,7 +649,7 @@ class Profile:
             else:
                 return retarray
 
-    def supdens(self,pax='z',ret=True,func=True,s=None):
+    def supdens(self,pax='z',ret=True,func=True,s=0):
         """
         pax: Projection axis (x,y or z)
         ret: If True return an array with rad e dens
@@ -693,7 +706,7 @@ class Profile:
 
             #self.velpro=self.vel[:,ax3]
 
-    def mass(self,ret=True,func=True,s=None):
+    def mass(self,ret=True,func=True,s=0):
 
         if self.masscum is None:
             if self.massbin is None: self.massbin=np.histogram(self.rad,bins=self.grid.gedge,weights=self.pmass)[0]
@@ -709,7 +722,7 @@ class Profile:
             else:
                 return retarray
 
-    def vdisp2d(self,pax='z',ret=True,func=True,s=None):
+    def vdisp2d(self,pax='z',ret=True,func=True,s=0):
 
         if (self.cvdisp2d is None) or (self.paxvdisp2d!=pax):
 
@@ -737,12 +750,12 @@ class Profile:
                 retarray[:,0]=self.grid.gx
                 retarray[:,1]=self.cvdisp2d
                 if func==True:
-                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=0)
                     return retarray,rfunc
                 else:
                     return retarray
 
-    def vdisp3d(self,ax='z',ret=True,func=True,s=None):
+    def vdisp3d(self,ax='z',ret=True,func=True,s=0):
 
         if (self.cvdisp3d is None) or (self.paxvdisp3d!=ax):
 
@@ -763,7 +776,7 @@ class Profile:
             retarray[:,0]=self.grid.gx
             retarray[:,1]=self.cvdisp3d
             if func==True:
-                rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=0)
                 return retarray,rfunc
             else:
                 return retarray

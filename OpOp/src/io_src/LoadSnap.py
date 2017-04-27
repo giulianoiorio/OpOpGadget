@@ -6,7 +6,7 @@ from ..utility_src import utility
 
 
 #ok funge
-def _load_single(filename,end='<',order_key='Id'):
+def _load_single(filename,end='<',order_key='Id',verbose=False):
     """
     Load data from snapshot written following the Gadget 1-type binary convention from a single file
     :param filename: Filename to read the data.
