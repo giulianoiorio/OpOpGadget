@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,11 +40,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="analysis.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="analysis.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
-              <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+            <state relative-caret-position="-1860">
+              <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadSnap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -67,47 +79,6 @@
               <caret line="104" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding>
                 <marker date="1493221403867" expanded="true" signature="33:56" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NbodyModel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2640">
-              <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-              <folding>
-                <marker date="1493221403867" expanded="true" signature="342:23456" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="9049:9082" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="9049:13852" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="9049:23456" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="9122:10405" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="9131:9243" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1493221403867" expanded="true" signature="10451:11297" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="10460:10604" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1493221403867" expanded="true" signature="10915:11064" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="11336:12080" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="11345:11607" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1493221403867" expanded="true" signature="11667:11938" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="11796:11938" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="12160:13852" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="12169:12431" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1493221403867" expanded="true" signature="13882:23456" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="14348:15394" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="14424:14528" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="15025:15114" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="15444:15844" ph="..." />
-                <marker date="1493221403867" expanded="true" signature="15855:15975" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="15981:16389" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="16395:17492" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="17497:17781" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="17787:18367" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="18373:18499" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="18505:18918" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="18924:19357" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="19363:21682" ph="'''...'''" />
-                <marker date="1493221403867" expanded="true" signature="21687:23456" ph="'''...'''" />
               </folding>
             </state>
           </provider>
@@ -144,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -152,7 +123,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WriteSnap.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WriteSnap.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-138">
@@ -212,7 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/OpOp/src/snap_src/io/WriteSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/snap_src/LoadSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/snap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/snap_src/profile.py" />
@@ -247,7 +217,6 @@
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py" />
         <option value="$PROJECT_DIR$/tests/plummer2d/test.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Sersic.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/tests/plummer2d/generate_model.py" />
         <option value="$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Model.py" />
@@ -263,6 +232,8 @@
         <option value="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
       </list>
     </option>
   </component>
@@ -273,10 +244,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="511" />
-    <option name="y" value="221" />
-    <option name="width" value="1393" />
-    <option name="height" value="792" />
+    <option name="x" value="152" />
+    <option name="y" value="93" />
+    <option name="width" value="1672" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -527,7 +498,7 @@
       <recent name="$PROJECT_DIR$/OpOp/src/snap_src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.WriteSnap">
+  <component name="RunManager" selected="Python.analysis">
     <configuration default="false" name="Unittests in setup" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -838,12 +809,31 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="5">
+    <configuration default="false" name="analysis" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OpOp/src/analysis_src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="OpOpGadget" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
       <item index="1" class="java.lang.String" itemvalue="Python.test" />
       <item index="2" class="java.lang.String" itemvalue="Python.Model" />
       <item index="3" class="java.lang.String" itemvalue="Python.utility" />
       <item index="4" class="java.lang.String" itemvalue="Python.WriteSnap" />
+      <item index="5" class="java.lang.String" itemvalue="Python.analysis" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1121,11 +1111,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="511" y="221" width="1393" height="792" extended-state="0" />
+    <frame x="152" y="93" width="1672" height="789" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3230438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26913875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1136,7 +1127,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1288,13 +1278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1503,14 +1486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2640">
@@ -1616,7 +1591,7 @@
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -1630,6 +1605,22 @@
           <folding>
             <element signature="e#203#682#1" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1860">
+          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
