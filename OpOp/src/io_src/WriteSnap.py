@@ -129,7 +129,7 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
     #Particles
 
-    if verbose: print("\nWriting particle data in file " + stream.name)
+    print("\nWriting particle data in file " + stream.name)
     N=particles.n
     l=len(str(N))
     prog_in=str(0).zfill(l)+"/"+str(N)     #show the progress in a correct format
@@ -162,10 +162,10 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
     cbyte+=4 #integer end block check
 
-    print(".....Position Block Written","("+str(block_byte/1000),"KB)")
+    if verbose: print(".....Position Block Written","("+str(block_byte/1000),"KB)")
 
     #Velocities
-    print("Writing Velocity Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
+    if verbose: print("Writing Velocity Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
 
     block_check_start = struct.pack(end+"i",block_byte)
     stream.write(block_check_start)
@@ -187,10 +187,10 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
     stream.write(block_check_end)
     cbyte+=4 #integer end block check
 
-    print(".....Velocity Block Written","("+str(block_byte/1000),"KB)")
+    if verbose: print(".....Velocity Block Written","("+str(block_byte/1000),"KB)")
 
     #Id
-    print("Writing Id Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
+    if verbose: print("Writing Id Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
 
     block_byte=4*N #lenght of the Id block: 1 integer (4 by) per particle per total number of particles
 
@@ -213,12 +213,12 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
     stream.write(block_check_end)
     cbyte+=4 #integer end block check
 
-    print(".....Id Block Written","("+str(block_byte/1000),"KB)")
+    if verbose: print(".....Id Block Written","("+str(block_byte/1000),"KB)")
 
     #Mass
     if enable_mass==True:
 
-        print("Writing Mass Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
+        if verbose: print("Writing Mass Block.... Particle:",prog_in, end="\b"*len(prog_in))  #Initialize progres
 
         block_byte=4*N #lenght of the Mass block: 1 float (4 by) per particle per total number of particles
 
@@ -242,7 +242,7 @@ def write_snap(particles,filename,end='<',enable_mass=False,safe_write=True,verb
 
         cbyte+=4 #integer end block check
 
-        print(".....Mass Block Written","("+str(block_byte/1000),"KB)")
+        if verbose: print(".....Mass Block Written","("+str(block_byte/1000),"KB)")
 
 
     else:
