@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/OpOpGadget.iml" afterPath="$PROJECT_DIR$/.idea/OpOpGadget.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/particle.py" afterPath="$PROJECT_DIR$/OpOp/particle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,19 +19,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/OpOpGadget$io.coverage" NAME="io Coverage Results" MODIFIED="1448067038228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$testS.coverage" NAME="testS Coverage Results" MODIFIED="1458556947869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/OpOpGadget$plot.coverage" NAME="plot Coverage Results" MODIFIED="1458773747708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1448067057195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/analysis_src" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$WriteSnap.coverage" NAME="WriteSnap Coverage Results" MODIFIED="1493281705953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/io_src" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$test.coverage" NAME="test Coverage Results" MODIFIED="1491653166111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/plummer2d" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1458773739685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/OpOpGadget$Plummer.coverage" NAME="Plummer Coverage Results" MODIFIED="1448641757982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/model_src" />
-    <SUITE FILE_PATH="coverage/OpOpGadget$Model.coverage" NAME="Model Coverage Results" MODIFIED="1492036790917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/model_src" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$WriteSnap.coverage" NAME="WriteSnap Coverage Results" MODIFIED="1493281705953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/io_src" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$io.coverage" NAME="io Coverage Results" MODIFIED="1448067038228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp" />
     <SUITE FILE_PATH="coverage/OpOpGadget$Unittests_in_setup.coverage" NAME="Unittests in setup Coverage Results" MODIFIED="1491653104238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/OpOpGadget$snap.coverage" NAME="snap Coverage Results" MODIFIED="1448066982219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp" />
     <SUITE FILE_PATH="coverage/OpOpGadget$utility.coverage" NAME="utility Coverage Results" MODIFIED="1492273883778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/io_src" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$testS.coverage" NAME="testS Coverage Results" MODIFIED="1458556947869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$test.coverage" NAME="test Coverage Results" MODIFIED="1491653166111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/plummer2d" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$analysis.coverage" NAME="analysis Coverage Results" MODIFIED="1448067057195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/analysis_src" />
     <SUITE FILE_PATH="coverage/OpOpGadget$dex.coverage" NAME="dex Coverage Results" MODIFIED="1458775451347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1458773739685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/OpOpGadget$Model.coverage" NAME="Model Coverage Results" MODIFIED="1492036790917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OpOp/src/model_src" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -40,21 +42,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="analysis.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1860">
+            <state relative-caret-position="20">
               <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadSnap.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -63,10 +55,78 @@
       <file leaf-file-name="GeneralModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="160">
               <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadSnap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1000">
+              <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
               <folding>
-                <marker date="1493221403867" expanded="true" signature="317:358" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="193:8533" ph="..." />
+                <marker date="1493308204000" expanded="false" signature="198:699" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493308204000" expanded="true" signature="811:925" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="3627:3829" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="4059:4157" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="4326:4531" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="4761:4859" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="5370:5462" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="5469:6094" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="6265:7385" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="6474:7037" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="6552:6753" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="6664:6753" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="6771:6993" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="6887:6993" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="7283:7385" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="7396:7713" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="7479:7713" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="7580:7669" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="7801:8345" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="8246:8345" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="8422:8519" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="8594:20341" ph="..." />
+                <marker date="1493308204000" expanded="false" signature="8599:9176" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493308204000" expanded="true" signature="9288:9407" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="11445:12281" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="13164:19933" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="13582:13657" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="13671:13755" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="14164:14374" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="14559:14681" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="14878:15091" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="15276:15391" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="15886:15995" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="16006:16659" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="16928:18084" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="17159:17775" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="17241:17454" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="17357:17454" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="17476:17713" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="17596:17713" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="17971:18084" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="18098:18463" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="18199:18463" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="18304:18401" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="18559:19789" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="19066:19182" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="19671:19789" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="20229:20327" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="20400:21256" ph="..." />
+                <marker date="1493308204000" expanded="false" signature="20405:20981" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493308204000" expanded="true" signature="21300:24056" ph="..." />
+                <marker date="1493308204000" expanded="false" signature="21305:21603" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493308204000" expanded="true" signature="21714:21828" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="24099:28190" ph="..." />
+                <marker date="1493308204000" expanded="false" signature="24104:24475" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1493308204000" expanded="true" signature="24587:24706" ph="..." />
+                <marker date="1493308204000" expanded="true" signature="26744:27580" ph="..." />
+                <marker date="1493308204000" expanded="false" signature="28231:28606" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
               </folding>
             </state>
           </provider>
@@ -75,11 +135,19 @@
       <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
+            <state relative-caret-position="2080">
               <caret line="104" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-              <folding>
-                <marker date="1493221403867" expanded="true" signature="33:56" ph="..." />
-              </folding>
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,7 +155,7 @@
       <file leaf-file-name="NFWc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="480">
               <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
@@ -101,12 +169,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
+      <file leaf-file-name="Plummer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="740">
+              <caret line="47" column="38" lean-forward="true" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+              <folding>
+                <element signature="e#199#911#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,22 +184,10 @@
       <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="940">
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WriteSnap.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-138">
-              <caret line="244" column="20" lean-forward="false" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
-              <folding>
-                <element signature="e#203#682#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -138,8 +196,8 @@
       <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
+            <state relative-caret-position="260">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="47" selection-end-column="22" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -147,14 +205,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TruncatedPlummer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py">
+      <file leaf-file-name="WriteSnap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="4800">
+              <caret line="244" column="20" lean-forward="false" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -223,17 +279,17 @@
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Einasto.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/utility.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
         <option value="$PROJECT_DIR$/OpOp/Model.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
       </list>
     </option>
   </component>
@@ -244,10 +300,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="152" />
-    <option name="y" value="93" />
-    <option name="width" value="1672" />
-    <option name="height" value="789" />
+    <option name="x" value="2167" />
+    <option name="y" value="240" />
+    <option name="width" value="1508" />
+    <option name="height" value="933" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -264,6 +320,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -464,8 +522,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -828,12 +884,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
-      <item index="1" class="java.lang.String" itemvalue="Python.test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Model" />
-      <item index="3" class="java.lang.String" itemvalue="Python.utility" />
-      <item index="4" class="java.lang.String" itemvalue="Python.WriteSnap" />
-      <item index="5" class="java.lang.String" itemvalue="Python.analysis" />
+      <item index="0" class="java.lang.String" itemvalue="Python.analysis" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Model" />
+      <item index="4" class="java.lang.String" itemvalue="Python.utility" />
+      <item index="5" class="java.lang.String" itemvalue="Python.WriteSnap" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1111,30 +1167,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="152" y="93" width="1672" height="789" extended-state="0" />
-    <editor active="true" />
+    <frame x="2167" y="240" width="1508" height="933" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26913875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23145604" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38193345" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2630745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38193345" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29160064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1464,13 +1520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="37" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1482,7 +1531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1490,92 +1538,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2640">
           <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-          <folding>
-            <marker date="1493221403867" expanded="true" signature="342:23456" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="9049:9082" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="9049:13852" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="9049:23456" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="9122:10405" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="9131:9243" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1493221403867" expanded="true" signature="10451:11297" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="10460:10604" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1493221403867" expanded="true" signature="10915:11064" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="11336:12080" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="11345:11607" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1493221403867" expanded="true" signature="11667:11938" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="11796:11938" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="12160:13852" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="12169:12431" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1493221403867" expanded="true" signature="13882:23456" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="14348:15394" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="14424:14528" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="15025:15114" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="15444:15844" ph="..." />
-            <marker date="1493221403867" expanded="true" signature="15855:15975" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="15981:16389" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="16395:17492" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="17497:17781" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="17787:18367" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="18373:18499" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="18505:18918" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="18924:19357" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="19363:21682" ph="'''...'''" />
-            <marker date="1493221403867" expanded="true" signature="21687:23456" ph="'''...'''" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
+        <state relative-caret-position="720">
           <caret line="62" column="30" lean-forward="false" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
           <folding>
-            <element signature="e#0#36#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="160">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <marker date="1493221403867" expanded="true" signature="317:358" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
+        <state relative-caret-position="2080">
           <caret line="104" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <marker date="1493221403867" expanded="true" signature="33:56" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/Model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="220">
           <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="276" column="0" lean-forward="false" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="480">
           <caret line="26" column="56" lean-forward="false" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
@@ -1590,8 +1592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="940">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -1600,27 +1602,105 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
+        <state relative-caret-position="4800">
           <caret line="244" column="20" lean-forward="false" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
-          <folding>
-            <element signature="e#203#682#1" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
-          <folding />
+        <state relative-caret-position="1000">
+          <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <folding>
+            <marker date="1493308204000" expanded="true" signature="193:8533" ph="..." />
+            <marker date="1493308204000" expanded="false" signature="198:699" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493308204000" expanded="true" signature="811:925" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="3627:3829" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="4059:4157" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="4326:4531" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="4761:4859" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="5370:5462" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="5469:6094" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="6265:7385" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="6474:7037" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="6552:6753" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="6664:6753" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="6771:6993" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="6887:6993" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="7283:7385" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="7396:7713" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="7479:7713" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="7580:7669" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="7801:8345" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="8246:8345" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="8422:8519" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="8594:20341" ph="..." />
+            <marker date="1493308204000" expanded="false" signature="8599:9176" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493308204000" expanded="true" signature="9288:9407" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="11445:12281" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="13164:19933" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="13582:13657" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="13671:13755" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="14164:14374" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="14559:14681" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="14878:15091" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="15276:15391" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="15886:15995" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="16006:16659" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="16928:18084" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="17159:17775" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="17241:17454" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="17357:17454" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="17476:17713" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="17596:17713" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="17971:18084" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="18098:18463" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="18199:18463" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="18304:18401" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="18559:19789" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="19066:19182" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="19671:19789" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="20229:20327" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="20400:21256" ph="..." />
+            <marker date="1493308204000" expanded="false" signature="20405:20981" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493308204000" expanded="true" signature="21300:24056" ph="..." />
+            <marker date="1493308204000" expanded="false" signature="21305:21603" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493308204000" expanded="true" signature="21714:21828" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="24099:28190" ph="..." />
+            <marker date="1493308204000" expanded="false" signature="24104:24475" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1493308204000" expanded="true" signature="24587:24706" ph="..." />
+            <marker date="1493308204000" expanded="true" signature="26744:27580" ph="..." />
+            <marker date="1493308204000" expanded="false" signature="28231:28606" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1860">
+        <state relative-caret-position="20">
           <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="47" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="47" column="38" lean-forward="true" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+          <folding>
+            <element signature="e#199#911#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

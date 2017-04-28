@@ -4,11 +4,12 @@ from ..model_src import Model
 
 class Plummer(Model.Model):
 
-    def __init__(self,rc,Mmax,G='kpc km2 / (M_sun s2)'):
+    def __init__(self,rc,Ms,rs=None,G='kpc km2 / (M_sun s2)',**kwargs):
         """
         Analytic Plummer model
         :param rc: Plummer scale length
-        :param Mtot:  Plummer total mass
+        :param Ms:  Plummer mass at rs, (ir rs None, Plummer mass at infinity)
+        :param rs: radius where the mass is equal to Ms, if None rs=infinity
         :param G: Value of the gravitational constant G, it can be a number of a string.
                     If G=1, the physical value of the potential will be Phi/G.
                     If string it must follow the rule of the unity of the module.astropy constants.
@@ -17,8 +18,23 @@ class Plummer(Model.Model):
 
         :return:
         """
+
+        if 'Mmax' in kwargs:
+            print('Warning keyword Mmax is deprecated for TbetaModel, use instead Ms',flush=True)
+            self.Ms=kwargs['Mmax']
+        else:
+            self.Ms=Ms
+
         self.rc=rc
-        self.Mmax=Mmax
+
+        if rs is None:
+            self.Mmax=self.Ms
+            self.rs=np.inf
+        else:
+            self.rs=rs
+            x=self.rs/self.rc
+            self.Mmax=self.Ms* ( (1+x*x)**(1.5) ) / (  x*x*x )
+
         if isinstance(G,float) or isinstance(G,int): self.G=G
         else:
             GG=conG.to(G)
@@ -27,9 +43,9 @@ class Plummer(Model.Model):
         self._use_nparray=True
         self._analytic_radius=True
         self.use_c=False
-        self._densnorm=(3*Mmax)/(4*np.pi*rc*rc*rc)
-        self._sdensnorm=Mmax/(np.pi*rc*rc)
-        self._potnorm=self.G*Mmax
+        self._densnorm=(3*self.Mmax)/(4*np.pi*rc*rc*rc)
+        self._sdensnorm=self.Mmax/(np.pi*rc*rc)
+        self._potnorm=self.G*self.Mmax
 
     def _evaluatedens(self,R):
 
