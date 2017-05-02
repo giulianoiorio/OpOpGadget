@@ -238,8 +238,8 @@ class Analysis:
             if type is None:
                 mass=np.sum(self.p.Mass[:])
             else:
-                type= nparray_check(type)
-                masarr=self._make_array(self.p.Mass,type)
+                type_tmp= nparray_check(type)
+                masarr=self._make_array(self.p.Mass,type_tmp)
                 mass=np.sum(masarr)
 
 

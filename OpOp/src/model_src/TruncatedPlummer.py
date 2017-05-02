@@ -7,17 +7,18 @@ import numpy as np
 
 
 class TruncatedPlummer(GeneralModel.GeneralModel):
-    def __init__(self, rc, Mmax, rt=None, R=None, rini=3e-5, rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)',
-                 denorm=True, r_physic=False, use_c=False):
+    
+    def __init__(self, rc, Ms,rs=None, rt=None, R=None, rini=3e-5, rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)',
+                 denorm=True, r_physic=False, use_c=False,**kwargs):
         """
         Truncated double power law model:
         dens=dens0 * (r/rc)^(-gamma) * (1+r/rc)^(- (beta-gamma)) * Exp[ -(r/rt)^2]
         It simpy call the class general model with the density law above evaluating it on a grid of radius normalized to rc. This grid
         can be supplied by the user directly or can be generate with the keyword rini,rfin,kind,n.
 
-        :param rc: Scale length
-        :param Mmax: Physical Value of the Mass at Rmax (the last point of the R grid). The physical unity of dens and pot and mass
-               will depends on the unity of Mmax
+        :param rc: Plummer scale length
+        :param Ms:  Plummer mass at rs, (ir rs None, Plummer mass at infinity)
+        :param rs: radius where the mass is equal to Ms, if None rs=infinity
         :param rt:  Truncation radius (in physical unit), if None it is equal to 2*rmax(no truncation)
         :param R: if not None, use this list of normalized radius on rc (if r_physics=False) or non normalised radius uf if r_physics=True
         #Generate grid
@@ -38,7 +39,14 @@ class TruncatedPlummer(GeneralModel.GeneralModel):
 
 
         self.rc = rc
-        self.Mmax =Mmax
+        self.rt = rt
+
+
+        if 'Mmax' in kwargs:
+            print('Warning keyword Mmax is deprecated for TbetaModel, use instead Ms',flush=True)
+            self.Ms=kwargs['Mmax']
+        else:
+            self.Ms=Ms
 
         if R is None:
             if r_physic:  # rescale to normalised radius
@@ -58,8 +66,17 @@ class TruncatedPlummer(GeneralModel.GeneralModel):
             self.rini=R[0]
             self.rfin=R[-1]
 
+
+        if rs is None:
+            self.Mmax=self.Ms
+        else:
+            self.rs=rs
+            x=self.rs/self.rc
+            self.Mmax=self.Ms* ( (1+x*x)**(1.5) ) / (  x*x*x )
+
         if rt is None: self.rt=2*R[-1]*self.rc
-        super(TruncatedPlummer, self).__init__(R=R, dens=self._adens, rc=self.rc, Ms=self.Mmax, G=G, use_c=use_c,
+        
+        super(TruncatedPlummer, self).__init__(R=R, dens=self._adens, rc=self.rc, Ms=self.Ms, rs=self.rs, G=G, use_c=use_c,
                                                denorm=denorm)
 
     def _adens(self, x):
