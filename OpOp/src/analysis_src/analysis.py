@@ -545,7 +545,7 @@ class Analysis:
 
 class Profile:
 
-    def __init__(self,particles=None, type=None, center=False, mq=98,  Ngrid=512, xmin=None, xmax=None, iter=False, safe=False, kind='log',**kwargs):
+    def __init__(self,particles=None, type=None, center=False, mq=98,  ngrid=512, xmin=None, xmax=None, iter=False, safe=False, kind='log',**kwargs):
 
         #Check input
         if 'filename' in kwargs: part=load_snap(kwargs['filename'])
@@ -591,7 +591,8 @@ class Profile:
 
 
         #define grid
-        self.Ngrid=Ngrid
+        if 'Ngrid' in kwargs: self.Ngrid=kwargs['Ngrid']
+        else: self.Ngrid=ngrid
         if xmin is None: self.xmin=np.min(self.rad)
         else: self.xmin=xmin
         if xmax is None: self.xmax=np.max(self.rad)
