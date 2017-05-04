@@ -7,7 +7,7 @@ from astropy.constants import G as conG
 
 class NFWc(GeneralModel.GeneralModel):
     def __init__(self, Mc, rcore, mode='h', c=None, rt=None, rtnorm=False, c_par=200, z=0, h=0.67, R=None, rini=3e-5,
-                 rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, use_c=False,
+                 rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False,
                  **kwargs):
         """
         NFW density models with an inner core
@@ -46,6 +46,8 @@ class NFWc(GeneralModel.GeneralModel):
                     See http://astrofrog-debug.readthedocs.org/en/latest/constants/
         :param denorm: If True, the output value of mass, dens and pot will be denormalized using Mmax and G.
         :param r_physic: If False all the R, rini and rfin in input ar normalised on rc.
+        :param normalise_tmodel: If True and rt=True, normalise the model such that the density is equal for r<<rt to the same
+        model without trunctation
         :param use_c: To calculate pot and mass with a C-cyle, WARNING it creates more noisy results
         :param kwargs:
         """
@@ -116,8 +118,22 @@ class NFWc(GeneralModel.GeneralModel):
 
 
         # call Tbeta-Model
-        super(NFWc, self).__init__(R=R, dens=self._adens, rc=self.rscale, Ms=self.Mc, rs=self.rcp, G=G, use_c=use_c,
-                                   denorm=denorm)
+
+
+        if (rt is not None) and (normalise_tmodel==True):
+            rtscale=0.1*self.rt
+            super(NFWc, self).__init__(R=R, dens=self._adens_not, rc=self.rscale, Ms=self.Mc, rs=self.rcp, G=G, use_c=use_c,
+                                        denorm=denorm)
+            print('Mass NFWc no trunc', self.mass(0.1 * self.rt))
+            mass_scale=self.mass(rtscale)
+            super(NFWc, self).__init__(R=R, dens=self._adens, rc=self.rscale, Ms=mass_scale, rs=rtscale, G=G, use_c=use_c,
+                                        denorm=denorm)
+            print('Mass NFWc fin', self.mass(0.1 * self.rt))
+        else:
+            super(NFWc, self).__init__(R=R, dens=self._adens, rc=self.rscale, Ms=self.Mc, rs=self.rcp, G=G, use_c=use_c,
+                                       denorm=denorm)
+
+            print('Mass NFWc_trunc', self.mass(0.1 * self.rt))
 
     def _adens(self,x):
 
@@ -159,6 +175,49 @@ class NFWc(GeneralModel.GeneralModel):
         etrunc=self.rscale / self.rt
 
         return dens*np.exp(-x*x*etrunc*etrunc)
+
+
+    def _adens_not(self,x):
+
+        eps=self.eps
+
+        if self.mode=='s':
+
+            a=(eps+x)
+            b=(1+x)*(1+x)
+
+            dens=1/(a*b)
+
+        elif self.mode=='h':
+
+            a=(eps*eps+x*x)**(0.5)
+            b = (1 + x) * (1 + x)
+
+            dens=1/(a*b)
+
+        elif self.mode=='e':
+
+            y=x/eps
+
+            a=eps*np.exp(-y)
+            b=x*(1+x)*(1+x)
+
+            dens=1/(a+b)
+
+        elif self.mode=='a':
+
+            a = (eps * eps + x * x) ** (0.5)
+            b = (1+x*x)
+
+            dens=1 / (a * b)
+
+        else:
+            raise NotImplementedError('mode %s not implementend in model NFWc'%self.mode)
+
+
+        return dens
+
+
 
     def delta_c(self):
 

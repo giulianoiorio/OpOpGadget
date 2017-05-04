@@ -210,13 +210,16 @@ class Analysis:
 
         rq,_=self.qradius_ext(rad_array,mas_array,mq)
 
-        mass_phy=G*(mq/100)*np.sum(mas_array)
+        
+        mass_tot_rq=np.sum(self.p.Mass[self.p.Radius<=rq])
+
+        mass_phy=G*(mq/100)*mass_tot_rq
         tdyn=0.5*np.pi*rq*np.sqrt(rq/mass_phy)
 
 
         return tdyn
 
-    def softening_scale(self,mq=70,auto=True,r=None,dens=None,mass=None,kernel='Gadget',type=None):
+    def softening_scale(self,mq=70,rq=None,auto=True,r=None,dens=None,mass=None,kernel='Gadget',type=None):
         """
         Calculate the optimal softening scale following Dehnen, 2012 eps=cost*a(dens)*N^-0.2. The output will be in unit
         of r. If Auto==True, r and dens will be not considered.
@@ -232,7 +235,10 @@ class Analysis:
         :return: the softening scale.
         """
         opt_dict={'Gadget':0.698352, 'spline':0.977693}
-        rq=self.qmass(mq,type=type)
+        
+
+        if rq is None: rq=self.qmass(mq,type=type)
+
 
         if mass is None:
             if type is None:
