@@ -557,7 +557,7 @@ class Particles:
 
             # The following blocks exist in the snapshot only if enabled in the makefile
             self.Pot = np.full(n, 0, dtype=float)  # Gravitational potential of the particles (C-type float)
-            self.Acce = np.full(n, 0, dtype=float)  # Acceleration of particles (C-type float)
+            self.Acce = np.zeros(shape=[n, 3], dtype=float) # Acceleration of particles (C-type float)
             self.Tstp = np.full(n, 0, dtype=float)  # Time at the start of simulation  (C-type float)
 
 

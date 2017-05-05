@@ -5,8 +5,184 @@ from ..particle_src.particle import Header,Particles
 from ..utility_src import utility
 
 
+#func
+def _load_tstp(particles,fopen,nini, nfin, end='<'):
+    """
+    To load tstp
+    fopen: open file
+    :return:
+    """
+    f=fopen
+    p=particles
+    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
+    for ii in range(nini,nfin): p.Tstp[ii] = float(struct.unpack(end+"f", f.read(4))[0])  #read the 3-d pos and append it as a list of int in the Pos vector
+    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
+    print('TSTP check',block_check_end,block_check_start)
+    # block control check.
+    if block_check_start != block_check_end:
+        utility.Continue_check("Warning: Control TSTP Block failed")
+        return 1
+    else:
+        return 0
+
+def _load_pot(particles,fopen, nini, nfin, end='<'):
+    """
+    To load tstp
+    fopen: open file
+    :return:
+    """
+    f=fopen
+    p=particles
+    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
+    for ii in range(nini,nfin): p.Pot[ii] = float(struct.unpack(end+"f", f.read(4))[0])  #read the 3-d pos and append it as a list of int in the Pos vector
+    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
+    print('Pot check',block_check_end,block_check_start)
+    # block control check.
+    if block_check_start != block_check_end:
+        utility.Continue_check("Warning: Control Potential Block failed")
+        return 1
+    else:
+        return 0
+
+def _load_acce(particles, fopen, nini, nfin, end='<'):
+        """
+        To load acc
+        fopen: open file
+        :return:
+        """
+        f = fopen
+        p = particles
+        block_check_start = struct.unpack(end + "i", f.read(4))[0]  # read the initial block checek (C-type int)
+        for ii in range(nini,nfin): p.Acce[ii] = struct.unpack(end + "fff",f.read(12))  # read the 3-d pos and append it as a list of float in the Pos vector
+        block_check_end = struct.unpack(end + "i", f.read(4))[0]  # read the final block checek (C-type int)
+        print('Acce check', block_check_end, block_check_start)
+        # block control check.
+        if block_check_start != block_check_end:
+            utility.Continue_check("Warning: Control Acce Block failed")
+            return 1
+
+        return 0
+
+def _load_pos(particles, fopen, nini, nfin, end='<'):
+    """
+    To load acc
+    fopen: open file
+    :return:
+    """
+    f = fopen
+    p = particles
+
+    #Load particle position (Pos)
+    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
+    for ii in range(nini,nfin):
+        p.Pos[ii] = struct.unpack(end+"fff", f.read(12))  #read the 3-d pos and append it as a list of float in the Pos vector
+        p.Pcord[ii] = "Cartesian (X,Y,Z)" #Standard gadget coordinate system
+    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
+    print('POS check',block_check_end,block_check_start)
+
+    # block control check.
+    if block_check_start != block_check_end:
+        utility.Continue_check("Warning: Control Pos Block failed")
+        return 1
+
+    return 0
+
+def _load_vel(particles, fopen, nini, nfin, end='<'):
+    """
+    To load acc
+    fopen: open file
+    :return:
+    """
+    f = fopen
+    p = particles
+
+    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
+    for ii in range(nini,nfin):
+        p.Vel[ii] = struct.unpack(end+"fff", f.read(12))  #read the 3-d pos and append it as a list of float in the Pos vector
+        p.Vcord[ii] = "Cartesian (Vx,Vy,Vz)" #Standard gadget coordinate system
+    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
+    print('Vel check',block_check_end,block_check_start)
+
+    # block control check.
+    if block_check_start != block_check_end:
+        utility.Continue_check("Warning: Control Vel Block failed")
+        return 1
+
+    return 0
+
+def _load_id(particles, fopen, nini, nfin, end='<'):
+    """
+    To load acc
+    fopen: open file
+    :return:
+    """
+    f = fopen
+    p = particles
+
+    #Load particle Id (Id)
+    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
+    for ii in range(nini,nfin): p.Id[ii] = int(struct.unpack(end+"i", f.read(4))[0])  #read the 3-d pos and append it as a list of int in the Pos vector
+    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
+    print('Id check',block_check_end,block_check_start)
+
+    # block control check.
+    if block_check_start != block_check_end:
+        utility.Continue_check("Warning: Control Id Block failed")
+        return 1
+
+    return 0
+
+def _load_mass(particles, fopen, nini, end='<',findex=0):
+    """
+    To load acc
+    fopen: open file
+    :return:
+    """
+    f = fopen
+    p = particles
+
+    ntot_withmass = 0
+    for k in range(6):
+        if p.header['Massarr'][0][k] == 0: ntot_withmass = ntot_withmass + p.header["Npart"][findex][k]
+    print("Total number of particles with mass block: %i" % (ntot_withmass))
+
+    if ntot_withmass > 0:  # If exist at least one type of particle with mass block
+        block_check_start = struct.unpack(end + "i", f.read(4))[0]  # read the initial block checek (C-type int)
+        pcount = nini
+        for k in range(6):  # repeat for each particle types
+            if p.header["Massarr"][0][k] > 0:  # case 1- laod the mass from the header
+                for n in range(pcount, p.header["Npart"][findex][k] + pcount):
+                    p.Type[n] = k
+                    p.Mass[n] = p.header["Massarr"][findex][k]
+            else:  # case 2- laod the mass from the mass block
+                for n in range(pcount, p.header["Npart"][findex][k] + pcount):
+                    p.Type[n] = k
+                    p.Mass[n] = float(struct.unpack(end + "f", f.read(4))[0])
+            pcount = p.header["Npart"][findex][k] + nini
+        block_check_end = struct.unpack(end + "i", f.read(4))[0]  # read the final block checek (C-type int)
+        # block control check.
+        if block_check_start != block_check_end:
+            utility.Continue_check("Warning: Control Id Block failed")
+            return 1
+    else:  # case 1- laod the mass from the header
+        pcount = nini
+        for k in range(6):  # repeat for each particle types
+            for n in range(pcount, p.header["Npart"][findex][k] + pcount):
+                p.Type[n] = k
+                p.Mass[n] = p.header["Massarr"][0][k]
+            pcount = p.header["Npart"][findex][k] + nini
+        print('Mass check')
+
+
+    return 0
+
+
+# def
+dict_eblock = {'pot': _load_pot, 'acce': _load_acce, 'tstp': _load_tstp}
+dict_eblock_ord = ('pot', 'acce', 'tstp')
+
 #ok funge
-def _load_single(filename,end='<',order_key='Id',verbose=False):
+def _load_single(filename,end='<',order_key='Id',verbose=False,extra_block=()):
     """
     Load data from snapshot written following the Gadget 1-type binary convention from a single file
     :param filename: Filename to read the data.
@@ -66,40 +242,13 @@ def _load_single(filename,end='<',order_key='Id',verbose=False):
     print ("Reading particle data from %s......" % (filename))
     warning_count=0 #Initialization of the counter for the warning in the file reading
 
-    #Load particle position (Pos)
-    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
-    for i in range(0,p.n):
-        p.Pos[i] = struct.unpack(end+"fff", f.read(12))  #read the 3-d pos and append it as a list of float in the Pos vector
-        p.Pcord[i] = "Cartesian (X,Y,Z)" #Standard gadget coordinate system
-    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
-    print('POS check',block_check_end,block_check_start)
-    #block control check.
-    if block_check_start != block_check_end:
-        utility.Continue_check("Warning: Control Position Block failed")
-        warning_count+=1
+
+    warning_count += _load_pos(particles=p, fopen=f,end=end,nini=0,nfin=p.n)
+    warning_count += _load_vel(particles=p, fopen=f,end=end,nini=0,nfin=p.n)
+    warning_count += _load_id(particles=p, fopen=f,end=end,nini=0,nfin=p.n)
+    warning_count += _load_mass(particles=p, fopen=f, nini=0, end='<',findex=0)
 
 
-    #Load particle velocity (Vel)
-    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
-    for i in range(0,p.n):
-        p.Vel[i] = struct.unpack(end+"fff", f.read(12))  #read the 3-d pos and append it as a list of float in the Pos vector
-        p.Vcord[i] = "Cartesian (Vx,Vy,Vz)" #Standard gadget coordinate system
-    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
-    print('Vel check',block_check_end,block_check_start)
-    #block control check.
-    if block_check_start != block_check_end:
-        utility.Continue_check("Warning: Control Velocity Block failed")
-        warning_count+=1
-
-    #Load particle Id (Id)
-    block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
-    for i in range(0,p.n): p.Id[i] = int(struct.unpack(end+"i", f.read(4))[0])  #read the 3-d pos and append it as a list of int in the Pos vector
-    block_check_end =  struct.unpack(end+"i", f.read(4))[0] #read the final block checek (C-type int)
-    print('Id check',block_check_end,block_check_start)
-    # block control check.
-    if block_check_start != block_check_end:
-        utility.Continue_check("Warning: Control Id Block failed")
-        warning_count+=1
 
 
     #Load particle Mass and Type
@@ -109,7 +258,7 @@ def _load_single(filename,end='<',order_key='Id',verbose=False):
     #is a bit more problematic: a block Mass for the particle k exists only if the related Massarr[k]
     #in the header is set to 0.
 
-
+    """
     #check particle with mass: the following routine calculates the number of particles that have not
     # mass in the header, but have a mass block in the file.
     ntot_withmass = 0
@@ -143,6 +292,7 @@ def _load_single(filename,end='<',order_key='Id',verbose=False):
                     p.Type[i]=k
                     p.Mass[i]= p.header["Massarr"][0][k]
             pcount= p.header["Npart"][0][k]
+    """
 
     #Load SPH paramenters only for 0-Type particle
     if p.header["Npart"][0][0] > 0:
@@ -154,8 +304,19 @@ def _load_single(filename,end='<',order_key='Id',verbose=False):
         if block_check_start != block_check_end:
             utility.Continue_check("Warning: Control U Block failed")
             warning_count+=1
-    f.close()
 
+
+
+    #Optional block
+    for eblock in dict_eblock_ord:
+        if eblock in extra_block:
+            func_fill = dict_eblock[eblock]
+            warning_count += func_fill(particles=p, fopen=f,end=end, nini=0, nfin=p.n)
+        else:
+            pass
+
+
+    f.close()
     p.setrad()
     p.setvelt()
 
@@ -166,8 +327,11 @@ def _load_single(filename,end='<',order_key='Id',verbose=False):
 
     return p
 
+
+
+
 #ok funge
-def _load_multi(filename,end='<',order_key='Id'):
+def _load_multi(filename,end='<',order_key='Id',verbose=False,extra_block=()):
     """
     Load data from snapshot written following the Gadget 1-type binary convention and from multiple subfile
     :param filename: Filename to read the data.  Write only
@@ -260,6 +424,12 @@ def _load_multi(filename,end='<',order_key='Id'):
         if i==0: print ("\nReading file %s...... (particles from %i to %i)" % (buff,start_count,end_count))
         else: print ("Reading file %s...... (particles from %i to %i)" % (buff,start_count,end_count))
 
+        warning_count += _load_pos(particles=p, fopen=f, end=end, nini=start_count, nfin=end_count)
+        warning_count += _load_vel(particles=p, fopen=f, end=end, nini=start_count, nfin=end_count)
+        warning_count += _load_id(particles=p, fopen=f, end=end, nini=start_count, nfin=end_count)
+        warning_count += _load_mass(particles=p, fopen=f, nini=start_count, end='<', findex=i)
+
+        """
         #Load particle position (Pos)
         block_check_start =  struct.unpack(end+"i", f.read(4))[0] #read the initial block checek (C-type int)
         for n in range(start_count, end_count):
@@ -331,6 +501,7 @@ def _load_multi(filename,end='<',order_key='Id'):
                         p.Type[n]=k
                         p.Mass[n]= p.header["Massarr"][0][k]
                 pcount= p.header["Npart"][i][k] + start_count
+        """
 
         #Load SPH paramenters only for 0-Type particle
         if p.header["Npart"][i][0] > 0:
@@ -354,12 +525,23 @@ def _load_multi(filename,end='<',order_key='Id'):
                 utility.Continue_check("Warning: Control Rho Block in file " + buff)
                 warning_count+=1
 
+        # Optional block
+        for eblock in dict_eblock_ord:
+            if eblock in extra_block:
+                func_fill = dict_eblock[eblock]
+                warning_count += func_fill(particles=p, fopen=f, end=end, nini=start_count, nfin=end_count)
+            else:
+                pass
+
+
         f.close()
         print ("Data load from "+buff+ " with " + str(warning_count) + " warnings")
         warning_count_tot+=warning_count
 
     print ("\nGlobal particles data load from " + filename +".n"  + " with " + str(warning_count_tot) + " warnings")
     print ("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
+
+
 
     p.setrad()
     p.setvelt()
@@ -372,7 +554,7 @@ def _load_multi(filename,end='<',order_key='Id'):
     return p
 
 #ok funge
-def load_snap(filename,end='<',order_key='Id'):
+def load_snap(filename,end='<',order_key='Id',extra_block=()):
     """
     Load data from snapshot written following the Gadget 1-type binary convention
     :param filename: Filename to read the data. If reading multiple file, write only
@@ -383,8 +565,8 @@ def load_snap(filename,end='<',order_key='Id'):
     :return: Particles object with the data loaded by filename
     """
 
-    if (os.path.isfile(filename)): particles=_load_single(filename,end=end,order_key=order_key)
-    elif (os.path.isfile(filename+'.0')): particles=_load_multi(filename,end=end,order_key=order_key)
+    if (os.path.isfile(filename)): particles=_load_single(filename,end=end,order_key=order_key,extra_block=extra_block)
+    elif (os.path.isfile(filename+'.0')): particles=_load_multi(filename,end=end,order_key=order_key,extra_block=extra_block)
     else: raise IOError('File %s not found'%filename)
 
     return particles

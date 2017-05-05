@@ -37,7 +37,7 @@ class Multimodel(Model):
 
         self.mcomp=args
         self.use_c=False
-        self._use_nparray=False
+        self._use_nparray=True
         self.name = 'Multi Model'
 
     def _evaluatedens(self,R):

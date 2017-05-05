@@ -105,6 +105,8 @@ class NFWc(GeneralModel.GeneralModel):
             self.rini=R[0]
             self.rfin=R[-1]
 
+
+
         if rt is None:
             self.rt=2*R[-1]
         elif rtnorm:
