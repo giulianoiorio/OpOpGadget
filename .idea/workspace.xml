@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Model.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" afterPath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
-    </list>
+    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="" />
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -46,9 +41,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
               <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-              <folding>
-                <marker date="1493904917000" expanded="true" signature="23083:29482" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,7 +49,7 @@
       <file leaf-file-name="GeneralModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="80">
               <caret line="12" column="55" lean-forward="false" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="77" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -68,7 +61,7 @@
       <file leaf-file-name="LoadSnap.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1040">
+            <state relative-caret-position="2560">
               <caret line="160" column="56" lean-forward="false" selection-start-line="160" selection-start-column="56" selection-end-line="160" selection-end-column="56" />
               <folding>
                 <element signature="e#182#244#1" expanded="true" />
@@ -96,7 +89,7 @@
       <file leaf-file-name="NbodyModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1540">
+            <state relative-caret-position="2340">
               <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
               <folding />
             </state>
@@ -106,7 +99,7 @@
       <file leaf-file-name="NFWc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
+            <state relative-caret-position="1280">
               <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
@@ -129,7 +122,7 @@
       <file leaf-file-name="particle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2217">
+            <state relative-caret-position="20">
               <caret line="559" column="59" lean-forward="false" selection-start-line="559" selection-start-column="59" selection-end-line="559" selection-end-column="59" />
               <folding />
             </state>
@@ -139,7 +132,7 @@
       <file leaf-file-name="Plummer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
+            <state relative-caret-position="300">
               <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
               <folding>
                 <element signature="e#199#911#1" expanded="true" />
@@ -246,8 +239,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-51" />
-    <option name="y" value="231" />
+    <option name="y" value="27" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
@@ -267,6 +259,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -489,7 +482,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1135,10 +1127,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-51" y="231" width="1280" height="773" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1280" height="773" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27931595" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2850163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1499,7 +1491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1525,9 +1516,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <marker date="1493904917000" expanded="true" signature="23083:29482" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1543,7 +1532,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
+        <state relative-caret-position="300">
           <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
           <folding>
             <element signature="e#199#911#1" expanded="true" />
@@ -1561,7 +1550,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1540">
+        <state relative-caret-position="2340">
           <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
           <folding />
         </state>
@@ -1569,7 +1558,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="80">
           <caret line="12" column="55" lean-forward="false" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="77" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -1579,7 +1568,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/NFWc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
+        <state relative-caret-position="1280">
           <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
@@ -1590,7 +1579,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1040">
+        <state relative-caret-position="2560">
           <caret line="160" column="56" lean-forward="false" selection-start-line="160" selection-start-column="56" selection-end-line="160" selection-end-column="56" />
           <folding>
             <element signature="e#182#244#1" expanded="true" />
@@ -1614,7 +1603,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2217">
+        <state relative-caret-position="20">
           <caret line="559" column="59" lean-forward="false" selection-start-line="559" selection-start-column="59" selection-end-line="559" selection-end-column="59" />
           <folding />
         </state>
