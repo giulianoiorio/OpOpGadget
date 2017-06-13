@@ -630,6 +630,14 @@ class Particles:
             i+=1
             maxincum+=maxin
 
+    def _maketype(self):
+        i=0
+        maxincum=0
+        for maxin in self.header['Nall']:
+            self.Type[maxincum:maxin+maxincum]=i
+            i+=1
+            maxincum+=maxin
+
     def order(self,key='Id'):
 
         allowed_order_keys=('Id','Mass','Type','Pot','Acce','U','Rho','Radius','Vel_tot','Energy')

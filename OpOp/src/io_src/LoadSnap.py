@@ -1,6 +1,8 @@
 import struct
 import os.path
+import numpy as np
 
+from .io_c_ext import cread_fvfps as cr
 from ..particle_src.particle import Header,Particles
 from ..utility_src import utility
 
@@ -182,7 +184,7 @@ dict_eblock = {'pot': _load_pot, 'acce': _load_acce, 'tstp': _load_tstp}
 dict_eblock_ord = ('pot', 'acce', 'tstp')
 
 #ok funge
-def _load_single(filename,end='<',order_key='Id',verbose=False,extra_block=()):
+def _load_single(filename,end='<',order_key='Id',verbose=False,extra_block=(),**kwargs):
     """
     Load data from snapshot written following the Gadget 1-type binary convention from a single file
     :param filename: Filename to read the data.
@@ -327,11 +329,8 @@ def _load_single(filename,end='<',order_key='Id',verbose=False,extra_block=()):
 
     return p
 
-
-
-
 #ok funge
-def _load_multi(filename,end='<',order_key='Id',verbose=False,extra_block=()):
+def _load_multi(filename,end='<',order_key='Id',verbose=False,extra_block=(),**kwargs):
     """
     Load data from snapshot written following the Gadget 1-type binary convention and from multiple subfile
     :param filename: Filename to read the data.  Write only
@@ -553,8 +552,120 @@ def _load_multi(filename,end='<',order_key='Id',verbose=False,extra_block=()):
 
     return p
 
+
+def _load_header_fvfps(dic,**kwargs):
+    """
+    Write header from rpar and ipar
+    :param dic: dic with quantities from rpar and ipar, see cread_fvfps
+    :param mscale: rescaling of the mass
+    :param tscale: rescaline of the time
+    :return:
+    """
+    if 'mscale' in kwargs: mscale=kwargs['mscale']
+    else: mscale=1e10
+
+    #Standard t scale in fvfps is lscale/vscale in s, but  in OpOp is in Gyr, so by default tscale=4.72e-3 yr
+    if 'tscale' in kwargs: tscale=kwargs['tscale']
+    else: tscale=4.718106379419217e-3 #yr
+
+
+    if dic['ng']==0: massgas=0
+    else: massgas=  ( dic['mg']/dic['ng'] )*mscale
+
+    #print('ng',dic['ng'],'masstot',dic['mg'],'mpart',massgas)
+
+    if dic['nh']==0: masshalo=0
+    else: masshalo= ( dic['mh']/dic['nh'] ) *mscale
+
+    #print('nh', dic['nh'], 'masstot', dic['mh'], 'mpart', masshalo)
+
+    if dic['ns']==0: massstar=0
+    else: massstar= ( dic['ms']/dic['ns'] ) *mscale
+
+    #print('ns', dic['ns'], 'masstot', dic['ms'], 'mpart', massstar)
+
+    h = Header()
+    h.header['Npart'][0] = [dic['ng'],dic['nh'],dic['ns'],0,0,0]
+    h.header['Massarr'][0] = [massgas,masshalo,massstar,0,0,0]
+    h.header['Time'] = dic['time'] * tscale
+    h.header['Tdyn'] = dic['tdyn'] * tscale
+    h.header['Redshift'] = 0
+    h.header['FlagSfr'] = 0
+    h.header['FlagFeedback'] = 0
+    h.header['Nall'] =  [dic['ng'],dic['nh'],dic['ns'],0,0,0]
+    h.header['FlagCooling'] = 0
+    h.header['NumFiles'] = 1
+    h.header['BoxSize'] = 0.
+    h.header['Omega0'] = 0.
+    h.header['OmegaLambda'] = 0.
+    h.header['HubbleParam'] = 0.
+    h.header['FlagAge'] = 0
+    h.header['FlagMetals'] = 0
+    h.header['NallHW'] =  [0,0,0,0,0,0]
+    h.header['flag_entr_ics'] = 0
+
+    return h
+
+
+def load_snap_fvfps(filename,order_key='Id',**kwargs):
+
+    print ("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    print ("Reading particle data from %s......" % (filename))
+    dic, id, pos, vel, mass=cr.read_file_c(filename)
+    print("Done")
+    print ("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+
+    #Standard length scale in fvfps is kpc as the one of OpOp, so by default lscale=1
+    if 'lscale' in kwargs: lscale=kwargs['lscale']
+    else: lscale=1
+
+    #Standard mass scale in fvfps is 10^10 msun, but  in OpOp is 1msun, so by default mscale=1e10
+    if 'mscale' in kwargs: mscale=kwargs['mscale']
+    else: mscale=1e10
+
+    #Standard mass scale in fvfps is Sqrt(G*mscale/lscale) in m/s, but  in OpOp is km/s, so by default vscale=207.38 km/s
+    if 'vscale' in kwargs: vscale=kwargs['vscale']
+    else: vscale=207.3844607923656
+
+
+    #Standard t scale in fvfps is lscale/vscale in s, but  in OpOp is in Gyr, so by default tscale=4.72e-3 yr
+    if 'tscale' in kwargs: tscale=kwargs['tscale']
+    else: tscale=4.718106379419217e-3 #yr
+
+
+
+    #part header
+    h=_load_header_fvfps(dic,mscale=mscale,tscale=tscale)
+    h.header['filename'] = filename
+
+
+    #Create the particle object
+    p=Particles(h=h)
+    #Particle
+    p.Pos=np.array(pos)*lscale
+    p.Vel = np.array(vel)*vscale
+    p.Id = np.array(id, dtype=int)
+    p.Mass = np.array(mass)*mscale
+
+    print('Sorting by Id')
+    p.order(key='Id')
+    print('Sorted')
+    p._maketype()
+    p.setrad()
+    p.setvelt()
+
+    if (order_key is not None) and (order_key!='Id'):
+        print('Sorting by %s'% order_key)
+        p.order(key=order_key)
+        print('Sorted')
+
+
+
+
+    return p
+
 #ok funge
-def load_snap(filename,end='<',order_key='Id',extra_block=()):
+def load_snap(filename,end='<',order_key='Id',extra_block=(),kind='fvfps',**kwargs):
     """
     Load data from snapshot written following the Gadget 1-type binary convention
     :param filename: Filename to read the data. If reading multiple file, write only
@@ -565,13 +676,19 @@ def load_snap(filename,end='<',order_key='Id',extra_block=()):
     :return: Particles object with the data loaded by filename
     """
 
-    if (os.path.isfile(filename)): particles=_load_single(filename,end=end,order_key=order_key,extra_block=extra_block)
-    elif (os.path.isfile(filename+'.0')): particles=_load_multi(filename,end=end,order_key=order_key,extra_block=extra_block)
-    else: raise IOError('File %s not found'%filename)
+    if kind.lower()=='gadget':
+        if (os.path.isfile(filename)): particles=_load_single(filename,end=end,order_key=order_key,extra_block=extra_block,**kwargs)
+        elif (os.path.isfile(filename+'.0')): particles=_load_multi(filename,end=end,order_key=order_key,extra_block=extra_block,**kwargs)
+        else: raise IOError('File %s not found'%filename)
+    elif kind.lower()=='fvfps':
+        particles=load_snap_fvfps(filename,order_key=order_key,**kwargs)
+    else:
+        raise NotImplementedError('load file from %s not implemented' % kind)
+
 
     return particles
 
-def _load_header_single(filename,end='<'):
+def _load_header_single(filename,end='<',**kwargs):
     """
     Load header from snapshot written following the Gadget 1-type binary convention from single file
     :param filename: Filename to read the data.
@@ -623,7 +740,7 @@ def _load_header_single(filename,end='<'):
 
     return h
 
-def _load_header_multi(filename,end='<'):
+def _load_header_multi(filename,end='<',**kwargs):
     """
     Load header from snapshot written following the Gadget 1-type binary convention from multiple subfile
     :param filename: Filename to read the data. Write only
@@ -694,7 +811,7 @@ def _load_header_multi(filename,end='<'):
 
     return h
 
-def load_header(filename,end='<'):
+def load_header(filename,end='<', kind='fvfps',**kwargs):
     """
     Load header from snapshot written following the Gadget 1-type binary convention
     :param filename: Filename to read the data. If reading multiple file, write only
@@ -702,10 +819,19 @@ def load_header(filename,end='<'):
     :param end: type of binary writing- < littlendian, >bigendian, = native
     :return: Header object with the header loaded by filename
     """
+    if kind.lower() == 'gadget':
 
-    if (os.path.isfile(filename)): header_obj=_load_header_single(filename,end=end)
-    elif (os.path.isfile(filename+'.0')): header_obj=_load_header_multi(filename,end=end)
-    else: raise IOError('File %s not found'%filename)
+        if (os.path.isfile(filename)): header_obj=_load_header_single(filename,end=end,**kwargs)
+        elif (os.path.isfile(filename+'.0')): header_obj=_load_header_multi(filename,end=end,**kwargs)
+        else: raise IOError('File %s not found'%filename)
+
+    elif kind.lower() == 'fvfps':
+
+        dic=cr.read_header(filename)
+        header_obj = _load_header_fvfps(dic,**kwargs)
+        header_obj.header['filename']=filename
+    else:
+        raise NotImplementedError('load file from %s not implemented' % kind)
 
     return header_obj
 

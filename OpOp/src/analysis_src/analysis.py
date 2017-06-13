@@ -66,6 +66,41 @@ class Analysis:
 
         return  ret_value
 
+    def qmassup(self,q,pax='z',safe_mode=True,type=None):
+        """
+        Calculate the radius in which the mass is a q % fraction of the total mass in 2D.
+        :param q: q is the mass fraction, it can range from 0 to 100
+        :param safe_mode:
+        :param type:
+        :return: An array with the value of the radius where mass is a q % fraction of the total mass.
+                 and the total value of the mass for the type choosen.
+        """
+        if pax == 'z':
+            ax1 = 0
+            ax2 = 1
+        elif pax == 'y':
+            ax1 = 0
+            ax2 = 2
+        elif pax == 'x':
+            ax1 = 1
+            ax2 = 2
+
+        radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)
+
+        if type is None:
+            rad_array=radcyl
+            mas_array=self.p.Mass[:]
+        else:
+            type= nparray_check(type)
+            rad_array=self._make_array(radcyl,type)
+            mas_array=self._make_array(self.p.Mass,type)
+
+
+
+        ret_value,_=self.qradius_ext(rad_array,mas_array,q,safe_mode=safe_mode)
+
+        return  ret_value
+
     def com(self,mq=None,minrad=None,maxrad=None,type=None):
         """
         Calculate the position of the center of mass and its velocity
@@ -548,7 +583,6 @@ class Analysis:
 
         return np.sum(lx),np.sum(ly),np.sum(lz)
 
-
 class Profile:
 
     def __init__(self,particles=None, type=None, center=False, mq=98,  ngrid=512, xmin=None, xmax=None, iter=False, safe=False, kind='log',**kwargs):
@@ -788,72 +822,4 @@ class Profile:
             else:
                 return retarray
 
-'''
-R,mass_t,dens_t,pot_t=np.loadtxt('stellarcomp.txt',unpack=True,comments='#')
-mms=GeneralModel(R,dens_t,rc=0.6,G='(kpc km2)/(M_sun s2)',Mmax=1e7)
-mmdm=GeneralModel(R,dens_t,rc=5,G='(kpc km2)/(M_sun s2)',Mmax=1e8)
 
-
-
-s={'type':2,'model':mms, 'npart':int(1e5)}
-dm={'type':1, 'model':mmdm,'npart':int(1e6)}
-N=int(1e6)
-
-a=NbodyModel([dm])
-
-p=a.generate()
-
-
-
-
-
-aa=Analysis(p,safe=False)
-
-print(aa.com(mq=50))
-
-print(aa.com(mq=50,type=[1]))
-aa.center(mq=50,single=True)
-print(aa.com(mq=50))
-print(aa.com(mq=50,type=[1]))
-
-
-
-#print(aa.inertia_tensor(mq=50))
-#print(aa.vinertia_tensor(mq=50))
-
-
-
-
-aa=Analysis(p)
-aa._set_intertia_tensor()
-'''
-'''
-print(np.max(p.Radius))
-r50,r70,r90,r98,r100=aa.qmass([50,70,90,98,100])
-print(aa.qmass([50,70,90,98]))
-print(aa.massw_mean(p.Pos[:],p.Mass[:]))
-print(aa.massw_mean(p.Vel[:],p.Mass[:]))
-print('Tutto',aa.com())
-#print('DM',aa.com(type=[1]))
-print('r50',aa.com(type=[1],maxrad=r50))
-print('r70',aa.com(type=[1],maxrad=r70))
-print('r90',aa.com(type=[1],maxrad=r90))
-print('r98',aa.com(type=[1],maxrad=r98))
-print('r100',aa.com(type=[1],maxrad=r100))
-
-print('r50',aa.com(maxrad=r50))
-print('r70',aa.com(maxrad=r70))
-print('r90',aa.com(maxrad=r90))
-print('r98',aa.com(maxrad=r98))
-print('r100',aa.com(maxrad=r100))
-
-print('r50',aa.com(mq=50))
-print('r70',aa.com(mq=70))
-print('r90',aa.com(mq=90))
-print('r98',aa.com(mq=98))
-print('r100',aa.com(mq=100))
-
-print(aa.tdyn(mq=50,type=[1]))
-print(aa.tdyn(mq=50,type=[2]))
-print(aa.tdyn(mq=50))
-'''
