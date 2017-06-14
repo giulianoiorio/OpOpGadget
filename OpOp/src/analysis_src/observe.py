@@ -83,7 +83,7 @@ class Observe():
         pos_sun=align_frame(self.oPos, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.dsung,
                     change_reference='x') #Cordd centered on the Sun
 
-        pos_obj_tmp=align_frame(pos_sun,pos_vec=self.align_vec,ax='z',cartesian=True,reference='r',zoff=self.dist_obj)
+        pos_obj_tmp=align_frame(pos_sun,pos_vec=self.align_vec,ax='z',cartesian=True,reference='r')
 
         pos_obj=np.zeros_like(pos_obj_tmp)
         pos_obj[:,0]=pos_obj_tmp[:,1]
@@ -124,7 +124,6 @@ class Observe():
         mub = -vel_obs[0] *Ks  /  distance
 
         return (mul,mub,vel_obs[2])
-
 
     def vobs(self,pos_sun_arr,vel_sun_arr):
 

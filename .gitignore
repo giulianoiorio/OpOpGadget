@@ -1,0 +1,14 @@
+*~
+*.swp
+*.pyc
+*_backup.py
+.project
+.pydevproject
+/gh-pages
+prototype
+tests
+varie
+herp
+build
+dist
+

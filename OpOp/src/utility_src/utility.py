@@ -65,5 +65,11 @@ def nparray_check(value_to_check):
     elif (isinstance(value_to_check,int) or isinstance(value_to_check,float)): return np.array([value_to_check,])
     else: raise TypeError('Non valid format, use an nparray, a list a tyle a int or a float')
 
+def find_symbol(strg):
 
+    for s in ('>=','<=','<','>','='):
+        a = strg.split(s)
+        if len(a)==2:
+            return (s,a[0],a[1])
+    raise ValueError('logic symbol error, it should be >, <, >=, <=, =')
 

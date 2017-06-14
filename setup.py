@@ -127,7 +127,7 @@ ext_modules = [df_c_ext, model_c_ext, genmod_c_ext] + cythonize(jsolv_c_ext) + c
 
 setup(
     name='OpOpGadget',
-    version='0.9',
+    version='0.9b',
     author='Giuliano Iorio',
     author_email='giuliano.iorio@unibo.it',
     url='http://github.com/iogiul/OpOp',

@@ -6,6 +6,7 @@ from astropy.constants import G as conG
 
 
 class NFWc(GeneralModel.GeneralModel):
+
     def __init__(self, Mc, rcore, mode='h', c=None, rt=None, rtnorm=False, c_par=200, z=0, h=0.67, R=None, rini=3e-5,
                  rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False,
                  **kwargs):

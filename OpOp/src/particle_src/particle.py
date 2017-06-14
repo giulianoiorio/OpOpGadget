@@ -4,6 +4,7 @@ __author__ = 'Giuliano'
 import numpy as np
 import math as mt
 from math import *
+from ..utility_src.utility import find_symbol
 
 class Header:
     '''
@@ -548,6 +549,11 @@ class Particles:
             self._fill_from_particle(p)
             self._make_header()
 
+        self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
+
+
+
+
     def _initialize_vars(self,n):
             self.Pos = np.zeros(shape=[n, 3], dtype=float)
             self.Vel = np.zeros(shape=[n, 3], dtype=float)
@@ -670,13 +676,9 @@ class Particles:
         self.Vel_tot=self.Vel_tot[sort_idx]
         self.Pcord=self.Pcord[sort_idx]
         self.Vcord=self.Vcord[sort_idx]
-
-
-
-
-
-
         self.order_var=key
+
+        return sort_idx
 
     def setrad(self):
         m=self.Pos*self.Pos #Matrix whit the pos coordinate**2
@@ -764,29 +766,180 @@ class Particles:
 
         print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
 
-    def __getitem__(self, id):
-        mess=""
+    def __getitem__(self, key):
+        """ Get method
 
-        line='\n'+"General".center(35,"*")+'\n'+'Id: '+ str(self.Id[id])+'|' + 'Type: ' + str(self.Type[id])+ '| ' + 'Mass:' + str(self.Mass[id]) +'\n'
-        mess+=line
+        :param key: int, slice, str or boolean array
+        :return: if key is int return a Particle object, if slice or boolena array return a  list of Particle objects, if
+        str return the quantities depending on the attribute par_dic
+        """
 
-        st="Coo system: "+self.Pcord[id]
-        line= "Position".center(50,'*')+'\n' + st.center(50," ") +'\n'+ 'X: ' + "{0:6.3f}".format(self.Pos[id][0]) + ' Y: ' + "{0:6.3f}".format(self.Pos[id][1]) + ' Z: ' + "{0:6.3f}".format(self.Pos[id][2]) + '\n'
-        rad=sqrt((self.Pos[id][0])**2+(self.Pos[id][1])**2+(self.Pos[id][2])**2)
-        if self.Radius[id]==None: line+= 'Radius: None'
-        else: line += 'Radius: ' + "{0:6.3f}".format(self.Radius[id])
-        line+= ' Radius_calc: ' + "{0:6.3f}".format(rad) + '\n'
-        mess+=line
+        if isinstance(key, int):
+            return self._getitem(key)
+        elif isinstance(key, slice):
+            return self._getslice(key)
+        elif isinstance(key,list) or isinstance(key,np.ndarray) or isinstance(key,tuple):
+            return self._getboolean(np.array(key))
+        elif isinstance(key,str):
+            return self._getdic(key)
+        else:
+            raise TypeError('Index must be int, not {}'.format(type(key).__name__))
 
-        st="Coo system: "+self.Vcord[id]
-        line= "Velocity".center(50,"*")+'\n' + st.center(50," ") +'\n'+ 'Vx: ' + "{0:6.3f}".format(self.Vel[id][0]) + ' Vy: ' + "{0:6.3f}".format(self.Vel[id][1]) + ' Vz: ' + "{0:6.3f}".format(self.Vel[id][2]) + '\n'
-        vel=sqrt((self.Vel[id][0])**2+(self.Vel[id][1])**2+(self.Vel[id][2])**2)
-        if self.Vel_tot[id]==None: line+= 'Veltot: None'
-        else: line += 'Veltot: ' + "{0:6.3f}".format(self.Vel_tot[id])
-        line+= ' Veltot_calc: ' + "{0:6.3f}".format(vel) + '\n'
-        mess+=line
+    def _getitem(self,id):
+        """Get a single element
 
-        return mess
+        :param id: int
+        :return:  a Particle element with the properties of the ith particle
+        """
+
+        pos=self.Pos[id]
+        vel=self.Vel[id]
+        mass=self.Mass[id]
+        type=self.Type[id]
+
+        part=Particle(id=id,type=type,pos=pos,vel=vel,mass=mass)
+
+        return part
+
+    def _getslice(self,idslice):
+        """Return a slice of Particles
+
+        :param idslice:  slice object
+        :return: a list of Particle objects sliced from the original one
+        """
+
+
+
+        if idslice.start is None: start=0
+        else: start=idslice.start
+
+        if idslice.stop is None: stop=self.n
+        else: stop=idslice.stop
+
+        if idslice.step is None: step=1
+        else: step=idslice.step
+
+        plist=[]
+
+        for i in range(start,stop,step):
+            plist.append(Particle(id=self.Id[i], type=self.Type[i], pos=self.Pos[i], vel=self.Vel[i], mass=self.Mass[i]))
+
+
+        return np.array(plist)
+
+    def _getboolean(self,bollist):
+        """Return a list of Particle objects where bollist is True
+
+        :param bollist: a boolean array with the dimension of Particles
+        :return:  a list of Particle objects
+        """
+
+        pos=self.Pos[bollist]
+        vel=self.Vel[bollist]
+        mass=self.Mass[bollist]
+        type=self.Type[bollist]
+        id=self.Id[bollist]
+
+        leni=len(id)
+
+        plist=np.zeros(leni,dtype=object)
+
+        for i in range(leni):
+            plist[i]=Particle(id=id[i],type=type[i],pos=pos[i],vel=vel[i],mass=mass[i])
+
+        return plist
+
+    def _getdic(self,strg):
+        """Return the attribute following the dic in par_dic
+
+        :param strg: strg
+        :return:  an array with attribute defined in strg
+        """
+
+        if strg.lower() in self.par_dic:
+            return self.par_dic[strg.lower()]
+        else:
+            raise ValueError('par %s not in par_dic'%strg)
+
+    def extract(self,*args,mode='and'):
+        """This method create a new Particles or Sky_Particles objects filtering the original one
+        with condition in args. If there are no particles that fulfill all the conditions the function return None.
+        The args need to be str object with the name of attribute, the condition (<,>,=,<=,>=) and the numerical value, e.g.:
+
+        'Id>10', 'type=2', 'mass>30'
+
+        All the condition
+
+        :param args: list of str
+        :return: a new Particles or Sky_Particles objects or None
+        """
+
+        if mode.lower()=='and': idx=np.ones(self.n,dtype=bool)
+        elif mode.lower()=='or':  idx=np.zeros(self.n,dtype=bool)
+        else: raise ValueError('Invalid mode, it hsould be and or or')
+
+        for conditions in args:
+
+            if isinstance(conditions,str)==False: raise ValueError('Condition need to be a str')
+
+            if mode.lower()=='and': idx=self._check_and(conditions,idx)
+            elif mode.lower()=='or': idx=self._check_or(conditions,idx)
+
+        truecount=np.sum(idx)
+
+        if truecount==0:
+
+            print('Warning 0 Filtered object.. returning None')
+            return None
+
+        part_list=self._getboolean(idx)
+
+        return Particles(p=part_list)
+
+
+    def _check_and(self,cond,idx):
+        """
+
+        :param cond: str object
+        :param idx: boolean numpy array
+        :return:
+        """
+
+        cond, key, num = find_symbol(cond)
+        check_list = self._getdic(key)
+        num = float(num)
+
+        if cond == '<=': idx *= check_list <= num
+        elif cond == '<': idx *= check_list < num
+        elif cond == '>=': idx *= check_list >= num
+        elif cond == '>': idx *= check_list > num
+        elif cond == '=': idx *= check_list == num
+        else: raise ('Invalid condition')
+
+        return idx
+
+    def _check_or(self, cond, idx):
+        """
+
+        :param cond: str object
+        :param idx: boolean numpy array
+        :return:
+        """
+
+        cond, key, num = find_symbol(cond)
+        check_list = self._getdic(key)
+        num = float(num)
+
+        if cond == '<=': idx += check_list <= num
+        elif cond == '<': idx += check_list < num
+        elif cond == '>=': idx += check_list >= num
+        elif cond == '>': idx += check_list > num
+        elif cond == '=': idx += check_list == num
+        else: raise ('Invalid condition')
+
+        return idx
+
+
 
 if __name__=='main':
     p1=Particle(pos=(1,0,0))
