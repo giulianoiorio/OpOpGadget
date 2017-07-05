@@ -2,18 +2,21 @@ import copy
 from ..io_src.LoadSnap import load_snap
 from ..particle_src.particle import  Particles
 from ..analysis_src.analysis import Analysis
+from ..particle_src.sky_particle import Sky_Particles
 from roteasy import align_frame
 from math import cos,sin,sqrt
 import numpy as np
 
 angle_to_rad=np.pi/180.
+rad_to_angle=180./np.pi
 Ks=1/4.74047 #from km/s  to  kpc mas  yr^-1
+Ksi=4.74047
 
 #TODO Automatically set all the quantities (mul, mub.. ecc)
 #TODO Special Particle class Observation
 class Observe():
 
-    def __init__(self,particles,psun=(8.5,0,0),vsun=(-10,5.25,7.17),vrot=223.37875188,type=2,align_mode='auto',align_vec=(), com='iter', mq=50,**kwargs):
+    def __init__(self,particles,type=None,**kwargs):
         """
 
         :param particles:
@@ -29,36 +32,48 @@ class Observe():
         elif isinstance(particles,Particles): p=particles
         else: raise IOError('Incorrect particles or filename')
 
+        if type is None:
+            type_cond=('type>1',) #take only observed stars
+        elif isinstance(type,int):
+            type_cond=('type=%i'%type,)
+        elif isinstance(type,list) or isinstance(type,tuple) or  isinstance(type,np.ndarray):
+            type_cond=[]
+            for ty in type:
+                type_cond.append('type=%i'%ty)
+        else:
+            raise ValueError('Invalid type')
 
-        self.psun=np.array(psun)
-        self.dsung=np.sqrt(np.sum(self.psun*self.psun))
-        self.vsun=np.array((vsun[0],vsun[1]+vrot,vsun[2]))
-        self.type=type
-        idx=p.Type==type
-        self.oPos=p.Pos[idx]
-        self.oVel=p.Vel[idx]
-        self.align_mode=align_mode
 
-        #set self.align_vec and self.dist_obj
-        self._set_align(p,align_mode,align_vec,com=com,mq=mq)
+        self.p=particles.extract(*type_cond,mode='or')
 
-        #rot Pos
-        self.sPos, self.obsPos=self._rotate_pos()
-        self.sVel, self.obsVel=self._rotate_vel()
 
-    def _set_align(self,p,align_mode,align_vec,com,mq):
+
+    def observe(self,psun=(8.0,0,0),vsun=(-10,5.25,7.17),vrot=220,align_mode='auto',align_vec=(), com='iter', mq=50,**kwargs):
+
+        self.set_sun_position(psun=psun,vsun=vsun,vrot=vrot) #Sun Position
+        self.set_align(align_mode, align_vec, com=com, mq=mq) #align
+
+        #rotate
+        pos_sun, pos_obs = self._rotate_pos()
+        vel_sun, vel_obs = self._rotate_vel()
+
+
+        s = self._make_sky_particles(pos_sun,pos_obs,vel_sun,vel_obs)
+
+        return s
+
+    def set_align(self,align_mode,align_vec,com,mq):
         #set align_vec=(x,y,z) of the object wrt to the Sun position
         #set dist_obj=distance of the object wrt to the Sun position
         if align_mode.lower()=='auto':
-            an=Analysis(particles=p, safe=False, auto_centre=False)
+            an=Analysis(particles=self.p, safe=False, auto_centre=False)
 
-            if com!='iter' or len(p.Id)<=10: pcom,vcom=an.com(mq,type=self.type)
-            else: pcom,vcom=an.comit(fac=0.975,limit_mass=mq,maxiter=500,type=self.type)
+            if com!='iter' or len(self.p.Id)<=10: pcom,vcom=an.com(mq)
+            else: pcom,vcom=an.comit(fac=0.975,limit_mass=mq,maxiter=500)
 
             #Pcom and Vcom are the position and velocity of the centre of mass of the system
             #Move to sun
-            print('pcom',pcom)
-            print('vcom',vcom)
+
             self.align_vec = np.array(  (self.psun[0]-pcom[0], pcom[1]-self.psun[1], pcom[2]-self.psun[2])  )
             self.dist_obj=np.sqrt(np.sum(self.align_vec*self.align_vec))
 
@@ -80,7 +95,7 @@ class Observe():
 
     def _rotate_pos(self):
 
-        pos_sun=align_frame(self.oPos, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.dsung,
+        pos_sun=align_frame(self.p.Pos, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.dsung,
                     change_reference='x') #Cordd centered on the Sun
 
         pos_obj_tmp=align_frame(pos_sun,pos_vec=self.align_vec,ax='z',cartesian=True,reference='r')
@@ -95,7 +110,7 @@ class Observe():
 
     def _rotate_vel(self):
 
-        vel_sun = align_frame(self.oVel, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.vsun[0],
+        vel_sun = align_frame(self.p.Vel, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.vsun[0],
                             yoff=self.vsun[1], zoff=self.vsun[2], change_reference='x')
 
         vel_obj_tmp = align_frame(vel_sun,pos_vec=self.align_vec,ax='z',cartesian=True,reference='r')
@@ -142,3 +157,129 @@ class Observe():
             vobs_tmp.append(self._vobs_core(poss,voss))
 
         return np.array(vobs_tmp)
+
+    def set_sun_position(self,psun=(8.0,0,0),vsun=(-10,5.25,7.17),vrot=220):
+
+        self.psun=np.array(psun)
+        self.dsung=np.sqrt(np.sum(self.psun*self.psun))
+        self.vsun=np.array((vsun[0],vsun[1]+vrot,vsun[2]))
+
+    def _sun_to_galactic(self,pos_sun):
+
+        dist=np.sqrt(np.sum(pos_sun*pos_sun,axis=1))
+        b=np.arcsin(pos_sun[:,2]/dist)*rad_to_angle
+        l=np.arctan2(pos_sun[:,1],pos_sun[:,0])*rad_to_angle
+
+        return l,b
+
+    #TODO documentation
+    def _make_sky_particles(self,pos_sun,pos_obs,vel_sun,vel_obs):
+
+        s = Sky_Particles(N=self.p.n)
+
+        s.Id[:]=self.p.Id
+        s.Type[:]=self.p.Type
+        s.Mass[:]=self.p.Mass
+        s.distance[:] = np.sqrt(np.sum(pos_sun * pos_sun, axis=1))
+
+        s.Pos[:, :] = pos_obs
+        s.Vel[:, :] = vel_obs
+
+        vvlos = self.vobs(pos_sun, vel_sun)
+
+        s.Vlos[:]=vvlos[:,2]
+        s.mul[:]=vvlos[:,0]
+        s.mub[:]=vvlos[:,1]
+        s.Vl[:]=s.mul * s.distance * Ksi
+        s.Vb[:]=s.mub * s.distance * Ksi
+        s.l[:],s.b[:]=self._sun_to_galactic(pos_sun)
+
+        return s
+
+    #TODO documentation
+    #TODO minimisation alg
+    def locate_sun(self, dsun=8.0,zsun=0, N=1000, l_obs=None, b_obs=None, d_obs=None, mul_obs=None, mub_obs=None, vlos_obs=None, com='iter', mq=50, set_sun=True):
+
+        if ( l_obs is None ) and (b_obs is None) and (d_obs is None) and (mul_obs is None) and (mub_obs is None) and (vlos_obs is None):
+            print('Warning all parameters set to None in locate_sun')
+            return None
+
+        if l_obs is None: l_obs=np.nan
+        if b_obs is None: b_obs=np.nan
+        if d_obs is None: d_obs=np.nan
+        if mul_obs is None: mul_obs=np.nan
+        if mub_obs is None: mub_obs=np.nan
+        if vlos_obs is None: vlos_obs=np.nan
+
+
+        an = Analysis(particles=self.p, safe=False, auto_centre=False)
+
+        if com != 'iter' or len(self.p.Id) <= 10:
+            pcom, vcom = an.com(mq)
+        else:
+            pcom, vcom = an.comit(fac=0.975, limit_mass=mq, maxiter=500)
+
+        pcom=((pcom[0],),(pcom[1],),(pcom[2],))
+        vcom = ((vcom[0],), (vcom[1],), (vcom[2],))
+
+        x=np.linspace(0,dsun,N)
+        y=np.sqrt(dsun*dsun - x*x)
+
+        llist=np.zeros(N,dtype=float)
+        blist = np.zeros(N, dtype=float)
+        dlist = np.zeros(N, dtype=float)
+        vloslist = np.zeros(N, dtype=float)
+        mllist = np.zeros(N, dtype=float)
+        mblist = np.zeros(N, dtype=float)
+
+
+        for i in range(N):
+
+
+            psun=(x[i], y[i], zsun)
+
+            #l and b of com
+            pcom_sun=align_frame(pcom, pos_vec=psun, ax='x', cartesian=True, reference='l', xoff=dsun,
+                        change_reference='x',unpacked=True)
+            dcom_sun=sqrt(pcom_sun[0,0]*pcom_sun[0,0]+pcom_sun[0,1]*pcom_sun[0,1]+pcom_sun[0,2]*pcom_sun[0,2])
+
+            l, b = self._sun_to_galactic(pcom_sun)
+            if l < 0: l += 360
+
+
+            llist[i]=(l[0] - l_obs ) / l_obs
+            blist[i]=(b[0] - b_obs) / b_obs
+            dlist[i]=(dcom_sun - d_obs) / d_obs
+
+            #Vlos mul and mub of com
+            vel_sun = align_frame(vcom, pos_vec=psun, ax='x', cartesian=True, reference='l',
+                                  xoff=self.vsun[0],
+                                  yoff=self.vsun[1], zoff=self.vsun[2], change_reference='x',unpacked=True)
+
+            vel_obs = align_frame( vel_sun, pos_vec=(
+                                   l, b), ax='z',cartesian=False, spherical=True,reference='r')
+
+
+
+            mul = vel_obs[0,1] * Ks / dcom_sun
+            mub = -vel_obs[0,0] * Ks / dcom_sun
+            vlos= vel_obs[0,2]
+
+            mllist[i]=(mul -mul_obs ) /mul_obs
+            mblist[i]=(mub -mub_obs ) /mub_obs
+            vloslist[i]=(vlos - vlos_obs ) / vlos_obs
+
+
+        final_diff=np.abs(np.vstack((llist,blist,dlist,mllist,mblist,vloslist)).T)
+
+        prun=np.nanmax(final_diff,axis=1)
+        idx_max=np.argmin(prun)
+        xbest=x[idx_max]
+        ybest=y[idx_max]
+        diff_best=final_diff[idx_max]
+
+        if set_sun:
+            self.set_sun_position(psun=(xbest,ybest,zsun))
+
+        return x[idx_max], y[idx_max], zsun, diff_best
+
