@@ -127,16 +127,16 @@ class NFWc(GeneralModel.GeneralModel):
             rtscale=0.1*self.rt
             super(NFWc, self).__init__(R=R, dens=self._adens_not, rc=self.rscale, Ms=self.Mc, rs=self.rcp, G=G, use_c=use_c,
                                         denorm=denorm)
-            print('Mass NFWc no trunc', self.mass(0.1 * self.rt))
+            #print('Mass NFWc no trunc', self.mass(0.1 * self.rt))
             mass_scale=self.mass(rtscale)
             super(NFWc, self).__init__(R=R, dens=self._adens, rc=self.rscale, Ms=mass_scale, rs=rtscale, G=G, use_c=use_c,
                                         denorm=denorm)
-            print('Mass NFWc fin', self.mass(0.1 * self.rt))
+            #print('Mass NFWc fin', self.mass(0.1 * self.rt))
         else:
             super(NFWc, self).__init__(R=R, dens=self._adens, rc=self.rscale, Ms=self.Mc, rs=self.rcp, G=G, use_c=use_c,
                                        denorm=denorm)
 
-            print('Mass NFWc_trunc', self.mass(0.1 * self.rt))
+            #print('Mass NFWc_trunc', self.mass(0.1 * self.rt))
 
     def _adens(self,x):
 
