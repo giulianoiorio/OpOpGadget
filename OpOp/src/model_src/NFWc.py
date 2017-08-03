@@ -111,11 +111,10 @@ class NFWc(GeneralModel.GeneralModel):
         if rt is None:
             self.rt=2*R[-1]
         elif rtnorm:
-            if rt < 1.1: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
+            #if rt < 1.1: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
             self.rt = self.rcp * rt
         else:
-            if rt < 1.1 * self.rcp: print(
-                'Warning the truncation radius is lower that 1.1 the virial radius of the halo')
+            #if rt < 1.1 * self.rcp: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
             self.rt = rt
 
 
