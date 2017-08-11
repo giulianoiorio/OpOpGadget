@@ -176,11 +176,11 @@ class NFW(Tbetamodel):
 
         if rt is None: pass
         elif rtnorm:
-            if rt<1.1: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
+            #if rt<1.1: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
             rt=self.rcp*rt
         else:
-            if rt<1.1*self.rcp: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
-
+            #if rt<1.1*self.rcp: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
+            pass
 
 
         #call Tbeta-Model
