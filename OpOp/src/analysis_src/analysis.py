@@ -8,7 +8,7 @@ from ..particle_src.particle import  Particles
 from ..io_src.LoadSnap import load_snap
 from ..utility_src.utility import nparray_check, Continue_check
 from ..grid_src.grid import grid
-
+from .profile import Profile
 
 
 class Analysis:
