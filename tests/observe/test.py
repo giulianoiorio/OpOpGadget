@@ -1,6 +1,6 @@
 from OpOp.particle import Particle,Particles, Sky_Particles
 from OpOp.io import load_snap
-from OpOp.analysis import Observe
+from OpOp.analysis import Observe, Profile
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -23,8 +23,8 @@ s0=o0.observe()
 #print(a)
 
 fig=plt.figure(figsize=(10,5))
-ax1=fig.add_subplot(121)
-ax2=fig.add_subplot(122)
+ax1=fig.add_subplot(111)
+a#x2=fig.add_subplot(122)
 
 
 ax1.scatter(s.Pos[:,0],s.Pos[:,1],s=0.1)
@@ -32,12 +32,16 @@ ax1.set_title('T %.2f Gyr'%s.header['Time'])
 ax1.set_xlim(-10,10)
 ax1.set_ylim(-10,10)
 
-ax2.scatter(s0.Pos[:,0],s0.Pos[:,1],s=0.1)
-ax2.set_title('T %.2f Gyr'%s0.header['Time'])
-ax2.set_xlim(-10,10)
-ax2.set_ylim(-10,10)
 
-plt.show()
+#plt.show()
+
+print(isinstance(s,Particles))
+print(isinstance(s,Sky_Particles))
+print(isinstance(p,Particles))
+print(isinstance(p,Sky_Particles))
+
+prof=Profile(particles=s)
+print(prof.Vlos)
 
 '''
 print(o.align_vec)

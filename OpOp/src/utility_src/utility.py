@@ -3,6 +3,7 @@ __author__ = 'Giuliano'
 import os
 import time
 import numpy as np
+import astropy.io.fits as ft
 
 def Continue_check(warning):
     valid_choice = {"yes": True, "y": True, "ye": True,
@@ -73,3 +74,131 @@ def find_symbol(strg):
             return (s,a[0],a[1])
     raise ValueError('logic symbol error, it should be >, <, >=, <=, =')
 
+
+def make_fits(dict, outname=None, header_key={}):
+    '''
+    Make a fits table from a numpy array
+    args must be dictionary containing the type  and the columnf of the table, e.g.
+    {'l':(col1,'D'),'b':(col2,'D')}
+    '''
+
+    col = []
+    for field in dict:
+        if len(dict[field]) == 2:
+            format = dict[field][1]
+            array = dict[field][0]
+        else:
+            format = 'D'
+            array = dict[field]
+
+        col.append(ft.Column(name=field, format=format, array=array))
+
+    cols = ft.ColDefs(col)
+    tab = ft.BinTableHDU.from_columns(cols)
+    for key in header_key:
+        item = header_key[key]
+        if item is None:
+            tab.header[key] = str(item)
+        else:
+            tab.header[key] = item
+
+    if outname is not None: tab.writeto(outname, clobber=True)
+
+    return tab
+
+
+def stat_error(y, yerr, err_type='prop', n=1000, bootstrap_error=False, vsys_fix=None):
+    """
+    """
+
+    N = len(y)
+    err_type == err_type.lower()
+
+    if err_type[0] == 'b' or err_type[0] == 'j':
+
+        if err_type[0] == 'b':
+
+            if bootstrap_error:
+                yerr_boot = yerr
+            else:
+                yerr_boot = None
+            data_sample = bootstrap_resampling(y, nsample=n, dataerr=yerr_boot)
+
+        elif err_type[0] == 'j':
+
+            data_sample = jackknife_resampling(y)
+
+        if vsys_fix is None:
+
+            mean_list = np.mean(data_sample, axis=1)
+            std_list = np.std(data_sample, axis=1)
+
+            mean = np.mean(mean_list)
+            std = np.mean(std_list)
+
+            mean_error = np.std(mean_list)
+            std_error = np.std(std_list)
+
+        else:
+
+            mean = vsys_fix
+            mean_error = np.nan
+
+            std_list = std_fix(data_sample, mean, axis=1)
+            std = np.mean(std_list)
+            std_error = np.std(std_list)
+
+
+    else:
+        y = np.array(y)
+        yerr = np.array(yerr)
+
+        if vsys_fis is None:
+
+            mean = np.mean(y)
+            std = np.std(y)
+
+            mean_error = 1. / N * np.sqrt((np.sum(yerr * yerr)))
+
+        else:
+
+            mean = vsys_fix
+            mean_error = np.nan
+
+            std = std_fix(y, mean)
+
+    if err_type[0] == 'p':
+        diff = y - mean
+        std_err_a = np.sum(diff * diff * yerr * yerr)
+
+        sumdiff = np.sum(diff)
+        std_err_b = sumdiff * sumdiff * mean_error * mean_error
+
+        std_error = (1 / (N * std)) * np.sqrt(std_err_a + std_err_b)
+
+    elif err_type[0] == 'g':
+        err_mean = np.mean(yerr)
+        sigma_tot2 = std * std + err_mean * err_mean
+
+        deltavar = np.sqrt(2 * sigma_tot2 * sigma_tot2) / N
+        std_error = deltavar / (2 * std)
+
+    return mean, mean_error, std, std_error
+
+
+def bootstrap_resampling(data, fraction=1, dataerr=None, nsample=1):
+    N = len(data)
+
+    N_resample = int(N * fraction)
+
+    if dataerr is not None:
+        w = 1 / dataerr
+        w = w / np.sum(w)
+    else:
+        w = None
+
+    data_resample = np.random.choice(data, size=N_resample * nsample, replace=True, p=w)
+
+    out = data_resample.reshape((nsample, N_resample))
+
+    return out

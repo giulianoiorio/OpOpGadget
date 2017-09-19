@@ -1,7 +1,10 @@
 from .particle import Particles, Particle
-from math import sqrt, cos, sin, acos, asin,atan2
+from math import sqrt, cos, sin,  asin,atan2
+from ..utility_src.utility import make_fits
 import numpy as np
 from roteasy import rotate_frame, align_frame
+import astropy.units as u
+from astropy.coordinates import SkyCoord
 
 angle_to_rad=np.pi/180.
 rad_to_angle=180./np.pi
@@ -23,30 +26,39 @@ class Sky_Particle(Particle):
         :param id:
         :param type:
         :param mass:
-        :param centre_loc:
+        :param centre_loc: if not None, align the los for Pos e Vel  to this object. Centre loc should be in coordintate l,b
         """
 
         self.distance=distance #from the Sun
         self.l=l
         self.b=b
+        gc=SkyCoord(l=l * u.degree, b=b * u.degree, frame='galactic')
+        gc=gc.fk5
+        self.ra=gc.ra.value
+        self.dec=gc.dec.value
         self.mul=mul
         self.mub=mub
         self.Vlos=vlos
         self.Vl= mul * Ks * distance
         self.Vb= mub * Ks *distance
 
-        self.vlos=self.Vlos
-        self.vl=self.Vl
-        self.vb=self.Vb
+
+        #self.vlos=self.Vlos
+        #self.vl=self.Vl
+        #self.vb=self.Vb
 
         #set Pos
         pos=self._calculate_pos_sky(centre_loc=centre_loc)
+        self.Pos=pos
 
         #set Vel
         vel=self._calculate_vel_sky(centre_loc=centre_loc)
-
+        self.Vel=vel
 
         super(Sky_Particle,self).__init__(id=id,type=type,pos=pos,vel=vel,mass=mass)
+        self.xi=np.arctan(self.Pos[0]/self.distance)*rad_to_angle*3600 #arcsec
+        self.eta=np.arctan(self.Pos[1]/self.distance)*rad_to_angle*3600 #arcsec
+
 
         if centre_loc is None:
             self.Pcord = "Cen. on Sun, X-toward Gal centre, Y-toward Sun motion"
@@ -90,7 +102,7 @@ class Sky_Particle(Particle):
 
     def _calculate_vel_sky(self,centre_loc=None):
 
-        vel = ((self.vl,), (self.vb,), (self.vlos,))
+        vel = ((self.Vl,), (self.Vb,), (self.Vlos,))
 
         if centre_loc is None: #Calculate with respect to the sun
             frot=-(90+self.l) #to align x with x #around y
@@ -146,7 +158,7 @@ class Sky_Particle(Particle):
         st = "Coo system: Galactic"
         print(st.center(50, " "))
         print('l: ', self.l, 'b: ', self.b, 'distance: ', self.distance)
-        print('Vlos:', self.vlos, 'mul (Vl): %.5f (%.3f)'%(self.mul,self.vl), 'mub (Vb): %.5f (%.3f)'%(self.mub,self.vb))
+        print('Vlos:', self.Vlos, 'mul (Vl): %.5f (%.3f)'%(self.mul,self.Vl), 'mub (Vb): %.5f (%.3f)'%(self.mub,self.Vb))
 
     def __str__(self):
         mess = ""
@@ -158,7 +170,7 @@ class Sky_Particle(Particle):
         st = "Coo system: Galactic"
         line = "Sky".center(50, '*') + '\n' + st.center(50, " ") + '\n' + 'l: ' + str(self.l) + ' b: ' + str(
             self.b) + '\n'
-        line += 'Vlos: ' + str(self.vlos) + ' mul(Vl): %.5f(%.3f)'%(self.mul,self.vl) + ' mub(Vb): %.5f(%.3f)'%(self.mub,self.vb)  + '\n'
+        line += 'Vlos: %.3f'%(self.Vlos) +  ' mul(Vl): %.5f(%.3f)'%(self.mul,self.Vl) + ' mub(Vb): %.5f(%.3f)'%(self.mub,self.Vb)  + '\n'
         mess += line
 
 
@@ -214,8 +226,12 @@ class Sky_Particles(Particles):
     def _initialize_vars(self,n):
 
         super(Sky_Particles,self)._initialize_vars(n)
+        self.xi= np.zeros(n,dtype=float)
+        self.eta= np.zeros(n,dtype=float)
         self.l  = np.zeros(n, dtype=float)
         self.b  = np.zeros(n, dtype=float)
+        self.ra = np.zeros(n, dtype=float)
+        self.dec = np.zeros(n, dtype=float)
         self.Vlos = np.zeros(n, dtype=float)
         self.Vb  = np.zeros(n, dtype=float)
         self.Vl  = np.zeros(n, dtype=float)
@@ -226,8 +242,12 @@ class Sky_Particles(Particles):
     def _fill_from_particle(self,p):
         for i in range(self.n):
                 #Sky
+                self.xi = p[i].xi
+                self.eta = p[i].eta
                 self.l[i]=p[i].l
                 self.b[i] = p[i].b
+                self.ra[i] = p[i].ra
+                self.dec[i] = p[i].dec
                 self.Vlos[i] = p[i].Vlos
                 self.Vl[i] = p[i].Vl
                 self.Vb[i] = p[i].Vb
@@ -280,8 +300,12 @@ class Sky_Particles(Particles):
         elif key=='Vl':       sort_idx= np.argsort(self.Vl)
         elif key=='Vb':       sort_idx= np.argsort(self.Vb)
 
+        self.xi = self.xi[sort_idx]
+        self.eta = self.eta[sort_idx]
         self.l = self.l[sort_idx]
         self.b = self.b[sort_idx]
+        self.ra = self.ra[sort_idx]
+        self.dec = self.dec[sort_idx]
         self.distance = self.distance[sort_idx]
         self.Vlos = self.Vlos[sort_idx]
         self.Vl = self.Vl[sort_idx]
@@ -370,3 +394,80 @@ class Sky_Particles(Particles):
 
         return plist
 
+    def extract_sample(self, Nsample,  rad_max=None, position_err=None, velocity_err=None, err_distibution='uniform', save_txt=None, save_fits=None):
+        """
+
+        :param Nsample:
+        :param rad_max:
+        :param position_err:
+        :param velocity_err:
+        :param err_distibution:
+        :param save_txt:
+        :param save_fits:
+        :return:
+        """
+        Noriginal=len(self.l)
+
+        rad = np.sqrt(self.Pos[:, 0] * self.Pos[:, 0] + self.Pos[:, 1] * self.Pos[:, 1])
+
+        if rad_max is None:
+            Nrad=Noriginal
+            id_rad=self.Id[:]
+        else:
+            idx_rad=rad<=rad_max
+            Nrad=np.sum(idx_rad)
+            id_rad=self.Id[idx_rad]
+
+        ret_arr=np.zeros(shape=(Nrad,13))
+        ret_arr[:,0]=self.l[idx_rad]
+        ret_arr[:,1]=self.b[idx_rad]
+        ret_arr[:,2]=self.ra[idx_rad]
+        ret_arr[:,3]=self.dec[idx_rad]
+        ret_arr[:,4]=self.xi[idx_rad]
+        ret_arr[:,5]=self.eta[idx_rad]
+        ret_arr[:,6]=rad[idx_rad]
+        ret_arr[:,7]=self.mul[idx_rad]
+        ret_arr[:,8]=self.mub[idx_rad]
+        ret_arr[:,9]=self.Vlos[idx_rad]
+        ret_arr[:,11]=self.distance[idx_rad]
+        ret_arr[:,12]=id_rad
+
+        idx_extract=np.random.choice(Nrad, Nsample, replace=False)
+        Nfinal=len(idx_extract)
+        ret_arr=ret_arr[idx_extract,:]
+
+        if velocity_err is None:
+            pass
+        elif isinstance(velocity_err,int) or isinstance(velocity_err,float):
+            ret_arr[:,9]=np.random.normal(ret_arr[:,9],velocity_err)
+            ret_arr[:,10]=velocity_err
+        elif len(velocity_err,2):
+            if err_distibution[0].lower()=='u':
+                ret_arr[:,10]=np.random.uniform(velocity_err[0],velocity_err[1],size=Nfinal)
+            elif err_distibution[0].lower()=='g':
+                ret_arr[:,10]=np.random.normal(velocity_err[0],velocity_err[1],size=Nfinal)
+            else:
+                raise NotImplementedError('err distrbution not implemented')
+
+            ret_arr[:,9]=np.random,normal(ret_arr[:,9],ret_arr[:,10])
+
+        else:
+
+            raise NotImplementedError('Vel error needs to be None, a float a int, a tule ora a list')
+
+        if save_txt is not None:
+
+            np.savetxt(save_txt,ret_arr, fmt='%.4f',header='0-l[deg], 1-b[deg], 2-ra[deg], 3-dec[deg], 4-xi[asec], 5-eta[asec], 6-rc[kpc], 7-mul[mas/yr] 8-mub[mas/yr] 9-Vlos[km/s] 10-eVlos[km/s] 11-dist[kpc] 12-id')
+
+        if save_fits is not None:
+
+            dic={}
+            idl=('l','b','ra','dec','xi','eta','rc','mul','mub','Vlos','eVlos','dist','id')
+            tpl=('D','D','D','D','D','D','D','D','D','D','D','D','J')
+            for i in range(ret_arr.shape[1]):
+                dic[idl[i]]=(ret_arr[:,i],tpl[i])
+
+            make_fits(dic, outname=save_fits)
+
+
+        return ret_arr

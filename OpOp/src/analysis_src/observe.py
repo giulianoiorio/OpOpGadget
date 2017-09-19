@@ -2,18 +2,21 @@ import copy
 from ..io_src.LoadSnap import load_snap
 from ..particle_src.particle import  Particles
 from ..analysis_src.analysis import Analysis
-from ..particle_src.sky_particle import Sky_Particles
+from ..particle_src.sky_particle import Sky_Particles, Sky_Particle
 from roteasy import align_frame
 from math import cos,sin,sqrt
 import numpy as np
+import astropy.units as u
+from astropy.coordinates import SkyCoord
 
 angle_to_rad=np.pi/180.
 rad_to_angle=180./np.pi
 Ks=1/4.74047 #from km/s  to  kpc mas  yr^-1
 Ksi=4.74047
 
+#TODO Set xi, nu, ra, dec, rad (with respect to the COM)
+#TODO Give in input after the observation the feature of the COM
 #TODO Automatically set all the quantities (mul, mub.. ecc)
-#TODO Special Particle class Observation
 class Observe():
 
     def __init__(self,particles,type=None,**kwargs):
@@ -27,6 +30,7 @@ class Observe():
         :param align_mode: auto, cartesian or sky
         :param align_vec: if auto align to the object centre of mass it is not used, if cartesian (xg,yg,zg) if sky (l,b,dist from Sun)
         """
+
         #Check input
         if 'filename' in kwargs: p=load_snap(kwargs['filename'])
         elif isinstance(particles,Particles): p=particles
@@ -44,23 +48,33 @@ class Observe():
             raise ValueError('Invalid type')
 
 
+        self.header=p.header
         self.p=particles.extract(*type_cond,mode='or')
-
+        #centre is  a Sky particle
+        self.centre=Sky_Particle(type=9,mass=np.sum(self.p.Mass[:]),id=0)
 
 
     def observe(self,psun=(8.0,0,0),vsun=(-10,5.25,7.17),vrot=220,align_mode='auto',align_vec=(), com='iter', mq=50,**kwargs):
 
         self.set_sun_position(psun=psun,vsun=vsun,vrot=vrot) #Sun Position
-        self.set_align(align_mode, align_vec, com=com, mq=mq) #align
+        align_pos, align_vel=self.set_align(align_mode, align_vec, com=com, mq=mq) #align
 
         #rotate
-        pos_sun, pos_obs = self._rotate_pos()
-        vel_sun, vel_obs = self._rotate_vel()
+        pos_sun, pos_obs, pcentre_sun, pcentre_obs = self._rotate_pos()
+        vel_sun, vel_obs, vcentre_sun, vcentre_obs = self._rotate_vel(vcentre=align_vel)
 
 
+        c = self._make_centre(pcentre_sun,vcentre_sun)
+        c.Pos[:]=align_pos
+        c.Vel[:]=align_vel
+        c.Pcord = "Cen. on GC, X-toward Sun, Y-toward Sun motion"
+        c.Vcord = "Cen. on GC, X-toward Sun, Y-toward Sun motion"
+        c.setRadius()
+        c.setVel()
         s = self._make_sky_particles(pos_sun,pos_obs,vel_sun,vel_obs)
+        self.centre=c
 
-        return s
+        return s, c
 
     def set_align(self,align_mode,align_vec,com,mq):
         #set align_vec=(x,y,z) of the object wrt to the Sun position
@@ -70,6 +84,9 @@ class Observe():
 
             if com!='iter' or len(self.p.Id)<=10: pcom,vcom=an.com(mq)
             else: pcom,vcom=an.comit(fac=0.975,limit_mass=mq,maxiter=500)
+
+            align_pos=pcom
+            align_vel=vcom
 
             #Pcom and Vcom are the position and velocity of the centre of mass of the system
             #Move to sun
@@ -81,6 +98,9 @@ class Observe():
             self.align_vec = np.array(  (self.psun[0]-align_vec[0], align_vec[1]-self.psun[1], align_vec[2]-self.psun[2])  )
             self.dist_obj = np.sqrt(np.sum(self.align_vec * self.align_vec))
 
+            align_pos=align_vec
+            align_vel=np.array([0,0,0])
+
         elif align_mode.lower()=='sky':
             l=align_vec[0]
             b=align_vec[1]
@@ -89,9 +109,12 @@ class Observe():
             x=d*cos(b*angle_to_rad)*cos(l*angle_to_rad)
             y=d*cos(b*angle_to_rad)*sin(l*angle_to_rad)
             z=d*sin(b*angle_to_rad)
-            self.align_vec=np.array(x,y,z)
+            self.align_vec=np.array([x,y,z])
 
-        return 0
+            align_pos=np.array([x,y,z])
+            align_vel=np.array([0,0,0])
+
+        return align_pos,align_vel
 
     def _rotate_pos(self):
 
@@ -106,9 +129,15 @@ class Observe():
         pos_obj[:,2]=pos_obj_tmp[:,2]
         #x-l, y-b, z-r, centred on the object com
 
-        return pos_sun, pos_obj
 
-    def _rotate_vel(self):
+        align_vec_gal=[[self.psun[0]-self.align_vec[0], self.align_vec[1]-self.psun[1], self.align_vec[2]-self.psun[2]],]
+        pcentre_sun=align_frame(align_vec_gal, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.dsung,
+                    change_reference='x') #Cordd centered on the Sun
+        pcentre_obs=align_frame(pcentre_sun,pos_vec=self.align_vec,ax='z',cartesian=True,reference='r')
+
+        return pos_sun, pos_obj, pcentre_sun, pcentre_obs
+
+    def _rotate_vel(self,vcentre=None):
 
         vel_sun = align_frame(self.p.Vel, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.vsun[0],
                             yoff=self.vsun[1], zoff=self.vsun[2], change_reference='x')
@@ -120,7 +149,15 @@ class Observe():
         vel_obj[:,1]=-vel_obj_tmp[:,0]
         vel_obj[:,2]=vel_obj_tmp[:,2]
 
-        return vel_sun, vel_obj
+        if vcentre is not None:
+            vcentre_sun=align_frame([vcentre,], pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.vsun[0],
+                            yoff=self.vsun[1], zoff=self.vsun[2], change_reference='x')
+            vcentre_obs = align_frame(vcentre_sun, pos_vec=self.align_vec, ax='z', cartesian=True, reference='r')
+        else:
+            vcentre_sun=np.array([0,0,0])
+            vcentre_obs=np.array([0,0,0])
+
+        return vel_sun, vel_obj, vcentre_sun, vcentre_obs
 
     def _vobs_core(self,pos_sun,vel_sun):
         """
@@ -130,6 +167,7 @@ class Observe():
         :param vel_sun_arr:  (velocity in sun.coordiantes )  (VXs,VYs,VZs)
         :return:
         """
+
 
         distance=sqrt(pos_sun[0]*pos_sun[0]+pos_sun[1]*pos_sun[1]+pos_sun[2]*pos_sun[2])
         vel_obs = align_frame(vel_sun, pos_vec=pos_sun, ax='z', cartesian=True, reference='r')
@@ -143,9 +181,8 @@ class Observe():
     def vobs(self,pos_sun_arr,vel_sun_arr):
 
         if isinstance(pos_sun_arr,float) or isinstance(pos_sun_arr,int):
-            return np.array(self._vobs_core(pos_sun_arr,vel_sun_arr))
-        elif len(pos_sun_arr)==1:
-            return np.array(self._vobs_core(pos_sun_arr, vel_sun_arr))
+            raise ValueError()
+
 
 
         vobs_tmp=[]
@@ -193,8 +230,49 @@ class Observe():
         s.Vl[:]=s.mul * s.distance * Ksi
         s.Vb[:]=s.mub * s.distance * Ksi
         s.l[:],s.b[:]=self._sun_to_galactic(pos_sun)
+        gc=SkyCoord(l=s.l * u.degree, b=s.b * u.degree, frame='galactic')
+        gc=gc.fk5
+        s.ra[:]=np.array(gc.ra.value)
+        s.dec[:]=np.array(gc.dec.value)
+        s.xi[:] = np.arctan(s.Pos[:,0]/s.distance[:])*rad_to_angle*3600
+        s.eta[:] = np.arctan(s.Pos[:,1]/s.distance[:])*rad_to_angle*3600
+        s.header=self.header
 
         return s
+
+    def _make_centre(self,pcentre_sun,vcentre_sun):
+
+        centre = Sky_Particle(type=9,mass=np.sum(self.p.Mass), id=0)
+
+        dsun = np.sqrt(np.sum(pcentre_sun[0]*pcentre_sun[0]))
+        b = np.arcsin(pcentre_sun[:, 2] / dsun)*rad_to_angle
+        l = np.arctan2(pcentre_sun[:, 1], pcentre_sun[:, 0])*rad_to_angle
+        if l < 0: l = 360 + l
+        centre.l=l
+        centre.b=b
+        gc=SkyCoord(l=l * u.degree, b=b * u.degree, frame='galactic')
+        gc=gc.fk5
+        centre.ra=gc.ra.value
+        centre.dec=gc.dec.value
+        centre.distance=dsun
+
+
+
+        centre_vvlos = self.vobs(np.array(pcentre_sun), np.array(vcentre_sun))
+        centre_mul, centre_mb, centre_Vlos = centre_vvlos[0]
+        centre.mul=centre_mul
+        centre.mub=centre_mb
+        centre.Vlos=centre_Vlos
+
+        centre.Vl= centre_mul * dsun * Ksi
+        centre.Vb= centre_mb * dsun * Ksi
+
+        centre.Pos=pcentre_sun[0]
+        centre.Vel=vcentre_sun[0]
+
+
+        return  centre
+
 
     #TODO documentation
     #TODO minimisation alg
@@ -282,4 +360,5 @@ class Observe():
             self.set_sun_position(psun=(xbest,ybest,zsun))
 
         return x[idx_max], y[idx_max], zsun, diff_best
+
 

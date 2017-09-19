@@ -5,6 +5,7 @@ from scipy.linalg import eigh
 import copy
 
 from ..particle_src.particle import  Particles
+from ..particle_src.sky_particle import Sky_Particles
 from ..io_src.LoadSnap import load_snap
 from ..grid_src.grid import grid
 #from .analysis import Analysis
@@ -570,6 +571,7 @@ class Profile:
         if 'filename' in kwargs: part=load_snap(kwargs['filename'])
         elif isinstance(particles,Particles): part=particles
         else: raise IOError('Incorrect particles or filename')
+        self.issky = False
 
         #center
         if center==True:
@@ -605,8 +607,25 @@ class Profile:
             self.radcyl=None#np.sqrt(p.Pos[idx_type,ax1]**2+p.Pos[idx_type,ax2]**2)
             self.velpro=None#p.Vel[idx_type,ax3]
 
+            if isinstance(p,Sky_Particles):
+                self.Vlos=p.Vlos[idx_type]
+                self.Vl=p.Vl[idx_type]
+                self.Vb=p.Vb[idx_type]
+                self.l=p.l[idx_type]
+                self.b=p.b[idx_type]
+                self.distance=p.distance[idx_type]
+
         else: raise ValueError('type need to be None or an integer')
 
+
+        if isinstance(p,Sky_Particles):
+            self.Vlos=p.Vlos
+            self.Vl=p.Vl
+            self.Vb=p.Vb
+            self.l=p.l
+            self.b=p.b
+            self.distance=p.distance
+            self.issky=True
 
 
         #define grid
@@ -690,6 +709,8 @@ class Profile:
                     return retarray
 
         else:
+
+
             #self.pax=pax
             if pax=='z':
                 ax1=0
@@ -742,40 +763,53 @@ class Profile:
             else:
                 return retarray
 
-    def vdisp2d(self,pax='z',ret=True,func=True,s=0):
+    def vdisp2d(self,pax='z',ret=True,func=True,s=0,k=2):
 
         if (self.cvdisp2d is None) or (self.paxvdisp2d!=pax):
 
-            if pax=='z':
-                ax1=0
-                ax2=1
-                ax3=2
-            elif pax=='y':
-                ax1=0
-                ax2=2
-                ax3=1
-            elif pax=='x':
-                ax1=1
-                ax2=2
-                ax3=0
-            self.paxvdisp2d=pax
-            self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2)
-            self.cvdisp2d=np.zeros(len(self.grid.gedge)-1)
+            if pax=='obs':
+
+                if self.issky:
+                    self.radcyl = np.sqrt(self.pos[:, 0] ** 2 + self.pos[:, 1] ** 2)  # set R
+                    vel_proj = self.Vlos[:] #set Vproj
+                else:
+                    raise AttributeError('obs profile is available only for object of the sky particles class')
+
+            else:
+
+                if pax=='z':
+                    ax1=0
+                    ax2=1
+                    ax3=2
+                elif pax=='y':
+                    ax1=0
+                    ax2=2
+                    ax3=1
+                elif pax=='x':
+                    ax1=1
+                    ax2=2
+                    ax3=0
+
+                self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2) #set R
+                vel_proj=self.vel[:,ax3] #set Vproj
+
+            self.paxvdisp2d=pax #set pax
+            self.cvdisp2d=np.zeros(len(self.grid.gedge)-1) #set grid
             for i in range(len(self.grid.gedge)-1):
                 cond=(self.radcyl>self.grid.gedge[i])&(self.radcyl<=self.grid.gedge[i+1])
-                self.cvdisp2d[i]=np.std(self.vel[cond,ax3])
+                self.cvdisp2d[i]=np.std(vel_proj[cond])
 
             if ret==True:
                 retarray=np.zeros((len(self.cvdisp2d),2))
                 retarray[:,0]=self.grid.gx
                 retarray[:,1]=self.cvdisp2d
                 if func==True:
-                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=0)
+                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=k,s=s)
                     return retarray,rfunc
                 else:
                     return retarray
 
-    def vdisp3d(self,ax='z',ret=True,func=True,s=0):
+    def vdisp3d(self,ax='z',ret=True,func=True,s=0,k=2):
 
         if (self.cvdisp3d is None) or (self.paxvdisp3d!=ax):
 
@@ -796,7 +830,7 @@ class Profile:
             retarray[:,0]=self.grid.gx
             retarray[:,1]=self.cvdisp3d
             if func==True:
-                rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=0)
+                rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=k,s=s)
                 return retarray,rfunc
             else:
                 return retarray

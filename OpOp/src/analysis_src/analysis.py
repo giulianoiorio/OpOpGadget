@@ -5,8 +5,9 @@ from scipy.linalg import eigh
 import copy
 
 from ..particle_src.particle import  Particles
+from ..particle_src.sky_particle import Sky_Particles
 from ..io_src.LoadSnap import load_snap
-from ..utility_src.utility import nparray_check, Continue_check
+from ..utility_src.utility import nparray_check, Continue_check, stat_error
 from ..grid_src.grid import grid
 from .profile import Profile
 
@@ -15,12 +16,15 @@ class Analysis:
 
     def __init__(self, particles=None, safe=True, auto_centre=False, iter=False, **kwargs):
 
+
         #Check input
         if 'filename' in kwargs: self.p=load_snap(kwargs['filename'])
         elif isinstance(particles,Particles):
             if safe==True: self.p=copy.deepcopy(particles)
             else: self.p=particles
         else: raise IOError('Incorrect particles or filename')
+
+        self.issky = False
 
         #Assure that rad and total vel are stored
         self.p.setrad()
@@ -42,7 +46,248 @@ class Analysis:
                 if iter: self.center(mq=10,iter=True,single=single,po=po,vo=vo)
                 else: self.center(mq=70,single=single,iter=False,po=po,vo=vo)
 
-    def qmass(self,q,safe_mode=True,type=None):
+        if isinstance(particles,Sky_Particles):
+            self.issky=True
+
+    def mass(self,rad,type=None):
+
+        if type is None:
+            rad_array=self.p.Radius[:]
+            mas_array=self.p.Mass[:]
+        else:
+            type= nparray_check(type)
+            rad_array=self._make_array(self.p.Radius,type)
+            mas_array=self._make_array(self.p.Mass,type)
+
+        idx=rad_array<=rad
+
+        mass=np.sum(mas_array[idx])
+
+        return mass
+
+    def massup(self,rad,pax='z',type=None):
+
+
+        if pax == 'z':
+            ax1 = 0
+            ax2 = 1
+        elif pax == 'y':
+            ax1 = 0
+            ax2 = 2
+        elif pax == 'x':
+            ax1 = 1
+            ax2 = 2
+
+        radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)
+
+        if type is None:
+            rad_array=radcyl
+            mas_array=self.p.Mass[:]
+        else:
+            type= nparray_check(type)
+            rad_array=self._make_array(radcyl,type)
+            mas_array=self._make_array(self.p.Mass,type)
+
+        idx = rad_array <= rad
+
+        mass = np.sum(mas_array[idx])
+
+        return mass
+
+    def vdisp(self,rad_max=None,pax='z',type=None):
+
+        if pax == 'obs':
+
+            if self.issky:
+                radcyl = np.sqrt(self.p.Pos[:, 0] ** 2 + self.p.Pos[:, 1] ** 2)  # set R
+                vel_proj = self.p.Vlos[:]  # set Vproj
+            else:
+                raise AttributeError('obs profile is available only for object of the sky particles class')
+
+        else:
+
+            if pax == 'z':
+                ax1 = 0
+                ax2 = 1
+                ax3 = 2
+            elif pax == 'y':
+                ax1 = 0
+                ax2 = 2
+                ax3 = 1
+            elif pax == 'x':
+                ax1 = 1
+                ax2 = 2
+                ax3 = 0
+
+            radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)  # set R
+            vel_proj = self.p.Vel[:, ax3]  # set Vproj
+
+
+        if rad_max is not None:
+            idx=radcyl<=rad_max
+            vd=np.std(vel_proj[idx])
+        else:
+            vd=np.std(vel_proj)
+
+
+        return vd
+
+    def binned_dispersion(self,bins,range=None,pax='z',Nperbin=None,type=None, bins_kind='lin', velocity_err = None, err_distibution = 'uniform', nboot=1000):
+        """
+
+        :param bins:
+        :param range:
+        :param Nperbins:
+        :return:
+        """
+
+        #Set projection
+        if pax == 'obs':
+
+            if self.issky:
+                radcyl   = np.sqrt(self.p.Pos[:, 0] ** 2 + self.p.Pos[:, 1] ** 2)  # set R
+                vel_proj = self.p.Vlos[:]  # set Vproj
+            else:
+                raise AttributeError('obs profile is available only for object of the sky particles class')
+
+        else:
+
+            if pax == 'z':
+                ax1 = 0
+                ax2 = 1
+                ax3 = 2
+            elif pax == 'y':
+                ax1 = 0
+                ax2 = 2
+                ax3 = 1
+            elif pax == 'x':
+                ax1 = 1
+                ax2 = 2
+                ax3 = 0
+
+            radcyl   = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)  # set R
+            vel_proj = self.p.Vel[:,ax3]
+
+
+        #Set type
+        if type is not None:
+            type= nparray_check(type)
+            radcyl=self._make_array(radcyl,type)
+            vel_proj=self._make_array(vel_proj,type)
+
+
+        #Set bins
+        if isinstance(bins,int) or isinstance(bins,float):
+
+            #Set range
+            if range is None:
+                rmin=np.min(radcyl)
+                rmax=np.max(radcyl)
+            elif isinstance(range,list) or isinstance(range,tuple) or isinstance(range,np.ndarray):
+                if len(range)==2:
+                    rmin,rmax=range
+                else:
+                    raise ValueError('range needs to be None or a list/tuple/numpy array with len 2')
+            else:
+                raise ValueError('range needs to be None or a list/tuple/numpy array with len 2')
+
+
+            if      bins_kind =='lin': bins=np.linspace(rmin,rmax,int(bins))
+            elif    bins_kind =='log': bins=np.logspace(np.log10(rmin),np.log10(rmax),int(nbins))
+            else:   raise ValueError('bins kind needs to be lin or log')
+
+        #Nperbins
+        if isinstance(Nperbin, int) or isinstance(Nperbin, float):
+
+            Nperbin=np.array([int(Nperbin),]*(len(bins)-1))
+
+        elif len(Nperbin)!=(len(bins)-1):
+
+            raise ValueError('Nperbins needs to be an integer or a iterable with len=bins-1')
+
+        #calculate
+
+        rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err=self._vdisp_bins_extractor(radcyl,vel_proj,bins,Nperbin,velocity_err,err_distibution,nboot)
+
+
+        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err
+
+    def _vdisp_bins_extractor(self,rad,vproj,bins,Nperbin=None, velocity_err = None, err_distibution = 'uniform',nboot=1000):
+        """
+
+        :param rad:
+        :param vproj:
+        :param bins:
+        :param Nperbin:
+        :param velocity_err:
+        :param err_distibution:
+        :param nboot:
+        :return:
+        """
+        rad_mean=np.zeros(shape=(len(bins)-1))
+        rad_err=np.zeros_like(rad_mean)
+        vmean=np.zeros_like(rad_mean)
+        vmean_err=np.zeros_like(rad_mean)
+        vdisp=np.zeros_like(rad_mean)
+        vdisp_err=np.zeros_like(rad_mean)
+
+        for i in range(len(bins)-1):
+
+            rmin=bins[i]
+            rmax=bins[i+1]
+
+            idx=(rad>=rmin)&(rad<=rmax)
+            rad_tmp=rad[idx]
+            vproj_tmp=vproj[idx]
+
+            #extract number
+            if Nperbin is not None:
+                Nthisbin=int(Nperbin[i])
+                #print(i,Nthisbin,len(rad_tmp))
+                idx_extract = np.random.choice(len(rad_tmp), Nthisbin, replace=False)
+                rad_tmp=rad_tmp[idx_extract]
+                vproj_tmp=vproj_tmp[idx_extract]
+
+            vproj_tmp_err=np.ones_like(vproj_tmp)
+
+            #set err
+            if velocity_err is None:
+                pass
+            elif isinstance(velocity_err, int) or isinstance(velocity_err, float):
+                vproj_tmp = np.random.normal(vproj_tmp, velocity_err)
+                vproj_tmp_err = velocity_err
+            elif len(velocity_err, 2):
+                if err_distibution[0].lower() == 'u':
+                    vproj_tmp_err = np.random.uniform(velocity_err[0], velocity_err[1], size=Nfinal)
+                elif err_distibution[0].lower() == 'g':
+                    vproj_tmp_err = np.random.normal(velocity_err[0], velocity_err[1], size=Nfinal)
+                else:
+                    raise NotImplementedError('err distrbution not implemented')
+
+                vproj_tmp = np.random, normal(ret_arr[:, 9], ret_arr[:, 10])
+
+            else:
+
+                raise NotImplementedError('Vel error needs to be None, a float a int, a tule ora a list')
+
+
+            #calculate
+            mean_tmp, meanerr_tmp, std_tmp, stderr_tmp = stat_error(vproj_tmp, vproj_tmp_err, err_type='bootstrap',
+                                                            bootstrap_error=True, n=nboot,
+                                                            vsys_fix=None)
+
+            rad_mean[i]  =  np.mean(rad_tmp)
+            rad_err[i]   =  np.std(rad_tmp)
+            vmean[i]     =  mean_tmp
+            vmean_err[i] =  meanerr_tmp
+            vdisp[i]     =  std_tmp
+            vdisp_err[i] =  stderr_tmp
+
+        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err
+
+
+
+    def qmass(self,safe_mode=True,type=None):
         """
         Calculate the radius in which the mass is a q % fraction of the total mass.
         :param q: q is the mass fraction, it can range from 0 to 100
@@ -66,7 +311,7 @@ class Analysis:
 
         return  ret_value
 
-    def qmassup(self,q,pax='z',safe_mode=True,type=None):
+    def qmassup(self,q,pax='z',safe_mode=True,type=None,rad_max=None):
         """
         Calculate the radius in which the mass is a q % fraction of the total mass in 2D.
         :param q: q is the mass fraction, it can range from 0 to 100
@@ -96,8 +341,11 @@ class Analysis:
             mas_array=self._make_array(self.p.Mass,type)
 
 
-
-        ret_value,_=self.qradius_ext(rad_array,mas_array,q,safe_mode=safe_mode)
+        if rad_max is None:
+            ret_value,_=self.qradius_ext(rad_array,mas_array,q,safe_mode=safe_mode)
+        else:
+            idx=rad_array<=rad_max
+            ret_value,_=self.qradius_ext(rad_array[idx],mas_array[idx],q,safe_mode=safe_mode)
 
         return  ret_value
 
