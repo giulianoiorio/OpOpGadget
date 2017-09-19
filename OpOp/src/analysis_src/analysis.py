@@ -287,7 +287,7 @@ class Analysis:
 
 
 
-    def qmass(self,safe_mode=True,type=None):
+    def qmass(self,q,safe_mode=True,type=None):
         """
         Calculate the radius in which the mass is a q % fraction of the total mass.
         :param q: q is the mass fraction, it can range from 0 to 100
