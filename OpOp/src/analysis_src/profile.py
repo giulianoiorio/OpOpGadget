@@ -710,22 +710,30 @@ class Profile:
 
         else:
 
+            if pax=='obs':
 
-            #self.pax=pax
-            if pax=='z':
-                ax1=0
-                ax2=1
-                ax3=2
-            elif pax=='y':
-                ax1=0
-                ax2=2
-                ax3=1
-            elif pax=='x':
-                ax1=1
-                ax2=2
-                ax3=0
+                if self.issky:
+                    self.radcyl = np.sqrt(self.pos[:, 0] ** 2 + self.pos[:, 1] ** 2)  # set R
+                else:
+                    raise AttributeError('obs profile is available only for object of the sky particles class')
 
-            self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2)
+            else:
+
+                #self.pax=pax
+                if pax=='z':
+                    ax1=0
+                    ax2=1
+                    ax3=2
+                elif pax=='y':
+                    ax1=0
+                    ax2=2
+                    ax3=1
+                elif pax=='x':
+                    ax1=1
+                    ax2=2
+                    ax3=0
+
+                self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2)
 
             if (self.massbinsup is  None) or (self.paxdens!=pax): self.massbinsup=np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.pmass)[0]
 

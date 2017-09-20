@@ -30,6 +30,8 @@ class Analysis:
         self.p.setrad()
         self.p.setvelt()
         self._set_pindex()
+        self.pcom=None
+        self.pvcom=None
 
         if 'single' in kwargs: single=kwargs['single']
         else: single=True
@@ -68,17 +70,30 @@ class Analysis:
     def massup(self,rad,pax='z',type=None):
 
 
-        if pax == 'z':
-            ax1 = 0
-            ax2 = 1
-        elif pax == 'y':
-            ax1 = 0
-            ax2 = 2
-        elif pax == 'x':
-            ax1 = 1
-            ax2 = 2
+        if pax == 'obs':
 
-        radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)
+            if self.issky:
+                radcyl = np.sqrt(self.p.Pos[:, 0] ** 2 + self.p.Pos[:, 1] ** 2)  # set R
+            else:
+                raise AttributeError('obs profile is available only for object of the sky particles class')
+
+        else:
+
+            if pax == 'z':
+                ax1 = 0
+                ax2 = 1
+                ax3 = 2
+            elif pax == 'y':
+                ax1 = 0
+                ax2 = 2
+                ax3 = 1
+            elif pax == 'x':
+                ax1 = 1
+                ax2 = 2
+                ax3 = 0
+
+
+            radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)
 
         if type is None:
             rad_array=radcyl
@@ -640,9 +655,12 @@ class Analysis:
             self.p.Vel=self.p.Vel - vcom + vo
             self.p.setrad()
             self.p.setvelt()
+            self.pcom = com
+            self.pvcom = vcom
 
         else:
-
+            pcom = []
+            pvcom = []
             i=0
             for i in range(6):
 
@@ -660,10 +678,12 @@ class Analysis:
                     self.p.Vel[idxmin:idxmax]=self.p.Vel[idxmin:idxmax] - vcom + vo
                     self.p.setrad()
                     self.p.setvelt()
-
-
+                    pcom.append(com)
+                    pvcom.append(vcom)
 
                 i+=1
+            self.pcom=np.array(pcom)
+            self.pvcom=np.array(pvcom)
 
     def inertia_tensor(self,eig=True,mq=None,minrad=None,maxrad=None,type=None):
         """

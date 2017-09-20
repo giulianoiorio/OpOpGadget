@@ -127,7 +127,7 @@ ext_modules = [df_c_ext, model_c_ext, genmod_c_ext] + cythonize(jsolv_c_ext) + c
 
 setup(
     name='OpOpGadget',
-    version='1.5',
+    version='1.6',
     author='Giuliano Iorio',
     author_email='giuliano.iorio@unibo.it',
     url='http://github.com/iogiul/OpOp',
@@ -138,6 +138,7 @@ setup(
               'OpOp/src/densityprofile_src'],
     install_requires=['numpy>=1.9', 'scipy>=0.16', 'matplotlib', 'astropy>=1', 'fermi'],
     ext_modules=ext_modules,
+    scripts=['OpOp/script/analyse_sims.py'],
     include_dirs=[numpy.get_include()]
 )
 
