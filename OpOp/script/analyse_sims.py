@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-
+import matplotlib as mpl
+mpl.use('Agg')
 import numpy as np
 import matplotlib.pyplot as plt
 from OpOp.io import load_snap
 from OpOp.analysis import Observe, Profile, Analysis
 from OpOp.particle import Particle,Particles, Sky_Particles
-import matplotlib as mpl
+#import matplotlib as mpl
 label_size =20
 import linecache
 #mpl.rcParams.update({'figure.autolayout':True})
@@ -42,7 +43,8 @@ if folder is None: folder='.'
 if outdir is None: outdir='./analysis'
 if not os.path.exists(outdir):
     os.makedirs(outdir)
-
+if not os.path.exists(file_vdisp):
+    file_vdisp=None
 
 
 
@@ -50,6 +52,9 @@ olist=[]
 alist=[]
 proflist=[]
 simfiles=glob.glob(folder+'/*.bin')
+simfiles.sort()
+print('File read:',flush=True)
+print(simfiles,flush=True)
 Nfiles=len(simfiles)
 
 figorbit, axarr = plt.subplots(3, 3, sharex=True, sharey=True)
@@ -84,6 +89,7 @@ log+='\n'
 fin_array=np.zeros((len(simfiles),10))
 fin_array_header='0-T[Gyr] 1-Xg[kpc] 2-Yg[kpc] 3-Zg[kpc] 4-Vxg[kpc] 5-Vyg[kpc] 6-Vzg[kpc] 7-Rh[kpc] 8-Vdisp(R<Rh)[km/s] 9-Mass(R<Rmax)'
 i=0
+iplot=0
 for file in simfiles:
     p_tmp=load_snap(file)
     time_tmp=p_tmp.header['Time']
@@ -103,19 +109,19 @@ for file in simfiles:
         else:
             idh=np.array([True,]*len(hp))
         print('Plottng',flush=True)
-        axarr[i,0].scatter(hp[idh,0],hp[idh,1],s=0.00005, c='black')
-        axarr[i,0].scatter(sp[:,0],sp[:,1],s=0.00005, c='red',zorder=1000)
-        axarr[i,1].scatter(hp[idh,0],hp[idh,2],s=0.00005, c='black')
-        axarr[i,1].scatter(sp[:,0],sp[:,2],s=0.00005, c='red',zorder=1000)
-        axarr[i,2].scatter(hp[idh,1],hp[idh,2],s=0.00005, c='black')
-        axarr[i,2].scatter(sp[:,1],sp[:,2],s=0.00005, c='red',zorder=1000)
-        axarr[i,0].set_xlim(-150,150)
-        axarr[i,0].set_ylim(-150,150)
-        axarr[i,1].set_xlim(-150,150)
-        axarr[i,1].set_ylim(-150,150)
-        axarr[i,2].set_xlim(-150,150)
-        axarr[i,2].set_ylim(-150,150)
-        axarr[i,0].text(-150,130,'T=%.2f Gyr'%time_tmp, fontsize=20)
+        axarr[iplot,0].scatter(hp[idh,0],hp[idh,1],s=0.00005, c='black')
+        axarr[iplot,0].scatter(sp[:,0],sp[:,1],s=0.00005, c='red',zorder=1000)
+        axarr[iplot,1].scatter(hp[idh,0],hp[idh,2],s=0.00005, c='black')
+        axarr[iplot,1].scatter(sp[:,0],sp[:,2],s=0.00005, c='red',zorder=1000)
+        axarr[iplot,2].scatter(hp[idh,1],hp[idh,2],s=0.00005, c='black')
+        axarr[iplot,2].scatter(sp[:,1],sp[:,2],s=0.00005, c='red',zorder=1000)
+        axarr[iplot,0].set_xlim(-150,150)
+        axarr[iplot,0].set_ylim(-150,150)
+        axarr[iplot,1].set_xlim(-150,150)
+        axarr[iplot,1].set_ylim(-150,150)
+        axarr[iplot,2].set_xlim(-150,150)
+        axarr[iplot,2].set_ylim(-150,150)
+        axarr[iplot,0].text(-150,130,'T=%.2f Gyr'%time_tmp, fontsize=20)
         if i==idx_plot_orbit[0]:
             axarr[0, 0].text(0, 150, 'XY', fontsize=25)
             axarr[0, 1].text(0, 150, 'XZ', fontsize=25)
@@ -123,12 +129,12 @@ for file in simfiles:
 
 
         if gpos is not None:
-            axarr[i, 0].plot([gpos[0],gpos[0]],[-1000,1000],color='cyan',zorder=2000,lw=0.5)
-            axarr[i, 0].plot([-1000,1000],[gpos[1],gpos[1]],color='cyan',zorder=2000,lw=0.5)
-            axarr[i, 1].plot([gpos[0],gpos[0]],[-1000,1000],color='cyan',zorder=2000,lw=0.5)
-            axarr[i, 1].plot([-1000,1000],[gpos[2],gpos[2]],color='cyan',zorder=2000,lw=0.5)
-            axarr[i, 2].plot([gpos[1],gpos[1]],[-1000,1000],color='cyan',zorder=2000,lw=0.5)
-            axarr[i, 2].plot([-1000,1000],[gpos[2],gpos[2]],color='cyan',zorder=2000,lw=0.5)
+            axarr[iplot, 0].plot([gpos[0],gpos[0]],[-1000,1000],color='cyan',zorder=2000,lw=0.5)
+            axarr[iplot, 0].plot([-1000,1000],[gpos[1],gpos[1]],color='cyan',zorder=2000,lw=0.5)
+            axarr[iplot, 1].plot([gpos[0],gpos[0]],[-1000,1000],color='cyan',zorder=2000,lw=0.5)
+            axarr[iplot, 1].plot([-1000,1000],[gpos[2],gpos[2]],color='cyan',zorder=2000,lw=0.5)
+            axarr[iplot, 2].plot([gpos[1],gpos[1]],[-1000,1000],color='cyan',zorder=2000,lw=0.5)
+            axarr[iplot, 2].plot([-1000,1000],[gpos[2],gpos[2]],color='cyan',zorder=2000,lw=0.5)
 
         if (i==idx_plot_orbit[2]):
             axarr[2, 0].set_xlabel('kpc', fontsize=20)
@@ -142,6 +148,7 @@ for file in simfiles:
             figorbit.savefig(outdir+'/orbit.png')
             del axarr
             del figorbit
+        iplot+=1
 
         print('Done',flush=True)
 
@@ -283,95 +290,95 @@ for file in simfiles:
             figanstd.set_size_inches(15, 10, forward=True)
             figanstd.savefig(outdir + '/2Danalysis.png')
 
-        #observe
-        o_tmp=Observe(particles=p_tmp, type=2)
-        s,c=o_tmp.observe(psun=psun,vsun=vsun,vrot=vrot,mq=50)
-        a = Analysis(s, safe=True, auto_centre=False, iter=False, single=False)
+    #observe
+    o_tmp=Observe(particles=p_tmp, type=2)
+    s,c=o_tmp.observe(psun=psun,vsun=vsun,vrot=vrot,mq=50)
+    a = Analysis(s, safe=True, auto_centre=False, iter=False, single=False)
 
 
 
-        if radmax is None:
-            rh_sim     = a.qmassup(q=50)
-            vdisp_sim  = a.vdisp(rh_sim,  pax='obs')
-            mass_sim   = a.massup(rad=100, pax='obs')
-        else:
-            rh_sim     = a.qmassup(q=50, rad_max=radmax)
-            vdisp_sim  = a.vdisp(rh_sim, pax='obs')
-            mass_sim   = a.massup(radmax,pax='obs')
+    if radmax is None:
+        rh_sim     = a.qmassup(q=50)
+        vdisp_sim  = a.vdisp(rh_sim,  pax='obs')
+        mass_sim   = a.massup(rad=100, pax='obs')
+    else:
+        rh_sim     = a.qmassup(q=50, rad_max=radmax)
+        vdisp_sim  = a.vdisp(rh_sim, pax='obs')
+        mass_sim   = a.massup(radmax,pax='obs')
 
-        fin_array[i,1:4] = c.Pos[:]
-        fin_array[i,4:7] = c.Vel[:]
-        fin_array[i,7]   = rh_sim
-        fin_array[i,8]   = vdisp_sim
-        fin_array[i,9]  = mass_sim
+    fin_array[i,1:4] = c.Pos[:]
+    fin_array[i,4:7] = c.Vel[:]
+    fin_array[i,7]   = rh_sim
+    fin_array[i,8]   = vdisp_sim
+    fin_array[i,9]  = mass_sim
 
-        log+='Rh_sim=%.3f\n'%rh_sim
-        log+='Vdisp(R<Rh_sim)=%.3f\n'%vdisp_sim
-        log+='Mass(R<Rmax)=%.3e\n'%mass_sim
-        log+='Stellar centre:\n'
-        log+=c.__str__()
-        log+='\n \n'
+    log+='Rh_sim=%.3f\n'%rh_sim
+    log+='Vdisp(R<Rh_sim)=%.3f\n'%vdisp_sim
+    log+='Mass(R<Rmax)=%.3e\n'%mass_sim
+    log+='Stellar centre:\n'
+    log+=c.__str__()
+    log+='\n \n'
 
-        if i==idx_plot_orbit[2]:
+    if i==idx_plot_orbit[2]:
 
-            prof_obs = Profile(particles=s, xmin=0.00001, xmax=10, ngrid=100, kind='lin')
+        prof_obs = Profile(particles=s, xmin=0.00001, xmax=10, ngrid=100, kind='lin')
 
-            axobs[0].scatter(s.xi[:]/3600.,s.eta[:]/3600.,s=0.005,c='red')
-            axobs[0].set_xlabel('$\\xi [deg]$',fontsize=20)
-            axobs[0].set_ylabel('$\\eta [deg]$',fontsize=20)
-            axobs[0].set_xlim(-2,2)
-            axobs[0].set_ylim(-2,2)
+        axobs[0].scatter(s.xi[:]/3600.,s.eta[:]/3600.,s=0.005,c='red')
+        axobs[0].set_xlabel('$\\xi [deg]$',fontsize=20)
+        axobs[0].set_ylabel('$\\eta [deg]$',fontsize=20)
+        axobs[0].set_xlim(-2,2)
+        axobs[0].set_ylim(-2,2)
 
-            arr=prof_obs.vdisp2d(pax='obs')[0]
-            r = arr[:, 0]
-            vd = arr[:, 1]
-            axobs[2].plot(r, vd, label='Vlos', lw=3, color='red',zorder=2000)
-            if file_vdisp is not None:
-                try:
-                    data=np.loadtxt(file_vdisp)
-                    x=dist*np.tan(data[:,0]*(np.pi)/180)
-                    ex=dist*np.tan(data[:,1]*(np.pi)/180)
-                    axobs[2].errorbar(x,data[:,4],data[:,5],ex,fmt='o',c='black',label='Observed',zorder=1000)
+        arr=prof_obs.vdisp2d(pax='obs')[0]
+        r = arr[:, 0]
+        vd = arr[:, 1]
+        axobs[2].plot(r, vd, label='Vlos', lw=3, color='red',zorder=2000)
+        if file_vdisp is not None:
+            try:
+                data=np.loadtxt(file_vdisp)
+                x=dist*np.tan(data[:,0]*(np.pi)/180)
+                ex=dist*np.tan(data[:,1]*(np.pi)/180)
+                axobs[2].errorbar(x,data[:,4],data[:,5],ex,fmt='o',c='black',label='Observed',zorder=1000)
 
-                    obins = np.zeros(len(data) + 1)
-                    obins[:-1] = data[:, 6]
-                    obins[-1] = data[-1, 7]
-                    Nperbin = data[:, 8]
-                    obins = dist * np.tan(obins * np.pi / 180.)
+                obins = np.zeros(len(data) + 1)
+                obins[:-1] = data[:, 6]
+                obins[-1] = data[-1, 7]
+                Nperbin = data[:, 8]
+                obins = dist * np.tan(obins * np.pi / 180.)
 
-                    color_disp=('blue','orange','magenta')
+                color_disp=('blue','orange','magenta')
 
-                    for j in range(3):
+                for j in range(3):
 
-                        b = a.binned_dispersion(bins=obins, pax='obs', Nperbin=Nperbin, bins_kind='lin', velocity_err=None,
+                    b = a.binned_dispersion(bins=obins, pax='obs', Nperbin=Nperbin, bins_kind='lin', velocity_err=None,
                                             err_distibution='uniform', nboot=10000)
 
-                        axobs[2].errorbar(b[0], b[4], b[5], b[1], fmt='o', c=color_disp[j], mfc='white')
-                except FileNotFoundError:
-                    print('File %s not found.. skipping'%file_vdisp)
+                    axobs[2].errorbar(b[0], b[4], b[5], b[1], fmt='o', c=color_disp[j], mfc='white')
+            except:
+                print('File %s not found.. skipping'%file_vdisp)
 
-            axobs[2].set_xlabel('$R [kpc]$',fontsize=20)
-            axobs[2].set_ylabel('$\\sigma_{los} [km/s]$',fontsize=20)
-            axobs[2].set_xlim(0,2)
-            axobs[2].set_ylim(0,15)
+        axobs[2].set_xlabel('$R [kpc]$',fontsize=20)
+        axobs[2].set_ylabel('$\\sigma_{los} [km/s]$',fontsize=20)
+        axobs[2].set_xlim(0,2)
+        axobs[2].set_ylim(0,15)
 
-            #densup
-            arr = prof_obs.supdens(pax='obs')[0]
-            r = arr[:, 0]
-            d = arr[:, 1]
-            axobs[1].plot(r, d, lw=3, color='red')
-            axobs[1].plot([rh_sim,rh_sim],[np.min(d),np.max(d)],color='red', label='$R^{sim}_h$')
-            if rh_obs is not None:
-                axobs[1].plot([rh_obs,rh_obs],[np.min(d),np.max(d)],'--',color='black', label='$R^{obs}_h$')
-            axobs[1].set_xlabel('$R [kpc]$',fontsize=20)
-            axobs[1].set_ylabel('$\\Sigma_{los} [M_\\odot/kpc^2]$',fontsize=20)
-            #axobs[1].set_xlim(0.001,10)
-            axobs[1].set_xscale('log')
-            axobs[1].set_yscale('log')
-            axobs[1].legend(loc='upper right')
+        #densup
+        arr = prof_obs.supdens(pax='obs')[0]
+        r = arr[:, 0]
+        d = arr[:, 1]
+        axobs[1].plot(r, d, lw=3, color='red')
+        axobs[1].plot([rh_sim,rh_sim],[np.min(d),np.max(d)],color='red', label='$R^{sim}_h$')
+        if rh_obs is not None:
+            axobs[1].plot([rh_obs,rh_obs],[np.min(d),np.max(d)],'--',color='black', label='$R^{obs}_h$')
+        axobs[1].set_xlabel('$R [kpc]$',fontsize=20)
+        axobs[1].set_ylabel('$\\Sigma_{los} [M_\\odot/kpc^2]$',fontsize=20)
+        #axobs[1].set_xlim(0.001,10)
+        axobs[1].set_xscale('log')
+        axobs[1].set_yscale('log')
+        axobs[1].legend(loc='upper right')
 
-            figobs.set_size_inches(15, 5, forward=True)
-            figobs.savefig(outdir + '/Obs_analysis.png')
+        figobs.set_size_inches(15, 5, forward=True)
+        figobs.savefig(outdir + '/Obs_analysis.png')
     #a_tmp=Analysis(p_tmp,safe=True, auto_centre=True, iter=True, single=False)
     #o_tmp=Observe(particles=p_tmp, type=2)
     #s_tmp,c_tmp=o_tmp.observe(psun=psun, vsun=vsun, vrot=vrot, mq=50)
