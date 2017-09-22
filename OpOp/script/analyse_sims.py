@@ -31,6 +31,7 @@ skyposg=(287.534, -83.3872)
 skypos=(15.0392, -33.7092)
 rh_obs=0.283
 vdisp_obs=8.69
+vdisp_obs_tot=9.43
 outdir=None
 Nresample=100000
 file_vdisp='Scl_binned_profile_s3_rc.txt'
@@ -82,6 +83,7 @@ if Vlos is not None: log+='Current Vlos: %.3f\n'%Vlos
 if pmot is not None: log+='Current pmot: mul=%.5f mub=%.5f\n'%pmot
 if rh_obs is not None: log+='Rh_obs:%.3f\n'%rh_obs
 if vdisp_obs is not None: log+='Vdisp_obs(R<Rh_obs):%.3f\n'%vdisp_obs
+if vdisp_obs_tot is not None: log+='Vdisp_obs(R<Radmax):%.3f\n'%vdisp_obs_tot
 if radmax is not None: log+='Rmax=%.3f\n'%radmax
 if mstar is not None: log+='M*(R<Rmax)=%.3e\n'%mstar
 log+='\n'
@@ -298,12 +300,14 @@ for file in simfiles:
 
 
     if radmax is None:
-        rh_sim     = a.qmassup(q=50)
-        vdisp_sim  = a.vdisp(rh_sim,  pax='obs')
-        mass_sim   = a.massup(rad=100, pax='obs')
+        rh_sim        = a.qmassup(q=50)
+        vdisp_sim     = a.vdisp(rh_sim,  pax='obs')
+        vdisp_sim_tot = a.vdisp(100,  pax='obs')
+        mass_sim      = a.massup(rad=100, pax='obs')
     else:
         rh_sim     = a.qmassup(q=50, rad_max=radmax)
         vdisp_sim  = a.vdisp(rh_sim, pax='obs')
+        vdisp_sim_tot = a.vdisp(radmax,  pax='obs')
         mass_sim   = a.massup(radmax,pax='obs')
 
     fin_array[i,1:4] = c.Pos[:]
@@ -314,6 +318,7 @@ for file in simfiles:
 
     log+='Rh_sim=%.3f\n'%rh_sim
     log+='Vdisp(R<Rh_sim)=%.3f\n'%vdisp_sim
+    log+='Vdisp(R<Rad_max)=%.3f\n'%vdisp_sim_tot
     log+='Mass(R<Rmax)=%.3e\n'%mass_sim
     log+='Stellar centre:\n'
     log+=c.__str__()
