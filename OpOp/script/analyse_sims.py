@@ -425,13 +425,13 @@ rel_diff=100*(mp-mp_ini)/mp_ini
 axstat.plot(T,rel_diff,'-^',c='darkgreen',label=label,zorder=3000)
 
 vdp_tot=fin_array[:,10]
-if vdisp_obs is None:
-    vdp_tot_ini=vdp[0]
+if vdisp_obs_tot is None:
+    vdp_tot_ini=vdp_tot[0]
     label='$\\sigma^{sim}_{los}(R<R_{max})$ wrt T=0'
 else:
     vdp_ini=vdisp_obs_tot
     label='$\\sigma^{sim}_{los}(R<R_{max})$ wrt obs'
-rel_diff=100*(vdp-vdp_ini)/vdp_ini
+rel_diff=100*(vdp_tot-vdp_ini)/vdp_ini
 axstat.plot(T,rel_diff,'-s',c='cyan',label=label,zorder=3000)
 axstat.legend(loc='best',fontsize=12)
 
