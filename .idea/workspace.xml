@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="" />
+    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" afterPath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
+    </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -38,11 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="75" column="26" lean-forward="false" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+            <state relative-caret-position="555">
+              <caret line="434" column="35" lean-forward="false" selection-start-line="434" selection-start-column="35" selection-end-line="434" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -70,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
+            <state relative-caret-position="1606">
               <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
               <folding />
             </state>
@@ -210,8 +213,8 @@
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/tests/observe/test_script/script.py" />
-        <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
         <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
       </list>
     </option>
   </component>
@@ -242,8 +245,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -478,6 +479,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1135,9 +1138,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1896" y="211" width="1670" height="1093" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20951793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21260816" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32611465" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22082019" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1544,14 +1547,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/observe/test_script/script.py" />
-    <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="75" column="26" lean-forward="false" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12650">
@@ -1598,8 +1593,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
+        <state relative-caret-position="1606">
           <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="434" column="35" lean-forward="false" selection-start-line="434" selection-start-column="35" selection-end-line="434" selection-end-column="35" />
           <folding />
         </state>
       </provider>

@@ -88,8 +88,8 @@ if radmax is not None: log+='Rmax=%.3f\n'%radmax
 if mstar is not None: log+='M*(R<Rmax)=%.3e\n'%mstar
 log+='\n'
 
-fin_array=np.zeros((len(simfiles),10))
-fin_array_header='0-T[Gyr] 1-Xg[kpc] 2-Yg[kpc] 3-Zg[kpc] 4-Vxg[kpc] 5-Vyg[kpc] 6-Vzg[kpc] 7-Rh[kpc] 8-Vdisp(R<Rh)[km/s] 9-Mass(R<Rmax)'
+fin_array=np.zeros((len(simfiles),11))
+fin_array_header='0-T[Gyr] 1-Xg[kpc] 2-Yg[kpc] 3-Zg[kpc] 4-Vxg[kpc] 5-Vyg[kpc] 6-Vzg[kpc] 7-Rh[kpc] 8-Vdisp(R<Rh)[km/s] 9-Mass(R<Rmax) 10-Vdisp(R<Rmax)[km/s]'
 i=0
 iplot=0
 for file in simfiles:
@@ -310,11 +310,12 @@ for file in simfiles:
         vdisp_sim_tot = a.vdisp(radmax,  pax='obs')
         mass_sim   = a.massup(radmax,pax='obs')
 
-    fin_array[i,1:4] = c.Pos[:]
-    fin_array[i,4:7] = c.Vel[:]
-    fin_array[i,7]   = rh_sim
-    fin_array[i,8]   = vdisp_sim
-    fin_array[i,9]  = mass_sim
+    fin_array[i,1:4]    =   c.Pos[:]
+    fin_array[i,4:7]    =   c.Vel[:]
+    fin_array[i,7]      =   rh_sim
+    fin_array[i,8]      =   vdisp_sim
+    fin_array[i,9]      =   mass_sim
+    fin_array[i,10]     =   vdisp_sim_tot
 
     log+='Rh_sim=%.3f\n'%rh_sim
     log+='Vdisp(R<Rh_sim)=%.3f\n'%vdisp_sim
@@ -401,16 +402,16 @@ rel_diff=100*(rhp-rhp_ini)/rhp_ini
 axstat.plot(T,rel_diff,'-o',c='red',label=label,zorder=3000)
 
 
-
 vdp=fin_array[:,8]
 if vdisp_obs is None:
     vdp_ini=vdp[0]
-    label='$\\sigma^{sim}_{los}$ wrt T=0'
+    label='$\\sigma^{sim}_{los}(R<R_h)$ wrt T=0'
 else:
     vdp_ini=vdisp_obs
-    label='$\\sigma^{sim}_{los}$ wrt obs'
+    label='$\\sigma^{sim}_{los}(R<R_h)$ wrt obs'
 rel_diff=100*(vdp-vdp_ini)/vdp_ini
 axstat.plot(T,rel_diff,'-s',c='blue',label=label,zorder=3000)
+
 
 mp=fin_array[:,9]
 mp_ini=mp[0]
@@ -422,7 +423,20 @@ else:
     label = '$M^{sim}_*$ wrt obs'
 rel_diff=100*(mp-mp_ini)/mp_ini
 axstat.plot(T,rel_diff,'-^',c='darkgreen',label=label,zorder=3000)
+
+vdp_tot=fin_array[:,10]
+if vdisp_obs is None:
+    vdp_tot_ini=vdp[0]
+    label='$\\sigma^{sim}_{los}(R<R_{max})$ wrt T=0'
+else:
+    vdp_ini=vdisp_obs_tot
+    label='$\\sigma^{sim}_{los}(R<R_{max})$ wrt obs'
+rel_diff=100*(vdp-vdp_ini)/vdp_ini
+axstat.plot(T,rel_diff,'-s',c='cyan',label=label,zorder=3000)
 axstat.legend(loc='best',fontsize=12)
+
+
+
 
 axstat.axhline(0,color='black',ls='--')
 axstat.set_xlabel('T [Gyr]',fontsize=20)
