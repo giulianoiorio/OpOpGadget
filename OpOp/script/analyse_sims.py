@@ -172,12 +172,18 @@ for file in simfiles:
 
     if (i==0) or (i==idx_plot_orbit[1]) or (i==idx_plot_orbit[2]):
     #dens
-        prof_tmp_h=Profile(particles=a_tmp.p,xmin=0.01, xmax=100, ngrid=100, kind='log', type=1)
+        try:
+            prof_tmp_h=Profile(particles=a_tmp.p,xmin=0.01, xmax=100, ngrid=100, kind='log', type=1)
+            arr = prof_tmp_h.dens()[0]
+            r = arr[:, 0]
+            d = arr[:, 1]
+            axtd[0].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
+        except:
+            pass
+    
         prof_tmp_s=Profile(particles=a_tmp.p,xmin=0.0001, xmax=5, ngrid=100, kind='lin', type=2)
         arr=prof_tmp_h.dens()[0]
-        r=arr[:,0]
-        d=arr[:,1]
-        axtd[0].plot(r,d,lw=2, label='T=%.2f Gyr'%time_tmp, color=colortd[check_td])
+
         arr = prof_tmp_s.dens()[0]
         r = arr[:, 0]
         d = arr[:, 1]

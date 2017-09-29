@@ -43,8 +43,8 @@
       <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="434" column="35" lean-forward="false" selection-start-line="434" selection-start-column="35" selection-end-line="434" selection-end-column="35" />
+            <state relative-caret-position="540">
+              <caret line="182" column="4" lean-forward="false" selection-start-line="182" selection-start-column="4" selection-end-line="182" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -224,10 +224,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
-    <option name="y" value="417" />
-    <option name="width" value="1280" />
-    <option name="height" value="697" />
+    <option name="x" value="1705" />
+    <option name="y" value="258" />
+    <option name="width" value="2135" />
+    <option name="height" value="1112" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -1136,12 +1136,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2" y="417" width="1280" height="697" extended-state="0" />
-    <editor active="false" />
+    <frame x="1705" y="258" width="2135" height="1112" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28583062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1718675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32611465" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3783784" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24742268" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1548,8 +1548,8 @@
     <entry file="file://$PROJECT_DIR$/tests/observe/test_script/script.py" />
     <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="434" column="35" lean-forward="false" selection-start-line="434" selection-start-column="35" selection-end-line="434" selection-end-column="35" />
+        <state relative-caret-position="540">
+          <caret line="182" column="4" lean-forward="false" selection-start-line="182" selection-start-column="4" selection-end-line="182" selection-end-column="4" />
           <folding />
         </state>
       </provider>
