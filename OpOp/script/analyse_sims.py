@@ -76,6 +76,7 @@ if len(sys.argv)>1:
         exit()
     else:
         filename=sys.argv[1]
+	print(filename, sys.argv)
 else:
     filename=None
 
