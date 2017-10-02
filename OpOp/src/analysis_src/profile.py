@@ -883,9 +883,9 @@ class Profile:
                 self.cvrot[i]=np.median(vel_proj[cond])
 
             if ret==True:
-                retarray=np.zeros((len(self.cvdisp2d),2))
+                retarray=np.zeros((len(self.cvrot),2))
                 retarray[:,0]=self.grid.gx
-                retarray[:,1]=self.cvdisp2d
+                retarray[:,1]=self.cvrot
                 if func==True:
                     rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=k,s=s)
                     return retarray,rfunc

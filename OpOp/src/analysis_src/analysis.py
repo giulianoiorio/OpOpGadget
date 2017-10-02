@@ -300,8 +300,6 @@ class Analysis:
 
         return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err
 
-
-
     def qmass(self,q,safe_mode=True,type=None):
         """
         Calculate the radius in which the mass is a q % fraction of the total mass.
@@ -474,10 +472,6 @@ class Analysis:
 
 
         return pcom,vcom
-
-
-
-
 
     def tdyn(self,mq=100,type=None,G='(kpc3)/(M_sun s2)'):
         """
@@ -810,8 +804,15 @@ class Analysis:
         mat=weight_array*value_array.T
         mat2=mat.dot(value_array)
 
-        if eig==True: return mat2, eigh(mat2, eigvals_only = True)
-        else:  return mat2
+        if eig:
+            evalue, evec = eigh(mat2, eigvals_only = False)
+            evalue = evalue /np.max(evalue)
+            eversor = evec.T / (np.sqrt(np.sum(evec*evec, axis=1)))
+            eversor = eversor.T
+            return mat2, evalue, eversor
+
+        else:
+            return mat2
 
     def angolar_momentum(self,mq=None,minrad=None,maxrad=None,type=None):
         """
