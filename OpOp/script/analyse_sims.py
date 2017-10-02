@@ -1,51 +1,113 @@
 #!/usr/bin/env python
 import matplotlib as mpl
-
 mpl.use('Agg')
 import numpy as np
 import matplotlib.pyplot as plt
 from OpOp.io import load_snap
 from OpOp.analysis import Observe, Profile, Analysis
 from OpOp.particle import Particle, Particles, Sky_Particles
-
 # import matplotlib as mpl
 label_size = 20
 import linecache
-
 # mpl.rcParams.update({'figure.autolayout':True})
 mpl.rcParams['xtick.labelsize'] = label_size
 mpl.rcParams['ytick.labelsize'] = label_size
 mpl.rcParams['mathtext.default'] = 'regular'
 import glob
 import os
-import argparse
 import sys
 
-# Sculptor F_S17_SC3
-proffile = None
-folder = None
-radmax = 1.8
-psun = (8.0, 0., 0.)
-vsun = (-11.1, 12.24, 7.25)
-vrot = 218
-gpos = (4.913, -9.772, -85.387)
-gvel = (-36.774, 163.875, -96.074)
-skyposg = (287.534, -83.3872)
-skypos = (15.0392, -33.7092)
-rh_obs = 0.283
-vdisp_obs = 8.69
-vdisp_obs_tot = 9.43
-#vdisp_obs = None
-#vdisp_obs_tot = None
+class Param:
 
-outdir = None
-Nresample = 100000
-file_vdisp = 'Scl_binned_profile_s3_rc.txt'
-dist = 86
-Vlos = 111.05
-pmot = (0.011, 0.143)
-mstar = 4.6e6
+    def __init__(self, filename=None):
 
+
+        self.default={'proffile':None, 'folder':None, 'radmax':1.8, 'psun':(8.0,0.,0.),
+                       'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
+                       'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.3872), 'skypos':(15.0392, -33.7092),
+                       'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
+                       'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
+                       'mstar':4.3e6, }
+
+        self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'Maximum radius to analyse', 'psun':'Position of the Sun (X,Y,Z)',
+                       'vsun':'Local velocty of the Sun (Vx, Vy, Vz)', 'vrot':'Velocity of LSR', 'gpos':'Galactic position of the object (Xg, Yg, Zg)',
+                       'gvel':'Galactic velocity of the object (Xg, Yg, Zg)', 'skyposg': 'Position in sky coordinates (l [deg], b[deg])', 'skypos':'Position in equatorial coordinates (ra [deg], dec[deg])',
+                       'rh_obs': 'Observed half light radius', 'vdisp_obs':'Observed velocity dispersion inside half-light radius', 'vdisp_obs_tot':'Observed velocity dispersion inside Rmax', 'outdir': 'Name of the output folder', 'Nresample':'DM particle to plot',
+                       'file_vdisp':'File containing the velcoty dispersion profile', 'dist':'distance from the Sun ', 'Vlos':'Vlos wrt the Sun', 'pmot':'Proper motion (mul, mub) in mas/yr',
+                       'mstar':'Stellar mass inside Rmax in solar masses', }
+
+        self.used={}
+
+        if filename is None:
+            for key in self.default:
+                #print(key)
+                setattr(self, key, self.default[key])
+                self.used[key]=self.default[key]
+        else:
+            fp=__import__(filename)
+            for key in self.default:
+                try:
+                    val=eval('fp.'+key)
+                    setattr(self, key, val)
+                    self.used[key] = val
+                except AttributeError:
+                    setattr(self, key, self.default[key])
+                    self.used[key]=self.default[key]
+
+    def save(self, filename='used_param'):
+
+        fw=open(filename+'.py', 'w')
+
+        for key in self.used:
+            if self.used[key] is None:
+                fw.write('%-20s = %-30s #%s\n' % (key, str(self.used[key]), self.description[key]))
+            elif key=='proffile' or key=='folder' or key=='outdir' or key=='file_vdisp':
+                fw.write('%-20s = \'%-30s\' #%s \n'%(key, str(self.used[key]), self.description[key]))
+            else:
+                fw.write('%-20s = %-30s #%s\n' % (key, str(self.used[key]), self.description[key]))
+
+        fw.close()
+
+
+if len(sys.argv)>1:
+    if sys.argv[1]=='-d':
+        par = Param()
+        par.save('default_param')
+    else:
+        filename=sys.argv[1]
+else:
+    filename=None
+
+#READ
+par=Param(filename=filename)
+proffile=par.proffile
+folder=par.folder
+radmax=par.radmax
+psun=par.psun
+vsun=par.vsun
+vrot=par.vrot
+gpos=par.gpos
+gvel=par.gvel
+skyposg=par.skyposg
+skypos=par.skypos
+rh_obs=par.rh_obs
+vdisp_obs=par.vdisp_obs
+vdisp_obs_tot=par.vdisp_obs_tot
+#vdisp_obs=None
+#vdisp_obs_tot=None
+
+outdir=par.outdir
+Nresample=par.Nresample
+file_vdisp=par.file_vdisp
+dist=par.dist
+Vlos=par.Vlos
+pmot=par.pmot
+mstar=par.mstar
+
+
+
+
+#START
 if folder is None: folder = '.'
 if outdir is None: outdir = './analysis'
 if not os.path.exists(outdir):
@@ -124,9 +186,9 @@ for file in simfiles:
                 idh = np.random.choice(len(hp), Nresample, replace=False)
             else:
                 idh = np.array([True, ] * len(hp))
-                axarr[iplot, 0].scatter(hp[idh, 0], hp[idh, 1], s=0.00005, c='black')
-                axarr[iplot, 1].scatter(hp[idh, 0], hp[idh, 2], s=0.00005, c='black')
-                axarr[iplot, 1].scatter(hp[idh, 0], hp[idh, 2], s=0.00005, c='black')
+            axarr[iplot, 0].scatter(hp[idh, 0], hp[idh, 1], s=0.00005, c='black')
+            axarr[iplot, 1].scatter(hp[idh, 0], hp[idh, 2], s=0.00005, c='black')
+            axarr[iplot, 1].scatter(hp[idh, 0], hp[idh, 2], s=0.00005, c='black')
 
         if Nstars > 0:
             sp = p_tmp.Pos[ids]
