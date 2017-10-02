@@ -413,8 +413,8 @@ class Analysis:
         """
 
         iterstep=0
-        pcom=(0,0,0)
-        vcom=(0,0,0)
+        #pcom=(0,0,0)
+        #vcom=(0,0,0)
 
         limit_mass=limit_mass/100.
 
@@ -431,6 +431,12 @@ class Analysis:
             rad_array=np.copy(self._make_array(self.p.Radius,type))
             mas_array=np.copy(self._make_array(self.p.Mass,type))
             mass_t=np.sum(mas_array)
+        
+        pcom=self.massw_mean(p, mas_array)
+        vcom=self.massw_mean(v, mas_array)
+        p=p - pcom
+        v=v - vcom
+        rad_array=np.sqrt(np.sum(p*p,axis=1))
 
 
         maxrad=np.max(rad_array)*fac

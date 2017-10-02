@@ -104,20 +104,27 @@ for file in simfiles:
     if (i==idx_plot_orbit[0]) or (i==idx_plot_orbit[1]) or (i==idx_plot_orbit[2]):
         idh=p_tmp.Type==1
         ids=~idh
-        hp=p_tmp.Pos[idh]
-        sp=p_tmp.Pos[ids]
-        if (Nresample is not None) and (Nresample<len(hp)):
-            idh=np.random.choice(len(hp),Nresample,replace=False)
-        else:
-            idh=np.array([True,]*len(hp))
+        Nhalos=np.sum(idh)
+        Nstars=np.sum(ids)
         print('Plottng',flush=True)
-        axarr[iplot,0].scatter(hp[idh,0],hp[idh,1],s=0.00005, c='black')
-        axarr[iplot,0].scatter(sp[:,0],sp[:,1],s=0.00005, c='red',zorder=1000)
-        axarr[iplot,1].scatter(hp[idh,0],hp[idh,2],s=0.00005, c='black')
-        axarr[iplot,1].scatter(sp[:,0],sp[:,2],s=0.00005, c='red',zorder=1000)
-        axarr[iplot,2].scatter(hp[idh,1],hp[idh,2],s=0.00005, c='black')
-        axarr[iplot,2].scatter(sp[:,1],sp[:,2],s=0.00005, c='red',zorder=1000)
-        axarr[iplot,0].set_xlim(-150,150)
+        if Nhalos>0:
+            hp=p_tmp.Pos[idh]
+            if (Nresample is not None) and (Nresample<len(hp)):
+                idh=np.random.choice(len(hp),Nresample,replace=False)
+            else:
+                idh=np.array([True,]*len(hp))
+                axarr[iplot,0].scatter(hp[idh,0],hp[idh,1],s=0.00005, c='black')
+                axarr[iplot,1].scatter(hp[idh,0],hp[idh,2],s=0.00005, c='black')
+                axarr[iplot,1].scatter(hp[idh,0],hp[idh,2],s=0.00005, c='black')
+
+                
+        if Nstars>0:
+            sp=p_tmp.Pos[ids]
+            axarr[iplot,0].scatter(sp[:,0],sp[:,1],s=0.00005, c='red',zorder=1000)
+            axarr[iplot,1].scatter(sp[:,0],sp[:,2],s=0.00005, c='red',zorder=1000)
+            axarr[iplot,2].scatter(sp[:,1],sp[:,2],s=0.00005, c='red',zorder=1000)
+            axarr[iplot,0].set_xlim(-150,150)
+        
         axarr[iplot,0].set_ylim(-150,150)
         axarr[iplot,1].set_xlim(-150,150)
         axarr[iplot,1].set_ylim(-150,150)
@@ -180,10 +187,8 @@ for file in simfiles:
             axtd[0].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
         except:
             pass
-    
-        prof_tmp_s=Profile(particles=a_tmp.p,xmin=0.0001, xmax=5, ngrid=100, kind='lin', type=2)
-        arr=prof_tmp_h.dens()[0]
 
+        prof_tmp_s=Profile(particles=a_tmp.p,xmin=0.0001, xmax=5, ngrid=100, kind='lin', type=2)
         arr = prof_tmp_s.dens()[0]
         r = arr[:, 0]
         d = arr[:, 1]

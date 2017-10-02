@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" afterPath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,8 +45,8 @@
       <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="182" column="4" lean-forward="false" selection-start-line="182" selection-start-column="4" selection-end-line="182" selection-end-column="4" />
+            <state relative-caret-position="-810">
+              <caret line="190" column="96" lean-forward="false" selection-start-line="190" selection-start-column="96" selection-end-line="190" selection-end-column="96" />
               <folding />
             </state>
           </provider>
@@ -54,9 +56,10 @@
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="10350">
-              <caret line="697" column="11" lean-forward="false" selection-start-line="697" selection-start-column="11" selection-end-line="697" selection-end-column="11" />
+              <caret line="703" column="11" lean-forward="false" selection-start-line="703" selection-start-column="11" selection-end-line="703" selection-end-column="11" />
               <folding>
                 <element signature="e#10428#10823#1" expanded="true" />
+                <marker date="1506728925000" expanded="true" signature="14907:14908" ph="..." />
               </folding>
             </state>
           </provider>
@@ -224,10 +227,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1705" />
-    <option name="y" value="258" />
-    <option name="width" value="2135" />
-    <option name="height" value="1112" />
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -244,6 +246,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -478,7 +481,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -1136,12 +1138,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1705" y="258" width="2135" height="1112" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1718675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17833877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32611465" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24742268" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24722663" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1548,8 +1550,8 @@
     <entry file="file://$PROJECT_DIR$/tests/observe/test_script/script.py" />
     <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="182" column="4" lean-forward="false" selection-start-line="182" selection-start-column="4" selection-end-line="182" selection-end-column="4" />
+        <state relative-caret-position="-810">
+          <caret line="190" column="96" lean-forward="false" selection-start-line="190" selection-start-column="96" selection-end-line="190" selection-end-column="96" />
           <folding />
         </state>
       </provider>
@@ -1557,9 +1559,10 @@
     <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10350">
-          <caret line="697" column="11" lean-forward="false" selection-start-line="697" selection-start-column="11" selection-end-line="697" selection-end-column="11" />
+          <caret line="703" column="11" lean-forward="false" selection-start-line="703" selection-start-column="11" selection-end-line="703" selection-end-column="11" />
           <folding>
             <element signature="e#10428#10823#1" expanded="true" />
+            <marker date="1506728925000" expanded="true" signature="14907:14908" ph="..." />
           </folding>
         </state>
       </provider>
