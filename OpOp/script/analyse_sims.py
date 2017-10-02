@@ -495,7 +495,7 @@ if vdisp_obs_tot is None:
     vdp_tot_ini = vdp_tot[0]
     label = '$\\sigma^{sim}_{los}(R<R_{max})$ wrt T=0'
 else:
-    vdp_ini = vdisp_obs_tot
+    vdp_tot_ini = vdisp_obs_tot
     label = '$\\sigma^{sim}_{los}(R<R_{max})$ wrt obs'
 rel_diff = 100 * (vdp_tot - vdp_tot_ini) / vdp_ini
 axstat.plot(T, rel_diff, '-s', c='cyan', label=label, zorder=3000)
