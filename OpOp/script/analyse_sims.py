@@ -16,6 +16,7 @@ mpl.rcParams['mathtext.default'] = 'regular'
 import glob
 import os
 import sys
+import importlib
 
 class Param:
 
@@ -44,7 +45,7 @@ class Param:
                 setattr(self, key, self.default[key])
                 self.used[key]=self.default[key]
         else:
-            fp=__import__(filename)
+            fp=importlib.import_module(filename)
             for key in self.default:
                 try:
                     val=eval('fp.'+key)
@@ -75,6 +76,7 @@ if len(sys.argv)>1:
         par.save('default_param')
         exit()
     else:
+        print(sys.argv)
         filename=sys.argv[1]
 	print(filename, sys.argv)
 else:
