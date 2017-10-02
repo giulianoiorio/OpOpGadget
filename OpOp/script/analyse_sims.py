@@ -35,8 +35,8 @@ skypos = (15.0392, -33.7092)
 rh_obs = 0.283
 vdisp_obs = 8.69
 vdisp_obs_tot = 9.43
-vdisp_obs = None
-vdisp_obs_tot = None
+#vdisp_obs = None
+#vdisp_obs_tot = None
 
 outdir = None
 Nresample = 100000

@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOpGadget.egg-info/PKG-INFO" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOpGadget.egg-info/SOURCES.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOpGadget.egg-info/dependency_links.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOpGadget.egg-info/requires.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOpGadget.egg-info/top_level.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" afterPath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +48,8 @@
       <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11286">
-              <caret line="627" column="0" lean-forward="true" selection-start-line="627" selection-start-column="0" selection-end-line="627" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1653,8 +1657,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11286">
-          <caret line="627" column="0" lean-forward="true" selection-start-line="627" selection-start-column="0" selection-end-line="627" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>

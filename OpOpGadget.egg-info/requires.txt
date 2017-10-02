@@ -1,5 +1,0 @@
-numpy>=1.9
-scipy>=0.16
-matplotlib
-astropy>=1
-fermi
