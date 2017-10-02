@@ -188,6 +188,7 @@ for file in simfiles:
         except:
             pass
 
+
         prof_tmp_s=Profile(particles=a_tmp.p,xmin=0.0001, xmax=5, ngrid=100, kind='lin', type=2)
         arr = prof_tmp_s.dens()[0]
         r = arr[:, 0]
