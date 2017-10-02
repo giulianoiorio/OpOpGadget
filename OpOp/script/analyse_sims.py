@@ -73,6 +73,7 @@ if len(sys.argv)>1:
     if sys.argv[1]=='-d':
         par = Param()
         par.save('default_param')
+        exit()
     else:
         filename=sys.argv[1]
 else:

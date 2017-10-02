@@ -1,5 +1,11 @@
 PYTHON_DIR=/Users/Giuliano/anaconda/envs
 
+all:
+	$(PYTHON_DIR)/py33/bin/./python setup.py install
+	$(PYTHON_DIR)/py34/bin/./python setup.py install
+	$(PYTHON_DIR)/py35/bin/./python setup.py install
+	$(PYTHON_DIR)/py36/bin/./python setup.py install	
+	
 install:
 	$(PYTHON_DIR)/py33/bin/./python setup.py install
 
