@@ -649,10 +649,12 @@ class Profile:
         self.paxdens=None
         self.paxvdisp2d=None
         self.paxvdisp3d=None
+        self.paxvrot=None
         self.massbinsup=None#np.histogram(self.radcyl,bins=self.grid.gedge,weights=self.mass)[0]
         self.masscumsup=None#self.massbinsup.cumsum()
         self.csupdens=None#self.massbinsup/self.grid.g_sup
 
+        self.cvrot=None
         self.cvdisp2d=None#np.zeros_like(self.dens)
         self.cvdisp3d=None#np.zeros_like(self.dens)
 
@@ -844,3 +846,48 @@ class Profile:
                 return retarray
 
 
+    def vrot(self,pax='z',ret=True,func=True,s=0,k=2):
+
+        if (self.cvrot is None) or (self.paxvrot!=pax):
+
+            if pax=='obs':
+
+                if self.issky:
+                    self.radcyl = np.sqrt(self.pos[:, 0] ** 2 + self.pos[:, 1] ** 2)  # set R
+                    vel_proj = self.Vlos[:] #set Vproj
+                else:
+                    raise AttributeError('obs profile is available only for object of the sky particles class')
+
+            else:
+
+                if pax=='z':
+                    ax1=0
+                    ax2=1
+                    ax3=2
+                elif pax=='y':
+                    ax1=0
+                    ax2=2
+                    ax3=1
+                elif pax=='x':
+                    ax1=1
+                    ax2=2
+                    ax3=0
+
+                self.radcyl=np.sqrt(self.pos[:,ax1]**2+self.pos[:,ax2]**2) #set R
+                vel_proj=self.vel[:,ax3] #set Vproj
+
+            self.paxvrot=pax #set pax
+            self.cvrot=np.zeros(len(self.grid.gedge)-1) #set grid
+            for i in range(len(self.grid.gedge)-1):
+                cond=(self.radcyl>self.grid.gedge[i])&(self.radcyl<=self.grid.gedge[i+1])
+                self.cvrot[i]=np.median(vel_proj[cond])
+
+            if ret==True:
+                retarray=np.zeros((len(self.cvdisp2d),2))
+                retarray[:,0]=self.grid.gx
+                retarray[:,1]=self.cvdisp2d
+                if func==True:
+                    rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=k,s=s)
+                    return retarray,rfunc
+                else:
+                    return retarray
