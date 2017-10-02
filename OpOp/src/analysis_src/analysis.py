@@ -300,7 +300,7 @@ class Analysis:
 
         return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err
 
-    def qmass(self,q,safe_mode=True,type=None):
+    def qmass(self,q,safe_mode=True,type=None, rad_max=None):
         """
         Calculate the radius in which the mass is a q % fraction of the total mass.
         :param q: q is the mass fraction, it can range from 0 to 100
@@ -318,9 +318,12 @@ class Analysis:
             rad_array=self._make_array(self.p.Radius,type)
             mas_array=self._make_array(self.p.Mass,type)
 
+        if rad_max is None:
+            ret_value,_=self.qradius_ext(rad_array,mas_array,q,safe_mode=safe_mode)
+        else:
+            idx=rad_array<=rad_max
+            ret_value,_=self.qradius_ext(rad_array[idx],mas_array[idx],q,safe_mode=safe_mode)
 
-
-        ret_value,_=self.qradius_ext(rad_array,mas_array,q,safe_mode=safe_mode)
 
         return  ret_value
 
@@ -333,17 +336,26 @@ class Analysis:
         :return: An array with the value of the radius where mass is a q % fraction of the total mass.
                  and the total value of the mass for the type choosen.
         """
-        if pax == 'z':
-            ax1 = 0
-            ax2 = 1
-        elif pax == 'y':
-            ax1 = 0
-            ax2 = 2
-        elif pax == 'x':
-            ax1 = 1
-            ax2 = 2
 
-        radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)
+        if pax == 'obs':
+
+            if self.issky:
+                radcyl = np.sqrt(self.p.Pos[:, 0] ** 2 + self.p.Pos[:, 1] ** 2)  # set R
+            else:
+                raise AttributeError('obs profile is available only for object of the sky particles class')
+
+        else:
+            if pax == 'z':
+                ax1 = 0
+                ax2 = 1
+            elif pax == 'y':
+                ax1 = 0
+                ax2 = 2
+            elif pax == 'x':
+                ax1 = 1
+                ax2 = 2
+
+            radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)
 
         if type is None:
             rad_array=radcyl
@@ -809,6 +821,7 @@ class Analysis:
             evalue = evalue /np.max(evalue)
             eversor = evec.T / (np.sqrt(np.sum(evec*evec, axis=1)))
             eversor = eversor.T
+            #eversor=evec
             return mat2, evalue, eversor
 
         else:
