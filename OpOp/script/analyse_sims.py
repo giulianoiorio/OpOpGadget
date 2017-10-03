@@ -17,6 +17,7 @@ import glob
 import os
 import sys
 import importlib
+sys.path.append(os.getcwd())
 
 class Param:
 
