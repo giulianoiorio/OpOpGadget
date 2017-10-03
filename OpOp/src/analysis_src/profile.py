@@ -845,8 +845,7 @@ class Profile:
             else:
                 return retarray
 
-
-    def vrot(self,pax='z',ret=True,func=True,s=0,k=2):
+    def vsys(self,pax='z',ret=True,func=True,s=0,k=2):
 
         if (self.cvrot is None) or (self.paxvrot!=pax):
 
