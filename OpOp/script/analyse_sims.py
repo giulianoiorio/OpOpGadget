@@ -99,6 +99,7 @@ else:
 
 #READ
 par=Param(filename=filename)
+par.save()
 proffile=par.proffile
 folder=par.folder
 radmax=par.radmax
