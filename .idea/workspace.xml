@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" afterPath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,12 +42,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="55" column="44" lean-forward="false" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="285">
+              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+              <folding>
+                <element signature="e#571#3841#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,10 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1314">
+            <state relative-caret-position="407">
               <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
               <folding />
             </state>
@@ -238,10 +242,10 @@
         <option value="$PROJECT_DIR$/tests/observe/rh/test.py" />
         <option value="$PROJECT_DIR$/tests/observe/vdisp_observe/test.py" />
         <option value="$PROJECT_DIR$/tests/observe/test_script/script.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
@@ -1574,14 +1578,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/observe/test_script/script.py" />
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1314">
-          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6894">
@@ -1656,8 +1652,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="55" column="44" lean-forward="false" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+        <state relative-caret-position="285">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding>
+            <element signature="e#571#3841#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
           <folding />
         </state>
       </provider>

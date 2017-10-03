@@ -131,7 +131,10 @@ if folder is None: folder = '.'
 if outdir is None: outdir = './analysis'
 if not os.path.exists(outdir):
     os.makedirs(outdir)
-if not os.path.exists(file_vdisp):
+
+if file_vdisp is None:
+    pass
+elif not os.path.exists(file_vdisp):
     file_vdisp = None
 
 olist = []
