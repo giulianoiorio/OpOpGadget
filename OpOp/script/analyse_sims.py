@@ -17,7 +17,6 @@ import glob
 import os
 import sys
 import importlib
-sys.path.append(os.getcwd())
 
 class Param:
 
@@ -46,7 +45,21 @@ class Param:
                 setattr(self, key, self.default[key])
                 self.used[key]=self.default[key]
         else:
-            fp=importlib.import_module(filename)
+
+
+            directory, module_name = os.path.split(filename)
+            module_name = os.path.splitext(module_name)[0]
+            old_path = list(sys.path)
+            if directory == '':
+                sys.path.insert(0, os.getcwd())
+            else:
+                sys.path.insert(0, directory)
+
+            try:
+                fp = importlib.import_module(module_name)
+            finally:
+                sys.path[:] = old_path  # restore
+
             for key in self.default:
                 try:
                     val=eval('fp.'+key)
@@ -81,6 +94,8 @@ if len(sys.argv)>1:
         filename=sys.argv[1]
 else:
     filename=None
+
+
 
 #READ
 par=Param(filename=filename)
