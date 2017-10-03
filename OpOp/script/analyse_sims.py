@@ -28,7 +28,7 @@ class Param:
                        'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.3872), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
-                       'mstar':4.3e6, }
+                       'mstar':4.6e6, }
 
         self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'Maximum radius to analyse', 'psun':'Position of the Sun (X,Y,Z)',
                        'vsun':'Local velocty of the Sun (Vx, Vy, Vz)', 'vrot':'Velocity of LSR', 'gpos':'Galactic position of the object (Xg, Yg, Zg)',
