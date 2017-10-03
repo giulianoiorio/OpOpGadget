@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" afterPath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +43,8 @@
       <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+            <state relative-caret-position="4950">
+              <caret line="459" column="20" lean-forward="false" selection-start-line="459" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
               <folding>
                 <element signature="e#571#3841#0" expanded="false" />
               </folding>
@@ -57,42 +55,67 @@
       <file leaf-file-name="analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
-              <caret line="822" column="31" lean-forward="false" selection-start-line="822" selection-start-column="31" selection-end-line="822" selection-end-column="31" />
+            <state relative-caret-position="-421">
+              <caret line="111" column="51" lean-forward="false" selection-start-line="111" selection-start-column="51" selection-end-line="111" selection-end-column="51" />
               <folding>
                 <element signature="e#549#1686#0" expanded="false" />
                 <element signature="e#1731#2077#0" expanded="false" />
                 <element signature="e#2133#3136#0" expanded="false" />
-                <element signature="e#3199#4144#0" expanded="false" />
-                <element signature="e#4313#6799#0" expanded="false" />
-                <element signature="e#6935#9518#0" expanded="false" />
-                <element signature="e#9590#10533#0" expanded="false" />
-                <element signature="e#10614#11009#1" expanded="true" />
-                <element signature="e#12211#13994#0" expanded="false" />
-                <element signature="e#14071#16251#0" expanded="false" />
-                <element signature="e#16320#18128#0" expanded="false" />
-                <element signature="e#18246#20282#0" expanded="false" />
-                <element signature="e#20373#21304#0" expanded="false" />
-                <element signature="e#21372#21667#0" expanded="false" />
-                <element signature="e#21788#24298#0" expanded="false" />
-                <element signature="e#24389#26087#0" expanded="false" />
-                <element signature="e#24389#25329#1" expanded="true" />
-                <element signature="e#26179#27878#0" expanded="false" />
-                <element signature="e#27915#28195#0" expanded="false" />
-                <element signature="e#28252#29313#0" expanded="false" />
-                <element signature="e#29860#31569#0" expanded="false" />
-                <element signature="e#31648#31941#0" expanded="false" />
+                <element signature="e#3199#4314#0" expanded="false" />
+                <element signature="e#4483#6969#0" expanded="false" />
+                <element signature="e#7105#9688#0" expanded="false" />
+                <element signature="e#9760#10703#0" expanded="false" />
+                <element signature="e#10784#12310#0" expanded="false" />
+                <element signature="e#10784#11179#1" expanded="true" />
+                <element signature="e#12381#14164#0" expanded="false" />
+                <element signature="e#14241#16421#0" expanded="false" />
+                <element signature="e#16490#18298#0" expanded="false" />
+                <element signature="e#18416#20452#0" expanded="false" />
+                <element signature="e#20543#21474#0" expanded="false" />
+                <element signature="e#21542#21837#0" expanded="false" />
+                <element signature="e#21958#24468#0" expanded="false" />
+                <element signature="e#24559#26257#0" expanded="false" />
+                <element signature="e#24559#25499#1" expanded="true" />
+                <element signature="e#26349#28048#0" expanded="false" />
+                <element signature="e#28085#28365#0" expanded="false" />
+                <element signature="e#28422#29483#0" expanded="false" />
+                <element signature="e#29555#29946#0" expanded="false" />
+                <element signature="e#30030#31739#0" expanded="false" />
+                <element signature="e#31818#32111#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="analysis_backup.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis_backup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="595" column="15" lean-forward="false" selection-start-line="595" selection-start-column="15" selection-end-line="595" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="particle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1489">
+              <caret line="863" column="12" lean-forward="false" selection-start-line="863" selection-start-column="8" selection-end-line="863" selection-end-column="12" />
+              <folding>
+                <element signature="e#36285#36793#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/profile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="848" column="54" lean-forward="false" selection-start-line="848" selection-start-column="54" selection-end-line="848" selection-end-column="54" />
+            <state relative-caret-position="335">
+              <caret line="565" column="14" lean-forward="false" selection-start-line="565" selection-start-column="14" selection-end-line="565" selection-end-column="14" />
               <folding>
+                <element signature="e#23498#34629#0" expanded="false" />
                 <element signature="e#27003#27766#0" expanded="false" />
                 <element signature="e#27830#29938#0" expanded="false" />
                 <element signature="e#29992#30524#0" expanded="false" />
@@ -104,7 +127,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="407">
@@ -157,7 +180,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Mmax</find>
       <find>self.xmin</find>
       <find>Particles</find>
       <find>_makety</find>
@@ -187,6 +209,7 @@
       <find>self.com</find>
       <find>center</find>
       <find>centre</find>
+      <find>extr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -243,9 +266,9 @@
         <option value="$PROJECT_DIR$/tests/observe/vdisp_observe/test.py" />
         <option value="$PROJECT_DIR$/tests/observe/test_script/script.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
         <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
       </list>
     </option>
   </component>
@@ -256,9 +279,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="197" />
-    <option name="y" value="60" />
-    <option name="width" value="1608" />
+    <option name="y" value="27" />
+    <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
   <component name="ProjectView">
@@ -276,7 +298,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -443,28 +464,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utility_src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="particle_src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -491,27 +490,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1168,10 +1150,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="197" y="60" width="1608" height="773" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1280" height="773" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1407455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14332248" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32611465" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24722663" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1537,13 +1519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis_backup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10318">
-          <caret line="595" column="15" lean-forward="false" selection-start-line="595" selection-start-column="15" selection-end-line="595" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/observe.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -1553,13 +1528,6 @@
             <element signature="e#727#1039#1" expanded="false" />
             <element signature="e#6397#6758#1" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="888" column="0" lean-forward="false" selection-start-line="888" selection-start-column="0" selection-end-line="888" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1578,6 +1546,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/observe/test_script/script.py" />
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6894">
@@ -1604,11 +1580,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4950">
+          <caret line="459" column="20" lean-forward="false" selection-start-line="459" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
+          <folding>
+            <element signature="e#571#3841#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis_backup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="595" column="15" lean-forward="false" selection-start-line="595" selection-start-column="15" selection-end-line="595" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1489">
+          <caret line="863" column="12" lean-forward="false" selection-start-line="863" selection-start-column="8" selection-end-line="863" selection-end-column="12" />
+          <folding>
+            <element signature="e#36285#36793#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-421">
+          <caret line="111" column="51" lean-forward="false" selection-start-line="111" selection-start-column="51" selection-end-line="111" selection-end-column="51" />
+          <folding>
+            <element signature="e#549#1686#0" expanded="false" />
+            <element signature="e#1731#2077#0" expanded="false" />
+            <element signature="e#2133#3136#0" expanded="false" />
+            <element signature="e#3199#4314#0" expanded="false" />
+            <element signature="e#4483#6969#0" expanded="false" />
+            <element signature="e#7105#9688#0" expanded="false" />
+            <element signature="e#9760#10703#0" expanded="false" />
+            <element signature="e#10784#12310#0" expanded="false" />
+            <element signature="e#10784#11179#1" expanded="true" />
+            <element signature="e#12381#14164#0" expanded="false" />
+            <element signature="e#14241#16421#0" expanded="false" />
+            <element signature="e#16490#18298#0" expanded="false" />
+            <element signature="e#18416#20452#0" expanded="false" />
+            <element signature="e#20543#21474#0" expanded="false" />
+            <element signature="e#21542#21837#0" expanded="false" />
+            <element signature="e#21958#24468#0" expanded="false" />
+            <element signature="e#24559#26257#0" expanded="false" />
+            <element signature="e#24559#25499#1" expanded="true" />
+            <element signature="e#26349#28048#0" expanded="false" />
+            <element signature="e#28085#28365#0" expanded="false" />
+            <element signature="e#28422#29483#0" expanded="false" />
+            <element signature="e#29555#29946#0" expanded="false" />
+            <element signature="e#30030#31739#0" expanded="false" />
+            <element signature="e#31818#32111#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/profile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="848" column="54" lean-forward="false" selection-start-line="848" selection-start-column="54" selection-end-line="848" selection-end-column="54" />
+        <state relative-caret-position="335">
+          <caret line="565" column="14" lean-forward="false" selection-start-line="565" selection-start-column="14" selection-end-line="565" selection-end-column="14" />
           <folding>
+            <element signature="e#23498#34629#0" expanded="false" />
             <element signature="e#27003#27766#0" expanded="false" />
             <element signature="e#27830#29938#0" expanded="false" />
             <element signature="e#29992#30524#0" expanded="false" />
@@ -1616,55 +1654,6 @@
             <element signature="e#32229#33012#0" expanded="false" />
             <element signature="e#33079#34629#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="822" column="31" lean-forward="false" selection-start-line="822" selection-start-column="31" selection-end-line="822" selection-end-column="31" />
-          <folding>
-            <element signature="e#549#1686#0" expanded="false" />
-            <element signature="e#1731#2077#0" expanded="false" />
-            <element signature="e#2133#3136#0" expanded="false" />
-            <element signature="e#3199#4144#0" expanded="false" />
-            <element signature="e#4313#6799#0" expanded="false" />
-            <element signature="e#6935#9518#0" expanded="false" />
-            <element signature="e#9590#10533#0" expanded="false" />
-            <element signature="e#10614#11009#1" expanded="true" />
-            <element signature="e#12211#13994#0" expanded="false" />
-            <element signature="e#14071#16251#0" expanded="false" />
-            <element signature="e#16320#18128#0" expanded="false" />
-            <element signature="e#18246#20282#0" expanded="false" />
-            <element signature="e#20373#21304#0" expanded="false" />
-            <element signature="e#21372#21667#0" expanded="false" />
-            <element signature="e#21788#24298#0" expanded="false" />
-            <element signature="e#24389#26087#0" expanded="false" />
-            <element signature="e#24389#25329#1" expanded="true" />
-            <element signature="e#26179#27878#0" expanded="false" />
-            <element signature="e#27915#28195#0" expanded="false" />
-            <element signature="e#28252#29313#0" expanded="false" />
-            <element signature="e#29860#31569#0" expanded="false" />
-            <element signature="e#31648#31941#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding>
-            <element signature="e#571#3841#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>

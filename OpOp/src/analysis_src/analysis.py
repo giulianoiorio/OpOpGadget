@@ -137,6 +137,11 @@ class Analysis:
             radcyl = np.sqrt(self.p.Pos[:, ax1] ** 2 + self.p.Pos[:, ax2] ** 2)  # set R
             vel_proj = self.p.Vel[:, ax3]  # set Vproj
 
+        if type is not None:
+            type= nparray_check(type)
+            radcyl=self._make_array(radcyl,type)
+            vel_proj=self._make_array(vel_proj,type)
+
 
         if rad_max is not None:
             idx=radcyl<=rad_max
