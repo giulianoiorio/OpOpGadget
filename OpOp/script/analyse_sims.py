@@ -537,6 +537,7 @@ for file in simfiles:
         vd = arr[:, 1]
         axobs[1,0].plot(r, vd, label='Vlos', lw=3, color='red', zorder=2000)
         if file_vdisp is not None:
+
             try:
                 data = np.loadtxt(file_vdisp)
                 x = dist * np.tan(data[:, 0] * (np.pi) / 180)
