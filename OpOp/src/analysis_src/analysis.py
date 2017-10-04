@@ -264,6 +264,7 @@ class Analysis:
             if Nperbin is not None:
                 Nthisbin=int(Nperbin[i])
                 #print(i,Nthisbin,len(rad_tmp))
+                if Nthisbin>len(rad_tmp): Nthisbin=len(rad_tmp)
                 idx_extract = np.random.choice(len(rad_tmp), Nthisbin, replace=False)
                 rad_tmp=rad_tmp[idx_extract]
                 vproj_tmp=vproj_tmp[idx_extract]

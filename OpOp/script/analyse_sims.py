@@ -23,7 +23,7 @@ class Param:
     def __init__(self, filename=None):
 
 
-        self.default={'proffile':None, 'folder':None, 'radmax':1.8, 'psun':(8.0,0.,0.),
+        self.default={'proffile':None, 'folder':None, 'radmax':1.2, 'psun':(8.0,0.,0.),
                        'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
                        'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.3872), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
@@ -75,11 +75,11 @@ class Param:
 
         for key in self.used:
             if self.used[key] is None:
-                fw.write('%-20s = %-30s #%s\n' % (key, str(self.used[key]), self.description[key]))
+                fw.write('%-20s = %-s #%s\n' % (key, str(self.used[key]), self.description[key]))
             elif key=='proffile' or key=='folder' or key=='outdir' or key=='file_vdisp':
-                fw.write('%-20s = \'%-30s\' #%s \n'%(key, str(self.used[key]), self.description[key]))
+                fw.write('%-20s = \'%-s\' #%s\n'%(key, str(self.used[key]), self.description[key]))
             else:
-                fw.write('%-20s = %-30s #%s\n' % (key, str(self.used[key]), self.description[key]))
+                fw.write('%-20s = %-s #%s\n' % (key, str(self.used[key]), self.description[key]))
 
         fw.close()
 
@@ -125,7 +125,6 @@ mstar=par.mstar
 
 
 
-
 #START
 if folder is None: folder = '.'
 if outdir is None: outdir = './analysis'
@@ -136,6 +135,8 @@ if file_vdisp is None:
     pass
 elif not os.path.exists(file_vdisp):
     file_vdisp = None
+
+
 
 olist = []
 alist = []
@@ -536,8 +537,8 @@ for file in simfiles:
         r = arr[:, 0]
         vd = arr[:, 1]
         axobs[1,0].plot(r, vd, label='Vlos', lw=3, color='red', zorder=2000)
-        if file_vdisp is not None:
 
+        if file_vdisp is not None:
             try:
                 data = np.loadtxt(file_vdisp)
                 x = dist * np.tan(data[:, 0] * (np.pi) / 180)
@@ -557,7 +558,7 @@ for file in simfiles:
                                             err_distibution='uniform', nboot=10000)
 
                     axobs[1,0].errorbar(b[0], b[4], b[5], b[1], fmt='o', c=color_disp[j], mfc='white')
-            except:
+            except FileNotFoundError:
                 print('File %s not found.. skipping' % file_vdisp)
 
         axobs[1,0].set_xlabel('$R [kpc]$', fontsize=20)
