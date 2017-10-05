@@ -2,33 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/observe.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/observe.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/densityprofile_src/Density.py" afterPath="$PROJECT_DIR$/OpOp/src/densityprofile_src/Density.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/densityprofile_src/King.py" afterPath="$PROJECT_DIR$/OpOp/src/densityprofile_src/King.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/df_src/spherical.py" afterPath="$PROJECT_DIR$/OpOp/src/df_src/spherical.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/grid_src/grid.py" afterPath="$PROJECT_DIR$/OpOp/src/grid_src/grid.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/Icparam.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/Icparam.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/utility.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/utility.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py" afterPath="$PROJECT_DIR$/OpOp/src/jsolver_src/Jsolver.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Einasto.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Einasto.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/GeneralModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/King.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/King.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Model.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/NFWc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Sersic.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Sersic.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py" afterPath="$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OpOp/src/df_src/df_c_ext/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" afterPath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py" afterPath="$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/utility_src/utility.py" afterPath="$PROJECT_DIR$/OpOp/src/utility_src/utility.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,6 +43,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/df_src/df_c_ext/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/analysis.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -76,14 +63,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="df.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="df.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/df.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="18">
+              <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="io.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/io.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,60 +86,43 @@
       <file leaf-file-name="particle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="947" column="0" lean-forward="true" selection-start-line="947" selection-start-column="0" selection-end-line="947" selection-end-column="0" />
               <folding>
                 <element signature="e#306#478#1" expanded="true" />
                 <element signature="e#1106#17838#0" expanded="false" />
                 <element signature="e#17860#22562#0" expanded="false" />
-                <element signature="e#38203#38711#1" expanded="true" />
+                <element signature="e#38202#38710#1" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Plummer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer.py">
+      <file leaf-file-name="particle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="36">
+              <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Plummer2D.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Plummer2D.py">
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sersic.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Sersic.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="200">
+              <caret line="164" column="18" lean-forward="false" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#1588#2176#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="sky_particle.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
               <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -222,7 +200,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/prototype/read_fvps/cread_fvfps.pyx" />
         <option value="$PROJECT_DIR$/prototype/read_fvps/cwrite_fvfps.pyx" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/io_src_c_ext/__init__.py" />
         <option value="$PROJECT_DIR$/prototype/fort.f90" />
@@ -245,7 +222,6 @@
         <option value="$PROJECT_DIR$/tests/observe/test_script/script.py" />
         <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/utility.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
@@ -270,9 +246,11 @@
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Sersic.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/TruncatedPlummer.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
         <option value="$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py" />
         <option value="$PROJECT_DIR$/OpOp/src/utility_src/utility.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/df_src/df_c_ext/__init__.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
@@ -283,8 +261,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="390" />
-    <option name="y" value="27" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
   </component>
@@ -367,7 +344,287 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="utility_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="particle_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="model_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model_c_ext" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsolver_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsolver_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsolver_c_ext" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="io_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="io_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="io_c_ext" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grid_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="df_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="df_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="df_c_ext" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="densityprofile_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOpGadget" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OpOp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="analysis_src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1029,7 +1286,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="390" y="27" width="1280" height="773" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17263843" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1151,20 +1408,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/io_c_ext/cwrite_fvfps.pyx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1160">
-          <caret line="58" column="6" lean-forward="false" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="154" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="51" lean-forward="false" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/prototype/read_fvps/p.py" />
     <entry file="file://$PROJECT_DIR$/prototype/read_fvps/prova.bin" />
     <entry file="file://$PROJECT_DIR$/prototype/read_fvps/test.py" />
@@ -1205,25 +1448,6 @@
         <state relative-caret-position="108">
           <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#1588#2176#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1415,7 +1639,7 @@
         <state relative-caret-position="18">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#481#3210#1" expanded="true" />
+            <element signature="e#481#3210#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1460,19 +1684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#306#478#1" expanded="true" />
-            <element signature="e#1106#17838#0" expanded="false" />
-            <element signature="e#17860#22562#0" expanded="false" />
-            <element signature="e#38203#38711#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1499,10 +1710,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/df.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/df_src/df_c_ext/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="947" column="0" lean-forward="true" selection-start-line="947" selection-start-column="0" selection-end-line="947" selection-end-column="0" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#306#478#1" expanded="true" />
+            <element signature="e#1106#17838#0" expanded="false" />
+            <element signature="e#17860#22562#0" expanded="false" />
+            <element signature="e#38202#38710#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="164" column="18" lean-forward="false" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#1588#2176#1" expanded="true" />
           </folding>
         </state>
       </provider>

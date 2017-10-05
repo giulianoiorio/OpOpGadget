@@ -924,7 +924,7 @@ class Particles:
         else:
             raise ValueError('par %s not in par_dic'%strg)
 
-    def extract(self,*args,mode='and'):
+    def extract(self,*args, **kwargs):
         """This method create a new Particles or Sky_Particles objects filtering the original one
         with condition in args. If there are no particles that fulfill all the conditions the function return None.
         The args need to be str object with the name of attribute, the condition (<,>,=,<=,>=) and the numerical value, e.g.:
@@ -936,6 +936,11 @@ class Particles:
         :param args: list of str
         :return: a new Particles or Sky_Particles objects or None
         """
+
+        if 'mode' in kwargs:
+            mode=kwargs['mode']
+        else:
+            mode='and'
 
         if mode.lower()=='and': idx=np.ones(self.n,dtype=bool)
         elif mode.lower()=='or':  idx=np.zeros(self.n,dtype=bool)
