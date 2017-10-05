@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/script/analyse_sims.py___jb_tmp___" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml___jb_tmp___" afterPath="$PROJECT_DIR$/.idea/workspace.xml___jb_tmp___" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" afterPath="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" afterPath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,49 +43,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="analyse_sims.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="82" column="3" lean-forward="false" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="analysis.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1962">
-              <caret line="266" column="62" lean-forward="false" selection-start-line="266" selection-start-column="62" selection-end-line="266" selection-end-column="62" />
-              <folding>
-                <element signature="e#549#1686#0" expanded="false" />
-                <element signature="e#1731#2077#0" expanded="false" />
-                <element signature="e#2133#3136#0" expanded="false" />
-                <element signature="e#3199#4314#0" expanded="false" />
-                <element signature="e#9824#10767#0" expanded="false" />
-                <element signature="e#10848#12374#0" expanded="false" />
-                <element signature="e#10848#11243#1" expanded="true" />
-                <element signature="e#12445#14228#0" expanded="false" />
-                <element signature="e#14305#16485#0" expanded="false" />
-                <element signature="e#16554#18362#0" expanded="false" />
-                <element signature="e#18480#20516#0" expanded="false" />
-                <element signature="e#20607#21538#0" expanded="false" />
-                <element signature="e#21606#21901#0" expanded="false" />
-                <element signature="e#22022#24532#0" expanded="false" />
-                <element signature="e#24623#26321#0" expanded="false" />
-                <element signature="e#24623#25563#1" expanded="true" />
-                <element signature="e#26413#28112#0" expanded="false" />
-                <element signature="e#28149#28429#0" expanded="false" />
-                <element signature="e#28486#29547#0" expanded="false" />
-                <element signature="e#29619#30010#0" expanded="false" />
-                <element signature="e#30094#31803#0" expanded="false" />
-                <element signature="e#31882#32175#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="analysis_backup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/analysis_backup.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,14 +53,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="particle.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoadSnap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6782">
+              <caret line="321" column="7" lean-forward="true" selection-start-line="321" selection-start-column="7" selection-end-line="321" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MANIFEST.in" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MANIFEST.in">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="48" lean-forward="false" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="particle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14616">
-              <caret line="863" column="12" lean-forward="false" selection-start-line="863" selection-start-column="8" selection-end-line="863" selection-end-column="12" />
+            <state relative-caret-position="169">
+              <caret line="910" column="0" lean-forward="true" selection-start-line="910" selection-start-column="0" selection-end-line="910" selection-end-column="0" />
               <folding>
-                <element signature="e#36285#36793#1" expanded="true" />
+                <element signature="e#36310#36818#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="particle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,8 +118,8 @@
       <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1314">
-              <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
+            <state relative-caret-position="295">
+              <caret line="138" column="101" lean-forward="false" selection-start-line="138" selection-start-column="101" selection-end-line="138" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -178,10 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cyth</find>
-      <find>_make_header</find>
-      <find>comit</find>
-      <find>(self,fac=0.975,limit_mass=10,maxiter=500,type=None)c</find>
       <find>ana</find>
       <find>Profile</find>
       <find>self.vsun</find>
@@ -208,6 +194,10 @@
       <find>axvrot</find>
       <find>if v</find>
       <find>vdis</find>
+      <find>._getdic</find>
+      <find>_getdic(key)</find>
+      <find>_getdic</find>
+      <find>par_dic</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -238,7 +228,6 @@
         <option value="$PROJECT_DIR$/prototype/fort.f90" />
         <option value="$PROJECT_DIR$/prototype/read_fvps/fort.f90" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/io_c_ext/cread_fvfps.pyx" />
-        <option value="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/io_c_ext/cwrite_fvfps.pyx" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/WriteSnap.py" />
         <option value="$PROJECT_DIR$/OpOp/io.py" />
@@ -247,7 +236,6 @@
         <option value="$PROJECT_DIR$/OpOp/src/io_src/Icparam.py" />
         <option value="$PROJECT_DIR$/OpOp/src/particle_src/observation.py" />
         <option value="$PROJECT_DIR$/OpOp/analysis.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis_backup.py" />
         <option value="$PROJECT_DIR$/tests/observe/particle.py" />
         <option value="$PROJECT_DIR$/OpOp/particle.py" />
@@ -263,10 +251,12 @@
         <option value="$PROJECT_DIR$/tests/observe/rh/test.py" />
         <option value="$PROJECT_DIR$/tests/observe/vdisp_observe/test.py" />
         <option value="$PROJECT_DIR$/tests/observe/test_script/script.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
       </list>
     </option>
   </component>
@@ -277,10 +267,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1807" />
-    <option name="y" value="233" />
-    <option name="width" value="1843" />
-    <option name="height" value="1028" />
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -307,111 +296,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 3.3.5 (~/anaconda/envs/py33/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="varie" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="observe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="observe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vdisp_observe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="observe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_script" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -487,25 +372,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="analysis_src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOpGadget" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="OpOp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
+              <option name="myItemId" value="io_src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1167,12 +1034,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1807" y="233" width="1843" height="1028" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16247906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16938111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32611465" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09142212" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.090332806" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32646593" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1404,13 +1271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Isothermal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -1440,13 +1300,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/observation.py" />
-    <entry file="file://$PROJECT_DIR$/MANIFEST.in">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="48" lean-forward="false" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -1510,13 +1363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/observe/vdisp_observe/out30.bin">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state />
@@ -1565,9 +1411,8 @@
     <entry file="file://$PROJECT_DIR$/tests/observe/test_script/script.py" />
     <entry file="file://$PROJECT_DIR$/OpOp/script/analyse_sims.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="18">
           <caret line="82" column="3" lean-forward="false" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1582,7 +1427,7 @@
             <element signature="e#3199#4314#0" expanded="false" />
             <element signature="e#9824#10767#0" expanded="false" />
             <element signature="e#10848#12374#0" expanded="false" />
-            <element signature="e#10848#11243#1" expanded="true" />
+            <element signature="e#10848#11243#1" expanded="false" />
             <element signature="e#12445#14228#0" expanded="false" />
             <element signature="e#14305#16485#0" expanded="false" />
             <element signature="e#16554#18362#0" expanded="false" />
@@ -1591,7 +1436,7 @@
             <element signature="e#21606#21901#0" expanded="false" />
             <element signature="e#22022#24532#0" expanded="false" />
             <element signature="e#24623#26321#0" expanded="false" />
-            <element signature="e#24623#25563#1" expanded="true" />
+            <element signature="e#24623#25563#1" expanded="false" />
             <element signature="e#26413#28112#0" expanded="false" />
             <element signature="e#28149#28429#0" expanded="false" />
             <element signature="e#28486#29547#0" expanded="false" />
@@ -1607,16 +1452,6 @@
         <state relative-caret-position="8442">
           <caret line="595" column="15" lean-forward="false" selection-start-line="595" selection-start-column="15" selection-end-line="595" selection-end-column="15" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14616">
-          <caret line="863" column="12" lean-forward="false" selection-start-line="863" selection-start-column="8" selection-end-line="863" selection-end-column="12" />
-          <folding>
-            <element signature="e#36285#36793#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1636,10 +1471,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MANIFEST.in">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="48" lean-forward="false" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1314">
-          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
+        <state relative-caret-position="295">
+          <caret line="138" column="101" lean-forward="false" selection-start-line="138" selection-start-column="101" selection-end-line="138" selection-end-column="101" />
           <folding />
         </state>
       </provider>
@@ -1666,6 +1509,34 @@
           <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6782">
+          <caret line="321" column="7" lean-forward="true" selection-start-line="321" selection-start-column="7" selection-end-line="321" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="910" column="0" lean-forward="true" selection-start-line="910" selection-start-column="0" selection-end-line="910" selection-end-column="0" />
+          <folding>
+            <element signature="e#36310#36818#1" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -321,6 +321,8 @@ def _load_single(filename,end='<',order_key='Id',verbose=False,extra_block=(),**
     f.close()
     p.setrad()
     p.setvelt()
+    p.set_pardic()
+
 
     if order_key is not None:
         print('Sorting by %s'% order_key)
@@ -544,6 +546,8 @@ def _load_multi(filename,end='<',order_key='Id',verbose=False,extra_block=(),**k
 
     p.setrad()
     p.setvelt()
+    p.set_pardic()
+
 
     if order_key is not None:
         print('Sorting by %s' % order_key)
@@ -653,6 +657,7 @@ def load_snap_fvfps(filename,order_key='Id',**kwargs):
     p._maketype()
     p.setrad()
     p.setvelt()
+    p.set_pardic()
 
     if (order_key is not None) and (order_key!='Id'):
         print('Sorting by %s'% order_key)

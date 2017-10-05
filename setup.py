@@ -136,7 +136,7 @@ setup(
     packages=['OpOp', 'OpOp/src/df_src', 'OpOp/src/grid_src', 'OpOp/src/model_src', 'OpOp/src/particle_src',
               'OpOp/src/analysis_src', 'OpOp/src/io_src', 'OpOp/src/utility_src', 'OpOp/src/jsolver_src',
               'OpOp/src/densityprofile_src'],
-    install_requires=['numpy>=1.9', 'scipy>=0.16', 'matplotlib', 'astropy>=1', 'fermi'],
+    install_requires=['numpy>=1.9', 'scipy>=0.19', 'matplotlib', 'astropy>=1', 'fermi>=1.0', 'roteasy'],
     ext_modules=ext_modules,
     scripts=['OpOp/script/analyse_sims.py'],
     include_dirs=[numpy.get_include()]

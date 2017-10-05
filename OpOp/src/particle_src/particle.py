@@ -122,7 +122,6 @@ class Header:
     '''////////////////////////////////////////////////'''
 
 
-
     '''////////////////////////////////////////////////'''
     '''Method: read_header( string filename )
     this method load the header information from a snapshot or IC file with name filename and stores it
@@ -549,8 +548,8 @@ class Particles:
             self._fill_from_particle(p)
             self._make_header()
 
-        self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
-
+        #self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
+        self.set_pardic()
 
 
 
@@ -905,6 +904,7 @@ class Particles:
         :return:
         """
 
+
         cond, key, num = find_symbol(cond)
         check_list = self._getdic(key)
         num = float(num)
@@ -915,6 +915,7 @@ class Particles:
         elif cond == '>': idx *= check_list > num
         elif cond == '=': idx *= check_list == num
         else: raise ('Invalid condition')
+
 
         return idx
 
@@ -938,6 +939,9 @@ class Particles:
         else: raise ('Invalid condition')
 
         return idx
+
+    def set_pardic(self):
+        self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
 
 
 
