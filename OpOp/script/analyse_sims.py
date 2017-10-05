@@ -20,15 +20,29 @@ import importlib
 
 class Param:
 
-    def __init__(self, filename=None):
+    def __init__(self, filename=None, default='long'):
 
 
-        self.default={'proffile':None, 'folder':None, 'radmax':1.2, 'psun':(8.0,0.,0.),
+        default_longrange={'proffile':None, 'folder':None, 'radmax':1.8, 'psun':(8.0,0.,0.),
                        'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
                        'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.3872), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
                        'mstar':4.6e6, }
+
+        default_shortrange={'proffile':None, 'folder':None, 'radmax':1.2, 'psun':(8.0,0.,0.),
+                       'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
+                       'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.3872), 'skypos':(15.0392, -33.7092),
+                       'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.40, 'outdir': None, 'Nresample':100000,
+                       'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
+                       'mstar':4.6e6, }
+
+
+        if default.lower()[0]=='l':
+            self.default=default_longrange
+        elif default.lower()[0]=='s':
+            self.default=default_shortrange
+
 
         self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'Maximum radius to analyse', 'psun':'Position of the Sun (X,Y,Z)',
                        'vsun':'Local velocty of the Sun (Vx, Vy, Vz)', 'vrot':'Velocity of LSR', 'gpos':'Galactic position of the object (Xg, Yg, Zg)',
@@ -85,8 +99,12 @@ class Param:
 
 
 if len(sys.argv)>1:
-    if sys.argv[1]=='-d':
+    if sys.argv[1]=='-d' or sys.argv[1]=='-dl':
         par = Param()
+        par.save('default_param')
+        exit()
+    if sys.argv[1]=='-ds':
+        par = Param(default='short')
         par.save('default_param')
         exit()
     else:
