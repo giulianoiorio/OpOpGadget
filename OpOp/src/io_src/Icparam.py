@@ -1,3 +1,4 @@
+from __future__ import  division, print_function
 import numpy as np
 
 def write_icparam_fvfps(id_new=0, tmax=1, max_dt=0.001, poscm=(0,0,0), velcm=(0,0,0), theta=0.5, epsc=0.01, isoft=1, noutput=1, iene=120, new=0, epotential='J95', **kwargs):

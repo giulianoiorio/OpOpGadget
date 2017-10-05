@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 from ..model_src import Model, GeneralModel
 from astropy.constants import G as conG
 from fermi.tsintegrator import Tsintegrator1D

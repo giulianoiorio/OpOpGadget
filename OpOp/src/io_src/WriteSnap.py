@@ -1,3 +1,4 @@
+from __future__ import  division, print_function
 import struct
 import numpy as np
 from .io_c_ext  import cwrite_fvfps as cw

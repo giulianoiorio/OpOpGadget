@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 import numpy as np
 from astropy.constants import G as conG
 from ..model_src import Model

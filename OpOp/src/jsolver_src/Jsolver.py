@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 from scipy.integrate import quad
 from math import sqrt
 from astropy.constants import G as conG

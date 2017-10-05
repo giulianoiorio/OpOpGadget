@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 import numpy as np
 from astropy.constants import G as conG
 from scipy.interpolate import UnivariateSpline

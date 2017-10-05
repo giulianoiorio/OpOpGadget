@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 import numpy as np
 from scipy.interpolate import  UnivariateSpline
 from numpy.ctypeslib import ndpointer

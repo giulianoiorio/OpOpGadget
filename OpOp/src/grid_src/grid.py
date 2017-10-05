@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 import numpy as np
 from ..model_src.Model import Model
 from scipy.interpolate import interp1d

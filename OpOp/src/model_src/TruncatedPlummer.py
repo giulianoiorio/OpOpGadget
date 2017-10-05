@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 from ..model_src import GeneralModel
 import numpy as np
 

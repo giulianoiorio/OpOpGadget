@@ -1,3 +1,5 @@
+from __future__ import  division, print_function
+
 from ..densityprofile_src import Density
 import numpy as np
 
