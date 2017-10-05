@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" afterPath="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/dm_gas_littleendian.dat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/cumulative_mass_test.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/density_profile_test.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/halo.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/out_gen.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/out_gen_1e3.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/out_gen_1e4.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/out_gen_1e5.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/out_gen_1e6.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OpOp/src/model_src/stellarcomp.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" afterPath="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
@@ -44,7 +51,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
@@ -58,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-6782">
-              <caret line="321" column="7" lean-forward="true" selection-start-line="321" selection-start-column="7" selection-end-line="321" selection-end-column="7" />
+              <caret line="321" column="7" lean-forward="false" selection-start-line="321" selection-start-column="7" selection-end-line="321" selection-end-column="7" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -86,13 +93,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="particle.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="particle.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="910" column="0" lean-forward="true" selection-start-line="910" selection-start-column="0" selection-end-line="910" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="602" column="36" lean-forward="false" selection-start-line="602" selection-start-column="36" selection-end-line="602" selection-end-column="36" />
               <folding>
-                <element signature="e#36310#36818#1" expanded="true" />
+                <element signature="e#68#86#0" expanded="true" />
+                <element signature="e#256#428#1" expanded="true" />
+                <element signature="e#1056#17788#0" expanded="false" />
+                <element signature="e#17810#22512#0" expanded="false" />
+                <element signature="e#38153#38661#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,9 +130,12 @@
       <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="138" column="101" lean-forward="false" selection-start-line="138" selection-start-column="101" selection-end-line="138" selection-end-column="101" />
-              <folding />
+            <state relative-caret-position="218">
+              <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#1588#2176#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,16 +145,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="6894">
               <caret line="429" column="38" lean-forward="false" selection-start-line="429" selection-start-column="38" selection-end-line="429" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/observe/vdisp_observe/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="49" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -169,7 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ana</find>
       <find>Profile</find>
       <find>self.vsun</find>
       <find>make_sky_particles</find>
@@ -198,6 +201,7 @@
       <find>._getdic</find>
       <find>_getdic(key)</find>
       <find>_getdic</find>
+      <find>save</find>
       <find>par_dic</find>
     </findStrings>
   </component>
@@ -254,10 +258,10 @@
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py" />
-        <option value="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/OpOp/src/particle_src/particle.py" />
       </list>
     </option>
   </component>
@@ -351,7 +355,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="particle_src" />
+              <option name="myItemId" value="model_src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,7 +377,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="io_src" />
+              <option name="myItemId" value="model_src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model_c_ext" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1473,14 +1481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="138" column="101" lean-forward="false" selection-start-line="138" selection-start-column="101" selection-end-line="138" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/sky_particle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6894">
@@ -1507,6 +1507,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#1588#2176#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/particle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1518,7 +1537,7 @@
     <entry file="file://$PROJECT_DIR$/OpOp/src/io_src/LoadSnap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6782">
-          <caret line="321" column="7" lean-forward="true" selection-start-line="321" selection-start-column="7" selection-end-line="321" selection-end-column="7" />
+          <caret line="321" column="7" lean-forward="false" selection-start-line="321" selection-start-column="7" selection-end-line="321" selection-end-column="7" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -1527,19 +1546,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OpOp/src/particle_src/particle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="910" column="0" lean-forward="true" selection-start-line="910" selection-start-column="0" selection-end-line="910" selection-end-column="0" />
+        <state relative-caret-position="324">
+          <caret line="602" column="36" lean-forward="false" selection-start-line="602" selection-start-column="36" selection-end-line="602" selection-end-column="36" />
           <folding>
-            <element signature="e#36310#36818#1" expanded="true" />
+            <element signature="e#68#86#0" expanded="true" />
+            <element signature="e#256#428#1" expanded="true" />
+            <element signature="e#1056#17788#0" expanded="false" />
+            <element signature="e#17810#22512#0" expanded="false" />
+            <element signature="e#38153#38661#1" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>

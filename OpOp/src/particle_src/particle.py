@@ -5,6 +5,39 @@ import numpy as np
 import math as mt
 from math import *
 from ..utility_src.utility import find_symbol
+import  astropy.io.fits as ft
+
+
+def make_fits(dict, outname=None, header_key={}):
+    '''
+    Make a fits table from a numpy array
+    args must be dictionary containing the type  and the columnf of the table, e.g.
+    {'l':(col1,'D'),'b':(col2,'D')}
+    '''
+
+    col = []
+    for field in dict:
+        if len(dict[field]) == 2:
+            format = dict[field][1]
+            array = dict[field][0]
+        else:
+            format = 'D'
+            array = dict[field]
+
+        col.append(ft.Column(name=field, format=format, array=array))
+
+    cols = ft.ColDefs(col)
+    tab = ft.BinTableHDU.from_columns(cols)
+    for key in header_key:
+        item = header_key[key]
+        if item is None:
+            tab.header[key] = str(item)
+        else:
+            tab.header[key] = item
+
+    if outname is not None: tab.writeto(outname, clobber=True)
+
+    return tab
 
 class Header:
     '''
@@ -551,6 +584,35 @@ class Particles:
         #self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
         self.set_pardic()
 
+    def save(self, filename='particles', format='ascii'):
+
+        ret=np.zeros((len(self.Id),9) )
+        ret[:,0]=self.Id
+        ret[:,1:4]=self.Pos[:,:]
+        ret[:,4:7]=self.Vel[:,:]
+        ret[:,7]=self.Mass
+        ret[:,8]=self.Type
+
+        if format=='ascii' or format=='asci':
+
+            np.savetxt(filename+'.txt', ret, fmt='%i %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.2e %i', header='0-Id 1-X 2-Y 3-Z 4-Vx 5-Vy 7-Vz 7-Mass 8-Type')
+
+        if format=='fits' or format=='fit':
+
+            fits_dic={}
+            fits_dic['Id']=(ret[:,0],'J')
+            fits_dic['X']=(ret[:,1],'D')
+            fits_dic['Y']=(ret[:,2],'D')
+            fits_dic['Z']=(ret[:,3],'D')
+            fits_dic['Vx']=(ret[:,4],'D')
+            fits_dic['Vy']=(ret[:,5],'D')
+            fits_dic['Vz']=(ret[:,6],'D')
+            fits_dic['Mass']=(ret[:,7],'D')
+            fits_dic['Type']=(ret[:,8],'J')
+
+            make_fits(fits_dic, outname=filename+'.fits')
+
+        return ret
 
 
     def _initialize_vars(self,n):

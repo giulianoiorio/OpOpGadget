@@ -6,8 +6,42 @@ import numpy
 import shutil
 import os
 import sysconfig
+import sys
 
+if sys.version_info[0]==2:
+    #time.sleep(5)
+    cmdclass_option = {}
+    print('You are using Python2, what a shame!')
+    #raise ValueError('You are using Python2, what a shame! Download Python3 to use this module. \n If you are using anaconda you can install a python3 virtual env just typing:\n "conda create -n yourenvname python=3.6 anaconda". \n Then you can activate the env with the bash command  "source activate yourenvname"')
 
+elif sys.version_info[0]==3:
+    print('You are using Python3, you are a wise person!')
+
+    def get_ext_filename_without_platform_suffix(filename):
+        name, ext = os.path.splitext(filename)
+        ext_suffix = sysconfig.get_config_var('EXT_SUFFIX')
+
+        if ext_suffix == ext:
+            return filename
+
+        ext_suffix = ext_suffix.replace(ext, '')
+        idx = name.find(ext_suffix)
+
+        if idx == -1:
+            return filename
+        else:
+            return name[:idx] + ext
+
+    class BuildExtWithoutPlatformSuffix(build_ext):
+        def get_ext_filename(self, ext_name):
+            filename = super().get_ext_filename(ext_name)
+            return get_ext_filename_without_platform_suffix(filename)
+    cmdclass_option = {'build_ext': BuildExtWithoutPlatformSuffix}
+
+else:
+    raise ValueError('You are not using neither Python2 nor Python3, probably you are a time traveller from the Future or from the Past')
+
+'''
 def get_ext_filename_without_platform_suffix(filename):
     name, ext = os.path.splitext(filename)
     ext_suffix = sysconfig.get_config_var('EXT_SUFFIX')
@@ -28,6 +62,7 @@ class BuildExtWithoutPlatformSuffix(build_ext):
     def get_ext_filename(self, ext_name):
         filename = super().get_ext_filename(ext_name)
         return get_ext_filename_without_platform_suffix(filename)
+'''
 
 
 # Parse options; current options
@@ -131,7 +166,7 @@ setup(
     author='Giuliano Iorio',
     author_email='giuliano.iorio@unibo.it',
     url='http://github.com/iogiul/OpOp',
-    cmdclass={'build_ext': BuildExtWithoutPlatformSuffix},
+    cmdclass=cmdclass_option,
     package_dir={'OpOp/src/': ''},
     packages=['OpOp', 'OpOp/src/df_src', 'OpOp/src/grid_src', 'OpOp/src/model_src', 'OpOp/src/particle_src',
               'OpOp/src/analysis_src', 'OpOp/src/io_src', 'OpOp/src/utility_src', 'OpOp/src/jsolver_src',
