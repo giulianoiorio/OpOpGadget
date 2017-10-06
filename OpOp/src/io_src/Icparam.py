@@ -40,7 +40,7 @@ def write_icparam_fvfps(id_new=0, tmax=1, max_dt=0.001, poscm=(0,0,0), velcm=(0,
     #elif id_new<10:  outname='out0'+str(id_new)
     #else: outname='out'+str(id_new)
 
-    outname=outfolder+'./input.data'
+    outname=outfolder+'/input.data'
 
 
 
