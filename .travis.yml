@@ -1,9 +1,8 @@
+language: python
 python:
-  # We don't actually use the Travis Python, but this keeps it organized.
   - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-# command to run tests
-script: nosetests
+cache: pip
+install:
+  - pip install astropy
+script:
+	- python tests.py
