@@ -1,7 +1,7 @@
 from __future__ import  division, print_function
 import numpy as np
 
-def write_icparam_fvfps(id_new=0, tmax=1, max_dt=0.001, poscm=(0,0,0), velcm=(0,0,0), theta=0.5, epsc=0.01, isoft=1, noutput=1, iene=120, new=0, epotential='J95', **kwargs):
+def write_icparam_fvfps(id_new=0, tmax=1, max_dt=0.001, poscm=(0,0,0), velcm=(0,0,0), theta=0.5, epsc=0.01, isoft=1, noutput=1, iene=120, new=0, epotential='J95', outfolder='.' **kwargs):
     """
     see fvfps documentation
     :param id_new:
@@ -40,7 +40,7 @@ def write_icparam_fvfps(id_new=0, tmax=1, max_dt=0.001, poscm=(0,0,0), velcm=(0,
     #elif id_new<10:  outname='out0'+str(id_new)
     #else: outname='out'+str(id_new)
 
-    outname='input.data'
+    outname=outfolder+'./input.data'
 
 
 
