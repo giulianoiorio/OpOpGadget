@@ -10,6 +10,7 @@ from ..particle_src.particle import  Particles
 from ..particle_src.sky_particle import Sky_Particles
 from ..io_src.LoadSnap import load_snap
 from ..grid_src.grid import grid
+from ..utility_src.utility import nparray_check
 #from .analysis import Analysis
 
 
