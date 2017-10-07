@@ -170,7 +170,7 @@ setup(
     packages=['OpOp', 'OpOp/src','OpOp/src/df_src', 'OpOp/src/df_src/df_c_ext', 'OpOp/src/grid_src', 'OpOp/src/model_src', 'OpOp/src/model_src/model_c_ext', 'OpOp/src/particle_src',
               'OpOp/src/analysis_src', 'OpOp/src/io_src', 'OpOp/src/io_src/io_c_ext', 'OpOp/src/utility_src', 'OpOp/src/jsolver_src', 'OpOp/src/jsolver_src/jsolver_c_ext',
               'OpOp/src/densityprofile_src'],
-    install_requires=['numpy>=1.9', 'scipy>=0.19', 'matplotlib', 'astropy>=1', 'fermi>=1.0', 'roteasy'],
+    install_requires=['numpy>=1.9', 'scipy>=0.19', 'matplotlib', 'astropy>=1'],
     ext_modules=ext_modules,
     scripts=['OpOp/script/analyse_sims.py'],
     include_dirs=[numpy.get_include()]
