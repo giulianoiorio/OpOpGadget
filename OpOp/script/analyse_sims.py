@@ -25,16 +25,23 @@ class Param:
 
         default_longrange={'proffile':None, 'folder':None, 'radmax':1.8, 'psun':(8.0,0.,0.),
                        'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
-                       'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.3872), 'skypos':(15.0392, -33.7092),
+                       'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
                        'mstar':4.6e6, }
 
         default_shortrange={'proffile':None, 'folder':None, 'radmax':1.2, 'psun':(8.0,0.,0.),
                        'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
-                       'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.3872), 'skypos':(15.0392, -33.7092),
+                       'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.40, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
+                       'mstar':4.6e6, }
+
+        default_exttrange={'proffile':None, 'folder':None, 'radmax':1.9, 'psun':(8.195,0.,0.),
+                       'vsun':(-9.833, 11.945, 8.107), 'vrot':219.386, 'gpos':(4.881,-10.490,-91.658),
+                       'gvel':(--40.843, 48.310, -81.362), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
+                       'rh_obs': 0.299, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
+                       'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':92.316, 'Vlos':110.714, 'pmot':(-0.05843, 0.39278),
                        'mstar':4.6e6, }
 
 
@@ -44,7 +51,7 @@ class Param:
             self.default=default_shortrange
 
 
-        self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'Maximum radius to analyse', 'psun':'Position of the Sun (X,Y,Z)',
+        self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'Last radius where analyse','radmax':'maximum radius to consider', 'psun':'Position of the Sun (X,Y,Z)',
                        'vsun':'Local velocty of the Sun (Vx, Vy, Vz)', 'vrot':'Velocity of LSR', 'gpos':'Galactic position of the object (Xg, Yg, Zg)',
                        'gvel':'Galactic velocity of the object (Xg, Yg, Zg)', 'skyposg': 'Position in sky coordinates (l [deg], b[deg])', 'skypos':'Position in equatorial coordinates (ra [deg], dec[deg])',
                        'rh_obs': 'Observed half light radius', 'vdisp_obs':'Observed velocity dispersion inside half-light radius', 'vdisp_obs_tot':'Observed velocity dispersion inside Rmax', 'outdir': 'Name of the output folder', 'Nresample':'DM particle to plot',
@@ -193,7 +200,7 @@ if Vlos is not None: log += 'Current Vlos: %.3f\n' % Vlos
 if pmot is not None: log += 'Current pmot: mul=%.5f mub=%.5f\n' % pmot
 if rh_obs is not None: log += 'Rh_obs:%.3f\n' % rh_obs
 if vdisp_obs is not None: log += 'Vdisp_obs(R<Rh_obs):%.3f\n' % vdisp_obs
-if vdisp_obs_tot is not None: log += 'Vdisp_obs(R<Radmax):%.3f\n' % vdisp_obs_tot
+if vdisp_obs_tot is not None: log += 'Vdisp_obs(R<radmax):%.3f\n' % vdisp_obs_tot
 if radmax is not None: log += 'Rmax=%.3f\n' % radmax
 if mstar is not None: log += 'M*(R<Rmax)=%.3e\n' % mstar
 log += '\n'
