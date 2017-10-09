@@ -8,6 +8,6 @@ python:
 install:
   - python setup.py install
   - pip list
-  script:
+script:
   - python setup.py test -q
-  sudo: false
+sudo: false
