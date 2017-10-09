@@ -75,7 +75,7 @@ def write_icparam_fvfps(id_new=0, tmax=1, max_dt=0.001, poscm=(0,0,0), velcm=(0,
 
     #cm
     print('xcm, ycm, zcm, vxcm, vycm, vzcm',file=fo)
-    print('%4.3f, %4.3f, %4.3f, %4.3f, %4.3f, %4.3f'%(poscm[0],poscm[1],poscm[2],velcm[0],velcm[1],velcm[2]),file=fo)
+    print('%4.4f, %4.4f, %4.4f, %4.4f, %4.4f, %4.4f'%(poscm[0],poscm[1],poscm[2],velcm[0],velcm[1],velcm[2]),file=fo)
 
     fo.close()
 
