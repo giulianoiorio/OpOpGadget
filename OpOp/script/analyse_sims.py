@@ -39,8 +39,8 @@ class Param:
 
         default_exttrange={'proffile':None, 'folder':None, 'radmax':1.9, 'psun':(8.195,0.,0.),
                        'vsun':(-9.833, 11.945, 8.107), 'vrot':219.386, 'gpos':(4.881,-10.490,-91.658),
-                       'gvel':(--40.843, 48.310, -81.362), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
-                       'rh_obs': 0.299, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
+                       'gvel':(-40.843, 48.310, -81.362), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
+                       'rh_obs': 0.303, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':92.316, 'Vlos':110.714, 'pmot':(-0.05843, 0.39278),
                        'mstar':4.6e6, }
 
@@ -49,7 +49,8 @@ class Param:
             self.default=default_longrange
         elif default.lower()[0]=='s':
             self.default=default_shortrange
-
+        elif default.lower()[0]=='e':
+            self.default=default_exttrange
 
         self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'Last radius where analyse','radmax':'maximum radius to consider', 'psun':'Position of the Sun (X,Y,Z)',
                        'vsun':'Local velocty of the Sun (Vx, Vy, Vz)', 'vrot':'Velocity of LSR', 'gpos':'Galactic position of the object (Xg, Yg, Zg)',
@@ -110,8 +111,12 @@ if len(sys.argv)>1:
         par = Param()
         par.save('default_param')
         exit()
-    if sys.argv[1]=='-ds':
+    elif sys.argv[1]=='-ds':
         par = Param(default='short')
+        par.save('default_param')
+        exit()
+    elif sys.argv[1]=='-de':
+        par = Param(default='ext')
         par.save('default_param')
         exit()
     else:
