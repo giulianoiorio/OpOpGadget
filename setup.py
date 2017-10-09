@@ -6,6 +6,8 @@ try:
 except ImportError:
     import pip
     pip.main(['install', 'Cython'])
+    from Cython.Build import cythonize
+    from Cython.Distutils import build_ext
 
 import numpy
 import shutil
