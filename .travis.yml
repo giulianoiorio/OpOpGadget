@@ -7,9 +7,11 @@ python:
   - 3.5
   - 3.6
 install:
-  - echo gcc --version
+  - gcc --version
   - python setup.py install
   - pip list
 script:
   - python setup.py test -q
 sudo: false
+before_install:
+  -sudo apt-get install gcc-5
