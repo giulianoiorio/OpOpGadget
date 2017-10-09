@@ -5,10 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from OpOp.io import load_snap
 from OpOp.analysis import Observe, Profile, Analysis
-from OpOp.particle import Particle, Particles, Sky_Particles
 # import matplotlib as mpl
 label_size = 20
-import linecache
 # mpl.rcParams.update({'figure.autolayout':True})
 mpl.rcParams['xtick.labelsize'] = label_size
 mpl.rcParams['ytick.labelsize'] = label_size
@@ -52,7 +50,7 @@ class Param:
         elif default.lower()[0]=='e':
             self.default=default_exttrange
 
-        self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'Last radius where analyse','radmax':'maximum radius to consider', 'psun':'Position of the Sun (X,Y,Z)',
+        self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'maximum radius to consider', 'psun':'Position of the Sun (X,Y,Z)',
                        'vsun':'Local velocty of the Sun (Vx, Vy, Vz)', 'vrot':'Velocity of LSR', 'gpos':'Galactic position of the object (Xg, Yg, Zg)',
                        'gvel':'Galactic velocity of the object (Xg, Yg, Zg)', 'skyposg': 'Position in sky coordinates (l [deg], b[deg])', 'skypos':'Position in equatorial coordinates (ra [deg], dec[deg])',
                        'rh_obs': 'Observed half light radius', 'vdisp_obs':'Observed velocity dispersion inside half-light radius', 'vdisp_obs_tot':'Observed velocity dispersion inside Rmax', 'outdir': 'Name of the output folder', 'Nresample':'DM particle to plot',
