@@ -7,7 +7,7 @@ python:
   - 3.5
   - 3.6
 install:
-  - gcc --version
+  - echo gcc --version
   - python setup.py install
   - pip list
 script:
