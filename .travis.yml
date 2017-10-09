@@ -1,3 +1,4 @@
+warnings_are_errors: false
 language: python
 python:
   - 2.7
@@ -6,6 +7,7 @@ python:
   - 3.5
   - 3.6
 install:
+  - gcc --version
   - python setup.py install
   - pip list
 script:
