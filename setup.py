@@ -1,7 +1,12 @@
 from setuptools import setup
 from distutils.core import Extension
-from Cython.Build import cythonize
-from Cython.Distutils import build_ext
+try:
+    from Cython.Build import cythonize
+    from Cython.Distutils import build_ext
+except ImportError:
+    import pip
+    pip.main(['install', 'Cython'])
+
 import numpy
 import shutil
 import os
