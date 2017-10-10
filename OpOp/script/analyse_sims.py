@@ -56,6 +56,8 @@ class Param:
             self.default=default_shortrange
         elif default.lower()[0]=='e':
             self.default=default_exttrange
+        elif default.lower()[0]=='k':
+            self.default=default_exttrange
 
         self.description={'proffile':'File with the velocity dispersion', 'folder':'?', 'radmax':'maximum radius to consider', 'psun':'Position of the Sun (X,Y,Z)',
                        'vsun':'Local velocty of the Sun (Vx, Vy, Vz)', 'vrot':'Velocity of LSR', 'gpos':'Galactic position of the object (Xg, Yg, Zg)',
@@ -122,6 +124,10 @@ if len(sys.argv)>1:
         exit()
     elif sys.argv[1]=='-de':
         par = Param(default='ext')
+        par.save('default_param')
+        exit()
+    elif sys.argv[1]=='-des':
+        par = Param(default='k')
         par.save('default_param')
         exit()
     else:
