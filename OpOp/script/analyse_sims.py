@@ -42,6 +42,13 @@ class Param:
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':92.316, 'Vlos':110.714, 'pmot':(-0.05843, 0.39278),
                        'mstar':4.6e6, }
 
+        default_exttranges={'proffile':None, 'folder':None, 'radmax':1.76, 'psun':(8.008,0.,0.),
+                       'vsun':(-9.088, 10.286, 6.859), 'vrot':213.936, 'gpos':(4.983, -9.5487, -83.441),
+                       'gvel':(-27.76599, 134.551590, -93.913965), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
+                       'rh_obs': 0.276, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
+                       'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':84.040, 'Vlos':110.914, 'pmot':(-0.0231058, 0.196979),
+                       'mstar':4.6e6, }
+
 
         if default.lower()[0]=='l':
             self.default=default_longrange
