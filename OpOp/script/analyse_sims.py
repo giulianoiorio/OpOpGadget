@@ -26,28 +26,28 @@ class Param:
                        'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
-                       'mstar':4.6e6, }
+                       'mstar':4.6e6, 'comtype': 2 }
 
         default_shortrange={'proffile':None, 'folder':None, 'radmax':1.2, 'psun':(8.0,0.,0.),
                        'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
                        'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.40, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
-                       'mstar':4.6e6, }
+                       'mstar':4.6e6, 'comtype': 2}
 
         default_exttrange={'proffile':None, 'folder':None, 'radmax':1.9, 'psun':(8.195,0.,0.),
                        'vsun':(-9.833, 11.945, 8.107), 'vrot':219.386, 'gpos':(4.881,-10.490,-91.658),
                        'gvel':(-40.843, 48.310, -81.362), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.303, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':92.316, 'Vlos':110.714, 'pmot':(-0.05843, 0.39278),
-                       'mstar':4.6e6, }
+                       'mstar':4.6e6, 'comtype': 2}
 
         default_exttranges={'proffile':None, 'folder':None, 'radmax':1.76, 'psun':(8.008,0.,0.),
                        'vsun':(-9.088, 10.286, 6.859), 'vrot':213.936, 'gpos':(4.983, -9.5487, -83.441),
                        'gvel':(-27.76599, 134.551590, -93.913965), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
                        'rh_obs': 0.276, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
                        'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':84.040, 'Vlos':110.914, 'pmot':(-0.0231058, 0.196979),
-                       'mstar':4.6e6, }
+                       'mstar':4.6e6, 'comtype': 2 }
 
 
         if default.lower()[0]=='l':
@@ -64,7 +64,7 @@ class Param:
                        'gvel':'Galactic velocity of the object (Xg, Yg, Zg)', 'skyposg': 'Position in sky coordinates (l [deg], b[deg])', 'skypos':'Position in equatorial coordinates (ra [deg], dec[deg])',
                        'rh_obs': 'Observed half light radius', 'vdisp_obs':'Observed velocity dispersion inside half-light radius', 'vdisp_obs_tot':'Observed velocity dispersion inside Rmax', 'outdir': 'Name of the output folder', 'Nresample':'DM particle to plot',
                        'file_vdisp':'File containing the velcoty dispersion profile', 'dist':'distance from the Sun ', 'Vlos':'Vlos wrt the Sun', 'pmot':'Proper motion (mul, mub) in mas/yr',
-                       'mstar':'Stellar mass inside Rmax in solar masses', }
+                       'mstar':'Stellar mass inside Rmax in solar masses', 'comtype': 'Use this type particles to calculate COM, if None use all particles'}
 
         self.used={}
 
@@ -164,6 +164,7 @@ Vlos=par.Vlos
 pmot=par.pmot
 mstar=par.mstar
 
+comtype=par.comtype
 
 
 #START
@@ -219,6 +220,8 @@ if vdisp_obs is not None: log += 'Vdisp_obs(R<Rh_obs):%.3f\n' % vdisp_obs
 if vdisp_obs_tot is not None: log += 'Vdisp_obs(R<radmax):%.3f\n' % vdisp_obs_tot
 if radmax is not None: log += 'Rmax=%.3f\n' % radmax
 if mstar is not None: log += 'M*(R<Rmax)=%.3e\n' % mstar
+if comtype is not None:  log += 'ComType=%i\n'%comtype
+else: log += 'ComType=None'
 log += '\n'
 
 #save used param
@@ -304,7 +307,7 @@ for file in simfiles:
 
     # Plot analysis
     print('Find COM', flush=True)
-    a_tmp = Analysis(particles=p_tmp, safe=True, auto_centre=True, iter=True, single=False)
+    a_tmp = Analysis(particles=p_tmp, safe=True, auto_centre=True, iter=True, single=False, type_com=comtype)
     com_tmp = a_tmp.pcom
     vcom_tmp = a_tmp.pvcom
     log += 'COM: X=%.3f Y=%.3f Z=%.3f\n' % tuple(com_tmp)

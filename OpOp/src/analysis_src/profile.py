@@ -38,6 +38,13 @@ class Analysis:
         else:
             single = True
 
+        if 'type_com' in kwargs:
+            type_com=kwargs['type_com']
+        else:
+            type_com=None
+
+
+
         if auto_centre == True:
             if 'po' in kwargs:
                 po = kwargs['po']
@@ -52,9 +59,11 @@ class Analysis:
                 self.center(mq=mq, single=single, iter=iter, po=po, vo=vo)
             else:
                 if iter:
-                    self.center(mq=10, iter=True, single=single, po=po, vo=vo)
+                     self.center(mq=10, iter=True, single=single, po=po, vo=vo, type=type_com)
                 else:
-                    self.center(mq=70, single=single, iter=False, po=po, vo=vo)
+                     self.center(mq=70, single=single, iter=False, po=po, vo=vo, type=type_com)
+
+
 
     def qmass(self, q, safe_mode=True, type=None):
         """
@@ -381,7 +390,6 @@ class Analysis:
 
         else:
 
-            i = 0
             for i in range(6):
 
                 co = self.p.header['Nall'][i]
@@ -400,7 +408,8 @@ class Analysis:
                     self.p.setrad()
                     self.p.setvelt()
 
-                i += 1
+        return com, vcom
+
 
     def inertia_tensor(self, eig=True, mq=None, minrad=None, maxrad=None, type=None):
         """

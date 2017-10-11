@@ -38,6 +38,9 @@ class Analysis:
         if 'single' in kwargs: single=kwargs['single']
         else: single=True
 
+        if 'type_com' in kwargs: type_com=kwargs['type_com']
+        else: type_com=None
+
         if auto_centre==True:
             if 'po' in kwargs:po=kwargs['po']
             else: po=(0,0,0)
@@ -45,10 +48,10 @@ class Analysis:
             else: vo=(0,0,0)
             if 'mq' in kwargs:
                 mq=kwargs['mq']
-                self.center(mq=mq,single=single,iter=iter,po=po,vo=vo)
+                self.center(mq=mq,single=single,iter=iter,po=po,vo=vo, type=type_com)
             else:
-                if iter: self.center(mq=10,iter=True,single=single,po=po,vo=vo)
-                else: self.center(mq=70,single=single,iter=False,po=po,vo=vo)
+                if iter: self.center(mq=10,iter=True,single=single,po=po,vo=vo, type=type_com)
+                else: self.center(mq=70,single=single,iter=False,po=po,vo=vo, type=type_com)
 
         if isinstance(particles,Sky_Particles):
             self.issky=True
@@ -681,7 +684,6 @@ class Analysis:
         else:
             pcom = []
             pvcom = []
-            i=0
             for i in range(6):
 
                 co=self.p.header['Nall'][i]
@@ -701,9 +703,11 @@ class Analysis:
                     pcom.append(com)
                     pvcom.append(vcom)
 
-                i+=1
+
             self.pcom=np.array(pcom)
             self.pvcom=np.array(pvcom)
+
+            return np.array(pcom), np.array(pvcom)
 
     def inertia_tensor(self,eig=True,mq=None,minrad=None,maxrad=None,type=None):
         """
