@@ -255,7 +255,7 @@ class NFWc(GeneralModel.GeneralModel):
         h = self.h
         mvir = self.Mc
 
-        x = np.log10(mvir * h)  # In the function M is in unit of Msun/h
+        x = np.log10(mvir / h)  # In the function M is in unit of Msun/h
 
         # fit constant
         w = 0.029
