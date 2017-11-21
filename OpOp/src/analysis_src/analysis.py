@@ -232,10 +232,10 @@ class Analysis:
 
         #calculate
 
-        rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err=self._vdisp_bins_extractor(radcyl,vel_proj,bins,Nperbin,velocity_err,err_distibution,nboot)
+        rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot=self._vdisp_bins_extractor(radcyl,vel_proj,bins,Nperbin,velocity_err,err_distibution,nboot)
 
 
-        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err
+        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot
 
     def _vdisp_bins_extractor(self,rad,vproj,bins,Nperbin=None, velocity_err = None, err_distibution = 'uniform',nboot=1000):
         """
@@ -255,6 +255,8 @@ class Analysis:
         vmean_err=np.zeros_like(rad_mean)
         vdisp=np.zeros_like(rad_mean)
         vdisp_err=np.zeros_like(rad_mean)
+        vdisp_tot=[]
+
 
         for i in range(len(bins)-1):
 
@@ -308,8 +310,11 @@ class Analysis:
             vmean_err[i] =  meanerr_tmp
             vdisp[i]     =  std_tmp
             vdisp_err[i] =  stderr_tmp
+            for val in vproj_tmp:
+                vdisp_tot.append(val)
 
-        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err
+        vdisp_tot=np.std(np.array(vdisp_tot))
+        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot
 
     def qmass(self,q,safe_mode=True,type=None, rad_max=None):
         """
