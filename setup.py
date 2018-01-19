@@ -159,11 +159,11 @@ jsolv_c_ext = Extension('OpOp/src/jsolver_src/jsolver_c_ext/CJsolver', sources=j
 
 #io ext read
 io_c_src_read = ['OpOp/src/io_src/io_c_ext/cread_fvfps.pyx']
-io_c_ext_read = Extension('OpOp/src/io_src/io_c_ext/cread_fvfps', sources=io_c_src_read)
+io_c_ext_read = Extension('OpOp/src/io_src/io_c_ext/cread_fvfps', sources=io_c_src_read,extra_compile_args=extra_compile_args)
 
 #io ext write
 io_c_src_write = ['OpOp/src/io_src/io_c_ext/cwrite_fvfps.pyx']
-io_c_ext_write = Extension('OpOp/src/io_src/io_c_ext/cwrite_fvfps', sources=io_c_src_write)
+io_c_ext_write = Extension('OpOp/src/io_src/io_c_ext/cwrite_fvfps', sources=io_c_src_write,extra_compile_args=extra_compile_args)
 
 ext_modules = [df_c_ext, model_c_ext, genmod_c_ext] + cythonize(jsolv_c_ext) + cythonize(io_c_ext_read) + cythonize(io_c_ext_write)
 
