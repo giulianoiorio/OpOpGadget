@@ -75,7 +75,7 @@ class BuildExtWithoutPlatformSuffix(build_ext):
 # Parse options; current options
 # --no-openmp: compile without OpenMP support
 
-extra_compile_args = ['-std=c99']
+extra_compile_args = ['-std=c99','-Wno-error']
 
 option_list = ['-CC', '--O1', '--O2', '--O0', '--no-openmp']
 command_list = ['build', 'install', 'develop', 'registrate']
