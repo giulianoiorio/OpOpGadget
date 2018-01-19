@@ -75,7 +75,7 @@ class BuildExtWithoutPlatformSuffix(build_ext):
 # Parse options; current options
 # --no-openmp: compile without OpenMP support
 
-extra_compile_args = ['-std=c99','-Wno-error']
+extra_compile_args = ['-std=c99','-w']
 
 option_list = ['-CC', '--O1', '--O2', '--O0', '--no-openmp']
 command_list = ['build', 'install', 'develop', 'registrate']
@@ -155,7 +155,7 @@ genmod_c_ext = Extension('OpOp/src/model_src/model_c_ext/GenerateModel',
 
 jsolv_c_src = ['OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.pyx']
 jsolv_c_ext = Extension('OpOp/src/jsolver_src/jsolver_c_ext/CJsolver', sources=jsolv_c_src,
-                        extra_compile_args=['-fopenmp', ], extra_link_args=['-fopenmp', ])
+                        extra_compile_args=['-fopenmp', ]+extra_compile_args, extra_link_args=['-fopenmp', ])
 
 #io ext read
 io_c_src_read = ['OpOp/src/io_src/io_c_ext/cread_fvfps.pyx']
