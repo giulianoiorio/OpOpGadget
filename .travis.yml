@@ -13,5 +13,3 @@ install:
 script:
   - python setup.py test -q
 sudo: false
-before_install:
-  - sudo apt-get upgrade gcc
