@@ -1,5 +1,7 @@
 from setuptools import setup
 from distutils.core import Extension
+
+print('Testing Cython installation:')
 try:
     from Cython.Build import cythonize
     from Cython.Distutils import build_ext
@@ -9,6 +11,8 @@ except ImportError:
     from Cython.Build import cythonize
     from Cython.Distutils import build_ext
 
+	
+	
 import numpy
 import shutil
 import os
@@ -169,7 +173,7 @@ ext_modules = [df_c_ext, model_c_ext, genmod_c_ext] + cythonize(jsolv_c_ext) + c
 
 setup(
     name='OpOpGadget',
-    version='1.10.0',
+    version='1.11',
     author='Giuliano Iorio',
     author_email='giuliano.iorio@unibo.it',
     url='http://github.com/iogiul/OpOp',

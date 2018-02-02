@@ -173,11 +173,28 @@ if outdir is None: outdir = './analysis'
 if not os.path.exists(outdir):
     os.makedirs(outdir)
 
-if file_vdisp is None:
-    pass
-elif not os.path.exists(file_vdisp):
-    file_vdisp = None
 
+
+
+if file_vdisp is not None:
+    #ADJUST WITH SPACES
+    file_vdisp=file_vdisp.rstrip()
+    file_vdisp=file_vdisp.lstrip()
+    #check whether file exists
+    if  not os.path.exists(file_vdisp):
+        print('file_vdisp %s not found, setting velocity dispersion profile to None'%file_vdisp)
+        sys.stdout.flush()
+        file_vdisp = None
+
+if proffile is not None:
+    #ADJUST WITH SPACES
+    proffile=proffile.rstrip()
+    proffile=proffile.lstrip()
+    #check whether file exists
+    if  not os.path.exists(proffile):
+        print('proffile %s not found, setting surface density  profile to None'%file_vdisp)
+        sys.stdout.flush()
+        proffile = None
 
 
 olist = []
@@ -192,7 +209,7 @@ Nfiles = len(simfiles)
 figorbit, axarr = plt.subplots(3, 3, sharex=True, sharey=True)
 figantd, axtd = plt.subplots(1, 3, tight_layout=True)
 figanstd, axstd = plt.subplots(2, 3, tight_layout=True)
-figobs, axobs = plt.subplots(2, 2, tight_layout=True, figsize=(10, 10))
+figobs, axobs = plt.subplots(2, 2, tight_layout=True, figsize=(11.0, 10))
 figstat, axstat = plt.subplots(1, 1, tight_layout=True)
 figev2D, axev2d = plt.subplots(2, 2, tight_layout=True, figsize=(10, 10))
 figev3D, axev3d = plt.subplots(1, 2, tight_layout=True, figsize=(10, 5))
@@ -202,7 +219,7 @@ colortd = ('blue', 'darkgreen', 'red')
 check_td = 0
 
 idx_plot_orbit = (int(Nfiles / 3.) - 1, int(2 * Nfiles / 3.) - 1, Nfiles - 1)
-print(idx_plot_orbit)
+#print(idx_plot_orbit)
 
 log = ''
 log += 'Setting:\n'
@@ -569,25 +586,49 @@ for file in simfiles:
 
     if i == idx_plot_orbit[2]:
 
-        prof_obs = Profile(particles=s, xmin=0.00001, xmax=10, ngrid=100, kind='lin')
+        #axobs[0,0].axis('equal')
+        #axobs[0,1].axis('equal')
+        #axobs[1,0].axis('equal')
+        #axobs[1,1].axis('equal')
 
+        prof_obs_large = Profile(particles=s, xmin=0.01, xmax=10, ngrid=512, kind='lin')
+        prof_obs_small = Profile(particles=s, xmin=0.01, xmax=10, ngrid=100, kind='lin')
+
+       # ifilter=(np.abs(s.xi/3600.)<3)&(np.abs(s.eta/3600.)<3)
+
+        H, xedges, yedges = np.histogram2d(s.xi[:] / 3600., s.eta[:] / 3600., bins=(30,30),range=((-2,2),(-2,2)))
+
+        pixel_area=np.abs(xedges[1]-xedges[0])*np.abs(yedges[1]-yedges[0])*60*60
+        H=H/pixel_area
+        levels=(0.01, 0.05, 0.1,1.0,5,10,50,100)
+        #axobs[0,0].imshow(H.T,origin='lower',extent=(xedges[0],xedges[-1],yedges[0],yedges[-1]),aspect='auto',cmap='YlOrBr')
+        axobs[0,0].contour(H.T,origin='lower',extent=(xedges[0],xedges[-1],yedges[0],yedges[-1]),zorder=10000,levels=levels,colors='black')
+        theta=np.linspace(0,2*np.pi,1000)
+        RRR=1.2
+        xxx=RRR*np.cos(theta)
+        yyy=RRR*np.sin(theta)
+        axobs[0,0].plot(xxx,yyy,'--', color='blue',lw=2,zorder=30000,label='$R=1.2^\circ$')
         axobs[0,0].scatter(s.xi[:] / 3600., s.eta[:] / 3600., s=0.005, c='red')
-        axobs[0,0].set_xlabel('$\\xi [deg]$', fontsize=20)
-        axobs[0,0].set_ylabel('$\\eta [deg]$', fontsize=20)
-        axobs[0,0].set_xlim(-2, 2)
-        axobs[0,0].set_ylim(-2, 2)
+        axobs[0,0].scatter(1e6 / 3600.,0, c='red',label='Star particles')
+        axobs[0,0].set_xlabel('$\\xi \ [deg]$', fontsize=20)
+        axobs[0,0].set_ylabel('$\\eta \ [deg]$', fontsize=20)
+        axobs[0,0].set_xlim(-2., 2.)
+        axobs[0,0].set_ylim(-2.,2.)
+        axobs[0,0].plot([1e6,1e6],[1e6,1e9],color='black',label='Iso-density')
 
+        #Vdisp
+        prof_obs=prof_obs_small
         arr = prof_obs.vdisp2d(pax='obs')[0]
         r = arr[:, 0]
         vd = arr[:, 1]
-        axobs[1,0].plot(r, vd, label='Vlos', lw=3, color='red', zorder=2000)
+        axobs[1,0].plot(r, vd, lw=3, color='red', zorder=2000,label='Simulation')
 
         if file_vdisp is not None:
             try:
                 data = np.loadtxt(file_vdisp)
                 x = dist * np.tan(data[:, 0] * (np.pi) / 180)
                 ex = dist * np.tan(data[:, 1] * (np.pi) / 180)
-                axobs[1,0].errorbar(x, data[:, 4], data[:, 5], ex, fmt='o', c='black', label='Observed', zorder=1000)
+                axobs[1,0].errorbar(x, data[:, 4], data[:, 5], ex, fmt='o', c='black', zorder=1000,label='Data (this work)')
 
                 obins = np.zeros(len(data) + 1)
                 obins[:-1] = data[:, 6]
@@ -601,45 +642,71 @@ for file in simfiles:
                     b = a.binned_dispersion(bins=obins, pax='obs', Nperbin=Nperbin, bins_kind='lin', velocity_err=None,
                                             err_distibution='uniform', nboot=10000)
 
-                    axobs[1,0].errorbar(b[0], b[4], b[5], b[1], fmt='o', c=color_disp[j], mfc='white')
+                    axobs[1,0].errorbar(b[0], b[4], b[5], b[1], fmt='o', c=color_disp[j], mfc='white',label='Realisation %i'%j)
             except FileNotFoundError:
                 print('File %s not found.. skipping' % file_vdisp)
 
-        axobs[1,0].set_xlabel('$R  \[kpc]$', fontsize=20)
-        axobs[1,0].set_ylabel('$\\sigma_{los} [km \ s^{-\}]$', fontsize=20)
+        axobs[1,0].set_xlabel('$R  \ [kpc]$', fontsize=20)
+        axobs[1,0].set_ylabel('$\\sigma_{los}  \ [km \ s^{-1}]$', fontsize=20)
         axobs[1,0].set_xlim(0, 2)
         axobs[1,0].set_ylim(0, 15)
 
         # densup
-        arr = prof_obs.supdens(pax='obs')[0]
+        #Vdisp
+        prof_obs=prof_obs_large
+
+        arr,supdensfunc = prof_obs.supdens(pax='obs',ret=True,func=True,s=0)
         r = arr[:, 0]
         d = arr[:, 1]
         axobs[0,1].plot(r, d, lw=3, color='red')
-        axobs[0,1].plot([rh_sim, rh_sim], [np.min(d), np.max(d)], color='red', label='$R^{sim}_h$')
+        axobs[0,1].plot([rh_sim, rh_sim], [np.min(d), np.max(d)], color='magenta', lw=2, label='$R^{sim}_h$')
         if rh_obs is not None:
-            axobs[0,1].plot([rh_obs, rh_obs], [np.min(d), np.max(d)], '--', color='black', label='$R^{obs}_h$')
-        axobs[0,1].set_xlabel('$R [kpc]$', fontsize=20)
-        axobs[0,1].set_ylabel('$\\Sigma_{los} [M_\\odot/kpc^2]$', fontsize=20)
+            axobs[0,1].plot([rh_obs, rh_obs], [np.min(d), np.max(d)], '--',  lw=1.5, color='black', label='$R^{obs}_h \ (McConnachie12)$')
+        axobs[0,1].set_xlabel('$R \ [kpc]$', fontsize=20)
+        axobs[0,1].set_ylabel('$\\Sigma_{los} \ [M_\\odot \ kpc^{-2}]$', fontsize=20)
+        axobs[0,1].set_xlim(0.01, 2)
+        axobs[0,1].set_ylim(1e3, 4e7)
         # axobs[1].set_xlim(0.001,10)
         axobs[0,1].set_xscale('log')
         axobs[0,1].set_yscale('log')
-        axobs[0,1].legend(loc='upper right')
+
+        if proffile is not None:
+            try:
+                datapr = np.loadtxt(proffile)
+                x = dist * np.tan((datapr[:, 0]/60.) * (np.pi) / 180)
+
+                idxmed=int(len(x)/2)
+                xmed=x[idxmed]
+                nnorm=supdensfunc(xmed)
+
+                dnorm=datapr[idxmed,1]
+                fnorm=nnorm/dnorm
+                datapr[:,1]=fnorm*datapr[:,1]
+                datapr[:,2]=fnorm*datapr[:,2]
+
+                axobs[0,1].errorbar(x, datapr[:, 1], datapr[:, 2], fmt='o', c='black',  zorder=1000,alpha=0.5,markersize=3,label='Data (Salazar, priv. com.)')
+            except FileNotFoundError:
+                print('File %s not found.. skipping' % file_vdisp)
 
         #Vsys
+        prof_obs=prof_obs_small
         arr = prof_obs.vsys(pax='obs')[0]
         r = arr[:, 0]
         d = arr[:, 1]
-        axobs[1,1].plot(r, d, lw=3, color='red')
+        axobs[1,1].plot(r, d, lw=3, color='red', label='Simulation')
         if Vlos is not None:
-            axobs[1,1].axhline(Vlos, color='black', ls='--', label='Observed')
+            axobs[1,1].axhline(Vlos, color='black', ls='--', label='Observed (this work)')
         else:
             medVlos=np.median(d)
             axobs[1,1].axhline(medVlos, color='black', ls='--', label='Median')
-        axobs[1,1].legend(loc='best')
-        axobs[1,1].set_xlabel('$R \ [kpc]$', fontsize=20)
-        axobs[1,1].set_ylabel('$V_{sys} [km \ s^{-\}]$', fontsize=20)
+        axobs[1,1].set_xlabel('$R  [kpc]$', fontsize=20)
+        axobs[1,1].set_ylabel('$V_{sys} \  [km \ s^{-1}]$', fontsize=20)
         axobs[1,1].set_xlim(0,2)
 
+        #axobs[0,0].legend(loc='upper center',fontsize=14,ncol=2)
+        axobs[0,1].legend(loc='best',fontsize=14)
+        axobs[1,0].legend(loc='lower right',fontsize=14)
+        axobs[1,1].legend(loc='best',fontsize=14)
         #figobs.set_size_inches(15, 5, forward=True)
         figobs.savefig(outdir + '/Obs_analysis.png')
     # a_tmp=Analysis(p_tmp,safe=True, auto_centre=True, iter=True, single=False)
