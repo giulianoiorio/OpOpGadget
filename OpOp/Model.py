@@ -6,7 +6,7 @@ from .src.model_src.TruncatedPlummer import TruncatedPlummer
 from .src.model_src.King import King
 from .src.model_src.Sersic import Sersic
 from .src.model_src.Plummer2D import Plummer2D
-from .src.model_src.Tbetamodel import Tbetamodel, NFW
+from .src.model_src.Tbetamodel import Tbetamodel, NFW, Hernquist
 from .src.model_src.NFWc import NFWc
 from .src.model_src.Model import Multimodel
 from .src.model_src.Isothermal import Isothermal
