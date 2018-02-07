@@ -276,8 +276,8 @@ class Hernquist(Tbetamodel):
 
     def __init__(self,rc,Ms=1,rs=None,rt=None,R=None,rini=3e-5,rfin=300,kind='log',n=512,G='kpc km2 / (M_sun s2)',denorm=True,r_physic=False,use_c=False,**kwargs):
         """
-        Truncated double power law model:
-        dens=dens0 * (r/rc)^(-gamma) * (1+r/rc)^(- (beta-gamma)) * Exp[ -(r/rt)^2]
+        Hernquist:
+        dens=dens0 * (r/rc)^(-1) * (1+r/rc)^(- (3)) * Exp[ -(r/rt)^2]
         It simpy call the class general model with the density law above evaluating it on a grid of radius normalized to rc. This grid
         can be supplied by the user directly or can be generate with the keyword rini,rfin,kind,n.
 
@@ -311,7 +311,7 @@ class Hernquist(Tbetamodel):
         self.rc = rc
 
         if 'Mmax' in kwargs:
-            print('Warning keyword Mmax is deprecated for TbetaModel, use instead Ms',flush=True)
+            print('Warning keyword Mmax is deprecated for TbetaModel, use Ms instead',flush=True)
             self.Ms=kwargs['Mmax']
         else:
             self.Ms=Ms
@@ -341,11 +341,6 @@ class Hernquist(Tbetamodel):
         if rs is None: self.rs=R[-1]*self.rc
         else: self.rs=rs
 
-        self.gamma=gamma
-        self.beta=beta
-
-
-        super(Tbetamodel,self).__init__(R=R,dens=self._adens,rc=self.rc,Ms=self.Ms,rs=self.rs,G=G,use_c=use_c,denorm=denorm)
 
         self.rscale=rc
 
