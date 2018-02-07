@@ -344,7 +344,7 @@ class Hernquist(Tbetamodel):
 
         self.rscale=rc
 
-        super(Hernquist, self).__init__(rc=self.rscale,Ms=self.Ms,rs=self.rcp,gamma=1,beta=4,rt=rt,R=R,rini=rini,rfin=rfin,kind=kind,n=n,G=G,denorm=denorm,r_physic=r_physic,use_c=use_c,**kwargs)
+        super(Hernquist, self).__init__(rc=self.rscale,Ms=self.Ms,rs=self.rs,gamma=1,beta=4,rt=rt,R=R,rini=rini,rfin=rfin,kind=kind,n=n,G=G,denorm=denorm,r_physic=r_physic,use_c=use_c,**kwargs)
 
 
     def __str__(self):
