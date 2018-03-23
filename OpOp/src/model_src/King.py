@@ -1,4 +1,4 @@
-from __future__ import  division, print_function
+sfrom __future__ import  division, print_function
 
 import numpy as np
 from scipy.interpolate import UnivariateSpline
@@ -19,7 +19,7 @@ class King(Model.Model):
     def __self__(self,c=None,rt=None,rc=None,Mmax=1,G='kpc km2 / (M_sun s2)', denorm=True,**kwargs):
 
 
-        if c is not None: self.c=rt
+        if c is not None: self.c=c
         elif (rt is not None) and (rc is not None): self.c=rt/rc
         else: raise ValueError('Neither c or (rt,rc) defined')
 

@@ -80,8 +80,6 @@ class Tbetamodel(GeneralModel.GeneralModel):
 
         super(Tbetamodel,self).__init__(R=R,dens=self._adens,rc=self.rc,Ms=self.Ms,rs=self.rs,G=G,use_c=use_c,denorm=denorm)
 
-
-
     def _adens(self,x):
 
         y=self.rc/self.rt
