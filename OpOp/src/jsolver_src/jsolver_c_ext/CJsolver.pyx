@@ -1,5 +1,5 @@
 import numpy as np
-from cython.parallel cimport prange
+#from cython.parallel cimport prange
 from cython import boundscheck,wraparound,cdivision
 from math import sqrt
 
@@ -35,7 +35,7 @@ cdef void _integrateiso( double[:] ret, int rlen ,double[:] r, double[:] dens, d
 
 
     if cpar==1:
-        for k in prange(n-1,nogil=True):
+        for k in range(n-1,nogil=True):
 
 
             for i in range(k,n):

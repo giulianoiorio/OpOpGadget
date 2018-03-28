@@ -1,5 +1,5 @@
-from setuptools import setup
-from distutils.core import Extension
+#from setuptools import setup
+from distutils.core import setup, Extension
 
 print('Testing Cython installation:')
 try:
@@ -139,35 +139,35 @@ else:
 
 # df C extension
 df_c_src = ['OpOp/src/df_src/df_c_ext/spherical.c']
-df_c_ext = Extension('OpOp/src/df_src/df_c_ext/df_spherical',
+df_c_ext = Extension('OpOp.src.df_src.df_c_ext.df_spherical',
                      sources=df_c_src,
                      extra_compile_args=extra_compile_args
                      )
 
 # Model C extension
 model_c_src = ['OpOp/src/model_src/model_c_ext/GeneralModel.c']
-model_c_ext = Extension('OpOp/src/model_src/model_c_ext/GeneralModel',
+model_c_ext = Extension('OpOp.src.model_src.model_c_ext.GeneralModel',
                         sources=model_c_src,
                         extra_compile_args=extra_compile_args
                         )
 
 # Generate Model C extension
 genmod_c_src = ['OpOp/src/model_src/model_c_ext/GenerateModel.c', 'OpOp/src/model_src/model_c_ext/MT_random.c']
-genmod_c_ext = Extension('OpOp/src/model_src/model_c_ext/GenerateModel',
+genmod_c_ext = Extension('OpOp.src.model_src.model_c_ext.GenerateModel',
                          sources=genmod_c_src,
                          extra_compile_args=extra_compile_args)
 
 jsolv_c_src = ['OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.pyx']
-jsolv_c_ext = Extension('OpOp/src/jsolver_src/jsolver_c_ext/CJsolver', sources=jsolv_c_src,
-                        extra_compile_args=['-fopenmp', ]+extra_compile_args, extra_link_args=['-fopenmp', ])
+jsolv_c_ext = Extension('OpOp.src.jsolver_src.jsolver_c_ext.CJsolver', sources=jsolv_c_src,
+                        extra_compile_args=['-fopenmp', ]+extra_compile_args, extra_link_args=['-fopenmp','-Wl,-rpath,/usr/local/opt/gcc/lib/gcc/7/'])
 
 #io ext read
 io_c_src_read = ['OpOp/src/io_src/io_c_ext/cread_fvfps.pyx']
-io_c_ext_read = Extension('OpOp/src/io_src/io_c_ext/cread_fvfps', sources=io_c_src_read,extra_compile_args=extra_compile_args)
+io_c_ext_read = Extension('OpOp.src.io_src.io_c_ext.cread_fvfps', sources=io_c_src_read,extra_compile_args=extra_compile_args)
 
 #io ext write
 io_c_src_write = ['OpOp/src/io_src/io_c_ext/cwrite_fvfps.pyx']
-io_c_ext_write = Extension('OpOp/src/io_src/io_c_ext/cwrite_fvfps', sources=io_c_src_write,extra_compile_args=extra_compile_args)
+io_c_ext_write = Extension('OpOp.src.io_src.io_c_ext.cwrite_fvfps', sources=io_c_src_write,extra_compile_args=extra_compile_args)
 
 ext_modules = [df_c_ext, model_c_ext, genmod_c_ext] + cythonize(jsolv_c_ext) + cythonize(io_c_ext_read) + cythonize(io_c_ext_write)
 
@@ -184,11 +184,12 @@ setup(
     install_requires=['numpy>=1.9', 'scipy>=0.19', 'matplotlib', 'astropy>=1', 'Cython'],
     ext_modules=ext_modules,
     scripts=['OpOp/script/analyse_sims.py'],
-    include_dirs=[numpy.get_include()]
+    include_dirs=[numpy.get_include()],
+    zip_save=False
 )
 
 try:
-    shutil.rmtree('build')
+    #shutil.rmtree('build')
     shutil.rmtree('dist')
     shutil.rmtree('OpOpGadget.egg-info')
 except:
