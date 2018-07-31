@@ -26,35 +26,35 @@ class Param:
 					   'gvel':(-17.15, 155.07, -95.78), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
 					   'rh_obs': 0.283, 'vdisp_obs':8.4, 'vdisp_obs_tot':8.94, 'outdir': None, 'Nresample':100000,
 					   'file_vdisp':None, 'dist':86, 'Vlos':111.05, 'pmot':(0.082, -0.131),
-					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None }
+					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None, 'Sigma_scale':1 }
 
 		default_longrange={'proffile':None, 'folder':None, 'radmax':1.8, 'psun':(8.0,0.,0.),
 					   'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
 					   'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
 					   'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
 					   'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
-					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None }
+					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None, 'Sigma_scale':1 }
 
 		default_shortrange={'proffile':None, 'folder':None, 'radmax':1.2, 'psun':(8.0,0.,0.),
 					   'vsun':(-11.1, 12.24, 7.25), 'vrot':218, 'gpos':(4.913,-9.772,-85.387),
 					   'gvel':(-36.774, 163.875, -96.074), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
 					   'rh_obs': 0.283, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.40, 'outdir': None, 'Nresample':100000,
 					   'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':86, 'Vlos':111.05, 'pmot':(0.011, 0.143),
-					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None }
+					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None, 'Sigma_scale':1 }
 
 		default_exttrange={'proffile':None, 'folder':None, 'radmax':1.9, 'psun':(8.195,0.,0.),
 					   'vsun':(-9.833, 11.945, 8.107), 'vrot':219.386, 'gpos':(4.881,-10.490,-91.658),
 					   'gvel':(-40.843, 48.310, -81.362), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
 					   'rh_obs': 0.303, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
 					   'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':92.316, 'Vlos':110.714, 'pmot':(-0.05843, 0.39278),
-					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None }
+					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None, 'Sigma_scale':1 }
 
 		default_exttranges={'proffile':None, 'folder':None, 'radmax':1.76, 'psun':(8.008,0.,0.),
 					   'vsun':(-9.088, 10.286, 6.859), 'vrot':213.936, 'gpos':(4.983, -9.5487, -83.441),
 					   'gvel':(-27.76599, 134.551590, -93.913965), 'skyposg':(287.534, -83.156), 'skypos':(15.0392, -33.7092),
 					   'rh_obs': 0.276, 'vdisp_obs':8.69, 'vdisp_obs_tot':9.43, 'outdir': None, 'Nresample':100000,
 					   'file_vdisp':'Scl_binned_profile_s3_rc.txt', 'dist':84.040, 'Vlos':110.914, 'pmot':(-0.0231058, 0.196979),
-					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None}
+					   'mstar':4.6e6, 'comtype': 2, 'orbit_track': None, 'Sigma_scale':1}
 
 
 		if default.lower()[0]=='l':
@@ -73,7 +73,7 @@ class Param:
 					   'gvel':'Galactic velocity of the object (Xg, Yg, Zg)', 'skyposg': 'Position in sky coordinates (l [deg], b[deg])', 'skypos':'Position in equatorial coordinates (ra [deg], dec[deg])',
 					   'rh_obs': 'Observed half light radius', 'vdisp_obs':'Observed velocity dispersion inside half-light radius', 'vdisp_obs_tot':'Observed velocity dispersion inside Rmax', 'outdir': 'Name of the output folder', 'Nresample':'DM particle to plot',
 					   'file_vdisp':'File containing the velcoty dispersion profile', 'dist':'distance from the Sun ', 'Vlos':'Vlos wrt the Sun', 'pmot':'Proper motion (mul, mub) in mas/yr',
-					   'mstar':'Stellar mass inside Rmax in solar masses', 'comtype': 'Use this type particles to calculate COM, if None use all particles', 'orbit_track':'File with orbits'}
+					   'mstar':'Stellar mass inside Rmax in solar masses', 'comtype': 'Use this type particles to calculate COM, if None use all particles', 'orbit_track':'File with orbits', 'Sigma_scale': 'Factor to rescale the observe Sigma profile'}
 
 		self.used={}
 
@@ -163,7 +163,7 @@ rh_obs=par.rh_obs
 vdisp_obs=par.vdisp_obs
 vdisp_obs_tot=par.vdisp_obs_tot
 orbit_track=par.orbit_track
-
+Sigma_scale=par.Sigma_scale
 #vdisp_obs=None
 #vdisp_obs_tot=None
 
@@ -183,8 +183,11 @@ radmax=dist*np.tan(radmaxobs*np.pi/180.)
 #START
 if folder is None: folder = '.'
 if outdir is None: outdir = './analysis'
+outdirdata=outdir+'/data'
 if not os.path.exists(outdir):
 	os.makedirs(outdir)
+if not os.path.exists(outdirdata):
+	os.makedirs(outdirdata)
 
 
 
@@ -429,6 +432,10 @@ for file in simfiles:
 	fin_array_intrinsic[i, 18] = ztox_ratio
 
 	if (i == 0) or (i == idx_plot_orbit[1]) or (i == idx_plot_orbit[2]):
+		have_halo=False        
+
+        
+        
 		# dens
 		try:
 			prof_tmp_h = Profile(particles=a_tmp.p, xmin=0.01, xmax=100, ngrid=100, kind='log', type=1)
@@ -436,6 +443,10 @@ for file in simfiles:
 			r = arr[:, 0]
 			d = arr[:, 1]
 			axtd[0].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
+			np.savetxt(outdirdata+'/3Dprofile_DM_T%.2f.txt'%time_tmp,arr,fmt='%.3e',header='0-r [kpc] 1-dens [Msun kpc^-3]') 
+            
+			arr_m_h = prof_tmp_h.mass()[0]
+			have_halo=True
 		except:
 			pass
 
@@ -444,14 +455,28 @@ for file in simfiles:
 		r = arr[:, 0]
 		d = arr[:, 1]
 		axtd[1].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
+		np.savetxt(outdirdata+'/3Dprofile_stars_T%.2f.txt'%time_tmp,arr,fmt='%.3e',header='0-r [kpc] 1-dens [Msun kpc^-3]')     
+
+		#mass
+		arr_m_s = prof_tmp_s.mass()[0]
+		arr_m   = np.zeros(shape=(len(arr_m_s),4))
+		arr_m[:,0] = arr_m_s[:,0]   
+		arr_m[:,1] = arr_m_s[:,1]
+		if have_halo:  arr_m[:,2] = arr_m_h[:,1]      
+		arr_m[:,3] = arr_m_s[:,1] +  arr_m[:,2]      
+		np.savetxt(outdirdata+'/Massprofile_T%.2f.txt'%time_tmp,arr_m,fmt='%.3f %.3e %.3e %.3e',header='0-r [kpc] 1-Mstar [Msun] 2-Mhalo [Msun] 3-Mtot [Msun]') 
+        
 		arr = prof_tmp_s.vdisp3d()[0]
 		r = arr[:, 0]
 		vd = arr[:, 1]
 		axtd[2].plot(r, vd, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
-
+		np.savetxt(outdirdata+'/3DVdisp_stars_T%.2f.txt'%time_tmp,arr,fmt='%.3f %.3f',header='0-r [kpc] 1-Vdisp [km/s]') 
+        
 		arr = prof_tmp_s.supdens(pax='z')[0]
+		arr_output= np.zeros(shape=(len(arr),4))
 		r = arr[:, 0]
 		d = arr[:, 1]
+		arr_output[:,1]= d
 		dminS0 = np.min(d)
 		dmaxS0 = np.max(d)
 		axstd[0, 0].plot([rh_tmp_z, rh_tmp_z], [np.min(d), np.max(d)], color=colortd[check_td])
@@ -460,6 +485,7 @@ for file in simfiles:
 		arr = prof_tmp_s.supdens(pax='y')[0]
 		r = arr[:, 0]
 		d = arr[:, 1]
+		arr_output[:,2]= d
 		dminS1 = np.min(d)
 		dmaxS1 = np.max(d)
 		axstd[0, 1].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
@@ -468,24 +494,35 @@ for file in simfiles:
 		arr = prof_tmp_s.supdens(pax='x')[0]
 		r = arr[:, 0]
 		d = arr[:, 1]
+		arr_output[:,3]= d
 		dminS2 = np.min(d)
 		dmaxS2 = np.max(d)
 		axstd[0, 2].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
 		axstd[0, 2].plot([rh_tmp_x, rh_tmp_x], [np.min(d), np.max(d)], color=colortd[check_td])  # vdisp
+		arr_output[:,0]= r
+		np.savetxt(outdirdata+'/Sigma_stars_T%.2f.txt'%time_tmp,arr_output,fmt='%.3e',header='0-r [kpc] 1-Sigma_x [Msun / kpc^2] 2-Sigma_y [Msun / kpc^2] 3-Sigma_z [Msun / kpc^2]')  
 
 		arr = prof_tmp_s.vdisp2d(pax='z')[0]
+		arr_output= np.zeros(shape=(len(arr),4))
 		r = arr[:, 0]
 		d = arr[:, 1]
+		arr_output[:,1]= d
 		axstd[1, 0].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
 		arr = prof_tmp_s.vdisp2d(pax='y')[0]
 		r = arr[:, 0]
 		d = arr[:, 1]
+		arr_output[:,2]= d
 		axstd[1, 1].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
 		arr = prof_tmp_s.vdisp2d(pax='x')[0]
 		r = arr[:, 0]
 		d = arr[:, 1]
+		arr_output[:,3]= d
 		axstd[1, 2].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
-
+		arr_output[:,0]= r
+		np.savetxt(outdirdata+'/2DVdisp_stars_T%.2f.txt'%time_tmp,arr_output,fmt='%.3f',header='0-r [kpc] 1-Vdisp_x [km/s] 2-Vdisp_y [km/s] 3-Vdisp_z [km/s]')   
+        
+        
+        
 		#Vsys
 		arr = prof_tmp_s.vsys(pax='z')[0]
 		r = arr[:, 0]
@@ -557,9 +594,9 @@ for file in simfiles:
 				if proffile is not None:
 					datapr = np.loadtxt(proffile)
 					x = dist * np.tan((datapr[:, 0]/60.) * (np.pi) / 180)
-					axstd[0, 0].errorbar(x, datapr[:, 1], datapr[:, 2], fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
-					axstd[0, 1].errorbar(x, datapr[:, 1], datapr[:, 2], fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
-					axstd[0, 2].errorbar(x, datapr[:, 1], datapr[:, 2], fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
+					axstd[0, 0].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
+					axstd[0, 1].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
+					axstd[0, 2].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
 
 			if vdisp_obs is not None:
 				axstd[1, 0].plot([0, 2], [vdisp_obs, vdisp_obs], '--', color='black', zorder=5000,
@@ -670,6 +707,7 @@ for file in simfiles:
 		r = arr[:, 0]
 		vd = arr[:, 1]
 		axobs[1,0].plot(r, vd, lw=3, color='red', zorder=2000,label='Simulation')
+		np.savetxt(outdirdata+'/Vdisplos_T%.2f.txt'%time_tmp,arr,fmt='%.3e %.3f')        
 
 		if file_vdisp is not None:
 			try:
@@ -691,6 +729,12 @@ for file in simfiles:
 											err_distibution='uniform', nboot=10000)
 
 					axobs[1,0].errorbar(b[0], b[4], b[5], b[1], fmt='o', c=color_disp[j], mfc='white',label='Realisation %i'%j)
+					outbinrel=np.zeros((len(b[0]),4))
+					outbinrel[:,0]=b[0]
+					outbinrel[:,1]=b[1]
+					outbinrel[:,2]=b[4]
+					outbinrel[:,3]=b[5]
+					np.savetxt(outdirdata+'/vdisprel_%i.txt'%j,outbinrel,fmt='%.3e %.3e %.3f %.3f',header='0-R 1-eR 2-V 3-eV Vdisp_tot=%.3f'%b[-1])
 			except FileNotFoundError:
 				print('File %s not found.. skipping' % file_vdisp)
 
@@ -706,6 +750,7 @@ for file in simfiles:
 		arr,supdensfunc = prof_obs.supdens(pax='obs',ret=True,func=True,s=0)
 		r = arr[:, 0]
 		d = arr[:, 1]
+		np.savetxt(outdirdata+'/Sigmalos.txt',arr,fmt='%.3e',header='0-R [kpc] 1-Sigma [Msun/kpc^2] Rh=%.3f'%rh_sim)
 		axobs[0,1].plot(r, d, lw=3, color='red')
 		axobs[0,1].plot([rh_sim, rh_sim], [np.min(d), np.max(d)], color='magenta', lw=2, label='$R^{sim}_h$')
 		if rh_obs is not None:
@@ -713,7 +758,7 @@ for file in simfiles:
 		axobs[0,1].set_xlabel('$R \ [kpc]$', fontsize=20)
 		axobs[0,1].set_ylabel('$\\Sigma_{los} \ [M_\\odot \ kpc^{-2}]$', fontsize=20)
 		axobs[0,1].set_xlim(0.01, 2)
-		axobs[0,1].set_ylim(1e3, 4e7)
+		#axobs[0,1].set_ylim(1e3, 4e7)
 		# axobs[1].set_xlim(0.001,10)
 		axobs[0,1].set_xscale('log')
 		axobs[0,1].set_yscale('log')
@@ -732,7 +777,7 @@ for file in simfiles:
 				#datapr[:,1]=fnorm*datapr[:,1]
 				#datapr[:,2]=fnorm*datapr[:,2]
 
-				axobs[0,1].errorbar(x, datapr[:, 1], datapr[:, 2], fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
+				axobs[0,1].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
 			except FileNotFoundError:
 				print('File %s not found.. skipping' % file_vdisp)
 		proffile=None
