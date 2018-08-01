@@ -6,6 +6,13 @@ import time
 import numpy as np
 import astropy.io.fits as ft
 
+
+def list_check(object_to_be_checked):
+    
+    return isinstance(object_to_be_checked,(list, tuple, np.ndarray))
+
+
+
 def Continue_check(warning):
     valid_choice = {"yes": True, "y": True, "ye": True,
              "no": False, "n": False}

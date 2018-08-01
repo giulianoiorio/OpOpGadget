@@ -4,6 +4,7 @@ from ..io_src.LoadSnap import load_snap
 from ..particle_src.particle import  Particles
 from ..analysis_src.analysis import Analysis
 from ..particle_src.sky_particle import Sky_Particles, Sky_Particle
+from ..utility_src.utility import list_check
 from roteasy import align_frame
 from math import cos,sin,sqrt
 import numpy as np
@@ -56,6 +57,11 @@ class Observe():
 
 
     def observe(self,psun=(8.0,0,0),vsun=(-10,5.25,7.17),vrot=220,align_mode='auto',align_vec=(), com='iter', mq=50,**kwargs):
+        """
+        com: if iter perform an iterative search considering mq=50. It is also possible to 
+        give directly the position of the com. In this case it should be a list(tuple or array) (COM, VCOM)
+        where COM is another list (tuple or np array) contaiting the position of the COM in Galactic coordinates, while VCOM is the same thing but for the Velocity of the Centre of Mass.
+        """
 
         self.set_sun_position(psun=psun,vsun=vsun,vrot=vrot) #Sun Position
         align_pos, align_vel=self.set_align(align_mode, align_vec, com=com, mq=mq) #align
@@ -78,12 +84,31 @@ class Observe():
         return s, c
 
     def set_align(self,align_mode,align_vec,com,mq):
+        """
+        com: if iter perform an iterative search considering mq=50. It is also possible to 
+        give directly the position of the com. In this case it should be a list(tuple or array) (COM, VCOM)
+        where COM is another list (tuple or np array) contaiting the position of the COM in Galactic coordinates, while VCOM is the same thing but for the Velocity of the Centre of Mass.
+        """
+        
         #set align_vec=(x,y,z) of the object wrt to the Sun position
         #set dist_obj=distance of the object wrt to the Sun position
         if align_mode.lower()=='auto':
             an=Analysis(particles=self.p, safe=False, auto_centre=False)
 
-            if com!='iter' or len(self.p.Id)<=10: pcom,vcom=an.com(mq)
+            if list_check(com):
+                if len(com)!=2:
+                    raise ValueError('COM need to be a list with len 2')
+                
+                if len(com[0])!=3:
+                    raise ValueError('COM need to have three coordinates')
+                else:
+                    pcom=com[0]
+
+                if len(com[1])!=3:
+                    raise ValueError('VCOM need to have three coordinates')
+                else:
+                    vcom=com[1]    
+            elif com!='iter' or len(self.p.Id)<=10: pcom,vcom=an.com(mq)
             else: pcom,vcom=an.comit(fac=0.975,limit_mass=mq,maxiter=500)
 
             align_pos=pcom

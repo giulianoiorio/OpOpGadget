@@ -10,7 +10,7 @@ label_size = 20
 # mpl.rcParams.update({'figure.autolayout':True})
 mpl.rcParams['xtick.labelsize'] = label_size
 mpl.rcParams['ytick.labelsize'] = label_size
-mpl.rcParams['mathtext.default'] = 'regular'
+mpl.rcParams['mathtext.default'] = 'it'
 import glob
 import os
 import sys
@@ -321,20 +321,21 @@ for file in simfiles:
 		axarr[iplot, 1].set_ylim(-150, 150)
 		axarr[iplot, 2].set_xlim(-150, 150)
 		axarr[iplot, 2].set_ylim(-150, 150)
-		axarr[iplot, 0].text(-150, 130, 'T=%.2f Gyr' % time_tmp, fontsize=20)
+		axarr[iplot, 0].text(-150, 130, '$t$=%.2f Gyr' % time_tmp, fontsize=20)
 		if i == idx_plot_orbit[0]:
-			axarr[0, 0].text(0, 150, 'XY', fontsize=25)
-			axarr[0, 1].text(0, 150, 'XZ', fontsize=25)
-			axarr[0, 2].text(0, 150, 'YZ', fontsize=25)
+			axarr[0, 0].text(0, 150, '$xy$', fontsize=25)
+			axarr[0, 1].text(0, 150, '$xz$', fontsize=25)
+			axarr[0, 2].text(0, 150, '$tz$', fontsize=25)
 
 		if gpos is not None:
-			axarr[iplot, 0].plot([gpos[0], gpos[0]], [-1000, 1000], color='cyan', zorder=2000, lw=0.5)
-			axarr[iplot, 0].plot([-1000, 1000], [gpos[1], gpos[1]], color='cyan', zorder=2000, lw=0.5)
-			axarr[iplot, 1].plot([gpos[0], gpos[0]], [-1000, 1000], color='cyan', zorder=2000, lw=0.5)
-			axarr[iplot, 1].plot([-1000, 1000], [gpos[2], gpos[2]], color='cyan', zorder=2000, lw=0.5)
-			axarr[iplot, 2].plot([gpos[1], gpos[1]], [-1000, 1000], color='cyan', zorder=2000, lw=0.5)
-			axarr[iplot, 2].plot([-1000, 1000], [gpos[2], gpos[2]], color='cyan', zorder=2000, lw=0.5)
-			
+			axarr[iplot, 0].plot([gpos[0], gpos[0]], [-1000, 1000], color='darkgreen', zorder=2000, lw=0.5)
+			axarr[iplot, 0].plot([-1000, 1000], [gpos[1], gpos[1]], color='darkgreen', zorder=2000, lw=0.5)
+			axarr[iplot, 1].plot([gpos[0], gpos[0]], [-1000, 1000], color='darkgreen', zorder=2000, lw=0.5)
+			axarr[iplot, 1].plot([-1000, 1000], [gpos[2], gpos[2]], color='darkgreen', zorder=2000, lw=0.5)
+			axarr[iplot, 2].plot([gpos[1], gpos[1]], [-1000, 1000], color='darkgreen', zorder=2000, lw=0.5)
+			axarr[iplot, 2].plot([-1000, 1000], [gpos[2], gpos[2]], color='darkgreen', zorder=2000, lw=0.5)
+		
+		'''  
 		if orbit_track is not None: 
 			dorbit=np.loadtxt(orbit_track)
 			idxtorb=np.searchsorted(dorbit[:,0], time_tmp)
@@ -345,6 +346,7 @@ for file in simfiles:
 				axarr[iplot, 1].plot(dorbit[:, 1], dorbit[:, 3],lw=0.8)
 				axarr[iplot, 2].plot(dorbit[:, 2], dorbit[:, 3],lw=0.8)
 			del dorbit
+		'''
 				
 		if (i == idx_plot_orbit[2]):
 			axarr[2, 0].set_xlabel('kpc', fontsize=20)
@@ -529,19 +531,19 @@ for file in simfiles:
 		d = arr[:, 1]
 		vsysmax=[np.max(d),]
 		vsysmin=[np.min(d),]
-		axvrot[0].plot(r, d, label='T=%.2f Gyr'%time_tmp, color=colortd[check_td])
+		axvrot[0].plot(r, d, label='$t$=%.2f Gyr'%time_tmp, color=colortd[check_td])
 		arr = prof_tmp_s.vsys(pax='y')[0]
 		r = arr[:, 0]
 		d = arr[:, 1]
 		vsysmax.append(np.max(d))
 		vsysmin.append(np.min(d))
-		axvrot[1].plot(r, d, label='T=%.2f Gyr'%time_tmp, color=colortd[check_td])
+		axvrot[1].plot(r, d, label='$t$=%.2f Gyr'%time_tmp, color=colortd[check_td])
 		arr = prof_tmp_s.vsys(pax='x')[0]
 		r = arr[:, 0]
 		d = arr[:, 1]
 		vsysmax.append(np.max(d))
 		vsysmin.append(np.min(d))
-		axvrot[2].plot(r, d, label='T=%.2f Gyr'%time_tmp, color=colortd[check_td])
+		axvrot[2].plot(r, d, label='$t$=%.2f Gyr'%time_tmp, color=colortd[check_td])
 		axvrot[0].axhline(0, color='black', ls='--')
 		axvrot[1].axhline(0, color='black', ls='--')
 		axvrot[2].axhline(0, color='black', ls='--')
@@ -551,13 +553,13 @@ for file in simfiles:
 		if check_td == 3:
 
 			#Vsys
-			axvrot[0].set_xlabel('$R=\\sqrt{x^2+y^2} \ [kpc]$', fontsize=20)
-			axvrot[1].set_xlabel('$R=\\sqrt{x^2+z^2}  \ [kpc]$', fontsize=20)
-			axvrot[2].set_xlabel('$R=\\sqrt{y^2+z^2}  \ [kpc]$', fontsize=20)
-			axvrot[0].set_ylabel('$V_{sys}  \ [km \ s^{-1}]$', fontsize=20)
-			axvrot[0].set_title('z-Projection', fontsize=20)
-			axvrot[1].set_title('y-Projection', fontsize=20)
-			axvrot[2].set_title('x-Projection', fontsize=20)
+			axvrot[0].set_xlabel('$R=\\sqrt{x^2+y^2} \$ [kpc]', fontsize=20)
+			axvrot[1].set_xlabel('$R=\\sqrt{x^2+z^2} \$ [kpc]', fontsize=20)
+			axvrot[2].set_xlabel('$R=\\sqrt{y^2+z^2} \$ [kpc]', fontsize=20)
+			axvrot[0].set_ylabel('$V_{sys}  \  \mathrm{[km \ s^{-1}]}$', fontsize=20)
+			axvrot[0].set_title('$z$-Projection', fontsize=20)
+			axvrot[1].set_title('$y$-Projection', fontsize=20)
+			axvrot[2].set_title('$x$-Projection', fontsize=20)
 			figvrot.savefig(outdir+'/Vsys.png')
 			#axvrot_min=np.min(vsysmin)
 			#axvrot_max=np.max(vsysmax)
@@ -565,12 +567,12 @@ for file in simfiles:
 
 
 			# 3D
-			axtd[0].set_xlabel('r [kpc]', fontsize=20)
-			axtd[1].set_xlabel('r [kpc]', fontsize=20)
-			axtd[2].set_xlabel('r [kpc]', fontsize=20)
-			axtd[0].set_ylabel('$\\rho_h \\ [M_\\odot \ kpc^{-3}]$', fontsize=20)
-			axtd[1].set_ylabel('$\\rho_* \\ [M_\\odot \ kpc^{-3}]$', fontsize=20)
-			axtd[2].set_ylabel('$\\sigma_{3D} \\ [km \ s^{-1}]$', fontsize=20)
+			axtd[0].set_xlabel('$r$ [kpc]', fontsize=20)
+			axtd[1].set_xlabel('$r$ [kpc]', fontsize=20)
+			axtd[2].set_xlabel('$r$ [kpc]', fontsize=20)
+			axtd[0].set_ylabel('$\\rho_h \\  \mathrm{[M_\\odot \ kpc^{-3}]}$', fontsize=20)
+			axtd[1].set_ylabel('$\\rho_* \\  \mathrm{[M_\\odot \ kpc^{-3}]}$', fontsize=20)
+			axtd[2].set_ylabel('$\\sigma_{3D} \\  \mathrm{[km \ s^{-1}]}$', fontsize=20)
 			axtd[0].set_xlim(0.1, 100)
 			axtd[0].set_ylim(1e-2, 1e10)
 			axtd[0].set_xscale('log')
@@ -611,9 +613,9 @@ for file in simfiles:
 				axstd[1, 1].errorbar(x, data[:, 4], data[:, 5], ex, fmt='o', c='black', label='Observed', zorder=8000)
 				axstd[1, 2].errorbar(x, data[:, 4], data[:, 5], ex, fmt='o', c='black', label='Observed', zorder=8000)
 
-			axstd[1, 0].set_xlabel('$R=\\sqrt{X^2+Y^2} [kpc]$', fontsize=20)
-			axstd[1, 1].set_xlabel('$R=\\sqrt{X^2+Z^2}  [kpc]$', fontsize=20)
-			axstd[1, 2].set_xlabel('$R=\\sqrt{Y^2+Z^2}  [kpc]$', fontsize=20)
+			axstd[1, 0].set_xlabel('$R=\\sqrt{X^2+Y^2} \$  [kpc]', fontsize=20)
+			axstd[1, 1].set_xlabel('$R=\\sqrt{X^2+Z^2} \$  [kpc]', fontsize=20)
+			axstd[1, 2].set_xlabel('$R=\\sqrt{Y^2+Z^2} \$  [kpc]', fontsize=20)
 			axstd[0, 0].set_xscale('log')
 			axstd[0, 0].set_yscale('log')
 			axstd[0, 1].set_xscale('log')
@@ -626,8 +628,8 @@ for file in simfiles:
 			axstd[1, 0].set_ylim(0, 20)
 			axstd[1, 1].set_ylim(0, 20)
 			axstd[1, 2].set_ylim(0, 20)
-			axstd[1, 0].set_ylabel('$\\sigma \\ [km \ s^{-1}]$', fontsize=20)
-			axstd[0, 0].set_ylabel('$\\Sigma \\ [M_\\odot \ kpc^{-2}]$', fontsize=20)
+			axstd[1, 0].set_ylabel('$\\sigma \\  \mathrm{[km \ s^{-1}]}$', fontsize=20)
+			axstd[0, 0].set_ylabel('$\\Sigma \\  \mathrm{[M_\\odot \ kpc^{-2}]}$', fontsize=20)
 			axstd[0, 0].legend(loc='upper right')
 			axstd[1, 0].legend(loc='upper left')
 			# axstd[0, 0].text(0.5, 1.0, 'Projection ax: X', fontsize=25, transform=axstd[0, 0].transAxes)
@@ -638,7 +640,7 @@ for file in simfiles:
 
 	# observe
 	o_tmp = Observe(particles=p_tmp, type=2)
-	s, c = o_tmp.observe(psun=psun, vsun=vsun, vrot=vrot, mq=50)
+	s, c = o_tmp.observe(psun=psun, vsun=vsun, vrot=vrot, com=(com_tmp, vcom_tmp))
 	a = Analysis(s, safe=True, auto_centre=False, iter=False, single=False)
 
 	if radmax is None:
@@ -695,8 +697,8 @@ for file in simfiles:
 		axobs[0,0].plot(xxx,yyy,'--', color='blue',lw=2,zorder=30000,label='$R=1.2^\circ$')
 		axobs[0,0].scatter(s.xi[:] / 3600., s.eta[:] / 3600., s=0.005, c='red')
 		axobs[0,0].scatter(1e6 / 3600.,0, c='red',label='Star particles')
-		axobs[0,0].set_xlabel('$\\xi \ [deg]$', fontsize=20)
-		axobs[0,0].set_ylabel('$\\eta \ [deg]$', fontsize=20)
+		axobs[0,0].set_xlabel('$\\xi$  [deg]', fontsize=20)
+		axobs[0,0].set_ylabel('$\\eta$  [deg]', fontsize=20)
 		axobs[0,0].set_xlim(-2., 2.)
 		axobs[0,0].set_ylim(-2.,2.)
 		axobs[0,0].plot([1e6,1e6],[1e6,1e9],color='black',label='Iso-density')
@@ -738,8 +740,8 @@ for file in simfiles:
 			except FileNotFoundError:
 				print('File %s not found.. skipping' % file_vdisp)
 
-		axobs[1,0].set_xlabel('$R  \ [kpc]$', fontsize=20)
-		axobs[1,0].set_ylabel('$\\sigma_{los}  \ [km \ s^{-1}]$', fontsize=20)
+		axobs[1,0].set_xlabel('$R$   [kpc]', fontsize=20)
+		axobs[1,0].set_ylabel('$\\sigma_{los}  \  \mathrm{[km \ s^{-1}]}$', fontsize=20)
 		axobs[1,0].set_xlim(0, 2)
 		axobs[1,0].set_ylim(0, 15)
 
@@ -755,8 +757,8 @@ for file in simfiles:
 		axobs[0,1].plot([rh_sim, rh_sim], [np.min(d), np.max(d)], color='magenta', lw=2, label='$R^{sim}_h$')
 		if rh_obs is not None:
 			axobs[0,1].plot([rh_obs, rh_obs], [np.min(d), np.max(d)], '--',  lw=1.5, color='black', label='$R^{obs}_h \ (McConnachie12)$')
-		axobs[0,1].set_xlabel('$R \ [kpc]$', fontsize=20)
-		axobs[0,1].set_ylabel('$\\Sigma_{los} \ [M_\\odot \ kpc^{-2}]$', fontsize=20)
+		axobs[0,1].set_xlabel('$R$  [kpc]$', fontsize=20)
+		axobs[0,1].set_ylabel('$\\Sigma_{los} \  \mathrm{[M_\\odot \ kpc^{-2}]}$', fontsize=20)
 		axobs[0,1].set_xlim(0.01, 2)
 		#axobs[0,1].set_ylim(1e3, 4e7)
 		# axobs[1].set_xlim(0.001,10)
@@ -793,8 +795,8 @@ for file in simfiles:
 		else:
 			medVlos=np.median(d)
 			axobs[1,1].axhline(medVlos, color='black', ls='--', label='Median')
-		axobs[1,1].set_xlabel('$R  [kpc]$', fontsize=20)
-		axobs[1,1].set_ylabel('$V_{sys} \  [km \ s^{-1}]$', fontsize=20)
+		axobs[1,1].set_xlabel('$R$  [kpc]', fontsize=20)
+		axobs[1,1].set_ylabel('$V_{sys} \   \mathrm{[km \ s^{-1}]}$', fontsize=20)
 		axobs[1,1].set_xlim(0,2)
 
 		#axobs[0,0].legend(loc='upper center',fontsize=14,ncol=2)
@@ -833,27 +835,27 @@ mp = fin_array[1:, 9]
 mp_ini = mp[0]
 if mstar is None:
 	mp_ini = mp[0]
-	label = '$M^{sim}_*$ wrt T=0'
+	label = '$M^{sim}_*(<R_{*})$ wrt $t$=0'
 else:
 	mp_ini = mstar
-	label = '$M^{sim}_*$ wrt obs'
+	label = '$M^{sim}_*(<R_{*})$ wrt obs'
 rel_diff = 100 * (mp - mp_ini) / mp_ini
 axstat.plot(T, rel_diff, '-^', c='darkgreen', label=label, zorder=3000)
 
 vdp_tot = fin_array[1:, 10]
 if vdisp_obs_tot is None:
 	vdp_tot_ini = vdp_tot[0]
-	label = '$\\sigma^{sim}_{los}(R<R_{max})$ wrt T=0'
+	label = '$\\sigma^{sim}_{los}(<R_{*})$ wrt $t$=0'
 else:
 	vdp_tot_ini = vdisp_obs_tot
-	label = '$\\sigma^{sim}_{los}(R<R_{max})$ wrt obs'
+	label = '$\\sigma^{sim}_{los}(<R_{*})$ wrt obs'
 rel_diff = 100 * (vdp_tot - vdp_tot_ini) / vdp_ini
 axstat.plot(T, rel_diff, '-s', c='cyan', label=label, zorder=3000)
 axstat.legend(loc='best', fontsize=12)
 
 axstat.axhline(0, color='black', ls='--')
-axstat.set_xlabel('T [Gyr]', fontsize=20)
-axstat.set_ylabel('Rel diff [%]', fontsize=20)
+axstat.set_xlabel('$t$ [Gyr]', fontsize=20)
+axstat.set_ylabel('Rel. diff [%]', fontsize=20)
 
 figstat.savefig(outdir + '/evolution_los.png')
 
@@ -915,9 +917,9 @@ vv_los = fin_array[1:, 7]
 vv_los0 = vv_los[0]
 vv_los = 100 * (vv_los - vv_los0) / (vv_los0)
 
-axev2d[1, 0].plot(T2, vv_x, '-o', label='X-projection', lw=3, markersize=10)
-axev2d[1, 0].plot(T2, vv_y, '-^', label='Y-projection', lw=3, markersize=10)
-axev2d[1, 0].plot(T2, vv_z, '-s', label='Z-projection', lw=3, markersize=10)
+axev2d[1, 0].plot(T2, vv_x, '-o', label='$x$-projection', lw=3, markersize=10)
+axev2d[1, 0].plot(T2, vv_y, '-^', label='$y$-projection', lw=3, markersize=10)
+axev2d[1, 0].plot(T2, vv_z, '-s', label='$z$-projection', lw=3, markersize=10)
 axev2d[1, 0].plot(T, vv_los, '-d', label='los-projection', lw=3, markersize=10)
 axev2d[1, 0].axhline(0, color='black', ls='--')
 
@@ -945,11 +947,11 @@ axev2d[1, 1].axhline(0, color='black', ls='--')
 axev2d[0, 0].set_title('$\\sigma(R<R_h)$', fontsize=20)
 axev2d[0, 1].set_title('$\\sigma(R<R_{max})$', fontsize=20)
 axev2d[1, 0].set_title('$R_h$', fontsize=20)
-axev2d[1, 1].set_title('$Mass(R<R_{max})$', fontsize=20)
+axev2d[1, 1].set_title('$M(R<R_{max})$', fontsize=20)
 
 axev2d[0, 0].legend(loc='best', fontsize=12)
-axev2d[1, 0].set_xlabel('T [Gyr]', fontsize=20)
-axev2d[1, 1].set_xlabel('T [Gyr]', fontsize=20)
+axev2d[1, 0].set_xlabel('$t$ [Gyr]', fontsize=20)
+axev2d[1, 1].set_xlabel('$t$ [Gyr]', fontsize=20)
 axev2d[0, 0].set_ylabel('Rel diff [%]', fontsize=20)
 axev2d[1, 0].set_ylabel('Rel diff [%]', fontsize=20)
 axev2d[0, 0].set_ylim(-30, 30)
@@ -963,8 +965,8 @@ figev2D.savefig(outdir + '/evolution_2D.png')
 # EV3D
 pf = fin_array_intrinsic[:, 17]
 qf = fin_array_intrinsic[:, 18]
-axev3d[0].plot(T2, pf, '-o', label='Y-to-X axial ratio', lw=3, markersize=10)
-axev3d[0].plot(T2, qf, '-s', label='Z-to-X axial ratio', lw=3, markersize=10)
+axev3d[0].plot(T2, pf, '-o', label='$y$-to-$x$ axial ratio', lw=3, markersize=10)
+axev3d[0].plot(T2, qf, '-s', label='$z$-to-$x$ axial ratio', lw=3, markersize=10)
 
 vv_x = fin_array_intrinsic[:, 3]
 vv_x0 = vv_x[0]
@@ -978,8 +980,8 @@ axev3d[1].plot(T2, vv_y, '-s', label='$Mass(r<r_{max}}$', lw=3, markersize=10)
 
 axev3d[0].legend(loc='best', fontsize=12)
 axev3d[1].legend(loc='best', fontsize=12)
-axev3d[1].set_xlabel('t \ [Gyr]', fontsize=20)
-axev3d[0].set_xlabel('t \ [Gyr]', fontsize=20)
+axev3d[1].set_xlabel('$t$  [Gyr]', fontsize=20)
+axev3d[0].set_xlabel('$t$  [Gyr]', fontsize=20)
 axev3d[0].set_ylabel('Axial ratio', fontsize=20)
 axev3d[1].set_ylabel('Rel diff [%]', fontsize=20)
 
