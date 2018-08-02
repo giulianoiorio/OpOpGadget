@@ -447,7 +447,8 @@ for file in simfiles:
 			axtd[0].plot(r, d, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
 			np.savetxt(outdirdata+'/3Dprofile_DM_T%.2f.txt'%time_tmp,arr,fmt='%.3e',header='0-r [kpc] 1-dens [Msun kpc^-3]') 
             
-			arr_m_h = prof_tmp_h.mass()[0]
+			arr_m_h, f_m_h = prof_tmp_h.mass()
+			np.savetxt(outdirdata+'/MassprofileDM_T%.2f.txt'%time_tmp,arr_m_h,fmt='%.3e',header='0-r [kpc] 1-Mhalo [Msun]')
 			have_halo=True
 		except:
 			pass
@@ -464,7 +465,7 @@ for file in simfiles:
 		arr_m   = np.zeros(shape=(len(arr_m_s),4))
 		arr_m[:,0] = arr_m_s[:,0]   
 		arr_m[:,1] = arr_m_s[:,1]
-		if have_halo:  arr_m[:,2] = arr_m_h[:,1]      
+		if have_halo:  arr_m[:,2] = f_m_h(arr_m_s[:,0])   
 		arr_m[:,3] = arr_m_s[:,1] +  arr_m[:,2]      
 		np.savetxt(outdirdata+'/Massprofile_T%.2f.txt'%time_tmp,arr_m,fmt='%.3f %.3e %.3e %.3e',header='0-r [kpc] 1-Mstar [Msun] 2-Mhalo [Msun] 3-Mtot [Msun]') 
         
