@@ -307,7 +307,10 @@ class NFWc(GeneralModel.GeneralModel):
         h += '\nr%i: %.3f' % (self.c_par, self.rcp)
         h += '\nrs: %.3f' % self.rscale
         h += '\nrcore: %.3f (physical)  %.3f (normalised)'%(self.rcore,self.rcore/self.rscale)
-        h += '\nrt: %.3f (physical)  %.3f (normalised)' % (self.rt, self.rt / self.rs)
+        if self.rt is None:
+            h += '\nrt: None'
+        else:
+            h += '\nrt: %.3f (physical)  %.3f (normalised)' % (self.rt, self.rt / self.rs)
         h += '\nrini: %.3f (physical)  %.3f (normalised)' % (self.rini * self.rscale, self.rini)
         h += '\nrfin: %.3f (physical)  %.3f (normalised)' % (self.rfin * self.rscale, self.rfin)
         h += '\nTotal Mass: %.3e at last radius: %.3f' % (self.mass(self.rfin * self.rscale), self.rfin * self.rscale)
