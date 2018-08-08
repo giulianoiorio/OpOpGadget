@@ -111,7 +111,9 @@ class NFWc(GeneralModel.GeneralModel):
 
 
         if rt is None:
-            self.rt=2*R[-1]
+            #self.rt=10*R[-1]
+            self.rt=None
+            pass
         elif rtnorm:
             #if rt < 1.1: print('Warning the truncation radius is lower that 1.1 the virial radius of the halo')
             self.rt = self.rcp * rt
@@ -133,6 +135,10 @@ class NFWc(GeneralModel.GeneralModel):
             super(NFWc, self).__init__(R=R, dens=self._adens, rc=self.rscale, Ms=mass_scale, rs=rtscale, G=G, use_c=use_c,
                                         denorm=denorm)
             #print('Mass NFWc fin', self.mass(0.1 * self.rt))
+        elif rt is None:
+            super(NFWc, self).__init__(R=R, dens=self._adens_not, rc=self.rscale, Ms=self.Mc, rs=self.rcp, G=G, use_c=use_c,
+                                       denorm=denorm)         
+            
         else:
             super(NFWc, self).__init__(R=R, dens=self._adens, rc=self.rscale, Ms=self.Mc, rs=self.rcp, G=G, use_c=use_c,
                                        denorm=denorm)

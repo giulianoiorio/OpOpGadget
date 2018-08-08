@@ -9,4 +9,6 @@ herp
 build
 dist
 Makefile
+test
+.DS_Store
 
