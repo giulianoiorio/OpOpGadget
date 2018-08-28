@@ -469,11 +469,22 @@ for file in simfiles:
 		arr_m[:,3] = arr_m_s[:,1] +  arr_m[:,2]      
 		np.savetxt(outdirdata+'/Massprofile_T%.2f.txt'%time_tmp,arr_m,fmt='%.3f %.3e %.3e %.3e',header='0-r [kpc] 1-Mstar [Msun] 2-Mhalo [Msun] 3-Mtot [Msun]') 
         
-		arr = prof_tmp_s.vdisp3d()[0]
-		r = arr[:, 0]
-		vd = arr[:, 1]
+		arrx = prof_tmp_s.vdisp3d(ax='x')[0]
+		arry = prof_tmp_s.vdisp3d(ax='y')[0]
+		arrz = prof_tmp_s.vdisp3d(ax='z')[0]
+		r = arrx[:, 0]
+		vdx = arrx[:, 1]
+		vdy = arry[:, 1]
+		vdz = arrz[:, 1]
+		vd = np.sqrt(vdx*vdx + vdy*vdy + vdz*vdz)
+		arr=np.zeros((len(arrx),5))
+		arr[:,0]=r
+		arr[:,1]=vdx
+		arr[:,2]=vdy
+		arr[:,3]=vdz
+		arr[:,4]=vd
 		axtd[2].plot(r, vd, lw=2, label='T=%.2f Gyr' % time_tmp, color=colortd[check_td])
-		np.savetxt(outdirdata+'/3DVdisp_stars_T%.2f.txt'%time_tmp,arr,fmt='%.3f %.3f',header='0-r [kpc] 1-Vdisp [km/s]') 
+		np.savetxt(outdirdata+'/3DVdisp_stars_T%.2f.txt'%time_tmp,arr,fmt='%.3f %.3f %.3f %.3f %.3f',header='0-r [kpc] 1-Vdispx 2-Vdispy 3-Vdispz 4-Vdisptot [km/s]') 
         
 		arr = prof_tmp_s.supdens(pax='z')[0]
 		arr_output= np.zeros(shape=(len(arr),4))
