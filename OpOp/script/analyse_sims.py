@@ -321,11 +321,11 @@ for file in simfiles:
 		axarr[iplot, 1].set_ylim(-150, 150)
 		axarr[iplot, 2].set_xlim(-150, 150)
 		axarr[iplot, 2].set_ylim(-150, 150)
-		axarr[iplot, 0].text(-150, 130, '$t$=%.2f Gyr' % time_tmp, fontsize=20)
-		if i == idx_plot_orbit[0]:
-			axarr[0, 0].text(0, 150, '$xy$', fontsize=25)
-			axarr[0, 1].text(0, 150, '$xz$', fontsize=25)
-			axarr[0, 2].text(0, 150, '$tz$', fontsize=25)
+		axarr[iplot, 0].text(-145, 125, '$t$=%.2f Gyr' % time_tmp, fontsize=20)
+		#if i == idx_plot_orbit[0]:
+		#	axarr[0, 0].text(0, 150, '$xy$', fontsize=25)
+		#	axarr[0, 1].text(0, 150, '$xz$', fontsize=25)
+		#	axarr[0, 2].text(0, 150, '$tz$', fontsize=25)
 
 		if gpos is not None:
 			axarr[iplot, 0].plot([gpos[0], gpos[0]], [-1000, 1000], color='darkgreen', zorder=2000, lw=0.5)
@@ -349,12 +349,34 @@ for file in simfiles:
 		'''
 				
 		if (i == idx_plot_orbit[2]):
-			axarr[2, 0].set_xlabel('kpc', fontsize=20)
-			axarr[2, 1].set_xlabel('kpc', fontsize=20)
-			axarr[2, 2].set_xlabel('kpc', fontsize=20)
-			axarr[0, 0].set_ylabel('kpc', fontsize=20)
-			axarr[1, 0].set_ylabel('kpc', fontsize=20)
-			axarr[2, 0].set_ylabel('kpc', fontsize=20)
+			
+			axarr[0, 0].set_ylabel('y [kpc]', fontsize=20)
+			axarr[0, 0].set_xlabel('x [kpc]', fontsize=20)
+			axarr[1, 0].set_ylabel('y [kpc]', fontsize=20)
+			axarr[1, 0].set_xlabel('x [kpc]', fontsize=20)
+			axarr[2, 0].set_ylabel('y [kpc]', fontsize=20)
+			axarr[2, 0].set_xlabel('x [kpc]', fontsize=20)
+			
+			axarr[0, 1].set_ylabel('z [kpc]', fontsize=20)
+			axarr[0, 1].set_xlabel('x [kpc]', fontsize=20)
+			axarr[1, 1].set_ylabel('z [kpc]', fontsize=20)
+			axarr[1, 1].set_xlabel('x [kpc]', fontsize=20)
+			axarr[2, 1].set_ylabel('z [kpc]', fontsize=20)
+			axarr[2, 1].set_xlabel('x [kpc]', fontsize=20)
+			
+			axarr[0, 2].set_ylabel('z [kpc]', fontsize=20)
+			axarr[0, 2].set_xlabel('y [kpc]', fontsize=20)
+			axarr[1, 2].set_ylabel('z [kpc]', fontsize=20)
+			axarr[1, 2].set_xlabel('y [kpc]', fontsize=20)
+			axarr[2, 2].set_ylabel('z [kpc]', fontsize=20)
+			axarr[2, 2].set_xlabel('y [kpc]', fontsize=20)
+			
+			#axarr[2, 0].set_xlabel('[kpc]', fontsize=20)
+			#axarr[2, 1].set_xlabel('[kpc]', fontsize=20)
+			#axarr[2, 2].set_xlabel('[kpc]', fontsize=20)
+			#axarr[0, 0].set_ylabel('x [kpc]', fontsize=20)
+			#axarr[1, 0].set_ylabel('[kpc]', fontsize=20)
+			#axarr[2, 0].set_ylabel('[kpc]', fontsize=20)
 			figorbit.set_size_inches(15, 15, forward=True)
 			# plt.setp([a.get_xticklabels() for a in figorbit.axes[:-1]], visible=False)
 			figorbit.savefig(outdir + '/orbit.png')
@@ -469,9 +491,10 @@ for file in simfiles:
 		arr_m[:,3] = arr_m_s[:,1] +  arr_m[:,2]      
 		np.savetxt(outdirdata+'/Massprofile_T%.2f.txt'%time_tmp,arr_m,fmt='%.3f %.3e %.3e %.3e',header='0-r [kpc] 1-Mstar [Msun] 2-Mhalo [Msun] 3-Mtot [Msun]') 
         
-		arrx = prof_tmp_s.vdisp3d(ax='x')[0]
-		arry = prof_tmp_s.vdisp3d(ax='y')[0]
-		arrz = prof_tmp_s.vdisp3d(ax='z')[0]
+		prof_tmp_s2 = Profile(particles=a_tmp.p, xmin=0.0001, xmax=5, ngrid=20, kind='lin', type=2)
+		arrx = prof_tmp_s2.vdisp3d(ax='x')[0]
+		arry = prof_tmp_s2.vdisp3d(ax='y')[0]
+		arrz = prof_tmp_s2.vdisp3d(ax='z')[0]
 		r = arrx[:, 0]
 		vdx = arrx[:, 1]
 		vdy = arry[:, 1]
