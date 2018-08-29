@@ -631,9 +631,9 @@ for file in simfiles:
 				if proffile is not None:
 					datapr = np.loadtxt(proffile)
 					x = dist * np.tan((datapr[:, 0]/60.) * (np.pi) / 180)
-					axstd[0, 0].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
-					axstd[0, 1].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
-					axstd[0, 2].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
+					axstd[0, 0].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA (rescaled)')
+					axstd[0, 1].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA (rescaled)')
+					axstd[0, 2].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA (rescaled)')
 
 			if vdisp_obs is not None:
 				axstd[1, 0].plot([0, 2], [vdisp_obs, vdisp_obs], '--', color='black', zorder=5000,
@@ -714,7 +714,7 @@ for file in simfiles:
 		#axobs[1,1].axis('equal')
 
 		prof_obs_large = Profile(particles=s, xmin=0.01, xmax=10, ngrid=512, kind='lin')
-		prof_obs_small = Profile(particles=s, xmin=0.01, xmax=10, ngrid=100, kind='lin')
+		prof_obs_small = Profile(particles=s, xmin=0.01, xmax=10, ngrid=50, kind='lin')
 
 	   # ifilter=(np.abs(s.xi/3600.)<3)&(np.abs(s.eta/3600.)<3)
 
@@ -776,7 +776,7 @@ for file in simfiles:
 				print('File %s not found.. skipping' % file_vdisp)
 
 		axobs[1,0].set_xlabel('$R$   [kpc]', fontsize=20)
-		axobs[1,0].set_ylabel('$\\sigma_{los}  \  \mathrm{[km \ s^{-1}]}$', fontsize=20)
+		axobs[1,0].set_ylabel('$\\sigma_\mathrm{los}  \  \mathrm{[km \ s^{-1}]}$', fontsize=20)
 		axobs[1,0].set_xlim(0, 2)
 		axobs[1,0].set_ylim(0, 15)
 
@@ -791,9 +791,9 @@ for file in simfiles:
 		axobs[0,1].plot(r, d, lw=3, color='red')
 		axobs[0,1].plot([rh_sim, rh_sim], [np.min(d), np.max(d)], color='magenta', lw=2, label='$R^{sim}_h$')
 		if rh_obs is not None:
-			axobs[0,1].plot([rh_obs, rh_obs], [np.min(d), np.max(d)], '--',  lw=1.5, color='black', label='$R^{obs}_h \ (McConnachie12)$')
-		axobs[0,1].set_xlabel('$R$  [kpc]$', fontsize=20)
-		axobs[0,1].set_ylabel('$\\Sigma_{los} \  \mathrm{[M_\\odot \ kpc^{-2}]}$', fontsize=20)
+			axobs[0,1].plot([rh_obs, rh_obs], [np.min(d), np.max(d)], '--',  lw=1.5, color='black', label='$R^{obs}_h$  (McConnachie12)')
+		axobs[0,1].set_xlabel('$R$  [kpc]', fontsize=20)
+		axobs[0,1].set_ylabel('$\\Sigma_* \  \mathrm{[M_\\odot \ kpc^{-2}]}$', fontsize=20)
 		axobs[0,1].set_xlim(0.01, 2)
 		#axobs[0,1].set_ylim(1e3, 4e7)
 		# axobs[1].set_xlim(0.001,10)
@@ -814,7 +814,7 @@ for file in simfiles:
 				#datapr[:,1]=fnorm*datapr[:,1]
 				#datapr[:,2]=fnorm*datapr[:,2]
 
-				axobs[0,1].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA(rescaled)')
+				axobs[0,1].errorbar(x, datapr[:, 1]*Sigma_scale, datapr[:, 2]*Sigma_scale, fmt='o', c='black', ms=4, capsize=4,  zorder=1000,alpha=0.5,label='DATA (rescaled)')
 			except FileNotFoundError:
 				print('File %s not found.. skipping' % file_vdisp)
 		proffile=None
@@ -827,12 +827,15 @@ for file in simfiles:
 		axobs[1,1].plot(r, d, lw=3, color='red', label='Simulation')
 		if Vlos is not None:
 			axobs[1,1].axhline(Vlos, color='black', ls='--', label='Observed (this work)')
+			Vlose=Vlos
 		else:
 			medVlos=np.median(d)
 			axobs[1,1].axhline(medVlos, color='black', ls='--', label='Median')
+			Vlose=medVlos
 		axobs[1,1].set_xlabel('$R$  [kpc]', fontsize=20)
-		axobs[1,1].set_ylabel('$V_{sys} \   \mathrm{[km \ s^{-1}]}$', fontsize=20)
+		axobs[1,1].set_ylabel('$V_\mathrm{los} \   \mathrm{[km \ s^{-1}]}$', fontsize=20)
 		axobs[1,1].set_xlim(0,2)
+		axobs[1,1].set_ylim(Vlose-20,Vlose+20)
 
 		#axobs[0,0].legend(loc='upper center',fontsize=14,ncol=2)
 		axobs[0,1].legend(loc='best',fontsize=14)
