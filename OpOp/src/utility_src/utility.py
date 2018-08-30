@@ -6,6 +6,25 @@ import time
 import numpy as np
 import astropy.io.fits as ft
 
+def radec_to_xieta(ra, dec, ra_c, dec_c):
+    
+    degtrad=np.pi/180
+    sd=np.sin(dec*degtrad)
+    cd=np.cos(dec*degtrad)
+    sdc=np.sin(dec_c*degtrad)
+    cdc=np.cos(dec_c*degtrad)
+    
+    
+    denominator = sd*sdc + cd*cdc*np.cos( (ra-ra_c)*degtrad )
+    xin= cd * np.sin( (ra-ra_c)*degtrad  ) / denominator
+    xi=xin/degtrad
+    
+    etan= sd*cdc - cd*sdc*np.cos( (ra-ra_c)*degtrad )
+    eta = etan/degtrad
+
+    return xi*3600, eta*3600
+    
+    
 
 def list_check(object_to_be_checked):
     

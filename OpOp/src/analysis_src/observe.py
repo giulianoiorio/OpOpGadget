@@ -4,7 +4,7 @@ from ..io_src.LoadSnap import load_snap
 from ..particle_src.particle import  Particles
 from ..analysis_src.analysis import Analysis
 from ..particle_src.sky_particle import Sky_Particles, Sky_Particle
-from ..utility_src.utility import list_check
+from ..utility_src.utility import list_check, radec_to_xieta
 from roteasy import align_frame
 from math import cos,sin,sqrt
 import numpy as np
@@ -78,8 +78,9 @@ class Observe():
         c.Vcord = "Cen. on GC, X-toward Sun, Y-toward Sun motion"
         c.setRadius()
         c.setVel()
-        s = self._make_sky_particles(pos_sun,pos_obs,vel_sun,vel_obs)
         self.centre=c
+        s = self._make_sky_particles(pos_sun,pos_obs,vel_sun,vel_obs,centre=c)
+
 
         return s, c
 
@@ -236,7 +237,7 @@ class Observe():
         return l,b
 
     #TODO documentation
-    def _make_sky_particles(self,pos_sun,pos_obs,vel_sun,vel_obs):
+    def _make_sky_particles(self,pos_sun,pos_obs,vel_sun,vel_obs, centre=None):
 
         s = Sky_Particles(N=self.p.n)
 
@@ -256,14 +257,24 @@ class Observe():
         s.Vl[:]=s.mul * s.distance * Ksi
         s.Vb[:]=s.mub * s.distance * Ksi
         s.l[:],s.b[:]=self._sun_to_galactic(pos_sun)
-        gc=SkyCoord(l=s.l * u.degree, b=s.b * u.degree, frame='galactic')
+        gc=SkyCoord(l=s.l * u.degree, b=s.b * u.degree, distance=s.distance* u.kpc, pm_l_cosb=s.mul * u.mas/u.yr,  pm_b=s.mub * u.mas/u.yr, frame='galactic')
         gc=gc.fk5
         s.ra[:]=np.array(gc.ra.value)
         s.dec[:]=np.array(gc.dec.value)
-        s.xi[:] = np.arctan(s.Pos[:,0]/s.distance[:])*rad_to_angle*3600
-        s.eta[:] = np.arctan(s.Pos[:,1]/s.distance[:])*rad_to_angle*3600
+        s.mura[:]=np.array(gc.pm_ra_cosdec.value)
+        s.mudec[:]=np.array(gc.pm_dec.value)
+        
+        if centre is None:
+            s.xi[:] = np.arctan(s.Pos[:,0]/s.distance[:])*rad_to_angle*3600
+            s.eta[:] = np.arctan(s.Pos[:,1]/s.distance[:])*rad_to_angle*3600
+        else:
+            xi, eta = radec_to_xieta(s.ra, s.dec, centre.ra, centre.dec)
+            s.xi[:] = xi
+            s.eta[:] = eta
+        
         s.header=self.header
 
+        
         return s
 
     def _make_centre(self,pcentre_sun,vcentre_sun):
@@ -276,27 +287,27 @@ class Observe():
         if l < 0: l = 360 + l
         centre.l=l
         centre.b=b
-        gc=SkyCoord(l=l * u.degree, b=b * u.degree, frame='galactic')
-        gc=gc.fk5
-        centre.ra=gc.ra.value
-        centre.dec=gc.dec.value
-        centre.distance=dsun
-
-
-
         centre_vvlos = self.vobs(np.array(pcentre_sun), np.array(vcentre_sun))
         centre_mul, centre_mb, centre_Vlos = centre_vvlos[0]
         centre.mul=centre_mul
         centre.mub=centre_mb
         centre.Vlos=centre_Vlos
-
         centre.Vl= centre_mul * dsun * Ksi
         centre.Vb= centre_mb * dsun * Ksi
-
         centre.Pos=pcentre_sun[0]
         centre.Vel=vcentre_sun[0]
-
-
+        centre.distance=dsun
+        
+        
+        gc=SkyCoord(l=l[0] * u.degree, b=b[0] * u.degree, distance=dsun * u.kpc, pm_l_cosb=centre_mul * u.mas/u.yr,  pm_b=centre_mb * u.mas/u.yr, frame='galactic')
+        gc=gc.fk5
+        centre.ra=gc.ra.value
+        centre.dec=gc.dec.value
+        centre.mura=gc.pm_ra_cosdec.value
+        centre.mudec=gc.pm_dec.value
+        centre.xi=0
+        centre.eta=0
+        
         return  centre
 
 

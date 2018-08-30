@@ -34,13 +34,15 @@ class Sky_Particle(Particle):
         self.distance=distance #from the Sun
         self.l=l
         self.b=b
-        gc=SkyCoord(l=l * u.degree, b=b * u.degree, frame='galactic')
-        gc=gc.fk5
-        self.ra=gc.ra.value
-        self.dec=gc.dec.value
         self.mul=mul
         self.mub=mub
         self.Vlos=vlos
+        gc=SkyCoord(l=l * u.degree, b=b * u.degree, distance=distance * u.kpc , pm_l_cosb=mul * u.mas/u.yr, pm_b=mub * u.mas/u.yr, frame='galactic')
+        gc=gc.fk5
+        self.ra=gc.ra.value
+        self.dec=gc.dec.value
+        self.mura=gc.pm_ra_cosdec.value
+        self.mudec=gc.pm_dec.value
         self.Vl= mul * Ks * distance
         self.Vb= mub * Ks *distance
 
@@ -172,7 +174,7 @@ class Sky_Particle(Particle):
         st = "Coo system: Galactic"
         line = "Sky".center(50, '*') + '\n' + st.center(50, " ") + '\n' + 'l: ' + str(self.l) + ' b: ' + str(
             self.b) + '\n'
-        line += 'Vlos: %.3f'%(self.Vlos) +  ' mul(Vl): %.5f(%.3f)'%(self.mul,self.Vl) + ' mub(Vb): %.5f(%.3f)'%(self.mub,self.Vb)  + '\n'
+        line += 'Vlos: %.3f'%(self.Vlos) +  ' mul(Vl): %.5f(%.3f)'%(self.mul,self.Vl) + ' mub(Vb): %.5f(%.3f)'%(self.mub,self.Vb)  + 'mura: %.5f'%(self.mura) +  'mudec: %.5f'%(self.mudec) + '\n'
         mess += line
 
 
@@ -223,7 +225,7 @@ class Sky_Particles(Particles):
             self._fill_from_particle(p)
             self._make_header()
 
-        self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'l':self.l, 'b':self.b, 'vlos':self.Vlos, 'vl':self.Vl, 'vb':self.Vb, 'mul':self.mul, 'mub':self.mub , 'distance':self.distance , 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
+        self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'l':self.l, 'b':self.b, 'vlos':self.Vlos, 'vl':self.Vl, 'vb':self.Vb, 'mul':self.mul, 'mub':self.mub, 'mura':self.mura, 'mudec':self.mudec, 'distance':self.distance , 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
 
     def _initialize_vars(self,n):
 
@@ -234,6 +236,8 @@ class Sky_Particles(Particles):
         self.b  = np.zeros(n, dtype=float)
         self.ra = np.zeros(n, dtype=float)
         self.dec = np.zeros(n, dtype=float)
+        self.mura = np.zeros(n, dtype=float)
+        self.mudec = np.zeros(n, dtype=float)
         self.Vlos = np.zeros(n, dtype=float)
         self.Vb  = np.zeros(n, dtype=float)
         self.Vl  = np.zeros(n, dtype=float)
@@ -250,6 +254,8 @@ class Sky_Particles(Particles):
                 self.b[i] = p[i].b
                 self.ra[i] = p[i].ra
                 self.dec[i] = p[i].dec
+                self.mura[i] = p[i].mura
+                self.mudec[i] = p[i].mudec
                 self.Vlos[i] = p[i].Vlos
                 self.Vl[i] = p[i].Vl
                 self.Vb[i] = p[i].Vb
@@ -314,6 +320,8 @@ class Sky_Particles(Particles):
         self.Vb = self.Vb[sort_idx]
         self.mul = self.mul[sort_idx]
         self.mub = self.mub[sort_idx]
+        self.mura = self.mura[sort_idx]
+        self.mudec = self.mudec[sort_idx]
 
         self.Pos=self.Pos[sort_idx]
         self.Vel=self.Vel[sort_idx]
