@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from OpOp.io import load_snap
 from OpOp.analysis import Observe, Profile, Analysis
+from OpOp.utility import radec_to_xieta
 # import matplotlib as mpl
 label_size = 20
 # mpl.rcParams.update({'figure.autolayout':True})
@@ -676,6 +677,7 @@ for file in simfiles:
 	# observe
 	o_tmp = Observe(particles=p_tmp, type=2)
 	s, c = o_tmp.observe(psun=psun, vsun=vsun, vrot=vrot, com=(com_tmp, vcom_tmp))
+	st, ct = o_tmp.observe(psun=psun, vsun=vsun, vrot=vrot, com=(gpos, gvel))
 	a = Analysis(s, safe=True, auto_centre=False, iter=False, single=False)
 
 	if radmax is None:
@@ -712,13 +714,15 @@ for file in simfiles:
 		#axobs[0,1].axis('equal')
 		#axobs[1,0].axis('equal')
 		#axobs[1,1].axis('equal')
+		xict,etact=radec_to_xieta(ct.mura, ct.mudec, c.mura, c.mudec)
+
 
 		prof_obs_large = Profile(particles=s, xmin=0.01, xmax=10, ngrid=512, kind='lin')
 		prof_obs_small = Profile(particles=s, xmin=0.01, xmax=10, ngrid=50, kind='lin')
 
 	   # ifilter=(np.abs(s.xi/3600.)<3)&(np.abs(s.eta/3600.)<3)
 
-		H, xedges, yedges = np.histogram2d(s.xi[:] / 3600., s.eta[:] / 3600., bins=(30,30),range=((-2,2),(-2,2)))
+		H, xedges, yedges = np.histogram2d(s.xi[:] / 3600., s.eta[:] / 3600., bins=(30,30),range=((-2,2),(-2.,2.)))
 
 		pixel_area=np.abs(xedges[1]-xedges[0])*np.abs(yedges[1]-yedges[0])*60*60
 		H=H/pixel_area
@@ -729,15 +733,20 @@ for file in simfiles:
 		RRR=radmaxobs
 		xxx=RRR*np.cos(theta)
 		yyy=RRR*np.sin(theta)
-		axobs[0,0].plot(xxx,yyy,'--', color='blue',lw=2,zorder=30000,label='$R=1.2^\circ$')
+		axobs[0,0].plot(xxx,yyy,'--', color='blue',lw=2,zorder=30000,label='$R=%.1f^\circ$'%(RRR))
 		axobs[0,0].scatter(s.xi[:] / 3600., s.eta[:] / 3600., s=0.005, c='red')
+		axobs[0,0].scatter(xict/ 3600., etact  / 3600., s=100, c='blue', marker='X', zorder=1000000, label='Sculptor centre')
+		
+		axobs[0,0].quiver(xict / 3600., etact  / 3600., ct.mura, ct.mudec, angles='uv', scale=0.5,zorder=300010, linewidth=2.5,  label='PM Observed',linestyle='dashed',color='blue')
+		axobs[0,0].quiver(0, 0, c.mura, c.mudec, angles='uv', scale=0.5, width=0.01, headwidth=6, headlength=5,zorder=100000,label='PM Simulation')
 		axobs[0,0].scatter(1e6 / 3600.,0, c='red',label='Star particles')
 		axobs[0,0].set_xlabel('$\\xi$  [deg]', fontsize=20)
 		axobs[0,0].set_ylabel('$\\eta$  [deg]', fontsize=20)
-		axobs[0,0].set_xlim(-2., 2.)
-		axobs[0,0].set_ylim(-2.,2.)
+		axobs[0,0].set_xlim(-2.0, 2.0)
+		axobs[0,0].set_ylim(-2.0, 2.0)
 		axobs[0,0].plot([1e6,1e6],[1e6,1e9],color='black',label='Iso-density')
-
+		#axobs[0,0].legend(ncol=2)
+		
 		#Vdisp
 		prof_obs=prof_obs_small
 		arr = prof_obs.vdisp2d(pax='obs')[0]
