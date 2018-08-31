@@ -320,7 +320,7 @@ for file in simfiles:
 		axarr[iplot, 0].set_ylim(150, -150)
 		axarr[iplot, 1].set_xlim(-150, 150)
 		axarr[iplot, 1].set_ylim(-150, 150)
-		axarr[iplot, 2].set_xlim(-150, 150)
+		axarr[iplot, 2].set_xlim(150, -150)
 		axarr[iplot, 2].set_ylim(-150, 150)
 		axarr[iplot, 0].text(-145, 125, '$t$=%.2f Gyr' % time_tmp, fontsize=20)
 		#if i == idx_plot_orbit[0]:
