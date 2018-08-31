@@ -737,8 +737,8 @@ for file in simfiles:
 		axobs[0,0].scatter(s.xi[:] / 3600., s.eta[:] / 3600., s=0.005, c='red')
 		axobs[0,0].scatter(xict/ 3600., etact  / 3600., s=100, c='blue', marker='X', zorder=1000000, label='Sculptor centre')
 		
-		axobs[0,0].quiver(xict / 3600., etact  / 3600., -ct.mura, ct.mudec, angles='uv', scale=0.5,zorder=300010, linewidth=2.0,  label='PM Observed',linestyle='dashed',color='blue')
-		axobs[0,0].quiver(0, 0, -c.mura, c.mudec, angles='uv', scale=0.5, width=0.01, headwidth=6, headlength=5,zorder=100000,label='PM Simulation',linewidth=2.5)
+		axobs[0,0].quiver(xict / 3600., etact  / 3600., -ct.mura, ct.mudec, angles='uv', scale=1,zorder=300010, linewidth=2.0,  label='PM Observed',linestyle='dashed',color='blue')
+		axobs[0,0].quiver(0, 0, -c.mura, c.mudec, angles='uv', scale=1, width=0.01, headwidth=6, headlength=5,zorder=100000,label='PM Simulation',linewidth=2.5)
 		axobs[0,0].scatter(1e6 / 3600.,0, c='red',label='Star particles')
 		axobs[0,0].set_xlabel('$\\xi$  [deg]', fontsize=20)
 		axobs[0,0].set_ylabel('$\\eta$  [deg]', fontsize=20)
