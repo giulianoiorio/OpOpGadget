@@ -737,12 +737,12 @@ for file in simfiles:
 		axobs[0,0].scatter(s.xi[:] / 3600., s.eta[:] / 3600., s=0.005, c='red')
 		axobs[0,0].scatter(xict/ 3600., etact  / 3600., s=100, c='blue', marker='X', zorder=1000000, label='Sculptor centre')
 		
-		axobs[0,0].quiver(xict / 3600., etact  / 3600., ct.mura, ct.mudec, angles='uv', scale=0.5,zorder=300010, linewidth=2.5,  label='PM Observed',linestyle='dashed',color='blue')
-		axobs[0,0].quiver(0, 0, c.mura, c.mudec, angles='uv', scale=0.5, width=0.01, headwidth=6, headlength=5,zorder=100000,label='PM Simulation')
+		axobs[0,0].quiver(xict / 3600., etact  / 3600., -ct.mura, ct.mudec, angles='uv', scale=0.5,zorder=300010, linewidth=2.0,  label='PM Observed',linestyle='dashed',color='blue')
+		axobs[0,0].quiver(0, 0, -c.mura, c.mudec, angles='uv', scale=0.5, width=0.01, headwidth=6, headlength=5,zorder=100000,label='PM Simulation',linewidth=2.5)
 		axobs[0,0].scatter(1e6 / 3600.,0, c='red',label='Star particles')
 		axobs[0,0].set_xlabel('$\\xi$  [deg]', fontsize=20)
 		axobs[0,0].set_ylabel('$\\eta$  [deg]', fontsize=20)
-		axobs[0,0].set_xlim(-2.0, 2.0)
+		axobs[0,0].set_xlim(2.0, -2.0)
 		axobs[0,0].set_ylim(-2.0, 2.0)
 		axobs[0,0].plot([1e6,1e6],[1e6,1e9],color='black',label='Iso-density')
 		#axobs[0,0].legend(ncol=2)
@@ -802,7 +802,7 @@ for file in simfiles:
 		if rh_obs is not None:
 			axobs[0,1].plot([rh_obs, rh_obs], [np.min(d), np.max(d)], '--',  lw=1.5, color='black', label='$R^{obs}_h$  (McConnachie12)')
 		axobs[0,1].set_xlabel('$R$  [kpc]', fontsize=20)
-		axobs[0,1].set_ylabel('$\\Sigma_* \  \mathrm{[M_\\odot \ kpc^{-2}]}$', fontsize=20)
+		axobs[0,1].set_ylabel('$\\Sigma_{*} \  \mathrm{[M_\\odot \ kpc^{-2}]}$', fontsize=20)
 		axobs[0,1].set_xlim(0.01, 2)
 		#axobs[0,1].set_ylim(1e3, 4e7)
 		# axobs[1].set_xlim(0.001,10)
@@ -1089,6 +1089,14 @@ if gpos is not None and gvel is not None:
 	log+='Last Simulation Pos: X=%.2f Y=%.2f Z=%.2f\n'%tuple(com_tmp)
 	log+='Observed Vel: VX=%.2f VY=%.2f VZ=%.2f\n'%gvel
 	log+='Last Simulation Vel: VX=%.2f VY=%.2f VZ=%.2f\n'%tuple(vcom_tmp)
+	
+	log+='Observed centre:\n'
+	log+=ct.__str__()
+	#print(ct)
+	#print(c)
+	#input()
+	log+='\n'
+	
 	log+='%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n'
 
 if mstar is not None and vdisp_obs is not None and vdisp_obs_tot is not None and rh_obs is not None:

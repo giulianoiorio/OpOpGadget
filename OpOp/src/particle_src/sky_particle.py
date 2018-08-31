@@ -174,7 +174,7 @@ class Sky_Particle(Particle):
         st = "Coo system: Galactic"
         line = "Sky".center(50, '*') + '\n' + st.center(50, " ") + '\n' + 'l: ' + str(self.l) + ' b: ' + str(
             self.b) + '\n'
-        line += 'Vlos: %.3f'%(self.Vlos) +  ' mul(Vl): %.5f(%.3f)'%(self.mul,self.Vl) + ' mub(Vb): %.5f(%.3f)'%(self.mub,self.Vb)  + 'mura: %.5f'%(self.mura) +  'mudec: %.5f'%(self.mudec) + '\n'
+        line += 'Vlos: %.3f'%(self.Vlos) +  ' mul(Vl): %.5f(%.3f)'%(self.mul,self.Vl) + ' mub(Vb): %.5f(%.3f)'%(self.mub,self.Vb)  + ' mura: %.5f'%(self.mura) +  ' mudec: %.5f'%(self.mudec) + '\n'
         mess += line
 
 
