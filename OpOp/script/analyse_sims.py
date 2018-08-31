@@ -315,9 +315,9 @@ for file in simfiles:
 			axarr[iplot, 0].scatter(sp[:, 0], sp[:, 1], s=0.00005, c='red', zorder=1000)
 			axarr[iplot, 1].scatter(sp[:, 0], sp[:, 2], s=0.00005, c='red', zorder=1000)
 			axarr[iplot, 2].scatter(sp[:, 1], sp[:, 2], s=0.00005, c='red', zorder=1000)
-			axarr[iplot, 0].set_xlim(-150, 150)
-
-		axarr[iplot, 0].set_ylim(-150, 150)
+			
+		axarr[iplot, 0].set_xlim(-150, 150)
+		axarr[iplot, 0].set_ylim(150, -150)
 		axarr[iplot, 1].set_xlim(-150, 150)
 		axarr[iplot, 1].set_ylim(-150, 150)
 		axarr[iplot, 2].set_xlim(-150, 150)
