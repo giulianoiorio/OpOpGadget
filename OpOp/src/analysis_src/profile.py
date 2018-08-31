@@ -10,7 +10,7 @@ from ..particle_src.particle import  Particles
 from ..particle_src.sky_particle import Sky_Particles
 from ..io_src.LoadSnap import load_snap
 from ..grid_src.grid import grid
-from ..utility_src.utility import nparray_check
+from ..utility_src.utility import nparray_check, cartesian_to_spherical_vector
 #from .analysis import Analysis
 
 
@@ -577,13 +577,14 @@ class Analysis:
 
 class Profile:
 
-    def __init__(self,particles=None, type=None, center=False, mq=98,  ngrid=512, xmin=None, xmax=None, iter=False, safe=False, kind='log',**kwargs):
+    def __init__(self,particles=None, type=None, center=False, mq=98,  ngrid=512, xmin=None, xmax=None, iter=False, safe=False, spherical_cord=False, kind='log',**kwargs):
 
         #Check input
         if 'filename' in kwargs: part=load_snap(kwargs['filename'])
         elif isinstance(particles,Particles): part=particles
         else: raise IOError('Incorrect particles or filename')
         self.issky = False
+        self.spherical_cord_exist=spherical_cord
 
         #center
         if center==True:
@@ -606,6 +607,15 @@ class Profile:
             self.velpro=None#p.Vel[:,ax3]
             self.vel_tot=p.Vel_tot[:]
             self.pmass=p.Mass[:]
+            
+            if isinstance(p,Sky_Particles):
+                self.Vlos=p.Vlos
+                self.Vl=p.Vl
+                self.Vb=p.Vb
+                self.l=p.l
+                self.b=p.b
+                self.distance=p.distance
+                self.issky=True
 
         elif isinstance(type,int):
             if p.header['Nall'][type]!=0: idx_type=p.Type==type
@@ -626,18 +636,26 @@ class Profile:
                 self.l=p.l[idx_type]
                 self.b=p.b[idx_type]
                 self.distance=p.distance[idx_type]
+                self.issky=True
 
         else: raise ValueError('type need to be None or an integer')
+        
 
-
-        if isinstance(p,Sky_Particles):
-            self.Vlos=p.Vlos
-            self.Vl=p.Vl
-            self.Vb=p.Vb
-            self.l=p.l
-            self.b=p.b
-            self.distance=p.distance
-            self.issky=True
+            
+        if self.spherical_cord_exist:
+            self.pos_spherical=np.zeros_like(self.pos)
+            self.vel_spherical=np.zeros_like(self.vel)
+            
+            #Spherical coord r,theta,phi
+            self.pos_spherical[:,0]=self.rad[:] #r
+            self.pos_spherical[:,1]=np.arccos(self.pos[:,2]/self.rad) #theta=arcos(z/r) (zenithal angle)
+            self.pos_spherical[:,2]=np.arctan2(self.pos[:,1],self.pos[:,0]) #phi=atan(y/r) (azimuthal angle)
+            
+            #Vel
+            Vr, Vt, Vp=cartesian_to_spherical_vector(self.vel[:,0], self.vel[:,1], self.vel[:,2], self.pos_spherical[:,1], self.pos_spherical[:,2])
+            self.vel_spherical[:,0]=Vr
+            self.vel_spherical[:,1]=Vt
+            self.vel_spherical[:,2]=Vp
 
 
         #define grid
@@ -835,9 +853,27 @@ class Profile:
 
         if (self.cvdisp3d is None) or (self.paxvdisp3d!=ax):
 
-            if ax=='z': ax3=2
-            elif ax=='y': ax3=1
-            elif ax=='x': ax3=0
+            if ax=='z': 
+                ax3=2
+                vel_vector=self.vel
+            elif ax=='y': 
+                ax3=1
+                vel_vector=self.vel
+            elif ax=='x': 
+                ax3=0
+                vel_vector=self.vel
+            elif (ax=='r' or ax=='theta' or ax=='phi') and self.spherical_cord_exist==False:
+                raise ValueError('ax set to %s, but spherical cord not set (set spherical_cord=True in the Profile object initialisation)'%ax)
+            elif ax=='r' and self.spherical_cord_exist:
+                ax3=0
+                vel_vector=self.vel_spherical
+            elif ax=='theta' and self.spherical_cord_exist:
+                ax3=1
+                vel_vector=self.vel_spherical
+            elif ax=='phi' and self.spherical_cord_exist:
+                ax3=2
+                vel_vector=self.vel_spherical
+
 
             self.paxvdisp3d=ax
 
@@ -845,7 +881,7 @@ class Profile:
             self.cvdisp3d=np.zeros(len(self.grid.gedge)-1)
             for i in range(len(self.grid.gedge)-1):
                 cond=(self.rad>self.grid.gedge[i])&(self.rad<=self.grid.gedge[i+1])
-                self.cvdisp3d[i]=np.std(self.vel[cond,ax3])
+                self.cvdisp3d[i]=np.std(vel_vector[cond,ax3])
 
         if ret==True:
             retarray=np.zeros((len(self.cvdisp3d),2))

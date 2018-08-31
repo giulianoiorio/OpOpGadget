@@ -24,7 +24,18 @@ def radec_to_xieta(ra, dec, ra_c, dec_c):
 
     return xi*3600, eta*3600
     
+def cartesian_to_spherical_vector(Ax, Ay, Az, theta, phi):
+    degree_to_rad=np.pi/180.
+    stheta=np.sin(theta*degree_to_rad)
+    ctheta=np.cos(theta*degree_to_rad)
+    sphi=np.sin(phi*degree_to_rad)
+    cphi=np.cos(phi*degree_to_rad)
     
+    Ar     =  Ax*stheta*cphi + Ay*stheta*sphi + Az*ctheta
+    Atheta =  Ax*ctheta*cphi + Ay*ctheta*sphi - Az*stheta
+    Aphi   = -Ax*sphi        + Ay*cphi
+    
+    return Ar, Atheta, Aphi
 
 def list_check(object_to_be_checked):
     
