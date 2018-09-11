@@ -232,10 +232,10 @@ class Analysis:
 
         #calculate
 
-        rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot=self._vdisp_bins_extractor(radcyl,vel_proj,bins,Nperbin,velocity_err,err_distibution,nboot)
+        rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot, idx_extract=self._vdisp_bins_extractor(radcyl,vel_proj,bins,Nperbin,velocity_err,err_distibution,nboot)
 
 
-        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot
+        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot, idx_extract
 
     def _vdisp_bins_extractor(self,rad,vproj,bins,Nperbin=None, velocity_err = None, err_distibution = 'uniform',nboot=1000):
         """
@@ -257,13 +257,15 @@ class Analysis:
         vdisp_err=np.zeros_like(rad_mean)
         vdisp_tot=[]
 
-
+        id_stars=[]
         for i in range(len(bins)-1):
-
+            
+            
             rmin=bins[i]
             rmax=bins[i+1]
 
             idx=(rad>=rmin)&(rad<=rmax)
+            id_stars_tmp=self.p.Id[idx]
             rad_tmp=rad[idx]
             vproj_tmp=vproj[idx]
 
@@ -275,6 +277,7 @@ class Analysis:
                 idx_extract = np.random.choice(len(rad_tmp), Nthisbin, replace=False)
                 rad_tmp=rad_tmp[idx_extract]
                 vproj_tmp=vproj_tmp[idx_extract]
+                id_stars_tmp=id_stars_tmp[idx_extract]
 
             vproj_tmp_err=np.ones_like(vproj_tmp)
 
@@ -312,9 +315,11 @@ class Analysis:
             vdisp_err[i] =  stderr_tmp
             for val in vproj_tmp:
                 vdisp_tot.append(val)
+            id_stars=id_stars+list(id_stars_tmp)
 
         vdisp_tot=np.std(np.array(vdisp_tot))
-        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot
+        id_stars=np.array(id_stars).flatten()
+        return rad_mean, rad_err, vmean, vmean_err, vdisp, vdisp_err, vdisp_tot, id_stars
 
     def qmass(self,q,safe_mode=True,type=None, rad_max=None):
         """

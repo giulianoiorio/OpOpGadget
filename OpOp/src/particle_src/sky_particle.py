@@ -16,7 +16,7 @@ Ks=4.74047 #from  kpc mas  yr^-1 to km/s
 #TODO Documentation!
 class Sky_Particle(Particle):
 
-    def __init__(self,l=0,b=0,distance=1,mul=0,mub=0,vlos=0,id=0,type=2,mass=0,centre_loc=None):
+    def __init__(self,l=0,b=0,distance=1,mul=0,mub=0,vlos=0,id=0,type=2,mass=0,Pos=None,Vel=None,xi=None,eta=None,centre_loc=None):
         """
 
         :param l:
@@ -52,17 +52,29 @@ class Sky_Particle(Particle):
         #self.vb=self.Vb
 
         #set Pos
-        pos=self._calculate_pos_sky(centre_loc=centre_loc)
-        self.Pos=pos
+        if Pos is None:
+            pos=self._calculate_pos_sky(centre_loc=centre_loc)
+            self.Pos=pos
+        else:
+            self.Pos=Pos
 
         #set Vel
-        vel=self._calculate_vel_sky(centre_loc=centre_loc)
-        self.Vel=vel
+        if Vel is None:
+            vel=self._calculate_vel_sky(centre_loc=centre_loc)
+            self.Vel=vel
+        else:
+            self.Vel=Vel
 
-        super(Sky_Particle,self).__init__(id=id,type=type,pos=pos,vel=vel,mass=mass)
-        self.xi=np.arctan(self.Pos[0]/self.distance)*rad_to_angle*3600 #arcsec
-        self.eta=np.arctan(self.Pos[1]/self.distance)*rad_to_angle*3600 #arcsec
-
+        super(Sky_Particle,self).__init__(id=id,type=type,pos=self.Pos,vel=self.Vel,mass=mass)
+        if xi is not None:
+            self.xi=np.arctan(self.Pos[0]/self.distance)*rad_to_angle*3600 #arcsec
+        else:
+            self.xi=xi
+            
+        if eta is not None:
+            self.eta=np.arctan(self.Pos[1]/self.distance)*rad_to_angle*3600 #arcsec
+        else:
+            self.eta=eta
 
         if centre_loc is None:
             self.Pcord = "Cen. on Sun, X-toward Gal centre, Y-toward Sun motion"
@@ -248,8 +260,8 @@ class Sky_Particles(Particles):
     def _fill_from_particle(self,p):
         for i in range(self.n):
                 #Sky
-                self.xi = p[i].xi
-                self.eta = p[i].eta
+                self.xi[i] = p[i].xi
+                self.eta[i] = p[i].eta
                 self.l[i]=p[i].l
                 self.b[i] = p[i].b
                 self.ra[i] = p[i].ra
@@ -374,7 +386,7 @@ class Sky_Particles(Particles):
 
         for i in range(start, stop, step):
             plist.append(Sky_Particle(l=self.l[i], b=self.b[i], distance=self.distance[i], mul=self.mul[i],
-                                  mub=self.mub[i], vlos=self.Vlos[i], type=self.Type[i], mass=self.Mass[i]))
+                                  mub=self.mub[i], vlos=self.Vlos[i], type=self.Type[i], Pos=self.Pos[i], Vel=self.Vel[i], xi=self.xi[i], eta=self.eta[i], mass=self.Mass[i]))
 
         return np.array(plist)
 
@@ -395,16 +407,20 @@ class Sky_Particles(Particles):
         mass=self.Mass[bollist]
         type=self.Type[bollist]
         id=self.Id[bollist]
+        pos=self.Pos[bollist]
+        vel=self.Vel[bollist]
+        xi=self.xi[bollist]
+        eta=self.eta[bollist]
 
         plist=[]
 
         for i in range(len(id)):
             plist.append(Sky_Particle(l=l[i],b=b[i],distance=distance[i],mul=mul[i],mub=mub
-                                      [i],vlos=vlos[i],id=id[i],type=type[i],mass=mass[i]) )
+                                      [i],vlos=vlos[i],id=id[i],type=type[i],mass=mass[i], Pos=pos[i], Vel=vel[i], xi=xi[i], eta=eta[i]) )
 
         return plist
 
-    def extract_sample(self, Nsample,  rad_max=None, position_err=None, velocity_err=None, err_distibution='uniform', save_txt=None, save_fits=None):
+    def extract_sample(self, Nsample=None,  rad_max=None, position_err=None, velocity_err=None, err_distibution='uniform', rad_deg=False, save_txt=None, save_fits=None):
         """
 
         :param Nsample:
@@ -416,17 +432,27 @@ class Sky_Particles(Particles):
         :param save_fits:
         :return:
         """
+
         Noriginal=len(self.l)
 
-        rad = np.sqrt(self.Pos[:, 0] * self.Pos[:, 0] + self.Pos[:, 1] * self.Pos[:, 1])
-
+        
+        
         if rad_max is None:
             Nrad=Noriginal
             id_rad=self.Id[:]
+            idx_rad=np.arange(0,Nrad)
+            
+        
         else:
             idx_rad=rad<=rad_max
             Nrad=np.sum(idx_rad)
             id_rad=self.Id[idx_rad]
+        
+        if rad_deg:
+            rad = np.sqrt(self.xi[idx_rad]*self.xi[idx_rad]+self.eta[idx_rad]*self.eta[idx_rad])/3600.
+        else:
+            rad = np.sqrt(self.Pos[idx_rad, 0] * self.Pos[idx_rad, 0] + self.Pos[idx_rad, 1] * self.Pos[idx_rad, 1])
+                    
 
         ret_arr=np.zeros(shape=(Nrad,13))
         ret_arr[:,0]=self.l[idx_rad]
@@ -435,16 +461,18 @@ class Sky_Particles(Particles):
         ret_arr[:,3]=self.dec[idx_rad]
         ret_arr[:,4]=self.xi[idx_rad]
         ret_arr[:,5]=self.eta[idx_rad]
-        ret_arr[:,6]=rad[idx_rad]
+        ret_arr[:,6]=rad
         ret_arr[:,7]=self.mul[idx_rad]
         ret_arr[:,8]=self.mub[idx_rad]
         ret_arr[:,9]=self.Vlos[idx_rad]
         ret_arr[:,11]=self.distance[idx_rad]
         ret_arr[:,12]=id_rad
-
-        idx_extract=np.random.choice(Nrad, Nsample, replace=False)
-        Nfinal=len(idx_extract)
-        ret_arr=ret_arr[idx_extract,:]
+        
+        if Nsample is None: 
+            Nsample=Nrad
+            idx_extract=np.random.choice(Nrad, Nsample, replace=False)  
+            Nfinal=len(idx_extract)
+            ret_arr=ret_arr[idx_extract,:]
 
         if velocity_err is None:
             pass

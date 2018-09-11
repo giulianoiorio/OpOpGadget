@@ -16,6 +16,7 @@ import glob
 import os
 import sys
 import importlib
+from OpOp.particle import Sky_Particles
 
 class Param:
 
@@ -754,7 +755,8 @@ for file in simfiles:
 		vd = arr[:, 1]
 		axobs[1,0].plot(r, vd, lw=3, color='red', zorder=2000,label='Simulation')
 		np.savetxt(outdirdata+'/Vdisplos_T%.2f.txt'%time_tmp,arr,fmt='%.3e %.3f')        
-
+		
+		sId_ind=dict( (k,i) for i,k in enumerate(s.Id))
 		if file_vdisp is not None:
 			try:
 				data = np.loadtxt(file_vdisp)
@@ -769,10 +771,13 @@ for file in simfiles:
 				obins = dist * np.tan(obins * np.pi / 180.)
 
 				color_disp = ('blue', 'orange', 'magenta')
-
+				idx_extract_list=[]
+                
 				for j in range(3):
 					b = a.binned_dispersion(bins=obins, pax='obs', Nperbin=Nperbin, bins_kind='lin', velocity_err=None,
 											err_distibution='uniform', nboot=10000)
+					idx_extract=b[-1].flatten()
+					idx_extract_list.append(idx_extract)
 
 					axobs[1,0].errorbar(b[0], b[4], b[5], b[1], fmt='o', c=color_disp[j], mfc='white',label='Realisation %i'%j)
 					outbinrel=np.zeros((len(b[0]),4))
@@ -780,7 +785,14 @@ for file in simfiles:
 					outbinrel[:,1]=b[1]
 					outbinrel[:,2]=b[4]
 					outbinrel[:,3]=b[5]
-					np.savetxt(outdirdata+'/vdisprel_%i.txt'%j,outbinrel,fmt='%.3e %.3e %.3f %.3f',header='0-R 1-eR 2-V 3-eV Vdisp_tot=%.3f'%b[-1])
+					np.savetxt(outdirdata+'/vdisprel_%i.txt'%j,outbinrel,fmt='%.3e %.3e %.3f %.3f',header='0-R 1-eR 2-V 3-eV Vdisp_tot=%.3f'%b[-2])
+					idx_item=np.array( [sId_ind[x] for x in  idx_extract] )
+					ss_tmp=Sky_Particles(p=s[idx_item])
+					ss_tmp.extract_sample(Nsample=None,  rad_max=None, position_err=None, velocity_err=None, err_distibution='uniform', save_txt='realisation_%i.txt'%j, save_fits='realisation_%i.fits'%j, rad_deg=True)
+					
+				idx_extract_list=np.array(idx_extract_list)
+                
+                
 			except FileNotFoundError:
 				print('File %s not found.. skipping' % file_vdisp)
 
@@ -852,6 +864,10 @@ for file in simfiles:
 		axobs[1,1].legend(loc='best',fontsize=14)
 		#figobs.set_size_inches(15, 5, forward=True)
 		figobs.savefig(outdir + '/Obs_analysis.png')
+		
+		#Extract
+		s.extract_sample(len(s.Id),  rad_max=None, position_err=None, velocity_err=None, err_distibution='uniform', save_txt='test.txt', save_fits='test.fits')
+		
 	# a_tmp=Analysis(p_tmp,safe=True, auto_centre=True, iter=True, single=False)
 	# o_tmp=Observe(particles=p_tmp, type=2)
 	# s_tmp,c_tmp=o_tmp.observe(psun=psun, vsun=vsun, vrot=vrot, mq=50)
