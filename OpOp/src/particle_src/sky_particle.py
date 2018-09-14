@@ -494,8 +494,9 @@ class Sky_Particles(Particles):
             raise NotImplementedError('Vel error needs to be None, a float a int, a tule ora a list')
 
         if save_txt is not None:
-
-            np.savetxt(save_txt,ret_arr, fmt='%.4f',header='0-l[deg], 1-b[deg], 2-ra[deg], 3-dec[deg], 4-xi[asec], 5-eta[asec], 6-rc[kpc], 7-mul[mas/yr] 8-mub[mas/yr] 9-Vlos[km/s] 10-eVlos[km/s] 11-dist[kpc] 12-id')
+            if rad_deg: rc_unit='deg'
+            else: rc_unit='kpc'
+            np.savetxt(save_txt,ret_arr, fmt='%.4f',header='0-l[deg], 1-b[deg], 2-ra[deg], 3-dec[deg], 4-xi[asec], 5-eta[asec], 6-rc[%s], 7-mul[mas/yr] 8-mub[mas/yr] 9-Vlos[km/s] 10-eVlos[km/s] 11-dist[kpc] 12-id'%rc_unit)
 
         if save_fits is not None:
 
