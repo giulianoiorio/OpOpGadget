@@ -715,7 +715,7 @@ for file in simfiles:
 		#axobs[0,1].axis('equal')
 		#axobs[1,0].axis('equal')
 		#axobs[1,1].axis('equal')
-		xict,etact=radec_to_xieta(ct.mura, ct.mudec, c.mura, c.mudec)
+		xict,etact=radec_to_xieta(ct.ra, ct.dec, c.ra, c.dec)
 
 
 		prof_obs_large = Profile(particles=s, xmin=0.01, xmax=10, ngrid=512, kind='lin')
