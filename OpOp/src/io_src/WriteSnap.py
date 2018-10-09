@@ -352,10 +352,10 @@ def write_snap_fvfps(particles, filename, **kwargs):
 
     #particle array
     posa=np.empty_like(pos,order='C', dtype=np.dtype(end + 'f'))
-    if 'poscm' in kwargs:  pos[:,:]=pos[:,:]+np.array(pcom)
+    if 'poscm' in kwargs:  pos[:,:]=pos[:,:]+np.array(kwargs['poscm'])
     posa[:,:]=pos[:,:]/lscale
     vela=np.empty_like(vel,order='C', dtype=np.dtype(end + 'f'))
-    if 'velcm' in kwargs:  vel[:,:]=vel[:,:]+np.array(vcom)
+    if 'velcm' in kwargs:  vel[:,:]=vel[:,:]+np.array(kwargs['velcm'])
     vela[:,:]=vel[:,:]/vscale
     massa=np.empty_like(mass,order='C', dtype=np.dtype(end + 'f'))
     massa[:]=mass[:]/mscale
