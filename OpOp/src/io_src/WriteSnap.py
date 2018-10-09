@@ -295,7 +295,7 @@ def write_snap_gadget(particles,filename,end='<',enable_mass=False,safe_write=Tr
 
     return cbyte
 
-def write_snap_fvfps(particles, filename,**kwargs):
+def write_snap_fvfps(particles, filename, **kwargs):
 
     #tdyn in Gy, if not in kwargs tdyn=1 Myr
 
@@ -352,8 +352,10 @@ def write_snap_fvfps(particles, filename,**kwargs):
 
     #particle array
     posa=np.empty_like(pos,order='C', dtype=np.dtype(end + 'f'))
+    if 'pcom' in kwargs:  pos[:,:]=pos[:,:]+np.array(pcom)
     posa[:,:]=pos[:,:]/lscale
     vela=np.empty_like(vel,order='C', dtype=np.dtype(end + 'f'))
+    if 'vcom' in kwargs:  vel[:,:]=vel[:,:]+np.array(vcom)
     vela[:,:]=vel[:,:]/vscale
     massa=np.empty_like(mass,order='C', dtype=np.dtype(end + 'f'))
     massa[:]=mass[:]/mscale
