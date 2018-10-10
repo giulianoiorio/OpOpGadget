@@ -795,7 +795,7 @@ class Profile:
 
         if ret==True:
             retarray=np.zeros((len(self.masscum),2))
-            retarray[:,0]=self.grid.gx
+            retarray[:,0]=self.grid.gedge[1:]
             retarray[:,1]=self.masscum
             if func==True:
                 rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
