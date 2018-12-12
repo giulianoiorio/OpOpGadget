@@ -3,14 +3,15 @@ from __future__ import  division, print_function
 from ..model_src import GeneralModel
 import numpy as np
 from astropy.constants import G as conG
-
+from colossus.cosmology import cosmology as cosmology_model
+from colossus.halo import concentration
 
 
 
 class NFWc(GeneralModel.GeneralModel):
 
-    def __init__(self, Mc, rcore, mode='h', c=None, rt=None, rtnorm=False, c_par=200, z=0, h=0.67, R=None, rini=3e-5,
-                 rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False,
+    def __init__(self, Mc, rcore, mode='h', c='diemer18', rt=None, rtnorm=False, c_par=200, z=0, h=0.67, R=None, rini=3e-5,
+                 rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False, cosmology='planck15',
                  **kwargs):
         """
         NFW density models with an inner core
@@ -28,7 +29,7 @@ class NFWc(GeneralModel.GeneralModel):
 
         :param Mc: Mass at the radius where the  density reach c_par times the critical density of the Univese.
         :param rcore: inner core radius in physical unit
-        :param c: Concentration, if None it is calculated with the c-Mvir relation in Munos-Cuartas+10
+        :param c: Concentration, if number use this value otherwise use the c-Mvir relation from Colossus using the module written in c.
         :param rt: Truncation radius (in physical unit o in unit of rcpar if rtnorm is True), if None it is equal to 2*rmax(no truncation).
                     if rtnorm is True it is
         :param rtnorm: if true the truncation radius is in unit of rcpar
@@ -54,6 +55,10 @@ class NFWc(GeneralModel.GeneralModel):
         :param use_c: To calculate pot and mass with a C-cyle, WARNING it creates more noisy results
         :param kwargs:
         """
+        if cosmology is not None:
+            self.cosmology=cosmology_model.setCosmology(cosmology)
+        else:
+            self.cosmology=None
 
         self.Mc = Mc
         self.rcore = rcore
@@ -62,18 +67,25 @@ class NFWc(GeneralModel.GeneralModel):
 
         # cosmo. par:
         self.z = z  # redshift
-        self.h = h  # hubble constant a z0
+
+        if cosmology is None:
+            self.h = h  # hubble constant a z0
+        else:
+            self.h=self.cosmology.h            
         self.c_par = c_par  # concentration parameter
 
-        if c is None:
+        if isinstance(c,float)==False and isinstance(c,int)==False:
             # If c is None, use the c-Mvir, cosmological relation in Munos-Cuartas+10,
             # but in this cas the concentration parameter is fixed to 200.
+            if cosmology is None:
+                raise ValueError('c set to None but invalid cosmology')
             if c_par != 200:
                 print(
-                    'Warning, you are using a cvir-M200 relation, but your conc. parameter is %.3f, the new conc is fixed to 200' % c_par)
+                    'Warning, you are using a c200-M200 relation, but your conc. parameter is %.3f, the new conc is fixed to 200' % c_par)
                 self.c_par = 200
-
+            self.cmodel=c
             self.c = self.cvir()
+
 
         else:
             self.c = c
@@ -252,7 +264,7 @@ class NFWc(GeneralModel.GeneralModel):
 
         return (cost * self.Mc / a) ** (1. / 3.)
 
-    def cvir(self):
+    def cvir_old(self):
         """
         From Munos-Cuartas+10
         :return:
@@ -276,6 +288,16 @@ class NFWc(GeneralModel.GeneralModel):
         log10c = a * x + b
 
         return 10 ** log10c
+
+    def cvir(self):
+        """
+        From Diemer-Colossus https://bdiemer.bitbucket.io/colossus/halo_concentration.html#concentration-models
+        :return:
+        """
+        mvir = self.Mc
+        cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
+
+        return cvir
 
     def rho_critic(self):
         """
