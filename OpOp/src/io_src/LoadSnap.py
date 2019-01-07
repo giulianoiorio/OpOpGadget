@@ -612,13 +612,15 @@ def _load_header_fvfps(dic,**kwargs):
     return h
 
 
-def load_snap_fvfps(filename,order_key='Id',**kwargs):
+def load_snap_fvfps(filename,order_key='Id',verbose=True,**kwargs):
 
-    print ("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    print ("Reading particle data from %s......" % (filename))
+    if verbose:
+        print ("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+        print ("Reading particle data from %s......" % (filename))
     dic, id, pos, vel, mass=cr.read_file_c(filename)
-    print("Done")
-    print ("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    if verbose:
+        print("Done")
+        print ("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
     #Standard length scale in fvfps is kpc as the one of OpOp, so by default lscale=1
     if 'lscale' in kwargs: lscale=kwargs['lscale']
@@ -652,18 +654,18 @@ def load_snap_fvfps(filename,order_key='Id',**kwargs):
     p.Id = np.array(id, dtype=int)
     p.Mass = np.array(mass)*mscale
 
-    print('Sorting by Id')
+    if verbose: print('Sorting by Id')
     p.order(key='Id')
-    print('Sorted')
+    if verbose: print('Sorted')
     p._maketype()
     p.setrad()
     p.setvelt()
     p.set_pardic()
 
     if (order_key is not None) and (order_key!='Id'):
-        print('Sorting by %s'% order_key)
+        if verbose: print('Sorting by %s'% order_key)
         p.order(key=order_key)
-        print('Sorted')
+        if verbose: print('Sorted')
 
 
 
@@ -671,7 +673,7 @@ def load_snap_fvfps(filename,order_key='Id',**kwargs):
     return p
 
 #ok funge
-def load_snap(filename,end='<',order_key='Id',extra_block=(),kind='fvfps',**kwargs):
+def load_snap(filename,end='<',order_key='Id',extra_block=(),kind='fvfps',verbose=True,**kwargs):
     """
     Load data from snapshot written following the Gadget 1-type binary convention
     :param filename: Filename to read the data. If reading multiple file, write only
@@ -687,7 +689,7 @@ def load_snap(filename,end='<',order_key='Id',extra_block=(),kind='fvfps',**kwar
         elif (os.path.isfile(filename+'.0')): particles=_load_multi(filename,end=end,order_key=order_key,extra_block=extra_block,**kwargs)
         else: raise IOError('File %s not found'%filename)
     elif kind.lower()=='fvfps':
-        particles=load_snap_fvfps(filename,order_key=order_key,**kwargs)
+        particles=load_snap_fvfps(filename,order_key=order_key,verbose=verbose,**kwargs)
     else:
         raise NotImplementedError('load file from %s not implemented' % kind)
 
