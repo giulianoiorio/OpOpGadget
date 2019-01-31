@@ -89,6 +89,8 @@ class King(GeneralModel.GeneralModel):
         
         super(King, self).__init__(R=R, dens=self._adens, rc=self.rc, Ms=Mmax, rs=None, G=G, use_c=use_c, denorm=denorm)
 
+        self._sdc_local=self.Mmax/(self._mass_from_sdens(self.rt)-self._mass_from_sdens(0))
+
 
     def _adens(self,x):
         """
@@ -119,7 +121,7 @@ class King(GeneralModel.GeneralModel):
         ret=np.where(z<1,((1/z-1)**2),0)
 
 
-        return self.sdc*ret
+        return self._sdc_local*ret
 
     def _king_z(self,x):
 
@@ -134,5 +136,17 @@ class King(GeneralModel.GeneralModel):
         num=(1/z)*np.arccos(z) - np.sqrt((1-z*z))
 
         return num/den
+
+    def _mass_from_sdens(self,R):
+        rc=self.rc
+        rt=self.rt
+        ct=rc*rc+rt*rt
+        cR=rc*rc+R*R
+        A=R*R
+        B=4*np.sqrt(cR/ct)*ct
+        C=ct*np.log(cR)
+
+        return 0.5*(A-B+C)
+
 
 
