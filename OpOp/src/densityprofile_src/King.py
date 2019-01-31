@@ -38,13 +38,11 @@ class King(Density.Density):
         :param x:
         :return:
         """
-
+        z=self._king_z(x)
         c=self.c
+        amp=1/(1+c*c)
 
-        b=1/np.sqrt((1+c*c))
-        a=1/np.sqrt((1+x*x))
-
-        ret=np.where(x<c,(a/b-1)**2,0.)
+        ret=amp*(1/z-1)**2
 
         return ret
 

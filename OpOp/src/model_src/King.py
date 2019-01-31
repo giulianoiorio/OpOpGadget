@@ -69,12 +69,12 @@ class King(Model.Model):
         if c is not None: self.c=c
         elif rt is not None: self.c=rt/rc
         else: raise ValueError('Neither c nor rt defined')
-
         if denorm==True: self._set_denorm(self.Mmax)
         else:
             self.Mc=1
             self.dc=1
             self.pc=1
+
 
     def _evaluatedens(self,R):
         """
@@ -83,7 +83,7 @@ class King(Model.Model):
         :return:
         """
 
-        x=self.R
+        x=R
         z=self._king_z(x)
         z0=self._king_z(0.)
         #d=self._king_functional(z)
