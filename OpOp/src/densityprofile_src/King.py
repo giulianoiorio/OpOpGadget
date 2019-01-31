@@ -18,7 +18,7 @@ class King(Density.Density):
 
     def _evaluatedens(self,x):
         """
-        Formula 29 in King,92
+        Formula 27 in King,92
         :param x:
         :return:
         """
@@ -28,7 +28,7 @@ class King(Density.Density):
         #d=self._king_functional(z)
         d0=self._king_functional(z0)
 
-        d=np.where(z<=1,self._king_functional(z),0.)
+        d=self._king_functional(z)
 
         return d/d0
 
@@ -45,8 +45,6 @@ class King(Density.Density):
         ret=amp*(1/z-1)**2
 
         return ret
-
-
 
 
     def _king_z(self,x):
