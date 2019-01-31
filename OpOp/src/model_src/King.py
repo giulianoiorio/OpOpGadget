@@ -89,7 +89,7 @@ class King(GeneralModel.GeneralModel):
         
         super(King, self).__init__(R=R, dens=self._adens, rc=self.rc, Ms=Mmax, rs=None, G=G, use_c=use_c, denorm=denorm)
 
-        self._sdc_local=self.Mmax/(self._mass_from_sdens(self.rt)-self._mass_from_sdens(0))
+        self._sdc_local=self.Mmax/(2*np.pi*(self._mass_from_sdens(self.rt)-self._mass_from_sdens(0)))
 
 
     def _adens(self,x):
