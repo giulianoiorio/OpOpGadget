@@ -2,7 +2,7 @@ from __future__ import  division, print_function
 
 import numpy as np
 from scipy.interpolate import UnivariateSpline
-from ..model_src import Model
+from ..model_src import GeneralModel
 from ..densityprofile_src import Density
 from numpy.ctypeslib import ndpointer
 import ctypes as ct
@@ -15,7 +15,7 @@ from astropy.constants import G as conG
 
 class King(GeneralModel.GeneralModel):
 
-    def __init__(self, rc, Ms, c=None,rt=None, rtnorm=False, R=None, rini=3e-5,
+    def __init__(self, rc, Mmax, c=None,rt=None, rtnorm=False, R=None, rini=3e-5,
                  rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False,
                  **kwargs):
         """
@@ -56,17 +56,15 @@ class King(GeneralModel.GeneralModel):
         """
 
 
-    def __self__(self,rc,Mmax,c=None,rt=None,G='kpc km2 / (M_sun s2)', denorm=True,**kwargs):
-
-
-        if c is not None: self.c=c
-        elif rt is not None: self.c=rt/rc
+        self.Mmax=Mmax
+        self.rc=rc
+        if c is not None: 
+            self.c=c
+            self.rt=self.rc*self.c
+        elif rt is not None: 
+            self.c=rt/rc
+            self.rt=rt
         else: raise ValueError('Neither c nor rt defined')
-        if denorm==True: self._set_denorm(self.Mmax)
-        else:
-            self.Mc=1
-            self.dc=1
-            self.pc=1
 
 
         if R is None:
@@ -104,23 +102,24 @@ class King(GeneralModel.GeneralModel):
         #d=self._king_functional(z)
         d0=self._king_functional(z0)
 
-        d=self._king_functional(z)
+        d=np.where(z<1,self._king_functional(z),0)
 
-        return self.dc*d/d0
+        return d/d0
 
-    def _evaluatesdens(self,x):
+    def _evaluatesdens(self,R):
         """
         Formula 14 in Kint,92
         :param x:
         :return:
         """
+        x=R/self.rc
         z=self._king_z(x)
         c=self.c
-        amp=1/(1+c*c)
 
-        ret=amp*(1/z-1)**2
+        ret=np.where(z<1,((1/z-1)**2),0)
 
-        return ret
+
+        return self.sdc*ret
 
     def _king_z(self,x):
 
@@ -135,10 +134,5 @@ class King(GeneralModel.GeneralModel):
         num=(1/z)*np.arccos(z) - np.sqrt((1-z*z))
 
         return num/den
-
-    def _set_denorm(self,Mmax):
-        self.Mc=Mmax/self.mass_arr[-1]
-        self.dc=self.Mc/(4*np.pi)
-        self.pc=self.G*self.Mc
 
 
