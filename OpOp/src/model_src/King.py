@@ -13,22 +13,15 @@ from astropy.constants import G as conG
 
 #Bisogna mettere integrazione
 
-class King(Model.Model):
+class King(GeneralModel.GeneralModel):
 
-    def __init__(self, rc, Mmax, c=None,rt=None, rtnorm=False, R=None, rini=3e-5,
+    def __init__(self, rc, Ms, c=None,rt=None, rtnorm=False, R=None, rini=3e-5,
                  rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False,
                  **kwargs):
         """
         King density model (King, 1962)
 
-        mode=s:
-            d=dc/( (rcore/rc + r/rs)*(1+r/rs)^2 )*np.exp(-r*r/rt*rt)
-        mode=h:
-            d=dc/( ((rcore^2/rc^2 + r^2/rs^2)*0.5)*(1+r/rs)^2 )*np.exp(-r*r/rt*rt)
-        mode=e:
-            d=dc/( rcore/rs*exp(-r/rcore) + (r/rs)*(1+r/rs)^2  )*np.exp(-r*r/rt*rt)
-        mode=a:
-            d=dc/( ((rcore^2/rc^2 + r^2/rs^2)*0.5)*(1+r^2/rs^2)  )*np.exp(-r*r/rt*rt)
+
 
         with rs=rcpar/c
         and dc depends on c and rho_crit
@@ -76,36 +69,56 @@ class King(Model.Model):
             self.pc=1
 
 
-    def _evaluatedens(self,R):
+        if R is None:
+            if r_physic:  # rescale to normalised radius
+                rini = rini / self.rc
+                rfin = rfin / self.rc
+            if kind == 'log':
+                R = np.logspace(np.log10(rini + 0.01), np.log10(rfin + 0.01), n) - 0.01  # To avoid log(0)
+            elif kind == 'lin':
+                R = np.linspace(rini, rfin, n)
+            self.rini = rini
+            self.rfin = rfin
+        else:
+            if r_physic:
+                R = np.asarray(R) / self.rc  # rescale
+            else:
+                R = np.asarray(R)
+            self.rini=R[0]
+            self.rfin=R[-1]
+
+	
+        
+        super(King, self).__init__(R=R, dens=self._adens, rc=self.rc, Ms=Mmax, rs=None, G=G, use_c=use_c, denorm=denorm)
+
+
+    def _adens(self,x):
         """
-        Formula 30 in King,62
+        Formula 27 in King,92
         :param x:
         :return:
         """
 
-        x=R
         z=self._king_z(x)
         z0=self._king_z(0.)
         #d=self._king_functional(z)
         d0=self._king_functional(z0)
 
-        d=np.where(z<=1,self._king_functional(z),0.)
+        d=self._king_functional(z)
 
         return self.dc*d/d0
 
     def _evaluatesdens(self,x):
         """
-        Formula 14 in King,62
+        Formula 14 in Kint,92
         :param x:
         :return:
         """
-
+        z=self._king_z(x)
         c=self.c
+        amp=1/(1+c*c)
 
-        b=1/np.sqrt((1+c*c))
-        a=1/np.sqrt((1+x*x))
-
-        ret=np.where(x<c,(a/b-1)**2,0.)
+        ret=amp*(1/z-1)**2
 
         return ret
 
