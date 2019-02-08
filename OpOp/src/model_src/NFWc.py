@@ -10,7 +10,7 @@ from colossus.halo import concentration
 
 class NFWc(GeneralModel.GeneralModel):
 
-    def __init__(self, Mc, rcore, mode='h', c='diemer18', rt=None, rtnorm=False, c_par=200, z=0, h=0.67, R=None, rini=3e-5,
+    def __init__(self, Mc, rcore, mode='h', c='diemer19', rt=None, rtnorm=False, c_par=200, z=0, h=0.67, R=None, rini=3e-5,
                  rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False, cosmology='planck15',
                  **kwargs):
         """
@@ -295,7 +295,15 @@ class NFWc(GeneralModel.GeneralModel):
         :return:
         """
         mvir = self.Mc
-        cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
+
+        if self.cmodel=='diemer19':
+            try:
+                cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
+            except:
+                self.cmodel='diemer18'
+                cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
+        else:
+            cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
 
         return cvir
 
