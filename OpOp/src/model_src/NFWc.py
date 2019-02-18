@@ -248,7 +248,7 @@ class NFWc(GeneralModel.GeneralModel):
         a = np.log(1 + c)
         b = c / (1 + c)
 
-        return 1 / (a + b)
+        return 1 / (a - b)
 
     def rho0(self):
 
@@ -298,12 +298,12 @@ class NFWc(GeneralModel.GeneralModel):
 
         if self.cmodel=='diemer19':
             try:
-                cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
+                cvir = concentration.concentration(mvir*self.h, '200c', self.z, model =self.cmodel)
             except:
                 self.cmodel='diemer18'
-                cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
+                cvir = concentration.concentration(mvir*self.h, '200c', self.z, model =self.cmodel)
         else:
-            cvir = concentration.concentration(mvir/self.h, '200c', self.z, model =self.cmodel)
+            cvir = concentration.concentration(mvir*self.h, '200c', self.z, model =self.cmodel)
 
         return cvir
 
@@ -314,7 +314,7 @@ class NFWc(GeneralModel.GeneralModel):
         """
         cost = (3 / (8 * np.pi))
         G = conG.to('kpc km2 / (M_sun s2)')
-        H = self.h * 100 * 1e-3  # in km/s Mpc
+        H = self.h * 100 * 1e-3  # in km/s kpc
 
         num = cost * H * H
 
