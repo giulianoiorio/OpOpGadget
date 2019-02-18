@@ -4,13 +4,14 @@ from ..model_src import GeneralModel
 import numpy as np
 from astropy.constants import G as conG
 from colossus.cosmology import cosmology as cosmology_model
+from colossus.halo import mass_defs
 from colossus.halo import concentration
 
 
 
 class NFWc(GeneralModel.GeneralModel):
 
-    def __init__(self, Mc, rcore, mode='h', c='diemer19', rt=None, rtnorm=False, c_par=200, z=0, h=0.67, R=None, rini=3e-5,
+    def __init__(self, Mc, rcore, mode='h', c='diemer19', rt=None, rtnorm=False, z=0, c_par=200, h=0.67, R=None, rini=3e-5,
                  rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)', denorm=True, r_physic=False, normalise_tmodel=True, use_c=False, cosmology='planck15',
                  **kwargs):
         """
@@ -156,6 +157,7 @@ class NFWc(GeneralModel.GeneralModel):
                                        denorm=denorm)
 
             #print('Mass NFWc_trunc', self.mass(0.1 * self.rt))
+
 
     def _adens(self,x):
 
@@ -307,7 +309,7 @@ class NFWc(GeneralModel.GeneralModel):
 
         return cvir
 
-    def rho_critic(self):
+    def rho_critic_old(self):
         """
         Critic density of the Universe given h=H/100
         :return:
@@ -319,6 +321,17 @@ class NFWc(GeneralModel.GeneralModel):
         num = cost * H * H
 
         return num / G.value
+
+    def rho_critic(self):
+        """
+        Critic density of the Universe given h=H/100
+        :return:
+        """
+        z = self.z
+        h = self.h
+
+
+        return self.cosmology.rho_c(z)*h*h
 
     def __str__(self):
 
