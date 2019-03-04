@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpOp/src/io_src/io_c_ext/cread_fvfps.c" beforeDir="false" afterPath="$PROJECT_DIR$/OpOp/src/io_src/io_c_ext/cread_fvfps.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OpOp/src/utility_src/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpOp/src/utility_src/utility.py" afterDir="false" />
-    </list>
+    <list default="true" id="2ea774a1-9024-4320-8e0b-64a8734cfb40" name="Default" comment="" />
     <ignored path="OpOpGadget.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -94,7 +89,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profile.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OpOp/src/analysis_src/profile.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
@@ -102,6 +97,15 @@
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/setup.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -135,18 +139,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="684">
               <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tbetamodel.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4734">
-              <caret line="267" column="44" selection-start-line="267" selection-start-column="43" selection-end-line="267" selection-end-column="44" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -248,13 +240,13 @@
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/analysis.py" />
         <option value="$PROJECT_DIR$/OpOp/script/analyse_sims.py" />
         <option value="$PROJECT_DIR$/OpOp/Model.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/tutorial/two_comps.ipynb" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/Tbetamodel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/King.py" />
         <option value="$PROJECT_DIR$/OpOp/src/model_src/NbodyModel.py" />
         <option value="$PROJECT_DIR$/OpOp/src/utility_src/utility.py" />
         <option value="$PROJECT_DIR$/OpOp/src/analysis_src/profile.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
       </list>
     </option>
   </component>
@@ -1110,13 +1102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1872">
-          <caret line="175" column="17" selection-start-line="175" selection-start-column="17" selection-end-line="175" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/two_comps.ipynb" />
     <entry file="file://$PROJECT_DIR$/tutorial/two_components/two_comps.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1224,6 +1209,13 @@
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
         </state>
       </provider>
     </entry>
