@@ -1,5 +1,5 @@
 # OpOpGadget
-The aim of this module is to provide a number of tools  for the generation of initial conditions and analysis of $N$-body simulations. It can manage files in the format used by the N-body simulations for the codes \textsc{FVFPS}  and \textsc{Gadget-2}. 
+The aim of this module is to provide a number of tools  for the generation of initial conditions and analysis of $N$-body simulations. It can manage files in the format used by the N-body simulations for the codes FVFPS  and Gadget-2. 
 
 
 **WARNING:**  OpOpGadget and its documentation are still under development. Some examples can be found in the folder 'tutorials'.
