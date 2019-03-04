@@ -24,8 +24,20 @@ def radec_to_xieta(ra, dec, ra_c, dec_c):
 
     return xi*3600, eta*3600
     
-def cartesian_to_spherical_vector(Ax, Ay, Az, theta, phi):
-    degree_to_rad=np.pi/180.
+def cartesian_to_spherical_vector(Ax, Ay, Az, theta, phi, degree=True):
+    """
+    Convert the component of a vector from cartesian to spherical coordinates
+    :param Ax: x component of the vector
+    :param Ay: y component of the vector
+    :param Az: z component of the vector
+    :param theta: zenithal  angle (Arccos(z/r)) of the point
+    :param phi:  azimuthal angle (Arctan2(y/x))  of the point
+    :param degree:  If True, theta and phi are in degrees, if False in radians.
+    :return:
+    """
+    if degree: degree_to_rad=np.pi/180.
+    else: degree_to_rad=1
+
     stheta=np.sin(theta*degree_to_rad)
     ctheta=np.cos(theta*degree_to_rad)
     sphi=np.sin(phi*degree_to_rad)
@@ -36,6 +48,8 @@ def cartesian_to_spherical_vector(Ax, Ay, Az, theta, phi):
     Aphi   = -Ax*sphi        + Ay*cphi
     
     return Ar, Atheta, Aphi
+
+
 
 def list_check(object_to_be_checked):
     

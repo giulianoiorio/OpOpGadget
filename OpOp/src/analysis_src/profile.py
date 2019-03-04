@@ -652,7 +652,7 @@ class Profile:
             self.pos_spherical[:,2]=np.arctan2(self.pos[:,1],self.pos[:,0]) #phi=atan(y/r) (azimuthal angle)
             
             #Vel
-            Vr, Vt, Vp=cartesian_to_spherical_vector(self.vel[:,0], self.vel[:,1], self.vel[:,2], self.pos_spherical[:,1], self.pos_spherical[:,2])
+            Vr, Vt, Vp=cartesian_to_spherical_vector(self.vel[:,0], self.vel[:,1], self.vel[:,2], self.pos_spherical[:,1], self.pos_spherical[:,2], degree=False)
             self.vel_spherical[:,0]=Vr
             self.vel_spherical[:,1]=Vt
             self.vel_spherical[:,2]=Vp
