@@ -587,7 +587,6 @@ def _load_header_fvfps(dic,**kwargs):
     if dic['ns']==0: massstar=0
     else: massstar= ( dic['ms']/dic['ns'] ) *mscale
 
-    #print('ns', dic['ns'], 'masstot', dic['ms'], 'mpart', massstar)
 
     h = Header()
     h.header['Npart'][0] = [dic['ng'],dic['nh'],dic['ns'],0,0,0]
@@ -667,8 +666,81 @@ def load_snap_fvfps(filename,order_key='Id',verbose=True,**kwargs):
         p.order(key=order_key)
         if verbose: print('Sorted')
 
+    return p
+
+def _load_header_ascii(type, mass, time=0, tdyn=0, **kwargs):
 
 
+
+    h = Header()
+    N_part_arr = [np.sum(type==i) for i in range(6)]
+    h.header['Npart'][0] = N_part_arr
+    h.header['Massarr'][0] = [np.sum(mass[type==i]) for i in range(6)]
+    h.header['Time'] = time
+    h.header['Tdyn'] = tdyn
+    h.header['Redshift'] = 0
+    h.header['FlagSfr'] = 0
+    h.header['FlagFeedback'] = 0
+    h.header['Nall'] = N_part_arr
+    h.header['FlagCooling'] = 0
+    h.header['NumFiles'] = 1
+    h.header['BoxSize'] = 0.
+    h.header['Omega0'] = 0.
+    h.header['OmegaLambda'] = 0.
+    h.header['HubbleParam'] = 0.
+    h.header['FlagAge'] = 0
+    h.header['FlagMetals'] = 0
+    h.header['NallHW'] = [0, 0, 0, 0, 0, 0]
+    h.header['flag_entr_ics'] = 0
+
+    return h
+
+
+def load_snap_ascii(filename, order_key='Id' ,verbose=True, cols={'x':0,'y':1,'z':2, 'vx':3,'vy':4, 'vz':5, 'type':6}, type=2, mass=1, time=0, **kwargs):
+
+
+    if verbose:
+        print("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+        print("Reading particle data from %s......" % (filename))
+
+        val_dic={}
+        tab=np.loadtxt(filename)
+        Nparticles=len(tab)
+        for item in cols:
+            val_dic[item]=tab[:,cols[item]]
+
+        if ('type'  in cols)==False: val_dic['type']=np.ones(Nparticles, dtype=int)*int(type)
+        if ('mass' in cols)==False:  val_dic['mass']=np.ones(Nparticles)*mass
+        if ('id' in cols)==False: val_dic['id']= np.arange(len(tab), dtype=int)
+        print(val_dic)
+
+    if verbose:
+        print("Done")
+        print("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+
+    #Make header
+    h=_load_header_ascii(type=val_dic['type'], mass=val_dic['mass'], time=time, tdyn=0, **kwargs)
+    h.header['filename'] = filename
+    #Create the particle object
+    p=Particles(h=h)
+    #Particle
+    p.Pos[:,0], p.Pos[:,1], p.Pos[:,2] = val_dic['x'], val_dic['y'], val_dic['z']
+    p.Vel[:,0], p.Vel[:,1], p.Vel[:,2] = val_dic['vx'], val_dic['vy'], val_dic['vz']
+    p.Id = val_dic['id']
+    p.Mass = val_dic['mass']
+
+    if verbose: print('Sorting by Id')
+    p.order(key='Id')
+    if verbose: print('Sorted')
+    p._maketype()
+    p.setrad()
+    p.setvelt()
+    p.set_pardic()
+
+    if (order_key is not None) and (order_key!='Id'):
+        if verbose: print('Sorting by %s'% order_key)
+        p.order(key=order_key)
+        if verbose: print('Sorted')
 
     return p
 
@@ -690,6 +762,8 @@ def load_snap(filename,end='<',order_key='Id',extra_block=(),kind='fvfps',verbos
         else: raise IOError('File %s not found'%filename)
     elif kind.lower()=='fvfps':
         particles=load_snap_fvfps(filename,order_key=order_key,verbose=verbose,**kwargs)
+    elif kind.lower()=='ascii':
+        particles=load_snap_ascii(filename,order_key=order_key,verbose=verbose, **kwargs)
     else:
         raise NotImplementedError('load file from %s not implemented' % kind)
 
@@ -842,6 +916,7 @@ def load_header(filename,end='<', kind='fvfps',**kwargs):
         raise NotImplementedError('load file from %s not implemented' % kind)
 
     return header_obj
+
 
 
 

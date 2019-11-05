@@ -199,9 +199,9 @@ class Observe():
         distance=sqrt(pos_sun[0]*pos_sun[0]+pos_sun[1]*pos_sun[1]+pos_sun[2]*pos_sun[2])
         vel_obs = align_frame(vel_sun, pos_vec=pos_sun, ax='z', cartesian=True, reference='r')
 
-
         mul = vel_obs[1] * Ks /  distance
         mub = -vel_obs[0] *Ks  /  distance
+
 
         return (mul,mub,vel_obs[2])
 

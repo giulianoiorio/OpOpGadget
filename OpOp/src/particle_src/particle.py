@@ -434,6 +434,7 @@ class Header:
         self.header['flag_entr_ics'] = 0
     '''////////////////////////////////////////////////'''
 
+#TODO: Add a __add__ class as already done for Particles
 class Particle:
     def __init__(self,id=0,type=1,pos=(0,0,0),vel=(0,0,0),mass=0):
         self.Pos = pos  # (Cartesian) Coordinates of the particles (list of tuple) (C-type float)
@@ -616,6 +617,11 @@ class Particles:
 
         return ret
 
+    def reset_id(self):
+
+        self._makeid()
+
+        return self.Id
 
     def _initialize_vars(self,n):
             self.Pos = np.zeros(shape=[n, 3], dtype=float)
@@ -1012,6 +1018,37 @@ class Particles:
     def set_pardic(self):
         self.par_dic = {'id': self.Id, 'type':self.Type, 'mass':self.Mass, 'rad':self.Radius, 'velt':self.Vel_tot ,'x': self.Pos[:,0], 'y': self.Pos[:,1], 'z': self.Pos[:,2], 'vx': self.Vel[:,0], 'vy': self.Vel[:,1], 'vz': self.Vel[:,2], 'pos': self.Pos, 'vel':self.Vel}
 
+    #TODO: the current add is not efficent. It uses a pure python for cycling over all the particles of the two objects.  It should be implemented creating an object from sratch
+    def __add__(self, other):
+        """
+        Merge this object with another Particles (or Particle obejct). It does not preserve the info about the Id.
+        :param other:
+        :return:
+        """
+
+        if isinstance(other, Particles):  particle_list = np.r_[self[:], other[:]]
+        elif isinstance(other, Particle): particle_list = np.r_[self[:], other]
+        else: raise ValueError('Particles sum can accept as argument only an other Particels or Particle object')
+
+        return Particles(p=particle_list)
+
+def merge_particles(*particles, reset_id=True, type_order=True):
+    """
+    Merge together an list of object of the class Particles.
+    This is based on the _add_ definition in the class Particles, but this function allow the user to have more control on the outcome through
+    the keywork reset_id and type_order.
+    :param particles: an istance of the class Particles.
+    :param reset_id: If True, the Id of the merged catalogue is reset. The new values range from 0 to N-1, where N is the total number of particles in the merged catalogue.
+    :param type_order: if True, order  the particle of the merged catalogue as a function of the particle type (this operation is made before the reset of the ids).
+    :return: An istance of the class Particles containing all the particles of the input args.
+    """
+
+    merged=Particles(N=0)
+    for par in particles: merged+=par
+    if type_order: merged.order(key='Type')
+    if reset_id:  merged.reset_id()
+
+    return merged
 
 
 if __name__=='main':

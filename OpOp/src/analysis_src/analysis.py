@@ -522,7 +522,7 @@ class Analysis:
                     See http://astrofrog-debug.readthedocs.org/en/latest/constants/
 
         :return: Dynamical tyme. The units wil depends on the units used in G, If used the
-                 G in default the time will be in unit of Gyr.
+                 G in default the time will be in unit of s.
         """
 
         if type is None:
