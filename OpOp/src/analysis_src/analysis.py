@@ -544,7 +544,7 @@ class Analysis:
         
         mass_tot_rq=np.sum(self.p.Mass[self.p.Radius<=rq])
 
-        mass_phy=G*(mq/100)*mass_tot_rq
+        mass_phy=G*mass_tot_rq
         tdyn=0.5*np.pi*rq*np.sqrt(rq/mass_phy)
 
 
