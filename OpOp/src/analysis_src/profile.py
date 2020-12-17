@@ -607,7 +607,7 @@ class Profile:
             self.velpro=None#p.Vel[:,ax3]
             self.vel_tot=p.Vel_tot[:]
             self.pmass=p.Mass[:]
-            print('Mass', np.sum(self.pmass))
+            #print('Mass', np.sum(self.pmass))
             #print('Radius', self.rad[:10])
             #input()
 
@@ -813,7 +813,7 @@ class Profile:
                 print("Masscum WW",retarray[:,1])
                 return retarray
 
-    def vdisp2d(self,pax='z',ret=True,func=True,s=0,k=2):
+    def vdisp2d(self,pax='z',ret=True,func=True,s=0,k=2, mass_weighted=False):
 
         if (self.cvdisp2d is None) or (self.paxvdisp2d!=pax):
 
@@ -847,7 +847,16 @@ class Profile:
             self.cvdisp2d=np.zeros(len(self.grid.gedge)-1) #set grid
             for i in range(len(self.grid.gedge)-1):
                 cond=(self.radcyl>self.grid.gedge[i])&(self.radcyl<=self.grid.gedge[i+1])
-                self.cvdisp2d[i]=np.std(vel_proj[cond])
+
+                if mass_weighted:
+                    wmean = lambda x,w : np.sum(x*w)/np.sum(w)
+                    vel_proj_mean = wmean(vel_proj[cond],self.pmass[cond])
+                    self.cvdisp2d[i] =  np.sqrt(wmean((vel_proj[cond]-vel_proj_mean)**2, self.pmass[cond]))
+                else:
+                #Analysis.massw_mean(x_array, mass_array)
+                    self.cvdisp2d[i]=np.std(vel_proj[cond])
+
+
 
             if ret==True:
                 retarray=np.zeros((len(self.cvdisp2d),2))

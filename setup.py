@@ -159,7 +159,7 @@ genmod_c_ext = Extension('OpOp.src.model_src.model_c_ext.GenerateModel',
 
 jsolv_c_src = ['OpOp/src/jsolver_src/jsolver_c_ext/CJsolver.pyx']
 jsolv_c_ext = Extension('OpOp.src.jsolver_src.jsolver_c_ext.CJsolver', sources=jsolv_c_src,
-                        extra_compile_args=['-fopenmp', ]+extra_compile_args, extra_link_args=['-fopenmp','-Wl,-rpath,/usr/local/opt/gcc/lib/gcc/7/'])
+                        extra_compile_args=extra_compile_args)
 
 #io ext read
 io_c_src_read = ['OpOp/src/io_src/io_c_ext/cread_fvfps.pyx']
@@ -173,7 +173,7 @@ ext_modules = [df_c_ext, model_c_ext, genmod_c_ext] + cythonize(jsolv_c_ext) + c
 
 setup(
     name='OpOpGadget',
-    version='1.3.dev0',
+    version='1.6.dev0',
     author='Giuliano Iorio',
     author_email='giuliano.iorio@unibo.it',
     url='http://github.com/iogiul/OpOp',
