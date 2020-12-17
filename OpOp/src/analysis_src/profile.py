@@ -607,7 +607,10 @@ class Profile:
             self.velpro=None#p.Vel[:,ax3]
             self.vel_tot=p.Vel_tot[:]
             self.pmass=p.Mass[:]
-            
+            print('Mass', np.sum(self.pmass))
+            #print('Radius', self.rad[:10])
+            #input()
+
             if isinstance(p,Sky_Particles):
                 self.Vlos=p.Vlos
                 self.Vl=p.Vl
@@ -639,18 +642,18 @@ class Profile:
                 self.issky=True
 
         else: raise ValueError('type need to be None or an integer')
-        
 
-            
+
+
         if self.spherical_cord_exist:
             self.pos_spherical=np.zeros_like(self.pos)
             self.vel_spherical=np.zeros_like(self.vel)
-            
+
             #Spherical coord r,theta,phi
             self.pos_spherical[:,0]=self.rad[:] #r
             self.pos_spherical[:,1]=np.arccos(self.pos[:,2]/self.rad) #theta=arcos(z/r) (zenithal angle)
             self.pos_spherical[:,2]=np.arctan2(self.pos[:,1],self.pos[:,0]) #phi=atan(y/r) (azimuthal angle)
-            
+
             #Vel
             Vr, Vt, Vp=cartesian_to_spherical_vector(self.vel[:,0], self.vel[:,1], self.vel[:,2], self.pos_spherical[:,1], self.pos_spherical[:,2], degree=False)
             self.vel_spherical[:,0]=Vr
@@ -792,15 +795,22 @@ class Profile:
         if self.masscum is None:
             if self.massbin is None: self.massbin=np.histogram(self.rad,bins=self.grid.gedge,weights=self.pmass)[0]
             self.masscum=self.massbin.cumsum()
+            print("Masscum",np.sum(self.massbin),np.sum(self.masscum))
+            print(self.massbin)
+            print(self.masscum)
 
         if ret==True:
             retarray=np.zeros((len(self.masscum),2))
             retarray[:,0]=self.grid.gedge[1:]
             retarray[:,1]=self.masscum
+            print("Masscum WW",retarray[:,1])
+
             if func==True:
                 rfunc=UnivariateSpline(retarray[:,0],retarray[:,1],k=2,s=s)
+                print("Masscum WW",retarray[:,1])
                 return retarray,rfunc
             else:
+                print("Masscum WW",retarray[:,1])
                 return retarray
 
     def vdisp2d(self,pax='z',ret=True,func=True,s=0,k=2):
@@ -853,13 +863,13 @@ class Profile:
 
         if (self.cvdisp3d is None) or (self.paxvdisp3d!=ax):
 
-            if ax=='z': 
+            if ax=='z':
                 ax3=2
                 vel_vector=self.vel
-            elif ax=='y': 
+            elif ax=='y':
                 ax3=1
                 vel_vector=self.vel
-            elif ax=='x': 
+            elif ax=='x':
                 ax3=0
                 vel_vector=self.vel
             elif (ax=='r' or ax=='theta' or ax=='phi') and self.spherical_cord_exist==False:

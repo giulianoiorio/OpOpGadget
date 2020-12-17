@@ -56,7 +56,7 @@ class Observe():
         self.centre=Sky_Particle(type=9,mass=np.sum(self.p.Mass[:]),id=0)
 
 
-    def observe(self,psun=(8.0,0,0),vsun=(-10,5.25,7.17),vrot=220,align_mode='auto',align_vec=(), com='iter', mq=50,**kwargs):
+    def observe(self,psun=(8.13,0,0),vsun=(-11.1,12.24,7.25),vrot=238,align_mode='auto',align_vec=(), com='iter', mq=50,**kwargs):
         """
         com: if iter perform an iterative search considering mq=50. It is also possible to 
         give directly the position of the com. In this case it should be a list(tuple or array) (COM, VCOM)
