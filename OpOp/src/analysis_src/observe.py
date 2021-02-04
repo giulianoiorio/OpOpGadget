@@ -56,12 +56,14 @@ class Observe():
         self.centre=Sky_Particle(type=9,mass=np.sum(self.p.Mass[:]),id=0)
 
 
-    def observe(self,psun=(8.13,0,0),vsun=(-11.1,12.24,7.25),vrot=238,align_mode='auto',align_vec=(), com='iter', mq=50,**kwargs):
+    def observe(self,psun=(8.13,0,0),vsun=(-11.1,12.24,7.25),vrot=238,align_mode='auto',align_vec=(), com='iter', mq=50,correct_relative_motion=False,**kwargs):
         """
         com: if iter perform an iterative search considering mq=50. It is also possible to 
         give directly the position of the com. In this case it should be a list(tuple or array) (COM, VCOM)
         where COM is another list (tuple or np array) contaiting the position of the COM in Galactic coordinates, while VCOM is the same thing but for the Velocity of the Centre of Mass.
         """
+
+
 
         self.set_sun_position(psun=psun,vsun=vsun,vrot=vrot) #Sun Position
         align_pos, align_vel=self.set_align(align_mode, align_vec, com=com, mq=mq) #align
@@ -69,6 +71,10 @@ class Observe():
         #rotate
         pos_sun, pos_obs, pcentre_sun, pcentre_obs = self._rotate_pos()
         vel_sun, vel_obs, vcentre_sun, vcentre_obs = self._rotate_vel(vcentre=align_vel)
+
+
+        if correct_relative_motion:
+            vel_sun, vel_obs, vcentre_sun, vcentre_obs = self._rotate_vel(vcentre=align_vel,correct_relative_motion=correct_relative_motion)
 
 
         c = self._make_centre(pcentre_sun,vcentre_sun)
@@ -164,10 +170,18 @@ class Observe():
 
         return pos_sun, pos_obj, pcentre_sun, pcentre_obs
 
-    def _rotate_vel(self,vcentre=None):
+    def _rotate_vel(self,vcentre=None,correct_relative_motion=False):
 
-        vel_sun = align_frame(self.p.Vel, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.vsun[0],
-                            yoff=self.vsun[1], zoff=self.vsun[2], change_reference='x')
+        vxoff=vyoff=vzoff=0
+        if correct_relative_motion and vcentre is not None:
+            vxoff=self.vsun[0]-vcentre[0]
+            vyoff=self.vsun[1]-vcentre[1]
+            vzoff=self.vsun[2]-vcentre[2]
+        elif correct_relative_motion:
+            raise ValueError("If correct_relative_motion is true, vcentre cannot be none")
+
+        vel_sun = align_frame(self.p.Vel, pos_vec=self.psun, ax='x', cartesian=True, reference='l', xoff=self.vsun[0]-vxoff,
+                            yoff=self.vsun[1]-vyoff, zoff=self.vsun[2]-vzoff, change_reference='x')
 
         vel_obj_tmp = align_frame(vel_sun,pos_vec=self.align_vec,ax='z',cartesian=True,reference='r')
 
