@@ -9,7 +9,7 @@ import numpy as np
 
 
 class TruncatedPlummer(GeneralModel.GeneralModel):
-    
+
     def __init__(self, rc, Ms,rs=None, rt=None, R=None, rini=3e-5, rfin=300, kind='log', n=512, G='kpc km2 / (M_sun s2)',
                  denorm=True, r_physic=False, use_c=False,**kwargs):
         """
@@ -42,6 +42,7 @@ class TruncatedPlummer(GeneralModel.GeneralModel):
 
         self.rc = rc
         self.rt = rt
+        self.rs = rs
 
 
         if 'Mmax' in kwargs:
@@ -77,7 +78,7 @@ class TruncatedPlummer(GeneralModel.GeneralModel):
             self.Mmax=self.Ms* ( (1+x*x)**(1.5) ) / (  x*x*x )
 
         if rt is None: self.rt=2*R[-1]*self.rc
-        
+
         super(TruncatedPlummer, self).__init__(R=R, dens=self._adens, rc=self.rc, Ms=self.Ms, rs=self.rs, G=G, use_c=use_c,
                                                denorm=denorm)
 
