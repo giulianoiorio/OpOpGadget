@@ -58,7 +58,7 @@ cdef read_par_data(FILE *buf, int[:] ipar, float[:] rpar):
 
     #ipar block
     fread(&check,di,1,buf)
-    block_l=check/di
+    block_l=int(check/di)
     fread(&ipar[0], di,block_l, buf)
     fread(&check2,di,1,buf)
 
@@ -69,7 +69,7 @@ cdef read_par_data(FILE *buf, int[:] ipar, float[:] rpar):
 
     #rpar block
     fread(&check,di,1,buf)
-    block_l=check/di
+    block_l=int(check/di)
     fread(&rpar[0], ds,block_l, buf)
     fread(&check2,di,1,buf)
 
